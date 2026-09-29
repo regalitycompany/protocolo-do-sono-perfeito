@@ -132,7 +132,7 @@ async function load() {
   }).join('');
 
   $('#emails').innerHTML = `<tr><th>E-mail</th><th class="num">Enviados</th><th class="num">Abriram</th><th class="num">Clicaram</th></tr>` +
-    s.emails.map((e) => `<tr><td>${['', '1 · 1h', '2 · 24h', '3 · 48h (R$19,90)'][e.step]}</td><td class="num">${e.sent}</td>
+    s.emails.map((e) => `<tr><td>${['', '1 · 1h', '2 · 24h', '3 · 48h (R$19,98)'][e.step]}</td><td class="num">${e.sent}</td>
       <td class="num">${e.opened} <span class="muted">${pct(e.opened, e.sent)}</span></td>
       <td class="num">${e.clicked} <span class="muted">${pct(e.clicked, e.sent)}</span></td></tr>`).join('');
 
