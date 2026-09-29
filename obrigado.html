@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Compra confirmada — Protocolo do Sono Perfeito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--n1:#080f24;--n2:#0b1630;--n3:#0f1e3a;--gold:#c9a84c;--gold2:#d8bc68;--gold3:#e8d080;--cream:#faf8f3}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,var(--n3),var(--n1) 70%);color:#fff;font:16px/1.6 Inter,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:32px 16px}
+main{width:100%;max-width:560px;text-align:center}
+.ok{width:76px;height:76px;margin:0 auto 22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.45)}
+.ok svg{width:36px;height:36px;stroke:var(--gold3)}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:0 0 14px}
+p.lead{color:rgba(255,255,255,.75);margin:0 0 28px}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 20px;text-align:left;margin-bottom:16px}
+.card h2{font-size:15px;margin:0 0 14px;color:var(--gold3);font-weight:700}
+ol{margin:0;padding:0;list-style:none;counter-reset:s}
+ol li{counter-increment:s;position:relative;padding-left:40px;margin-bottom:14px;color:rgba(255,255,255,.85);font-size:15px}
+ol li:last-child{margin-bottom:0}
+ol li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#111;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.help{font-size:14px;color:rgba(255,255,255,.55)}
+.help a{color:var(--gold3)}
+.moon{font-size:13px;color:rgba(255,255,255,.35);margin-top:26px}
+</style>
+</head>
+<body>
+<main>
+  <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+  <div class="tag">Compra confirmada</div>
+  <h1>Bem-vinda ao Protocolo do Sono Perfeito 💛</h1>
+  <p class="lead">Seu pagamento foi recebido. A partir de hoje você tem o passo a passo na mão pra organizar as noites do seu bebê.</p>
+
+  <div class="card">
+    <h2>Como acessar agora</h2>
+    <ol>
+      <li><strong>Abra seu e-mail.</strong> A Kiwify enviou o link de acesso para o e-mail que você usou na compra.</li>
+      <li><strong>Não achou?</strong> Procure nas abas Promoções e Spam por uma mensagem da Kiwify.</li>
+      <li><strong>Comece pela Etapa 1</strong> ainda hoje: é ela que mostra o que pode estar sabotando as noites.</li>
+    </ol>
+  </div>
+
+  <p class="help">Não recebeu o acesso em até 15 minutos? Escreva para <a href="mailto:regalitycompany@gmail.com?subject=Acesso%20Protocolo%20do%20Sono%20Perfeito">regalitycompany@gmail.com</a> que a gente resolve.</p>
+  <p class="moon">🌙 Boas noites de sono começam hoje.</p>
+</main>
+
+<script>
+// Registra a chegada na página de obrigado no painel (o Purchase do Meta já é enviado pela Kiwify).
+(function(){
+  var sid;try{sid=localStorage.getItem('psp_sid')}catch(e){}
+  if(!sid){sid='ty_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+  var body=JSON.stringify({sid:sid,events:[{name:'thank_you_view',props:{q:location.search.slice(0,300)},url:location.href}],ctx:{}});
+  try{if(!(navigator.sendBeacon&&navigator.sendBeacon('/api/track',new Blob([body],{type:'text/plain'}))))fetch('/api/track',{method:'POST',body:body,keepalive:true})}catch(e){}
+})();
+</script>
+</body>
+</html>
