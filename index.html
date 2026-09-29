@@ -9,21 +9,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 
-<!-- Meta Pixel -->
+<!-- Sessão + Meta Pixel (BM Regality Company, pixel "Protocolo do Sono Perfeito") -->
 <script>
+(function(){
+  var sid;try{sid=localStorage.getItem('psp_sid')}catch(e){}
+  if(!sid){sid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2);try{localStorage.setItem('psp_sid',sid)}catch(e){}}
+  window.PSP={sid:sid,pixel:'1078460701310585',checkout:'https://pay.kiwify.com.br/P7ziSS2',
+    eid:function(n){return n+'.'+Date.now().toString(36)+'.'+Math.random().toString(36).slice(2,8)}};
+  PSP.pvId=PSP.eid('pv');PSP.vcId=PSP.eid('vc');
+})();
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
 (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1004966469135769');
-fbq('track','PageView');
-fbq('track','ViewContent',{content_name:'Protocolo do Sono Perfeito',content_category:'Baby Sleep',currency:'BRL',value:37.00});
+fbq('init',PSP.pixel,{external_id:PSP.sid});
+fbq('track','PageView',{},{eventID:PSP.pvId});
+fbq('track','ViewContent',{content_name:'Protocolo do Sono Perfeito',content_category:'Baby Sleep',content_type:'product',currency:'BRL',value:37.00},{eventID:PSP.vcId});
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1004966469135769&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1078460701310585&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 
-<!-- Utmify: captura UTMs da URL e repassa automaticamente para o checkout -->
+<!-- Utmify: captura UTMs da URL -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck async defer></script>
 <!-- End Utmify -->
 
@@ -781,7 +788,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       Descubra o protocolo passo a passo para <strong>organizar a rotina de sono do seu bebê</strong>, reduzir os despertares que destroem suas noites e finalmente <em>voltar a dormir por horas seguidas</em> — mesmo que você já tenha tentado de tudo.
     </p>
     <div class="cta-btn-wrap rv on d2">
-      <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg">
+      <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
         <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-moon"/></svg>
         Quero Aplicar o Protocolo Hoje
         <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
@@ -864,7 +871,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     </div>
     <div style="text-align:center;margin-top:44px" class="rv">
       <p style="font-size:16px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.7;max-width:500px;margin-left:auto;margin-right:auto">Elas tinham exatamente o mesmo problema que você.<br>A única diferença é que decidiram resolver.</p>
-      <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg">
+      <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
         Quero Aplicar o Protocolo Hoje
         <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
       </a>
@@ -902,7 +909,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     <div id="pmsg">
       <h3>Você reconheceu <span id="pc">0</span> sinais de sono desregulado.</h3>
       <p>Cada noite que passa sem organizar essa sequência, o sono do seu bebê — e o seu — fica mais difícil de reconquistar. O Protocolo existe exatamente para reorganizar isso, <em>passo a passo.</em></p>
-      <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn md">Quero aplicar o protocolo hoje <svg class="ic" style="width:16px;height:16px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
+      <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn md">Quero aplicar o protocolo hoje <svg class="ic" style="width:16px;height:16px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
       <div class="buyers-badge" style="justify-content:center;margin-top:14px">
         <span class="dot"></span>
         <span style="color:rgba(255,255,255,.45)">Restam apenas <strong id="vagas-pain" style="color:#ff8a8a">23</strong> vagas neste preço</span>
@@ -1183,7 +1190,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
           <svg class="ic"><use href="#i-alert"/></svg>
           Apenas <strong id="vagas-vbox" style="margin:0 3px">23</strong> vagas neste preço
         </div>
-        <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg" style="width:100%;display:flex">
+        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg" style="width:100%;display:flex">
           Quero Aplicar o Protocolo Hoje
           <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
         </a>
@@ -1321,7 +1328,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
         <div class="ototl"><span class="ototl-l">Você paga hoje</span><span class="ototl-r">R$ 37,00</span></div>
-        <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg" style="width:100%;display:flex">
+        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg" style="width:100%;display:flex">
           Quero Começar Hoje
           <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
         </a>
@@ -1374,7 +1381,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 <div id="sticky">
   <div id="sticky-in">
     <div><div class="sbn">Protocolo do Sono Perfeito</div><div class="sbp">Acesso completo por <strong>R$37</strong> · <span style="color:#ff8a8a;font-weight:600"><span id="vagas-sticky">23</span> vagas restantes</span> · Garantia 7 dias</div></div>
-    <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn sm">Quero Começar Hoje <svg class="ic" style="width:14px;height:14px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
+    <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn sm">Quero Começar Hoje <svg class="ic" style="width:14px;height:14px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
   </div>
 </div>
 
@@ -1568,15 +1575,302 @@ setInterval(()=>{
 </script>
 
 <!-- Fallback: garante repasse de UTM pro checkout mesmo se o script da Utmify falhar -->
+<!-- ============ CAPTURA DE LEAD + RASTREAMENTO DO FUNIL ============ -->
+<style>
+#lf{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(3,7,15,.78);backdrop-filter:blur(4px)}
+#lf.on{display:flex}
+#lf-box{position:relative;width:100%;max-width:420px;max-height:calc(100dvh - 24px);overflow-y:auto;background:var(--n2);border:1px solid rgba(201,168,76,.35);border-radius:18px;padding:28px 22px 20px;color:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:lfIn .25s ease}
+@keyframes lfIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#lf-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;background:transparent;color:rgba(255,255,255,.55);font-size:22px;cursor:pointer;border-radius:8px}
+#lf-step{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);font-weight:700;margin-bottom:8px}
+#lf h3{font-family:'Playfair Display',serif;font-size:23px;line-height:1.2;margin:0 0 8px}
+#lf p.lf-sub{font-size:14px;color:rgba(255,255,255,.7);margin:0 0 14px;line-height:1.5}
+#lf label{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);margin:0 0 6px}
+#lf input{width:100%;height:48px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font:500 16px Inter,sans-serif;padding:0 14px;margin-bottom:14px;outline:none;box-sizing:border-box}
+#lf input:focus{border-color:var(--gold2);background:rgba(255,255,255,.09)}
+#lf input.bad{border-color:#ff8a8a}
+#lf .cta-btn{width:100%;display:flex;justify-content:center;margin-top:4px;border:0;cursor:pointer}
+#lf-err{min-height:18px;font-size:13px;color:#ff8a8a;margin:-4px 0 8px}
+#lf-skip{display:block;width:100%;margin-top:12px;background:none;border:0;color:rgba(255,255,255,.45);font:13px Inter,sans-serif;text-decoration:underline;cursor:pointer}
+#lf-lgpd{font-size:11px;color:rgba(255,255,255,.38);text-align:center;margin:12px 0 0;line-height:1.4}
+#lf-safe{display:flex;justify-content:center;gap:14px;font-size:12px;color:rgba(255,255,255,.5);margin-top:12px}
+</style>
+
+<div id="lf" role="dialog" aria-modal="true" aria-labelledby="lf-title">
+  <div id="lf-box">
+    <button id="lf-x" type="button" aria-label="Fechar">×</button>
+    <div id="lf-step">Passo 1 de 2 · Seus dados de acesso</div>
+    <h3 id="lf-title">Pra onde enviamos seu acesso?</h3>
+    <p class="lf-sub" id="lf-sub">Preencha abaixo e siga pro pagamento seguro. O acesso chega no seu e-mail assim que o pagamento for aprovado.</p>
+    <form id="lf-form" novalidate>
+      <label for="lf-name">Seu nome</label>
+      <input id="lf-name" name="name" autocomplete="name" placeholder="Como podemos te chamar?" required/>
+      <label for="lf-email">Seu melhor e-mail</label>
+      <input id="lf-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com" required/>
+      <label for="lf-phone">Seu WhatsApp</label>
+      <input id="lf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(11) 99999-9999" required/>
+      <div id="lf-err" aria-live="polite"></div>
+      <button type="submit" class="cta-btn lg" id="lf-go">Ir para o pagamento seguro</button>
+    </form>
+    <button id="lf-skip" type="button">Prefiro preencher direto no pagamento</button>
+    <div id="lf-safe"><span>🔒 Dados protegidos</span><span>🛡️ Garantia de 7 dias</span></div>
+    <p id="lf-lgpd">Ao continuar, você aceita receber e-mails e mensagens sobre o seu acesso. Sem spam, e você pode sair quando quiser.</p>
+  </div>
+</div>
+
 <script>
 (function(){
-  const qs = window.location.search;
-  if(!qs) return;
-  document.querySelectorAll('a[href^="https://pay.wiapy.com/"]').forEach(function(a){
-    const sep = a.href.includes('?') ? '&' : '?';
-    a.href = a.href + sep + qs.slice(1);
+  var P=window.PSP, sid=P.sid;
+  var $=function(id){return document.getElementById(id)};
+
+  /* ---------- contexto: UTMs, fbclid, _fbc/_fbp ---------- */
+  var qs=new URLSearchParams(location.search), ctx={};
+  try{ctx=JSON.parse(localStorage.getItem('psp_ctx')||'{}')}catch(e){}
+  var UK=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+  if(UK.some(function(k){return qs.get(k)})){
+    UK.forEach(function(k){ctx[k]=qs.get(k)||null});
+    ctx.landing=location.href;ctx.referrer=document.referrer||null;
+  }
+  if(!ctx.landing){ctx.landing=location.href;ctx.referrer=document.referrer||null}
+  function cookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null}
+  if(qs.get('fbclid')&&!cookie('_fbc')){
+    document.cookie='_fbc=fb.1.'+Date.now()+'.'+qs.get('fbclid')+';path=/;max-age=7776000;SameSite=Lax';
+  }
+  try{localStorage.setItem('psp_ctx',JSON.stringify(ctx))}catch(e){}
+  function context(){ctx.fbc=cookie('_fbc')||ctx.fbc||null;ctx.fbp=cookie('_fbp');ctx.url=location.href;return ctx}
+
+  /* ---------- fila de eventos -> /api/track ---------- */
+  var queue=[],timer;
+  function flush(){
+    if(!queue.length)return;
+    var body=JSON.stringify({sid:sid,events:queue.splice(0,30),ctx:context()});
+    var ok=false;
+    try{ok=navigator.sendBeacon&&navigator.sendBeacon('/api/track',new Blob([body],{type:'text/plain'}))}catch(e){}
+    if(!ok){try{fetch('/api/track',{method:'POST',body:body,keepalive:true})}catch(e){}}
+  }
+  function ev(name,props,eventId,now){
+    queue.push({name:name,props:props||null,eventId:eventId||null,url:location.href});
+    clearTimeout(timer);
+    if(now||queue.length>=10)flush();else timer=setTimeout(flush,2000);
+  }
+  function fb(){try{fbq.apply(null,arguments)}catch(e){}}
+  function post(path,data){
+    return fetch(path,{method:'POST',body:JSON.stringify(data),keepalive:true}).catch(function(){});
+  }
+
+  // os mesmos event_ids do fbq do <head>: o Meta deduplica navegador x servidor
+  ev('page_view',{ref:document.referrer||null},P.pvId);
+  ev('view_content',null,P.vcId,true);
+
+  /* ---------- scroll ---------- */
+  var maxScroll=0,marks=[25,50,75,90,100],hit={};
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-innerHeight;
+    var pct=h>0?Math.min(100,Math.round(scrollY/h*100)):100;
+    if(pct>maxScroll)maxScroll=pct;
+    marks.forEach(function(m){
+      if(pct>=m&&!hit[m]){hit[m]=1;ev('scroll_'+m,{percent:m});fb('trackCustom','ScrollDepth',{percent:m})}
+    });
+  }
+  addEventListener('scroll',function(){if(!onScroll.t){onScroll.t=setTimeout(function(){onScroll.t=0;onScroll()},250)}},{passive:true});
+
+  /* ---------- tempo ativo na página ---------- */
+  var seconds=0,tmarks={15:1,30:1,60:1,120:1,300:1,600:1};
+  setInterval(function(){
+    if(document.visibilityState!=='visible')return;
+    seconds++;
+    if(tmarks[seconds]){ev('time_'+seconds,{seconds:seconds});fb('trackCustom','TimeOnPage',{seconds:seconds})}
+  },1000);
+
+  /* ---------- seções vistas ---------- */
+  var lastSection=null,seen={};
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var id=e.target.id;lastSection=id;
+        if(seen[id])return;seen[id]=1;
+        ev('section_'+id,{order:Object.keys(seen).length});
+        fb('trackCustom','ViewSection',{section:id});
+        if(id==='valor')fb('trackCustom','ViewPrice',{value:37,currency:'BRL'});
+      });
+    },{threshold:0.35});
+    document.querySelectorAll('section[id],footer').forEach(function(s){if(!s.id)s.id='footer';io.observe(s)});
+  }
+
+  /* ---------- saída da página (quem vai embora sem converter) ---------- */
+  var left=false;
+  function leave(){
+    if(left)return;left=true;
+    ev('page_leave',{max_scroll:maxScroll,seconds:seconds,last_section:lastSection,lead:!!leadDone()},null,true);
+  }
+  addEventListener('pagehide',leave);
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')leave();else left=false});
+
+  /* ---------- cliques ---------- */
+  function where(el){var s=el.closest('section[id],#sticky,#topbar,footer');return s?(s.id||s.tagName.toLowerCase()):'page'}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="'+P.checkout+'"]');
+    if(a){
+      e.preventDefault();
+      var cta=where(a);
+      ev('cta_click',{cta:cta,text:(a.textContent||'').trim().slice(0,60)},null,true);
+      fb('trackCustom','ClickCTA',{cta:cta});
+      openForm('checkout',cta);
+      return;
+    }
+    var f=e.target.closest('[onclick^="tf"]');
+    if(f){ev('faq_open',{q:(f.textContent||'').trim().slice(0,90)});fb('trackCustom','FAQOpen');return}
+    var t=e.target.closest('[onclick^="tp"]');
+    if(t){ev('pain_check',{item:(t.textContent||'').trim().slice(0,60)});return}
+    var l=e.target.closest('a[href]');
+    if(l)ev('link_click',{href:l.getAttribute('href').slice(0,200),where:where(l)},null,true);
   });
+
+  /* ---------- formulário de lead ---------- */
+  var mode='checkout',origin=null,partialT;
+  function leadDone(){try{return localStorage.getItem('psp_lead')==='1'}catch(e){return false}}
+  function vals(){
+    return{name:$('lf-name').value.trim(),email:$('lf-email').value.trim(),phone:$('lf-phone').value.replace(/\D/g,'')};
+  }
+  function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)}
+  function validPhone(v){return v.length===10||v.length===11}
+
+  function openForm(m,from){
+    mode=m;origin=from;
+    var exit=m==='exit';
+    $('lf-step').textContent=exit?'Antes de você sair':'Passo 1 de 2 · Seus dados de acesso';
+    $('lf-title').textContent=exit?'Quer receber o link com o valor de hoje?':'Pra onde enviamos seu acesso?';
+    $('lf-sub').textContent=exit
+      ?'Deixa seu e-mail e WhatsApp que a gente te manda o link do Protocolo por R$37, pra você finalizar quando puder, com calma.'
+      :'Preencha abaixo e siga pro pagamento seguro. O acesso chega no seu e-mail assim que o pagamento for aprovado.';
+    $('lf-go').textContent=exit?'Quero receber o link':'Ir para o pagamento seguro';
+    $('lf-skip').textContent=exit?'Não, obrigada':'Prefiro preencher direto no pagamento';
+    try{var saved=JSON.parse(localStorage.getItem('psp_form')||'{}');
+      ['name','email','phone'].forEach(function(k){if(saved[k]&&!$('lf-'+k).value)$('lf-'+k).value=saved[k]})}catch(e){}
+    $('lf').classList.add('on');
+    ev('form_open',{mode:m,from:from},null,true);
+    setTimeout(function(){var f=['lf-name','lf-email','lf-phone'].map($).filter(function(i){return!i.value})[0];if(f&&innerWidth>700)f.focus()},60);
+  }
+  function closeForm(reason){
+    $('lf').classList.remove('on');
+    ev('form_close',{mode:mode,reason:reason,filled:filledCount()},null,true);
+  }
+  function filledCount(){var v=vals();return(v.name?1:0)+(validEmail(v.email)?1:0)+(validPhone(v.phone)?1:0)}
+
+  // máscara de WhatsApp
+  $('lf-phone').addEventListener('input',function(){
+    var d=this.value.replace(/\D/g,'').replace(/^55(?=\d{10,11}$)/,'').slice(0,11);
+    this.value=d.length>6?'('+d.slice(0,2)+') '+d.slice(2,d.length===11?7:6)+'-'+d.slice(d.length===11?7:6)
+      :d.length>2?'('+d.slice(0,2)+') '+d.slice(2):d;
+  });
+
+  // salva o que já foi digitado, mesmo que a pessoa desista do formulário
+  ['lf-name','lf-email','lf-phone'].forEach(function(id){
+    $(id).addEventListener('blur',function(){
+      var v=vals();
+      try{localStorage.setItem('psp_form',JSON.stringify({name:v.name,email:v.email,phone:$('lf-phone').value}))}catch(e){}
+      if(!validEmail(v.email)&&!validPhone(v.phone))return;
+      ev('form_field',{field:id.slice(3)});
+      clearTimeout(partialT);
+      partialT=setTimeout(function(){post('/api/lead',{sid:sid,stage:'partial',name:v.name,email:v.email,phone:v.phone,source:mode==='exit'?'exit_intent':'lp_form',ctx:context()})},400);
+    });
+  });
+
+  function checkoutUrl(){
+    var u=new URL(P.checkout);
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(ctx[k])u.searchParams.set(k,ctx[k])});
+    location.search.slice(1).split('&').forEach(function(kv){var k=kv.split('=')[0];if(k&&!u.searchParams.has(k)&&k!=='fbclid')u.searchParams.set(k,decodeURIComponent((kv.split('=')[1]||'').replace(/\+/g,' ')))});
+    u.searchParams.set('sck',sid); // liga a venda da Kiwify a esta sessão
+    return u.toString();
+  }
+  function go(){
+    var url=checkoutUrl();
+    setTimeout(function(){location.href=url},350);
+  }
+
+  $('lf-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=vals(),err='';
+    $('lf-name').classList.toggle('bad',!v.name);
+    $('lf-email').classList.toggle('bad',!validEmail(v.email));
+    $('lf-phone').classList.toggle('bad',!validPhone(v.phone));
+    if(!v.name)err='Digite seu nome.';
+    else if(!validEmail(v.email))err='Confira seu e-mail, parece ter algo faltando.';
+    else if(!validPhone(v.phone))err='Digite seu WhatsApp com DDD.';
+    $('lf-err').textContent=err;
+    if(err){ev('form_error',{error:err});return}
+
+    try{localStorage.setItem('psp_lead','1')}catch(e){}
+    var parts=v.name.toLowerCase().split(/\s+/);
+    var ud={em:v.email.toLowerCase(),ph:'55'+v.phone,fn:parts[0],external_id:sid};
+    if(parts.length>1)ud.ln=parts[parts.length-1];
+    fb('init',P.pixel,ud); // correspondência avançada pros próximos eventos
+
+    var src=mode==='exit'?'exit_intent':'lp_form';
+    var leadId=P.eid('lead'),icId=P.eid('ic');
+    fb('track','Lead',{content_name:'Protocolo do Sono Perfeito',currency:'BRL',value:37,source:src},{eventID:leadId});
+    ev('lead',{source:src,from:origin},null,true);
+    var base={sid:sid,name:v.name,email:v.email,phone:v.phone,source:src,ctx:context()};
+    $('lf-go').disabled=true;$('lf-go').textContent='Um instante...';
+
+    if(mode==='exit'){
+      // entra na régua de e-mails como abandono, sem mandar pro checkout agora
+      post('/api/lead',Object.assign({stage:'lead',eventId:leadId},base)).then(function(){
+        post('/api/lead',Object.assign({stage:'checkout'},base));
+      });
+      $('lf-title').textContent='Pronto! Link enviado 💛';
+      $('lf-sub').textContent='Você vai receber o link no seu e-mail. Se quiser garantir agora, é só clicar abaixo.';
+      $('lf-form').style.display='none';
+      $('lf-skip').textContent='Garantir agora por R$37';
+      mode='exit_done';
+      return;
+    }
+    fb('track','InitiateCheckout',{content_name:'Protocolo do Sono Perfeito',content_type:'product',currency:'BRL',value:37,num_items:1},{eventID:icId});
+    ev('initiate_checkout',{via:'form',from:origin},null,true);
+    Promise.race([
+      post('/api/lead',Object.assign({stage:'lead',eventId:leadId},base)).then(function(){
+        return post('/api/lead',Object.assign({stage:'checkout',eventId:icId},base));
+      }),
+      new Promise(function(r){setTimeout(r,1500)})
+    ]).then(go);
+  });
+
+  $('lf-skip').addEventListener('click',function(){
+    if(mode==='exit'){closeForm('exit_declined');return}
+    var v=vals(),icId=P.eid('ic');
+    fb('track','InitiateCheckout',{content_name:'Protocolo do Sono Perfeito',content_type:'product',currency:'BRL',value:37,num_items:1},{eventID:icId});
+    ev('form_skip',{from:origin,filled:filledCount()});
+    // se já digitou e-mail ou WhatsApp, entra na régua de recuperação mesmo pulando
+    if(validEmail(v.email)||validPhone(v.phone)){
+      ev('initiate_checkout',{via:'skip_partial',from:origin},null,true);
+      post('/api/lead',{sid:sid,stage:'checkout',eventId:icId,name:v.name,email:v.email,phone:v.phone,source:'lp_form',ctx:context()});
+    }else{
+      ev('initiate_checkout',{via:'skip',from:origin},icId,true);
+    }
+    go();
+  });
+  $('lf-x').addEventListener('click',function(){closeForm('x')});
+  $('lf').addEventListener('click',function(e){if(e.target===this)closeForm('backdrop')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&$('lf').classList.contains('on'))closeForm('esc')});
+
+  /* ---------- intenção de saída: 1x por sessão, só pra quem ainda não é lead ---------- */
+  function exitOk(){
+    if(leadDone()||$('lf').classList.contains('on')||seconds<10)return false;
+    try{if(sessionStorage.getItem('psp_exit'))return false;sessionStorage.setItem('psp_exit','1')}catch(e){}
+    return true;
+  }
+  function exitIntent(how){if(!exitOk())return;ev('exit_intent',{how:how,max_scroll:maxScroll,seconds:seconds});openForm('exit',how)}
+  document.addEventListener('mouseout',function(e){if(!e.relatedTarget&&e.clientY<=0)exitIntent('mouse')});
+  // mobile: subida rápida depois de ter lido boa parte da página
+  var lastY=scrollY,lastT=Date.now();
+  addEventListener('scroll',function(){
+    var now=Date.now(),dy=scrollY-lastY,dt=now-lastT;
+    if(dt>80){if(innerWidth<760&&maxScroll>=40&&dy<-innerHeight*0.9&&dt<600)exitIntent('fast_scroll_up');lastY=scrollY;lastT=now}
+  },{passive:true});
 })();
 </script>
+<!-- ============ FIM CAPTURA / RASTREAMENTO ============ -->
+
 </body>
 </html>

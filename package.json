@@ -1,0 +1,10 @@
+{
+  "name": "lp-protocolo-do-sono",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "nodemailer": "^7.0.0"
+  }
+}

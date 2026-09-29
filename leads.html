@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Painel PSP</title>
+<style>
+:root{--n1:#080f24;--n2:#0b1630;--n3:#0f1e3a;--gold:#c9a84c;--gold3:#e8d080;--ember:#e8491f;--ok:#3ecf8e;--warn:#f5b942;--bad:#ff6b6b;--tx:#e8ecf5;--mu:#8a94ab;--line:rgba(255,255,255,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--n1);color:var(--tx);font:14px/1.45 Inter,system-ui,-apple-system,Arial,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);background:var(--n2);position:sticky;top:0;z-index:2}
+h1{margin:0;font:700 17px Georgia,serif;color:var(--gold3)}
+h2{margin:0 0 12px;font-size:13px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}
+main{max-width:1200px;margin:0 auto;padding:20px 16px 60px;display:grid;gap:16px}
+.card{background:var(--n2);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--n2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi b{display:block;font-size:24px;color:#fff;font-variant-numeric:tabular-nums}
+.kpi span{color:var(--mu);font-size:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.fr{display:grid;grid-template-columns:150px 1fr 90px;gap:10px;align-items:center;margin:7px 0}
+.bar{height:22px;background:var(--n3);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold3));border-radius:6px}
+.fr small{color:var(--mu);text-align:right;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{color:var(--mu);font-weight:600;font-size:12px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:var(--n3)}
+.s-paid{background:rgba(62,207,142,.15);color:var(--ok)}
+.s-checkout,.s-pix_pending,.s-refused{background:rgba(245,185,66,.14);color:var(--warn)}
+.s-lead,.s-partial{background:rgba(201,168,76,.12);color:var(--gold3)}
+.s-refunded{background:rgba(255,107,107,.14);color:var(--bad)}
+.wa{color:var(--ok);text-decoration:none;font-weight:600}
+button,select,input{font:inherit;border-radius:8px;border:1px solid var(--line);background:var(--n3);color:var(--tx);padding:8px 12px}
+button{cursor:pointer;background:var(--gold);color:#111;border:0;font-weight:700}
+button.ghost{background:var(--n3);color:var(--tx);border:1px solid var(--line)}
+.ctrls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#login{max-width:340px;margin:18vh auto;display:grid;gap:10px;padding:0 16px}
+.muted{color:var(--mu)}
+.dots{letter-spacing:2px}
+@media(max-width:560px){.fr{grid-template-columns:110px 1fr 70px}header{padding:14px 16px}}
+</style>
+</head>
+<body>
+<div id="login" hidden>
+  <h1>Painel · Protocolo do Sono Perfeito</h1>
+  <input id="pw" type="password" placeholder="Senha do painel" autocomplete="current-password"/>
+  <button id="go">Entrar</button>
+  <div id="err" class="muted"></div>
+</div>
+
+<div id="app" hidden>
+<header>
+  <h1>🌙 Painel PSP</h1>
+  <div class="ctrls">
+    <select id="days">
+      <option value="1">Hoje (24h)</option><option value="7" selected>7 dias</option>
+      <option value="30">30 dias</option><option value="90">90 dias</option>
+    </select>
+    <button class="ghost" id="reload">Atualizar</button>
+    <button id="csv">Baixar CSV</button>
+  </div>
+</header>
+<main>
+  <section class="kpis" id="kpis"></section>
+  <section class="grid2">
+    <div class="card"><h2>Funil da página (pessoas únicas)</h2><div id="funnel"></div></div>
+    <div class="card"><h2>E-mails de recuperação</h2><table id="emails"></table>
+      <p class="muted" style="margin:12px 0 0;font-size:12px">A taxa de abertura é aproximada: o Gmail e o Apple Mail carregam as imagens antes da pessoa abrir.</p></div>
+  </section>
+  <section class="grid2">
+    <div class="card"><h2>Onde as pessoas saem</h2><table id="leaves"></table></div>
+    <div class="card"><h2>Por anúncio (utm_content)</h2><table id="byad"></table></div>
+  </section>
+  <section class="card"><h2>Leads <span class="muted" id="nleads"></span></h2><table id="leads"></table></section>
+</main>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const brl = (c) => (c / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const dt = (v) => v ? new Date(v).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '';
+const pct = (a, b) => b ? Math.round(a / b * 100) + '%' : '—';
+const STATUS = { partial: 'Parcial', lead: 'Lead', checkout: 'Abandonou', pix_pending: 'Pix pendente', refused: 'Recusado', paid: 'Comprou', refunded: 'Reembolso' };
+let key = '';
+try { key = localStorage.getItem('psp_admin') || ''; } catch {}
+
+async function api(view) {
+  const r = await fetch(`/api/admin?view=${view}&days=${$('#days').value}`, { headers: { 'x-admin-key': key } });
+  if (r.status === 401) throw new Error('auth');
+  return r.json();
+}
+
+function waLink(l) {
+  if (!l.phone) return '';
+  const nome = (l.name || '').split(' ')[0];
+  const msg = l.status === 'paid'
+    ? `Oi${nome ? ' ' + nome : ''}! Aqui é do Protocolo do Sono Perfeito. Conseguiu acessar tudo certinho?`
+    : `Oi${nome ? ' ' + nome : ''}! Aqui é do Protocolo do Sono Perfeito. Vi que sua inscrição ficou pendente, aconteceu algum problema no pagamento? Posso te ajudar 😊`;
+  return `<a class="wa" target="_blank" rel="noopener" href="https://wa.me/${l.phone}?text=${encodeURIComponent(msg)}">WhatsApp ↗</a>`;
+}
+
+async function load() {
+  let s, l;
+  try { [s, l] = await Promise.all([api('summary'), api('leads')]); }
+  catch (e) { return showLogin(e.message === 'auth' ? 'Senha incorreta.' : 'Erro ao carregar.'); }
+  $('#login').hidden = true; $('#app').hidden = false;
+
+  const st = Object.fromEntries(s.status.map((r) => [r.status, r]));
+  const n = (k) => st[k]?.n || 0;
+  const paid = st.paid || { n: 0, cents: 0 };
+  const abandoned = n('checkout') + n('pix_pending') + n('refused');
+  const f0 = s.funnel[0].n;
+  const kpis = [
+    [f0, 'Visitantes únicos'],
+    [n('lead') + n('partial') + abandoned + paid.n + n('refunded'), 'Contatos captados'],
+    [abandoned, 'Abandonaram o checkout'],
+    [paid.n, 'Compras aprovadas'],
+    [brl(paid.cents), 'Faturamento'],
+    [`${s.recovered.n} · ${brl(s.recovered.cents)}`, 'Recuperadas por e-mail'],
+    [pct(paid.n, f0), 'Conversão da página'],
+  ];
+  $('#kpis').innerHTML = kpis.map(([v, t]) => `<div class="kpi"><b>${esc(v)}</b><span>${t}</span></div>`).join('');
+
+  $('#funnel').innerHTML = s.funnel.map((f, i) => {
+    const prev = i ? s.funnel[i - 1].n : f.n;
+    return `<div class="fr"><span>${f.label}</span><div class="bar"><i style="width:${f0 ? Math.max(f.n / f0 * 100, 1) : 0}%"></i></div>
+      <small>${f.n} · ${i ? pct(f.n, prev) : '100%'}</small></div>`;
+  }).join('');
+
+  $('#emails').innerHTML = `<tr><th>E-mail</th><th class="num">Enviados</th><th class="num">Abriram</th><th class="num">Clicaram</th></tr>` +
+    s.emails.map((e) => `<tr><td>${['', '1 · 1h', '2 · 24h', '3 · 48h (R$19,90)'][e.step]}</td><td class="num">${e.sent}</td>
+      <td class="num">${e.opened} <span class="muted">${pct(e.opened, e.sent)}</span></td>
+      <td class="num">${e.clicked} <span class="muted">${pct(e.clicked, e.sent)}</span></td></tr>`).join('');
+
+  $('#leaves').innerHTML = `<tr><th>Última seção vista</th><th class="num">Saídas</th><th class="num">Scroll médio</th><th class="num">Tempo médio</th></tr>` +
+    (s.leaves.length ? s.leaves.map((r) => `<tr><td>${esc(r.section)}</td><td class="num">${r.n}</td><td class="num">${r.avg_scroll ?? 0}%</td><td class="num">${r.avg_seconds ?? 0}s</td></tr>`).join('')
+      : '<tr><td colspan="4" class="muted">Sem dados ainda</td></tr>');
+
+  $('#byad').innerHTML = `<tr><th>Anúncio</th><th class="num">Visitas</th><th class="num">Leads</th><th class="num">Checkout</th><th class="num">Vendas</th></tr>` +
+    (s.byAd.length ? s.byAd.map((r) => `<tr><td>${esc(r.ad)}</td><td class="num">${r.visits}</td><td class="num">${r.leads}</td><td class="num">${r.checkouts}</td><td class="num">${r.sales}</td></tr>`).join('')
+      : '<tr><td colspan="5" class="muted">Sem dados ainda</td></tr>');
+
+  $('#nleads').textContent = `(${l.rows.length})`;
+  $('#leads').innerHTML = `<tr><th>Quando</th><th>Nome</th><th>E-mail</th><th>WhatsApp</th><th>Status</th><th>Régua</th><th class="num">Scroll</th><th>Anúncio</th><th></th></tr>` +
+    (l.rows.length ? l.rows.map((r) => {
+      const steps = [r.email1_at, r.email2_at, r.email3_at].map((x) => x ? '●' : '○').join('');
+      return `<tr><td>${dt(r.created_at)}</td><td>${esc(r.name)}</td><td>${esc(r.email)}</td><td>${esc(r.phone)}</td>
+        <td><span class="chip s-${esc(r.status)}">${STATUS[r.status] || esc(r.status)}</span></td>
+        <td class="dots" title="${r.unsubscribed_at ? 'Descadastrou' : 'E-mails 1, 2 e 3'}">${r.unsubscribed_at ? '✕' : steps}</td>
+        <td class="num">${r.max_scroll ?? 0}%</td><td>${esc(r.utm_content || '')}</td><td>${waLink(r)}</td></tr>`;
+    }).join('') : '<tr><td colspan="9" class="muted">Nenhum lead no período</td></tr>');
+}
+
+function showLogin(msg) {
+  $('#app').hidden = true; $('#login').hidden = false; $('#err').textContent = msg || '';
+}
+$('#go').onclick = () => { key = $('#pw').value; try { localStorage.setItem('psp_admin', key); } catch {} load(); };
+$('#pw').onkeydown = (e) => { if (e.key === 'Enter') $('#go').click(); };
+$('#days').onchange = load;
+$('#reload').onclick = load;
+$('#csv').onclick = () => { location.href = `/api/admin?view=csv&days=${$('#days').value}&key=${encodeURIComponent(key)}`; };
+key ? load() : showLogin();
+</script>
+</body>
+</html>

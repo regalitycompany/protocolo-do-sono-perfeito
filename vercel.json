@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "crons": [{ "path": "/api/cron-recovery", "schedule": "*/10 * * * *" }],
+  "headers": [
+    { "source": "/leads", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
+}

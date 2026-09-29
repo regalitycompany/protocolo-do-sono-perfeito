@@ -1,0 +1,5 @@
+.env*
+*.md
+prompt-*.txt
+db/
+.DS_Store
