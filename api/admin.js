@@ -12,9 +12,6 @@ const FUNNEL = [
   ['page_view', 'Visitou a página'],
   ['scroll_50', 'Rolou 50%'],
   ['section_valor', 'Viu o preço'],
-  ['cta_click', 'Clicou em comprar'],
-  ['form_open', 'Abriu o formulário'],
-  ['lead', 'Virou lead'],
   ['initiate_checkout', 'Foi pro checkout'],
 ];
 

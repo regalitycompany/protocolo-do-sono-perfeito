@@ -1599,9 +1599,9 @@ setInterval(()=>{
 <div id="lf" role="dialog" aria-modal="true" aria-labelledby="lf-title">
   <div id="lf-box">
     <button id="lf-x" type="button" aria-label="Fechar">×</button>
-    <div id="lf-step">Passo 1 de 2 · Seus dados de acesso</div>
-    <h3 id="lf-title">Pra onde enviamos seu acesso?</h3>
-    <p class="lf-sub" id="lf-sub">Preencha abaixo e siga pro pagamento seguro. O acesso chega no seu e-mail assim que o pagamento for aprovado.</p>
+    <div id="lf-step">Antes de você sair</div>
+    <h3 id="lf-title">Quer receber o link com o valor de hoje?</h3>
+    <p class="lf-sub" id="lf-sub">Deixa seu e-mail e WhatsApp que a gente te manda o link do Protocolo por R$37, pra você finalizar quando puder, com calma.</p>
     <form id="lf-form" novalidate>
       <label for="lf-name">Seu nome</label>
       <input id="lf-name" name="name" autocomplete="name" placeholder="Como podemos te chamar?" required/>
@@ -1610,9 +1610,9 @@ setInterval(()=>{
       <label for="lf-phone">Seu WhatsApp</label>
       <input id="lf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(11) 99999-9999" required/>
       <div id="lf-err" aria-live="polite"></div>
-      <button type="submit" class="cta-btn lg" id="lf-go">Ir para o pagamento seguro</button>
+      <button type="submit" class="cta-btn lg" id="lf-go">Quero receber o link</button>
     </form>
-    <button id="lf-skip" type="button">Prefiro preencher direto no pagamento</button>
+    <button id="lf-skip" type="button">Não, obrigada</button>
     <div id="lf-safe"><span>🔒 Dados protegidos</span><span>🛡️ Garantia de 7 dias</span></div>
     <p id="lf-lgpd">Ao continuar, você aceita receber e-mails e mensagens sobre o seu acesso. Sem spam, e você pode sair quando quiser.</p>
   </div>
@@ -1716,7 +1716,7 @@ setInterval(()=>{
       var cta=where(a);
       ev('cta_click',{cta:cta,text:(a.textContent||'').trim().slice(0,60)},null,true);
       fb('trackCustom','ClickCTA',{cta:cta});
-      openForm('checkout',cta);
+      startCheckout(cta,'cta');
       return;
     }
     var f=e.target.closest('[onclick^="tf"]');
@@ -1727,8 +1727,8 @@ setInterval(()=>{
     if(l)ev('link_click',{href:l.getAttribute('href').slice(0,200),where:where(l)},null,true);
   });
 
-  /* ---------- formulário de lead ---------- */
-  var mode='checkout',origin=null,partialT;
+  /* ---------- formulário de lead (só no convite de saída) ---------- */
+  var mode='exit',origin=null,partialT;
   function leadDone(){try{return localStorage.getItem('psp_lead')==='1'}catch(e){return false}}
   function vals(){
     return{name:$('lf-name').value.trim(),email:$('lf-email').value.trim(),phone:$('lf-phone').value.replace(/\D/g,'')};
@@ -1738,14 +1738,6 @@ setInterval(()=>{
 
   function openForm(m,from){
     mode=m;origin=from;
-    var exit=m==='exit';
-    $('lf-step').textContent=exit?'Antes de você sair':'Passo 1 de 2 · Seus dados de acesso';
-    $('lf-title').textContent=exit?'Quer receber o link com o valor de hoje?':'Pra onde enviamos seu acesso?';
-    $('lf-sub').textContent=exit
-      ?'Deixa seu e-mail e WhatsApp que a gente te manda o link do Protocolo por R$37, pra você finalizar quando puder, com calma.'
-      :'Preencha abaixo e siga pro pagamento seguro. O acesso chega no seu e-mail assim que o pagamento for aprovado.';
-    $('lf-go').textContent=exit?'Quero receber o link':'Ir para o pagamento seguro';
-    $('lf-skip').textContent=exit?'Não, obrigada':'Prefiro preencher direto no pagamento';
     try{var saved=JSON.parse(localStorage.getItem('psp_form')||'{}');
       ['name','email','phone'].forEach(function(k){if(saved[k]&&!$('lf-'+k).value)$('lf-'+k).value=saved[k]})}catch(e){}
     $('lf').classList.add('on');
@@ -1784,9 +1776,21 @@ setInterval(()=>{
     u.searchParams.set('sck',sid); // liga a venda da Kiwify a esta sessão
     return u.toString();
   }
-  function go(){
+  // Vai direto pro checkout. Se a pessoa já deixou contato (convite de saída),
+  // ela entra na régua de recuperação; senão, quem captura o contato é o carrinho abandonado da Kiwify.
+  function startCheckout(from,via){
+    var icId=P.eid('ic'),saved={};
+    fb('track','InitiateCheckout',{content_name:'Protocolo do Sono Perfeito',content_type:'product',currency:'BRL',value:37,num_items:1},{eventID:icId});
+    try{saved=JSON.parse(localStorage.getItem('psp_form')||'{}')}catch(e){}
+    var phone=String(saved.phone||'').replace(/\D/g,'');
+    if(validEmail(saved.email||'')||validPhone(phone)){
+      ev('initiate_checkout',{via:via,from:from,known:true},null,true);
+      post('/api/lead',{sid:sid,stage:'checkout',eventId:icId,name:saved.name,email:saved.email,phone:phone,source:'exit_intent',ctx:context()});
+    }else{
+      ev('initiate_checkout',{via:via,from:from},icId,true);
+    }
     var url=checkoutUrl();
-    setTimeout(function(){location.href=url},350);
+    setTimeout(function(){location.href=url},200);
   }
 
   $('lf-form').addEventListener('submit',function(e){
@@ -1808,47 +1812,26 @@ setInterval(()=>{
     fb('init',P.pixel,ud); // correspondência avançada pros próximos eventos
 
     var src=mode==='exit'?'exit_intent':'lp_form';
-    var leadId=P.eid('lead'),icId=P.eid('ic');
+    var leadId=P.eid('lead');
     fb('track','Lead',{content_name:'Protocolo do Sono Perfeito',currency:'BRL',value:37,source:src},{eventID:leadId});
     ev('lead',{source:src,from:origin},null,true);
     var base={sid:sid,name:v.name,email:v.email,phone:v.phone,source:src,ctx:context()};
     $('lf-go').disabled=true;$('lf-go').textContent='Um instante...';
 
-    if(mode==='exit'){
-      // entra na régua de e-mails como abandono, sem mandar pro checkout agora
-      post('/api/lead',Object.assign({stage:'lead',eventId:leadId},base)).then(function(){
-        post('/api/lead',Object.assign({stage:'checkout'},base));
-      });
-      $('lf-title').textContent='Pronto! Link enviado 💛';
-      $('lf-sub').textContent='Você vai receber o link no seu e-mail. Se quiser garantir agora, é só clicar abaixo.';
-      $('lf-form').style.display='none';
-      $('lf-skip').textContent='Garantir agora por R$37';
-      mode='exit_done';
-      return;
-    }
-    fb('track','InitiateCheckout',{content_name:'Protocolo do Sono Perfeito',content_type:'product',currency:'BRL',value:37,num_items:1},{eventID:icId});
-    ev('initiate_checkout',{via:'form',from:origin},null,true);
-    Promise.race([
-      post('/api/lead',Object.assign({stage:'lead',eventId:leadId},base)).then(function(){
-        return post('/api/lead',Object.assign({stage:'checkout',eventId:icId},base));
-      }),
-      new Promise(function(r){setTimeout(r,1500)})
-    ]).then(go);
+    // entra na régua de e-mails como abandono, sem mandar pro checkout agora
+    post('/api/lead',Object.assign({stage:'lead',eventId:leadId},base)).then(function(){
+      post('/api/lead',Object.assign({stage:'checkout'},base));
+    });
+    $('lf-title').textContent='Pronto, anotado 💛';
+    $('lf-sub').textContent='Vamos te mandar o link no seu e-mail. Se preferir garantir agora, é só clicar abaixo.';
+    $('lf-form').style.display='none';
+    $('lf-skip').textContent='Garantir agora por R$37';
+    mode='exit_done';
   });
 
   $('lf-skip').addEventListener('click',function(){
-    if(mode==='exit'){closeForm('exit_declined');return}
-    var v=vals(),icId=P.eid('ic');
-    fb('track','InitiateCheckout',{content_name:'Protocolo do Sono Perfeito',content_type:'product',currency:'BRL',value:37,num_items:1},{eventID:icId});
-    ev('form_skip',{from:origin,filled:filledCount()});
-    // se já digitou e-mail ou WhatsApp, entra na régua de recuperação mesmo pulando
-    if(validEmail(v.email)||validPhone(v.phone)){
-      ev('initiate_checkout',{via:'skip_partial',from:origin},null,true);
-      post('/api/lead',{sid:sid,stage:'checkout',eventId:icId,name:v.name,email:v.email,phone:v.phone,source:'lp_form',ctx:context()});
-    }else{
-      ev('initiate_checkout',{via:'skip',from:origin},icId,true);
-    }
-    go();
+    if(mode==='exit_done'){$('lf').classList.remove('on');startCheckout(origin,'exit_done');return}
+    closeForm('exit_declined');
   });
   $('lf-x').addEventListener('click',function(){closeForm('x')});
   $('lf').addEventListener('click',function(e){if(e.target===this)closeForm('backdrop')});
