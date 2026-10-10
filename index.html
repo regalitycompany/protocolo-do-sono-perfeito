@@ -757,6 +757,45 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
   margin:22px auto 0;
 }
 #final .fin-lead strong{color:var(--ink);font-weight:700}
+
+/* =================== POR DENTRO DO MATERIAL (páginas reais do PDF) =================== */
+.inside{
+  position:relative;overflow:hidden;margin-top:12px;
+  background:linear-gradient(150deg,var(--n1) 0%,var(--n0) 100%);
+  border-radius:20px;padding:30px 0 26px;
+}
+.inside-head{padding:0 30px;text-align:center}
+.inside-head h3{font-size:clamp(20px,2.8vw,26px);font-weight:700;color:var(--w);line-height:1.25}
+.inside-head h3 em{color:var(--gold);font-style:italic}
+.inside-head p{font-size:13.5px;color:rgba(255,255,255,.5);margin-top:8px}
+.ins-track{
+  display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding:24px 30px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.ins-track::-webkit-scrollbar{display:none}
+.ins-slide{flex:0 0 auto;width:min(62%,250px);scroll-snap-align:center;cursor:zoom-in}
+.ins-page{
+  aspect-ratio:800/1132;border-radius:6px;overflow:hidden;background:var(--cream);
+  box-shadow:0 18px 36px -14px rgba(0,0,0,.7),0 0 0 1px rgba(201,168,76,.18);
+  transition:transform .25s;
+}
+.ins-slide:hover .ins-page{transform:translateY(-4px)}
+.ins-page img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ins-cap{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72);margin-top:12px;text-align:center;line-height:1.4}
+.ins-cap b{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:3px}
+.ins-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
+.ins-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,168,76,.35);color:var(--gold2);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.ins-btn:hover{background:rgba(201,168,76,.12)}
+.ins-btn .ic{width:16px;height:16px}
+.ins-btn.prev .ic{transform:rotate(180deg)}
+.ins-dots{display:flex;gap:6px}
+.ins-dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .2s,width .2s}
+.ins-dots span.on{background:var(--gold);width:18px;border-radius:4px}
+#ins-lb{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(3,7,15,.92)}
+#ins-lb.on{display:flex}
+#ins-lb img{max-width:min(100%,760px);max-height:calc(100dvh - 32px);border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#ins-lb button{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:22px}
+@media(max-width:640px){.inside-head{padding:0 22px}.ins-track{padding:22px 22px 8px}}
 </style>
 </head>
 <body>
@@ -1040,6 +1079,28 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 4 — Transforme o quarto num ambiente de sono profundo</div><div class="md">Temperatura, iluminação, ruído branco e segurança do berço ajustados ponto a ponto, sem gastar com nada supérfluo.</div></div></div>
         <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 5 — Atravesse regressões sem perder o que conquistou</div><div class="md">O que fazer quando aparecerem dentes, picos de crescimento, viagens e mudanças de fase — antes que a noite desande.</div></div></div>
         <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 6 — Aplique o plano noite inteira, dia a dia</div><div class="md">O protocolo completo em formato de cronograma: o que fazer em cada dia até seu bebê emendar horas seguidas de sono.</div></div></div>
+      </div>
+    </div>
+    <!-- Por dentro do material — páginas reais do PDF -->
+    <div class="inside rv">
+      <div class="inside-head">
+        <span class="lbl">Por dentro do material</span>
+        <h3>Veja algumas páginas <em>do Protocolo</em></h3>
+        <p>Páginas reais do guia. Toque para ampliar.</p>
+      </div>
+      <div class="ins-track" id="ins-track">
+        <div class="ins-slide" data-full="material/pag-01.jpg"><div class="ins-page"><img src="material/pag-01.jpg" alt="Página real do Protocolo do Sono Perfeito: Guia completo, passo a passo" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capa</b>Guia completo, passo a passo</div></div>
+        <div class="ins-slide" data-full="material/pag-02.jpg"><div class="ins-page"><img src="material/pag-02.jpg" alt="Página real do Protocolo do Sono Perfeito: A ciência do sono e as janelas de sono por idade" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Antes de começar</b>A ciência do sono e as janelas de sono por idade</div></div>
+        <div class="ins-slide" data-full="material/pag-03.jpg"><div class="ins-page"><img src="material/pag-03.jpg" alt="Página real do Protocolo do Sono Perfeito: Os 3 pilares do protocolo" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 2</b>Os 3 pilares do protocolo</div></div>
+        <div class="ins-slide" data-full="material/pag-05.jpg"><div class="ins-page"><img src="material/pag-05.jpg" alt="Página real do Protocolo do Sono Perfeito: Método gentil: escolha um e seja consistente" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 3</b>Método gentil: escolha um e seja consistente</div></div>
+        <div class="ins-slide" data-full="material/pag-08.jpg"><div class="ins-page"><img src="material/pag-08.jpg" alt="Página real do Protocolo do Sono Perfeito: Protocolo rápido por idade" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 5</b>Protocolo rápido por idade</div></div>
+        <div class="ins-slide" data-full="material/pag-09.jpg"><div class="ins-page"><img src="material/pag-09.jpg" alt="Página real do Protocolo do Sono Perfeito: Plano de ação: comece hoje" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 6</b>Plano de ação: comece hoje</div></div>
+        <div class="ins-slide" data-full="material/pag-12.jpg"><div class="ins-page"><img src="material/pag-12.jpg" alt="Página real do Protocolo do Sono Perfeito: Tabela de referência rápida" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Bônus</b>Tabela de referência rápida</div></div>
+      </div>
+      <div class="ins-nav">
+        <button class="ins-btn prev" type="button" aria-label="Página anterior"><svg class="ic"><use href="#i-arrow"/></svg></button>
+        <div class="ins-dots" id="ins-dots"></div>
+        <button class="ins-btn next" type="button" aria-label="Próxima página"><svg class="ic"><use href="#i-arrow"/></svg></button>
       </div>
     </div>
     <!-- App exclusivo — print real do app de bônus -->
@@ -1497,6 +1558,29 @@ setTimeout(showPopup,4000);
 setInterval(()=>{
   if(!document.getElementById('sp-popup').classList.contains('show'))showPopup();
 },20000);
+</script>
+
+<div id="ins-lb" role="dialog" aria-modal="true" aria-label="Página do material"><button type="button" aria-label="Fechar">×</button><img alt=""/></div>
+<script>
+/* ======= POR DENTRO DO MATERIAL ======= */
+(function(){
+  var tr=document.getElementById('ins-track');if(!tr)return;
+  var sl=[].slice.call(tr.querySelectorAll('.ins-slide')),dots=document.getElementById('ins-dots');
+  sl.forEach(function(){dots.appendChild(document.createElement('span'))});
+  var ds=dots.children;
+  function cur(){var c=tr.scrollLeft+tr.clientWidth/2,b=0,bd=1e9;sl.forEach(function(s,i){var d=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(d<bd){bd=d;b=i}});return b}
+  function mark(){var i=cur();for(var k=0;k<ds.length;k++)ds[k].classList.toggle('on',k===i)}
+  function go(i){i=Math.max(0,Math.min(sl.length-1,i));tr.scrollLeft=sl[i].offsetLeft-(tr.clientWidth-sl[i].offsetWidth)/2}
+  tr.addEventListener('scroll',function(){clearTimeout(mark.t);mark.t=setTimeout(mark,60)},{passive:true});
+  document.querySelector('.ins-btn.prev').addEventListener('click',function(){go(cur()-1)});
+  document.querySelector('.ins-btn.next').addEventListener('click',function(){go(cur()+1)});
+  [].forEach.call(ds,function(d,i){d.addEventListener('click',function(){go(i)})});
+  mark();
+  var lb=document.getElementById('ins-lb'),li=lb.querySelector('img');
+  sl.forEach(function(s){s.addEventListener('click',function(){li.src=s.dataset.full;lb.classList.add('on');try{fbq('trackCustom','ViewMaterialPage',{page:s.dataset.full})}catch(e){}})});
+  lb.addEventListener('click',function(){lb.classList.remove('on')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
+})();
 </script>
 
 <!-- Fallback: garante repasse de UTM pro checkout mesmo se o script da Utmify falhar -->
