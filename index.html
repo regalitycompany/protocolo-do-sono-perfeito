@@ -30,6 +30,18 @@ fbq('track','ViewContent',{content_name:'Protocolo do Sono Perfeito',content_cat
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1078460701310585&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 
+<!-- Resultado do quiz (/quiz manda pra cá com ?perfil=A|B|C): liga o modo diagnóstico
+     e trava o resto da página até 60% da mini VSL. Roda antes de pintar a tela pra não piscar. -->
+<script>
+(function(){
+  var p=(new URLSearchParams(location.search).get('perfil')||'').toUpperCase();
+  if(!/^[ABC]$/.test(p))return;
+  var c=document.documentElement.classList,ok;c.add('quiz-mode');
+  try{ok=localStorage.getItem('psp_vsl60')}catch(e){}
+  if(!ok)c.add('gated');
+})();
+</script>
+
 <!-- Utmify: captura UTMs da URL -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck async defer></script>
 <!-- End Utmify -->
@@ -851,6 +863,34 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
             mask-image:linear-gradient(270deg,#000 0%,#000 14%,transparent 40%);
   }
 }
+
+/* =================== RESULTADO DO QUIZ =================== */
+.qz,.qz-wait{display:none}
+html.quiz-mode #hero-cta>h1,html.quiz-mode .h-auth{display:none}
+html.quiz-mode .qz{display:block;position:relative;z-index:1;max-width:640px;margin:14px auto 0;text-align:left}
+.qz-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.qz-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:99px;border:1px solid var(--gl);background:rgba(201,168,76,.1);color:var(--gold3);font:700 11.5px/1 var(--ss);letter-spacing:.14em;text-transform:uppercase}
+.qz-chip .ic{width:14px;height:14px}
+.qz-chip.soft{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.72)}
+.qz-h{font-family:var(--sf);font-size:clamp(30px,7.4vw,50px);font-weight:900;color:var(--w);line-height:1.08;text-align:center;margin-top:18px}
+.qz-h em{color:var(--gold2);font-style:italic}
+.qz-sub{text-align:center;color:rgba(255,255,255,.78);font-size:clamp(17px,2.4vw,20px);line-height:1.5;margin:12px auto 0;max-width:560px}
+.qz-card{margin-top:22px;padding:22px 20px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
+.qz-lbl{font:800 10.5px/1.4 var(--ss);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.qz-card p{color:rgba(255,255,255,.84);font-size:17px;line-height:1.7}
+.qz-card p em{color:var(--gold3);font-style:italic}
+.qz-why{margin-top:20px;padding:2px 0 2px 16px;border-left:3px solid var(--gold)}
+.qz-why p{color:var(--w);font-weight:500}
+.qz-card .qz-note{margin-top:16px;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.6)}
+.qz-bridge{margin-top:20px;text-align:center;color:var(--w);font-weight:600;font-size:18px;line-height:1.5}
+.qz-bridge b{color:var(--gold2)}
+html.gated .qz-wait{display:flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:1;max-width:640px;margin:18px auto 0;color:rgba(255,255,255,.62);font-size:15px;line-height:1.45;text-align:left}
+.qz-wait i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--gold2);animation:qzPulse 1.6s ease-in-out infinite}
+@keyframes qzPulse{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+html.gated .cta-btn-wrap,html.gated .h-stats{display:none}
+html.gated #hero~*:not(#lf):not(script):not(style){display:none!important}
+html.revealed .cta-btn-wrap{animation:qzIn .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes qzIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -1697,6 +1737,7 @@ var PSP_VSL='';
   // os mesmos event_ids do fbq do <head>: o Meta deduplica navegador x servidor
   ev('page_view',{ref:document.referrer||null},P.pvId);
   ev('view_content',null,P.vcId,true);
+  P.ev=ev; // o bloco do resultado do quiz usa pra registrar quiz/VSL no painel
 
   /* ---------- scroll ---------- */
   var maxScroll=0,marks=[25,50,75,90,100],hit={};
@@ -1890,6 +1931,104 @@ var PSP_VSL='';
 })();
 </script>
 <!-- ============ FIM CAPTURA / RASTREAMENTO ============ -->
+
+<script>
+/* ======= RESULTADO DO QUIZ =======
+   /quiz manda pra cá com ?perfil=A|B|C&idade=..&tentou=..
+   Mostra o diagnóstico acima da mini VSL. O botão da 1ª dobra e o resto da página
+   só aparecem quando o vídeo passa de 60% (aviso do player do PlayTurb via postMessage). */
+(function(){
+  var html=document.documentElement;
+  if(!html.classList.contains('quiz-mode'))return;
+  var P=window.PSP||{},q=new URLSearchParams(location.search);
+  var perfil=q.get('perfil').toUpperCase(),idade=q.get('idade')||'',tentou=(q.get('tentou')||'').split(',').filter(Boolean);
+  function fb(){try{fbq.apply(null,arguments)}catch(e){}}
+  function ev(n,props,now){try{P.ev&&P.ev(n,props,null,now)}catch(e){}}
+
+  var IDADES={'0-3':'0 a 3 meses','4-6':'4 a 6 meses','7-9':'7 a 9 meses','10-12':'10 a 12 meses','12+':'mais de 1 ano'};
+  var GENERICO='Dicas soltas não resolvem quando o problema está no momento em que o bebê é colocado para dormir.';
+  var PERFIS={
+    A:{nome:'Briga com o Sono',
+      sub:'Ele não está fazendo manha. Ele está cansado demais para conseguir dormir.',
+      diag:'Parece contraditório, mas o bebê que chora e luta contra o sono quase sempre <em>passou da hora</em>. Quando ele vai para o berço depois da janela de sono dele, o corpo libera cortisol, o hormônio do alerta, e ele fica agitado justamente quando mais precisava desligar. Aí só o colo, o peito ou o balanço conseguem vencer essa agitação.',
+      why:'Você tentou acalmar o bebê depois que a agitação já tinha começado. O que muda o jogo vem antes: colocar ele para dormir dentro da janela, antes de passar do ponto.',
+      ponte:'Assista ao vídeo abaixo. Ele mostra como encontrar a <b>Janela de Ouro</b> do seu bebê para ele adormecer sem briga, começando hoje à noite.'},
+    B:{nome:'Sono Picado',
+      sub:'Ele até dorme, mas ainda não aprendeu a emendar um ciclo de sono no outro.',
+      diag:'Todo bebê desperta rapidinho entre um ciclo de sono e outro. Isso é normal. O problema é quando ele adormece no colo ou mamando e, ao despertar, se vê num lugar diferente de onde dormiu. Aí ele precisa da mesma ajuda para voltar a dormir, e a noite vira plantão: colo, mamada, embalo, de novo e de novo.',
+      why:'O que você tentou ajuda o bebê a <em>pegar</em> no sono. O desafio dele é <em>voltar</em> a dormir sozinho entre um ciclo e outro. São duas coisas diferentes.',
+      ponte:'O vídeo abaixo mostra como colocar o bebê no berço <b>sonolento, não dormindo</b>, para ele aprender a emendar o sono sem você deixar ele chorando sozinho.'},
+    C:{nome:'Cansaço Acumulado',
+      sub:'As sonecas curtas do dia estão cobrando a conta à noite.',
+      diag:'Soneca curta, irritação no fim da tarde e despertar cedo demais costumam ter a mesma origem: o bebê passa da janela de sono ao longo do dia. O cansaço vai se acumulando, ele fica cada vez mais agitado e chega na hora de dormir sem conseguir relaxar.',
+      why:'Deixar o bebê cansar mais para ele dormir melhor parece lógico, mas faz o contrário: quanto mais cansado, <em>pior</em> ele dorme.',
+      ponte:'O vídeo abaixo mostra como ajustar as <b>janelas de sono do dia</b>, pela idade do seu bebê, para a noite render.',
+      nota:'Se o seu bebê ronca, faz pausas na respiração ou acorda engasgado, converse com o pediatra antes. Pode ser algo que precisa de avaliação.'}
+  };
+  var p=PERFIS[perfil];
+  // "Nada ainda" sozinho → texto genérico (perfis A e B); C sempre usa o do perfil
+  var why=(perfil!=='C'&&tentou.length===1&&tentou[0]==='nada')?GENERICO:p.why;
+  var notas=[];
+  if(p.nota)notas.push(p.nota);
+  if(idade==='12+')notas.push('O Protocolo foi feito para bebês de 0 a 12 meses. Para crianças maiores, parte das orientações pode precisar de ajuste.');
+
+  // topo: perfil + frase-chave + ponte, logo acima do vídeo (vídeo já na 1ª tela do celular)
+  var box=document.createElement('div');
+  box.className='qz';
+  box.innerHTML=
+    '<div class="qz-tags"><span class="qz-chip"><svg class="ic"><use href="#i-moon"/></svg> Diagnóstico do seu bebê</span>'+
+      (IDADES[idade]?'<span class="qz-chip soft">'+(idade==='12+'?'Bebê com ':'Bebê de ')+IDADES[idade]+'</span>':'')+'</div>'+
+    '<h1 class="qz-h">O perfil de sono do seu bebê é: <em>'+p.nome+'</em></h1>'+
+    '<p class="qz-sub">'+p.sub+'</p>'+
+    '<p class="qz-bridge">'+p.ponte+' ↓</p>';
+  var vsl=document.getElementById('vsl');
+  vsl.parentNode.insertBefore(box,vsl);
+  var wait=document.createElement('p');
+  wait.className='qz-wait';
+  wait.innerHTML='<i></i><span>Assista ao vídeo com som: o seu plano aparece logo abaixo.</span>';
+  vsl.parentNode.insertBefore(wait,vsl.nextSibling);
+  // embaixo do vídeo: o diagnóstico completo, pra ler enquanto assiste (o botão vem depois dele)
+  var card=document.createElement('div');
+  card.className='qz qz-card';
+  card.innerHTML=
+    '<div class="qz-lbl">Entenda o diagnóstico</div><p>'+p.diag+'</p>'+
+    '<div class="qz-why"><div class="qz-lbl">Por que nada funcionou até agora</div><p>'+why+'</p></div>'+
+    notas.map(function(n){return '<p class="qz-note">'+n+'</p>'}).join('');
+  wait.parentNode.insertBefore(card,wait.nextSibling);
+
+  fb('trackCustom','QuizResultView',{perfil:perfil});
+  ev('quiz_result_view',{perfil:perfil,idade:idade||null,tentou:tentou});
+
+  /* ---------- trava até 60% da mini VSL ---------- */
+  var done=!html.classList.contains('gated');
+  function reveal(why){
+    if(done)return;done=true;
+    html.classList.remove('gated');html.classList.add('revealed');
+    if(why!=='sem_video'){try{localStorage.setItem('psp_vsl60','1')}catch(e){}}
+    fb('trackCustom','VSL60',{perfil:perfil,motivo:why});
+    ev('vsl_unlock',{perfil:perfil,motivo:why},true);
+  }
+  if(done)return;
+  if(!window.PSP_VSL){reveal('sem_video');return} // sem vídeo configurado não dá pra travar
+
+  var played=false;
+  function frame(){return document.querySelector('#vsl-frame iframe')}
+  addEventListener('message',function(e){
+    var f=frame(),d=e.data;
+    if(!f||e.source!==f.contentWindow||!d||typeof d!=='object')return;
+    if(d.type==='playturb-play'&&!played){played=true;fb('trackCustom','VSLPlay',{perfil:perfil});ev('vsl_play',{perfil:perfil})}
+    if(d.type==='playturb-ended')return reveal('vsl_fim');
+    if((d.type==='playturb-progress'||d.type==='playturb-pause')&&d.duration&&d.currentTime/d.duration>=0.6)reveal('vsl_60');
+  });
+  // Plano B: a pessoa tocou no vídeo mas o player nunca respondeu (player quebrado) → não deixa a página travada
+  addEventListener('blur',function(){
+    setTimeout(function(){
+      if(document.activeElement!==frame()||played)return;
+      setTimeout(function(){if(!played)reveal('player_sem_resposta')},8000);
+    },0);
+  });
+})();
+</script>
 
 </body>
 </html>

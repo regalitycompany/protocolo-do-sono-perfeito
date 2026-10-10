@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1020">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/quiz/quiz.css">
+<title>Diagnóstico do Sono do Bebê</title>
+<meta name="description" content="Descubra em 1 minuto por que o seu bebê não dorme a noite inteira.">
+</head>
+<body data-page="quiz">
+<div class="app" id="quiz">
+  <div class="progress wrap">
+    <div class="progress-row">
+      <button type="button" class="progress-back" aria-label="Voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="progress-track"><div class="progress-fill"></div></div>
+      <span class="progress-count"></span>
+    </div>
+  </div>
+
+  <div class="stage">
+    <section class="screen intro wrap" data-screen="intro">
+      <div class="moon" aria-hidden="true"></div>
+      <h1>Descubra em 1 minuto por que o seu bebê não dorme a noite inteira, <span class="hl">e o que fazer já hoje à noite.</span></h1>
+      <p class="lead">Responda 5 perguntas rápidas sobre a rotina do seu bebê e receba o diagnóstico de sono dele.</p>
+      <button type="button" class="btn" data-start>Fazer o diagnóstico do meu bebê <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <div class="intro-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>1 minuto</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>5 perguntas</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Gratuito</span>
+      </div>
+    </section>
+
+    <!-- perguntas inseridas pelo app.js -->
+
+
+    <section class="screen loading wrap" data-screen="loading" aria-live="polite">
+      <div class="ring"><svg viewBox="0 0 132 132"><circle class="bg" cx="66" cy="66" r="58"/><circle class="fg" cx="66" cy="66" r="58"/></svg><div class="ring-pct">0%</div></div>
+      <div class="load-lines">
+        <div class="load-line"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Analisando o padrão de sono do seu bebê…</div>
+        <div class="load-line"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Cruzando com a janela de sono da idade dele…</div>
+        <div class="load-line"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>O diagnóstico está pronto.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer footer-global wrap">Este conteúdo é educativo e não substitui o acompanhamento do pediatra. Se o seu bebê ronca, faz pausas na respiração, tem febre, refluxo intenso ou dificuldade para ganhar peso, converse com o pediatra. Siga sempre as orientações de sono seguro: bebê de barriga para cima, em berço firme e sem objetos soltos.</footer>
+</div>
+<script src="/quiz/quiz.js"></script>
+</body>
+</html>
