@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Protocolo do Sono Perfeito — Faça Seu Bebê Dormir a Noite Inteira</title>
-<meta name="description" content="O protocolo passo a passo para organizar a rotina de sono do seu bebê, reduzir os despertares e voltar a dormir horas seguidas — mesmo que você já tenha tentado de tudo. Acesso imediato por R$37, garantia de 7 dias."/>
+<title>Protocolo do Sono Perfeito — Sequência 4D do Sono</title>
+<meta name="description" content="A Sequência 4D: um passo a passo para organizar a rotina de sono do seu bebê (0 a 3 anos) e saber o que fazer quando ele acorda, sem deixá-lo chorando sozinho. R$37, acesso imediato, garantia de 7 dias."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -55,28 +55,13 @@ fbq('track','ViewContent',{content_name:'Protocolo do Sono Perfeito',content_cat
   <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
 </svg>
-
 <style>
 /* =================== TOKENS =================== */
 :root{
-  --n0:#03070f;
-  --n1:#080f24;
-  --n2:#0b1630;
-  --n3:#0f1e3a;
-  --gold:#c9a84c;
-  --gold2:#d8bc68;
-  --gold3:#e8d080;
-  --gl:rgba(201,168,76,.22);
-  --ember:#e8491f;
-  --ember2:#ff7a45;
-  --ember-deep:#5c1706;
-  --cream:#faf8f3;
-  --cream2:#f2ede0;
-  --ink:#111827;
-  --muted:#6b7280;
-  --w:#fff;
-  --sf:'Playfair Display',Georgia,serif;
-  --ss:'Inter',system-ui,sans-serif;
+  --n0:#03070f;--n1:#080f24;--n2:#0b1630;--n3:#0f1e3a;
+  --gold:#c9a84c;--gold2:#d8bc68;--gold3:#e8d080;--gl:rgba(201,168,76,.22);
+  --cream:#faf8f3;--cream2:#f2ede0;--ink:#111827;--muted:#5b6170;--w:#fff;
+  --sf:'Playfair Display',Georgia,serif;--ss:'Inter',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -86,1122 +71,567 @@ a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 button{font-family:var(--ss);cursor:pointer;border:none;background:none}
 svg.ic{display:inline-block;vertical-align:middle;flex-shrink:0}
+strong{font-weight:700}
 
-/* =================== SCROLLBAR =================== */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--n1)}
-::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:400;background:linear-gradient(90deg,var(--gold),var(--gold3));pointer-events:none}
 
-/* =================== PROGRESS =================== */
-#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:400;background:linear-gradient(90deg,var(--gold),var(--gold3));pointer-events:none;transition:width .1s linear}
+/* =================== BOTÃO =================== */
+.cta-btn{
+  position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(110deg,#9d7428 0%,#c9a84c 35%,#e8d080 55%,#c9a84c 75%,#9d7428 100%);
+  background-size:250% 100%;animation:shimmer 3.5s linear infinite;
+  color:var(--n0);font-weight:800;letter-spacing:.05em;text-transform:uppercase;text-align:center;
+  border-radius:8px;box-shadow:0 8px 28px rgba(201,168,76,.32);transition:transform .25s,box-shadow .25s;
+}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(201,168,76,.5)}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.cta-btn.lg{padding:19px 34px;font-size:15px;line-height:1.3}
+.cta-btn.sm{padding:11px 20px;font-size:12.5px}
+.cta-btn .ic{width:18px;height:18px;stroke:var(--n0)}
+.cta-note{font-size:12.5px;color:var(--muted);margin-top:12px;letter-spacing:.02em}
+.dk .cta-note{color:rgba(255,255,255,.5)}
+.cta-wrap{text-align:center;margin-top:40px}
+@media(max-width:520px){.cta-btn.lg{width:100%;padding:18px 18px;font-size:14px}}
 
-/* =================== TOPBAR =================== */
-#topbar{
-  position:sticky;top:0;z-index:200;
-  background:var(--n0);
-  border-bottom:1px solid rgba(232,73,31,.22);
-  padding:11px 20px;
-}
-#topbar-in{
-  max-width:960px;margin:0 auto;
-  display:flex;align-items:center;justify-content:center;gap:11px;
-  font-size:12px;font-weight:700;color:rgba(255,255,255,.82);letter-spacing:.06em;
-  text-transform:uppercase;flex-wrap:wrap;
-}
-.top-sep{color:rgba(255,255,255,.18);margin:0 2px}
-#timer{
-  background:linear-gradient(160deg,var(--ember2),var(--ember-deep));
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:7px;padding:4px 13px;
-  font-size:17px;font-weight:900;color:#fff;font-family:var(--ss);
-  letter-spacing:.02em;min-width:66px;text-align:center;
-  font-variant-numeric:tabular-nums;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -8px 12px rgba(0,0,0,.28),0 0 16px rgba(232,73,31,.35);
-}
-#vagas-box{
-  background:linear-gradient(160deg,#c2280c,#7a1806);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:7px;padding:4px 13px;
-  font-size:13px;font-weight:800;color:#fff;letter-spacing:.02em;
-  box-shadow:0 0 14px rgba(232,73,31,.28);
-  animation:blink-red 2s ease-in-out infinite;
-}
-@keyframes blink-red{0%,100%{opacity:1}50%{opacity:.7}}
+/* =================== SEÇÕES =================== */
+.sec{padding:84px 20px}
+.sec-in{max-width:720px;margin:0 auto}
+.sec-in.w{max-width:980px}
+.dk{background:linear-gradient(180deg,var(--n1),var(--n0));color:var(--w)}
+.lbl{display:block;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.ttl{font-size:clamp(28px,4.4vw,46px);font-weight:700;line-height:1.15}
+.ttl em{color:var(--gold);font-style:italic}
+.center{text-align:center}
+.prose p{font-size:17px;line-height:1.8;color:var(--muted);margin-top:16px}
+.prose p strong{color:var(--ink)}
+.dk .prose p{color:rgba(255,255,255,.66)}
+.dk .prose p strong{color:var(--w)}
+.prose .big{font-family:var(--sf);font-size:clamp(20px,2.8vw,25px);line-height:1.45;color:var(--ink);font-weight:700}
+.dk .prose .big{color:var(--w)}
+.callout{margin-top:30px;background:var(--w);border-left:4px solid var(--gold);border-radius:12px;padding:24px 26px;font-size:17px;line-height:1.75;color:var(--ink);box-shadow:0 6px 26px rgba(0,0,0,.05)}
+.dk .callout{background:rgba(255,255,255,.05);color:rgba(255,255,255,.88);box-shadow:none}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 
 /* =================== HERO =================== */
-#hero{background:var(--n1);position:relative;overflow:hidden}
-#hero-img{width:100%;position:relative;background:var(--n2);line-height:0}
-#hero-img img{width:100%;height:auto;display:block}
-#hero-img::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:20%;
-  background:linear-gradient(transparent,var(--n1));pointer-events:none;
+#hero{background:radial-gradient(ellipse 90% 60% at 50% 0%,#13244a 0%,var(--n1) 55%,var(--n0) 100%);color:var(--w);padding:34px 20px 64px;overflow:hidden}
+#hero .in{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--sf);font-style:italic;color:var(--gold2);font-size:15px;margin-bottom:22px}
+.brand .ic{width:17px;height:17px}
+#hero h1{font-size:clamp(30px,4.6vw,52px);font-weight:900;line-height:1.12}
+#hero h1 em{color:var(--gold2);font-style:italic}
+#hero .sub{font-size:clamp(16px,1.9vw,18.5px);color:rgba(255,255,255,.74);line-height:1.7;margin-top:20px}
+#hero .sub strong{color:var(--w)}
+#hero .aud{font-size:14px;color:rgba(255,255,255,.52);margin-top:14px;line-height:1.6}
+.hchecks{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:22px;list-style:none}
+.hchecks li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.84);line-height:1.45}
+.hchecks .ic{width:16px;height:16px;color:var(--gold2);margin-top:2px}
+#hero .cta-wrap{text-align:left;margin-top:30px}
+.phones{position:relative;height:440px}
+.ph{position:absolute;width:200px;aspect-ratio:500/900;border-radius:24px;overflow:hidden;border:6px solid #1c2744;background:var(--n2);box-shadow:0 30px 60px -18px rgba(0,0,0,.75),0 0 0 1px rgba(201,168,76,.18)}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ph.a{left:50%;top:0;transform:translateX(-50%);z-index:3;width:220px}
+.ph.b{left:2%;top:58px;transform:rotate(-7deg);z-index:2;opacity:.92}
+.ph.c{right:2%;top:58px;transform:rotate(7deg);z-index:1;opacity:.92}
+.ph-tag{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);z-index:4;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:20px;white-space:nowrap;box-shadow:0 6px 14px rgba(0,0,0,.4)}
+@media(max-width:860px){
+  #hero .in{grid-template-columns:1fr;gap:34px}
+  #hero .cta-wrap{text-align:center}
+  .phones{height:330px;max-width:380px;margin:0 auto;width:100%}
+  .ph{width:140px}.ph.a{width:160px}.ph.b,.ph.c{top:40px}
 }
-#hero-cta{
-  background:var(--n1);padding:52px 20px 80px;text-align:center;position:relative;
-}
-#hero-cta::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(201,168,76,.08),transparent 65%);
-}
-canvas#ptc{position:absolute;inset:0;pointer-events:none;z-index:0}
-#hero-cta h1{
-  font-size:clamp(40px,5.8vw,72px);font-weight:900;color:var(--w);
-  line-height:1.05;position:relative;z-index:1;
-}
-#hero-cta h1 em{color:var(--gold2);font-style:italic}
-#hero-cta .sub{
-  font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.65);
-  max-width:600px;margin:22px auto 0;line-height:1.78;font-weight:300;
-  position:relative;z-index:1;
-}
-#hero-cta .sub strong{color:var(--w);font-weight:600}
-#hero-cta .sub em{color:var(--gold3);font-style:normal;font-weight:600}
+@media(max-width:400px){.hchecks{grid-template-columns:1fr}}
 
-/* =================== PRIMARY CTA BUTTON =================== */
-.cta-btn{
-  position:relative;overflow:hidden;
-  display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  background:linear-gradient(110deg,#9d7428 0%,#c9a84c 35%,#e8d080 55%,#c9a84c 75%,#9d7428 100%);
-  background-size:250% 100%;
-  animation:shimmer 3.5s linear infinite;
-  color:var(--n0);font-family:var(--ss);font-weight:800;
-  font-size:15px;letter-spacing:.07em;text-transform:uppercase;
-  border-radius:6px;border:none;cursor:pointer;
-  box-shadow:0 0 0 0 rgba(201,168,76,0),0 8px 32px rgba(201,168,76,.35);
-  transition:transform .25s,box-shadow .25s;
-}
-.cta-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 0 6px rgba(201,168,76,.12),0 16px 48px rgba(201,168,76,.55);
-}
-.cta-btn:active{transform:translateY(-1px)}
-/* Shine sweep */
-.cta-btn::after{
-  content:'';position:absolute;top:0;left:-80%;width:60%;height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent);
-  animation:shine 3.5s linear infinite;
-  pointer-events:none;
-}
-@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
-@keyframes shine{0%{left:-80%}35%{left:120%}100%{left:120%}}
-.cta-btn.lg{padding:20px 52px;font-size:16px}
-.cta-btn.md{padding:15px 36px;font-size:14px}
-.cta-btn.sm{padding:11px 22px;font-size:12.5px}
-.cta-btn .ic{width:18px;height:18px;stroke:var(--n0)}
-.cta-btn.lg .ic{width:20px;height:20px}
-.cta-btn-wrap{position:relative;z-index:1;margin-top:44px}
-.cta-sub{font-size:11.5px;color:rgba(255,255,255,.32);margin-top:12px;letter-spacing:.03em}
+/* =================== CENA DA MADRUGADA =================== */
+.scene p{margin-top:12px}
+.scene .t{font-family:var(--sf);font-size:22px;color:var(--gold);font-style:italic;margin-top:0}
+.quote{font-family:var(--sf);font-style:italic;font-size:clamp(22px,3vw,28px);color:var(--ink);text-align:center;margin:34px 0 8px;line-height:1.4}
 
-/* =================== STATS =================== */
-#stats{
-  display:flex;justify-content:center;align-items:center;
-  gap:0;margin-top:56px;flex-wrap:wrap;position:relative;z-index:1;
-}
-.st{text-align:center;padding:0 40px;border-right:1px solid var(--gl)}
-.st:last-child{border-right:none}
-.st-num{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--gold);font-family:var(--ss);line-height:1}
-.st-lbl{font-size:11.5px;color:rgba(255,255,255,.4);margin-top:5px;letter-spacing:.02em}
-@media(max-width:520px){.st{border-right:none;padding:10px 20px}}
+/* =================== FATORES =================== */
+.flist{list-style:none;margin-top:24px;display:grid;gap:10px}
+.flist li{display:flex;gap:12px;align-items:flex-start;background:var(--w);border:1px solid #ece4d4;border-radius:12px;padding:15px 18px;font-size:15.5px;color:var(--ink);line-height:1.5}
+.flist .ic{width:17px;height:17px;color:var(--gold);margin-top:2px}
 
-/* =================== TRUST BAR =================== */
-#trust{background:var(--n2);border-top:1px solid var(--gl);border-bottom:1px solid var(--gl);padding:15px 20px}
-#trust-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
-.tr{display:flex;align-items:center;justify-content:center;gap:9px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.68)}
-.tr .ic{width:16px;height:16px;color:var(--gold2);flex-shrink:0}
+/* =================== 4D =================== */
+.d-grid{display:flex;flex-direction:column;gap:16px;margin-top:46px}
+.d{display:flex;gap:22px;align-items:flex-start;background:rgba(255,255,255,.045);border:1px solid rgba(201,168,76,.18);border-radius:18px;padding:28px 28px}
+.d-n{flex-shrink:0;width:62px;height:62px;border-radius:16px;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);display:flex;align-items:center;justify-content:center;font-family:var(--sf);font-weight:900;font-size:24px}
+.d-tag{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2)}
+.d h3{font-size:21px;color:var(--w);margin-top:5px;line-height:1.3}
+.d p{font-size:15px;color:rgba(255,255,255,.64);line-height:1.75;margin-top:10px}
+.d p strong{color:var(--w)}
+.d .qs{list-style:none;margin-top:12px;display:grid;gap:6px}
+.d .qs li{font-size:14.5px;color:rgba(255,255,255,.8);padding-left:16px;position:relative}
+.d .qs li::before{content:'?';position:absolute;left:0;color:var(--gold2);font-weight:800}
+@media(max-width:560px){.d{flex-direction:column;gap:14px;padding:24px 22px}}
+.chain{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:26px}
+.chain span{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold3);font-weight:700;font-size:14px;padding:9px 14px;border-radius:30px}
+.chain i{color:rgba(255,255,255,.35);font-style:normal;align-self:center}
 
-/* =================== SECTION =================== */
-.sec{padding:96px 20px}
-.sec-in{max-width:860px;margin:0 auto}
-.sec-in.w{max-width:1020px}
-.lbl{display:block;font-family:var(--ss);font-size:10.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.ttl{font-size:clamp(30px,4.5vw,50px);font-weight:700;line-height:1.12}
-.ttl em{color:var(--gold);font-style:italic}
-.ttl.lt{color:var(--w)}
-.gline{width:50px;height:2px;margin:18px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.gline.l{margin:18px 0 0}
+/* =================== IDADES =================== */
+.age-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+.age{background:var(--w);border-radius:16px;padding:24px 24px;border:1px solid #ece4d4;box-shadow:0 4px 18px rgba(17,24,39,.05)}
+.age b{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--n0);background:linear-gradient(135deg,var(--gold),var(--gold3));padding:5px 12px;border-radius:20px}
+.age p{font-size:15px;color:var(--muted);line-height:1.7;margin-top:12px}
+@media(max-width:640px){.age-grid{grid-template-columns:1fr}}
 
-/* =================== REVEAL =================== */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.rv.on{opacity:1;transform:none}
-/* fallback: JS disabled or observer missed */
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
-.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}
-.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
-
-/* =================== PAIN =================== */
-#pain{background:var(--cream)}
-.pain-list{display:flex;flex-direction:column;gap:10px;margin-top:44px}
-.pr{
-  display:flex;align-items:center;gap:16px;
-  background:var(--w);border:2px solid #e5ddd0;
-  border-radius:14px;padding:18px 22px;cursor:pointer;
-  transition:border-color .2s,background .2s,transform .18s;user-select:none;
-}
-.pr:hover{transform:translateX(5px)}
-.pr.ticked{border-color:rgba(201,168,76,.5);background:rgba(201,168,76,.04)}
-.pbox{
-  min-width:26px;height:26px;border:2px solid #d0c8be;border-radius:7px;
-  display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;
-}
-.pbox .ic{width:14px;height:14px;color:transparent;stroke:transparent;transition:all .2s}
-.pr.ticked .pbox{background:var(--gold);border-color:var(--gold)}
-.pr.ticked .pbox .ic{color:var(--n0);stroke:var(--n0)}
-.pt{font-weight:600;font-size:14.5px;color:var(--ink)}
-.pd{font-size:13px;color:var(--muted);margin-top:2px}
-#pmsg{
-  display:none;margin-top:22px;
-  background:linear-gradient(135deg,var(--n1),var(--n3));
-  border:1px solid var(--gl);border-radius:18px;
-  padding:36px 40px;text-align:center;
-}
-#pmsg h3{font-size:21px;color:var(--w);margin-bottom:10px}
-#pmsg p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:28px;line-height:1.72}
-#pmsg em{color:var(--gold3);font-style:normal;font-weight:700}
-#pc{color:var(--gold3);font-weight:800}
-
-/* =================== METHOD =================== */
-#method{background:linear-gradient(180deg,var(--n1) 0%,var(--n0) 100%)}
-.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px;margin-top:56px}
-.mc{
-  background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.14);
-  border-radius:18px;padding:36px 28px;position:relative;overflow:hidden;
-  transition:border-color .3s,background .3s,transform .3s;
-}
-.mc:hover{border-color:rgba(201,168,76,.35);background:rgba(255,255,255,.07);transform:translateY(-5px)}
-.mc-num{position:absolute;top:10px;right:18px;font-size:76px;font-weight:900;color:rgba(201,168,76,.06);font-family:var(--ss);line-height:1;pointer-events:none}
-.mc-ico{width:50px;height:50px;border-radius:13px;background:rgba(201,168,76,.11);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.mc-ico .ic{width:24px;height:24px;color:var(--gold2)}
-.mc h3{font-size:19px;color:var(--w);margin-bottom:10px}
-.mc p{font-size:14px;color:rgba(255,255,255,.56);line-height:1.75}
-
-/* =================== OFFER =================== */
-#offer{background:var(--cream)}
-.pshell{background:var(--w);border-radius:22px;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.09);margin-top:48px}
-.phead{background:linear-gradient(135deg,var(--n1),var(--n3));padding:26px 36px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.phead h3{font-size:21px;color:var(--w)}
-.phead p{font-size:13px;color:rgba(255,255,255,.48);margin-top:4px}
-.php-old{font-size:12px;color:rgba(255,255,255,.28);text-decoration:line-through}
-.php{font-size:22px;font-weight:900;color:var(--gold);font-family:var(--ss)}
-.pbody{padding:28px 36px}
-.mrow{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid #f0ebe0;transition:padding-left .22s,border-color .22s}
-.mrow:last-child{border-bottom:none}
-.mrow:hover{padding-left:8px;border-color:rgba(201,168,76,.3)}
-.mck .ic{width:16px;height:16px;color:var(--gold);margin-top:3px;flex-shrink:0}
-.mt{font-weight:600;font-size:14.5px;color:var(--ink)}
-.md{font-size:13px;color:var(--muted);margin-top:3px}
-.pill{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n1);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 12px;border-radius:20px;margin-bottom:8px}
-
-/* app showcase — real phone mock of the bonus app */
-.app-showcase{
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;gap:32px;
-  background:linear-gradient(150deg,var(--n1) 0%,var(--n0) 100%);
-  border-radius:20px;padding:30px 34px 44px;margin-top:12px;
-}
-.app-showcase::after{
-  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-}
-.app-phone{position:relative;flex-shrink:0;width:132px;aspect-ratio:500/873;transform:rotate(-4deg)}
-.app-phone-inner{
-  width:100%;height:100%;border-radius:20px;
-  border:5px solid #1c2744;overflow:hidden;
-  box-shadow:0 24px 44px -14px rgba(0,0,0,.65),0 0 0 1px rgba(201,168,76,.15);
-  background:var(--n2);
-}
-.app-phone-inner img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.app-phone-tag{
-  position:absolute;bottom:-11px;left:50%;transform:translateX(-50%);
-  background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);
-  font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-  padding:4px 11px;border-radius:20px;white-space:nowrap;
-  box-shadow:0 4px 10px rgba(0,0,0,.35);z-index:1;
-}
-.app-showcase-copy{position:relative;flex:1;min-width:0}
-.app-showcase-copy h3{font-size:clamp(19px,2.6vw,24px);font-weight:700;color:var(--w);line-height:1.28}
-.app-showcase-copy h3 em{color:var(--gold);font-style:italic;font-family:var(--sf)}
-.app-showcase-copy p{font-size:13.5px;color:rgba(255,255,255,.5);margin-top:9px;max-width:400px;line-height:1.65}
-
-.bstack{margin-top:14px;display:flex;flex-direction:column;gap:14px}
-
-/* featured bonus — Guia de Emergência gets the flagship treatment */
-.bfeat{
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;gap:28px;flex-wrap:wrap;
-  background:linear-gradient(155deg,var(--n1) 0%,var(--n0) 100%);
-  border-radius:8px;padding:34px 40px;
-  border-left:5px solid var(--gold);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 48px -20px rgba(0,0,0,.6);
-}
-.bfeat-init{
-  position:absolute;right:-6px;top:50%;transform:translateY(-50%);
-  font-family:var(--sf);font-weight:900;font-style:italic;
-  font-size:clamp(140px,18vw,210px);line-height:1;
-  color:rgba(201,168,76,.12);pointer-events:none;user-select:none;
-}
-.bfeat-content{position:relative;flex:1;min-width:220px}
-.bfeat .btag{color:var(--gold3);font-size:11px}
-.bfeat .btit{color:var(--w);font-size:22px;font-family:var(--sf);font-weight:700;margin-top:6px}
-.bfeat .bdsc{color:rgba(255,255,255,.55);font-size:14px;margin-top:8px;max-width:400px;line-height:1.65}
-.bfeat-price{position:relative;text-align:right;flex-shrink:0}
-.bfeat-price .bold{font-size:12px;color:rgba(255,255,255,.3)}
-.bfeat-price .bfree{
-  font-size:15px;font-weight:900;font-family:var(--ss);color:var(--n0);
-  background:linear-gradient(135deg,var(--gold),var(--gold3));
-  padding:6px 16px;border-radius:20px;margin-top:6px;display:inline-block;
-  box-shadow:0 6px 16px rgba(201,168,76,.3);
-}
-
-/* secondary bonuses — quiet, light, deliberately smaller */
-.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.bc2{
-  position:relative;overflow:hidden;
-  background:var(--w);border-radius:14px;padding:24px 22px 22px;
-  border:1px solid #ece4d4;
-  box-shadow:0 3px 14px rgba(17,24,39,.05);
-  transition:transform .25s,box-shadow .25s;
-}
-.bc2:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(17,24,39,.08)}
-.bc2-init{
-  position:absolute;right:8px;top:-6px;
-  font-family:var(--sf);font-weight:900;font-style:italic;
-  font-size:76px;line-height:1;color:rgba(17,24,39,.05);
-  pointer-events:none;user-select:none;
-}
-.bc2 .btag,.bc2 .btit,.bc2 .bdsc{position:relative}
-.bc2 .bdsc{margin-bottom:14px}
-.bc2-price{position:relative;display:flex;align-items:baseline;gap:8px}
-.btag{font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
-.btit{font-size:16px;font-weight:700;color:var(--ink);margin-top:3px}
-.bdsc{font-size:13px;color:var(--muted);margin-top:4px}
-.bold{font-size:11px;color:#bbb;text-decoration:line-through}
-.bfree{font-size:15px;font-weight:900;color:var(--gold);font-family:var(--ss)}
+/* =================== ENTREGÁVEIS =================== */
+.deliv{display:flex;flex-direction:column;gap:16px;margin-top:44px}
+.dv{background:var(--w);border-radius:18px;padding:28px 30px;border:1px solid #ece4d4;box-shadow:0 6px 26px rgba(17,24,39,.06)}
+.dv-tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.dv h3{font-size:22px;margin-top:6px;line-height:1.3}
+.dv .hook{font-weight:700;color:var(--ink);font-size:15.5px;margin-top:10px}
+.dv p{font-size:15px;color:var(--muted);line-height:1.75;margin-top:10px}
+.dv.feat{background:linear-gradient(150deg,var(--n1),var(--n0));border:none;border-left:5px solid var(--gold)}
+.dv.feat h3{color:var(--w)}.dv.feat .hook{color:var(--gold3)}.dv.feat p{color:rgba(255,255,255,.64)}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.shot{text-align:center}
+.shot .ph-s{border-radius:20px;overflow:hidden;border:5px solid #1c2744;aspect-ratio:500/900;background:var(--n2);box-shadow:0 22px 44px -16px rgba(0,0,0,.45)}
+.shot .ph-s img{width:100%;height:100%;object-fit:cover;object-position:top}
+.shot span{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-top:12px}
+.shots-note{text-align:center;font-size:13px;color:var(--muted);margin-top:18px}
 @media(max-width:640px){
-  .app-showcase{flex-direction:column;text-align:center;padding:30px 24px 36px}
-  .app-showcase-copy p{margin-left:auto;margin-right:auto}
-  .bfeat{flex-direction:column;align-items:flex-start;padding:28px 24px;gap:16px}
-  .bfeat-init{font-size:120px;right:-10px;top:10px;transform:none}
-  .bfeat-price{text-align:left}
-  .bgrid{grid-template-columns:1fr}
+  .shots{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .shot .ph-s{border-width:3px;border-radius:12px}.shot span{font-size:11.5px}
+  .dv{padding:24px 22px}
 }
 
-.vbox{
-  background:linear-gradient(135deg,var(--n1),var(--n3));
-  border:1px solid var(--gl);border-radius:22px;
-  padding:44px 40px;text-align:center;margin-top:16px;
-  display:flex;flex-direction:column;align-items:center;
-}
-.vbox .vl{font-size:12.5px;color:rgba(255,255,255,.42);text-transform:uppercase;letter-spacing:.1em}
-.vbox .vc{font-size:44px;font-weight:900;color:rgba(255,255,255,.18);font-family:var(--ss);text-decoration:line-through;margin:8px 0 4px}
-.vbox .vn{font-size:76px;font-weight:900;color:var(--gold);font-family:var(--ss);line-height:1}
-.vbox .vi{font-size:14px;color:rgba(255,255,255,.38);margin-top:6px;margin-bottom:28px}
-.vbox .cta-btn{width:100%;justify-content:center}
-.vbox .scar-strip{width:100%;margin-bottom:16px}
-.vbox .buyers-badge{margin-top:14px}
+/* =================== DEPOIMENTOS =================== */
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;align-items:start}
+.t-card h3{font-size:17px;color:var(--gold3);font-style:italic;line-height:1.35;margin-bottom:12px;min-height:46px}
+.t-img img{width:100%;height:auto}
+.t-img{border-radius:14px;overflow:hidden;background:#efeae2;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.t-more{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;max-width:680px;margin-left:auto;margin-right:auto}
+.t-note{text-align:center;font-size:13px;color:rgba(255,255,255,.45);margin-top:28px;font-style:italic}
+@media(max-width:860px){.t-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}.t-card h3{min-height:0}.t-more{grid-template-columns:1fr;max-width:400px}}
 
-/* =================== TESTIMONIALS (screenshots) =================== */
-#testi{background:linear-gradient(180deg,var(--n0) 0%,var(--n2) 100%)}
-.testi-intro{text-align:center;margin-bottom:52px}
-.testi-note{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:18px;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-  border-radius:30px;padding:6px 16px;
-  font-size:12px;color:rgba(255,255,255,.5);
-}
-.testi-note .ic{width:14px;height:14px;color:var(--gold)}
-/* Masonry via CSS columns */
-.testi-masonry{
-  columns:3;column-gap:18px;
-}
-@media(max-width:860px){.testi-masonry{columns:2}}
-@media(max-width:500px){.testi-masonry{columns:1}}
-.tesi-img{
-  break-inside:avoid;margin-bottom:18px;
-  border-radius:16px;overflow:hidden;
-  box-shadow:0 8px 32px rgba(0,0,0,.4);
-  border:1px solid rgba(255,255,255,.08);
-  transition:transform .3s,box-shadow .3s;
-  cursor:default;
-}
-.tesi-img:hover{transform:scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,.5)}
-.tesi-img img{width:100%;height:auto;display:block}
+/* =================== NÃO PRECISA =================== */
+.nope{list-style:none;margin-top:26px;display:grid;gap:10px}
+.nope li{display:flex;gap:12px;align-items:center;font-size:16.5px;color:var(--ink)}
+.nope .ic{width:18px;height:18px;color:#b84a3a}
+
+/* =================== OFERTA =================== */
+#valor{background:linear-gradient(180deg,var(--n0),var(--n1));color:var(--w)}
+#valor h2{font-size:clamp(26px,4vw,40px);line-height:1.2;text-align:center}
+#valor h2 em{color:var(--gold);font-style:italic}
+.obox{background:var(--w);border-radius:22px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.3);margin-top:36px;color:var(--ink)}
+.o-shots{display:flex;justify-content:center;gap:10px;padding:26px 20px 0;background:linear-gradient(180deg,var(--n2),var(--n3))}
+.o-shots div{width:96px;aspect-ratio:500/900;border-radius:12px 12px 0 0;overflow:hidden;border:4px solid #1c2744;border-bottom:none}
+.o-shots div:nth-child(2){width:116px}
+.o-shots img{width:100%;height:100%;object-fit:cover;object-position:top}
+.obody{padding:30px 34px}
+.o-h{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.oline{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid #f2ede0;font-size:15px;line-height:1.5}
+.oline:last-of-type{border-bottom:none}
+.oline .ic{width:16px;height:16px;color:var(--gold);margin-top:3px}
+.oprice{text-align:center;margin-top:24px;padding-top:22px;border-top:2px dashed rgba(201,168,76,.35)}
+.oprice .l{font-size:14px;color:var(--muted)}
+.oprice .v{font-size:64px;font-weight:900;color:var(--ink);line-height:1.05;margin-top:4px}
+.oprice .v small{font-size:26px;vertical-align:top;margin-right:4px;color:var(--gold)}
+.oprice .u{font-size:14px;font-weight:700;color:var(--ink);margin-top:6px}
+.obox .cta-wrap{margin-top:22px}
+.obox .cta-btn{width:100%}
+@media(max-width:520px){.obody{padding:26px 20px}.oprice .v{font-size:54px}}
+
+/* =================== PASSOS =================== */
+.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.acc{background:var(--w);border-radius:16px;padding:30px 24px 26px;position:relative;box-shadow:0 3px 16px rgba(17,24,39,.06)}
+.acc-n{position:absolute;top:-14px;left:24px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.acc h3{font-size:18px;line-height:1.3}
+.acc p{font-size:14.5px;color:var(--muted);line-height:1.7;margin-top:8px}
+@media(max-width:760px){.acc-grid{grid-template-columns:1fr;gap:24px}}
+
+/* =================== GARANTIA =================== */
+#guar .in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:40px}
+.gseal{width:140px;height:140px;border-radius:50%;flex-shrink:0;border:2px solid var(--gold);background:rgba(201,168,76,.08);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gseal .ic{width:30px;height:30px;color:var(--gold2)}
+.gseal b{font-size:36px;font-weight:900;color:var(--w);line-height:1;margin-top:4px}
+.gseal span{font-size:12px;color:rgba(255,255,255,.5)}
+#guar h2{font-size:clamp(26px,3.6vw,36px);color:var(--w)}
+#guar h2 em{color:var(--gold);font-style:italic}
+@media(max-width:640px){#guar .in{flex-direction:column;text-align:center;gap:24px}}
+
+/* =================== QUEM ESTÁ POR TRÁS =================== */
+.aut{display:flex;gap:30px;align-items:flex-start;background:var(--w);border-radius:20px;padding:34px 36px;box-shadow:0 8px 36px rgba(0,0,0,.07);margin-top:36px}
+.aut-seal{width:84px;height:84px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--n1),var(--n3));border:2px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.aut-seal .ic{width:34px;height:34px;color:var(--gold2)}
+.aut p{font-size:15.5px;color:var(--muted);line-height:1.8}
+.aut p+p{margin-top:12px}
+@media(max-width:600px){.aut{flex-direction:column;padding:28px 22px}}
 
 /* =================== FAQ =================== */
 #faq{background:var(--cream2)}
-.flist{display:flex;flex-direction:column;gap:8px;margin-top:52px}
+.faq{display:flex;flex-direction:column;gap:8px;margin-top:44px}
 .fi{background:var(--w);border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.fq{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;text-align:left}
-.fq span:first-child{font-weight:600;font-size:15px;color:var(--ink)}
+.fq{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 24px;text-align:left}
+.fq span:first-child{font-weight:600;font-size:15.5px;color:var(--ink)}
 .ficon{min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;transition:transform .3s;color:var(--gold)}
 .ficon .ic{width:18px;height:18px}
-.fi.open .ficon{transform:rotate(45deg)}
 .fbody{max-height:0;overflow:hidden;transition:max-height .42s ease}
-.fbody.on{max-height:320px}
-.fbody p{padding:0 26px 22px;font-size:14.5px;color:var(--muted);line-height:1.78}
+.fbody.on{max-height:420px}
+.fbody p{padding:0 24px 18px;font-size:15px;color:var(--muted);line-height:1.75}
+.fbody p+p{margin-top:-6px}
 
-/* =================== GUARANTEE =================== */
-#guar{background:linear-gradient(135deg,var(--n1),var(--n0));border-top:1px solid var(--gl)}
-#guar .in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:44px;flex-wrap:wrap;justify-content:center}
-.gseal{
-  width:150px;height:150px;border-radius:50%;flex-shrink:0;
-  border:2px solid var(--gold);background:rgba(201,168,76,.07);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-}
-.gseal .gs-ico .ic{width:34px;height:34px;color:var(--gold2)}
-.gseal .gs-tag{font-size:9.5px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-top:4px}
-.gseal .gs-num{font-size:38px;font-weight:900;color:var(--w);font-family:var(--ss);line-height:1}
-.gseal .gs-unit{font-size:12px;color:rgba(255,255,255,.4)}
-#guar h2{font-size:clamp(26px,3.8vw,38px);color:var(--w);margin-bottom:14px}
-#guar h2 em{color:var(--gold)}
-#guar p{font-size:15px;color:rgba(255,255,255,.58);line-height:1.78;max-width:420px}
-@media(max-width:600px){#guar .in{flex-direction:column;text-align:center}#guar p{margin:0 auto}}
+/* =================== FECHAMENTO =================== */
+#final .lines p{font-size:17px;color:var(--muted);line-height:1.8;margin-top:4px}
+#final .close{font-family:var(--sf);font-size:clamp(22px,3.2vw,30px);font-weight:700;line-height:1.35;margin-top:30px}
+#final .close em{color:var(--gold);font-style:italic}
+.fbox{background:linear-gradient(135deg,var(--n1),var(--n3));border-radius:22px;padding:34px 30px;margin-top:40px;color:var(--w);text-align:center}
+.fbox h3{font-size:24px}
+.fbox .pr{font-size:15px;color:rgba(255,255,255,.65);margin-top:6px}
+.fbox .pr strong{color:var(--gold3);font-size:20px}
+.fbox ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin-top:18px}
+.fbox li{display:flex;gap:7px;align-items:center;font-size:14px;color:rgba(255,255,255,.82)}
+.fbox li .ic{width:14px;height:14px;color:var(--gold2)}
+.fbox .cta-btn{width:100%;max-width:480px}
 
-/* =================== FINAL OFFER =================== */
-#final{background:var(--cream);padding:96px 20px}
-#final .in{max-width:680px;margin:0 auto;text-align:center}
-#final h2{font-size:clamp(28px,4.5vw,50px);color:var(--ink);line-height:1.2}
-#final h2 em{color:var(--gold)}
-.obox{background:var(--w);border-radius:24px;overflow:hidden;box-shadow:0 24px 72px rgba(0,0,0,.12);margin-top:44px}
-.otop{background:linear-gradient(135deg,var(--n1),var(--n3));padding:36px 44px;text-align:center}
-.ofrom{font-size:14px;color:rgba(255,255,255,.35);text-decoration:line-through}
-.olbl{font-size:14px;color:rgba(255,255,255,.62);margin:4px 0}
-.oprice{display:flex;align-items:baseline;justify-content:center;gap:2px}
-.ocur{font-size:30px;font-weight:800;color:var(--gold);font-family:var(--ss)}
-.oval{font-size:88px;font-weight:900;color:var(--gold);font-family:var(--ss);line-height:1}
-.oinst{font-size:14px;color:rgba(255,255,255,.38);margin-top:6px}
-.obody{padding:36px 44px;text-align:left}
-.oline{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.oline .ic{width:15px;height:15px;color:var(--gold);flex-shrink:0}
-.olintx{font-size:14.5px;color:var(--ink);flex:1}
-.olinpr{font-size:13px;color:#bbb;text-decoration:line-through;white-space:nowrap}
-.ototl{border-top:2px dashed rgba(201,168,76,.3);padding-top:14px;display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
-.ototl-l{font-weight:700;font-size:15px;color:var(--ink)}
-.ototl-r{font-size:22px;font-weight:900;color:var(--gold);font-family:var(--ss)}
-.omicro{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px;flex-wrap:wrap}
-.omicro span{font-size:12px;color:#aaa;display:flex;align-items:center;gap:5px}
-.omicro .ic{width:13px;height:13px;color:var(--gold)}
-@media(max-width:520px){.otop,.obody{padding:28px 22px}.oval{font-size:68px}}
-
-/* =================== FOOTER =================== */
-footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px solid var(--gl)}
+/* =================== RODAPÉ =================== */
+footer{background:var(--n0);padding:44px 20px 110px;text-align:center;border-top:1px solid var(--gl)}
 .fbrand{font-family:var(--sf);font-style:italic;color:var(--gold);font-size:22px;margin-bottom:14px}
-.fdisc{font-size:12px;color:rgba(255,255,255,.26);max-width:520px;margin:0 auto;line-height:1.75}
+.fdisc{font-size:12px;color:rgba(255,255,255,.4);max-width:560px;margin:0 auto;line-height:1.75}
+.fdisc+.fdisc{margin-top:12px}
 
-/* =================== STICKY BAR =================== */
-#sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;background:linear-gradient(135deg,var(--n1),var(--n0));border-top:1px solid var(--gl);padding:13px 24px;transform:translateY(100%);transition:transform .4s cubic-bezier(.22,.68,0,1.2)}
+/* =================== STICKY =================== */
+#sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;background:linear-gradient(135deg,var(--n1),var(--n0));border-top:1px solid var(--gl);padding:12px 20px;transform:translateY(100%);transition:transform .4s ease}
 #sticky.on{transform:none}
-#sticky-in{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.sbn{font-weight:700;color:var(--w);font-size:14.5px}
-.sbp{font-size:13px;color:rgba(255,255,255,.42);margin-top:2px}
+#sticky-in{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sbn{font-weight:700;color:var(--w);font-size:14px}
+.sbp{font-size:12.5px;color:rgba(255,255,255,.5);margin-top:2px}
 .sbp strong{color:var(--gold)}
-
-/* =================== AUTHORITY LINE =================== */
-.auth-line{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:14px;font-size:12px;color:rgba(255,255,255,.38);
-  letter-spacing:.02em;
-}
-.auth-line .ic{width:13px;height:13px;color:var(--gold);opacity:.7;flex-shrink:0}
-
-/* =================== SCARCITY STRIP =================== */
-.scar-strip{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  background:rgba(220,60,60,.1);border:1px solid rgba(220,60,60,.25);
-  border-radius:8px;padding:10px 18px;margin-top:16px;
-  font-size:13px;font-weight:600;color:#ff8a8a;
-}
-.scar-strip .ic{width:14px;height:14px;color:#ff7b7b;flex-shrink:0;animation:blink-red 2s ease-in-out infinite}
-
-/* =================== BUYER ACTIVITY =================== */
-.buyers-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:12.5px;color:rgba(255,255,255,.45);margin-top:10px;
-}
-.buyers-badge .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;flex-shrink:0;animation:pulse-green .9s ease-in-out infinite}
-@keyframes pulse-green{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-.buyers-badge.dk{color:var(--muted)}
-
-/* =================== URGENCY BOX =================== */
-.urg-box{
-  background:linear-gradient(135deg,rgba(220,60,60,.1),rgba(220,60,60,.05));
-  border:1px solid rgba(220,60,60,.2);border-radius:12px;
-  padding:14px 20px;text-align:center;margin-top:12px;margin-bottom:20px;
-  font-size:13px;color:#ff8a8a;font-weight:500;line-height:1.6;
-}
-.urg-box strong{color:#ff6b6b;font-weight:700}
-
-/* =================== SOCIAL PROOF POPUP =================== */
-#sp-popup{
-  position:fixed;bottom:80px;left:20px;z-index:150;
-  background:var(--w);border-radius:14px;padding:14px 18px;
-  box-shadow:0 8px 40px rgba(0,0,0,.18);
-  display:flex;align-items:center;gap:14px;
-  max-width:300px;min-width:260px;
-  transform:translateX(-120%);opacity:0;
-  transition:transform .5s cubic-bezier(.22,.68,0,1.2),opacity .5s ease;
-}
-#sp-popup.show{transform:none;opacity:1}
-.sp-av{
-  width:40px;height:40px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--n2),var(--n3));
-  display:flex;align-items:center;justify-content:center;
-}
-.sp-av .ic{width:20px;height:20px;color:var(--gold2)}
-.sp-name{font-weight:700;font-size:13.5px;color:var(--ink)}
-.sp-action{font-size:12px;color:var(--muted);margin-top:1px}
-.sp-close{position:absolute;top:8px;right:8px;cursor:pointer;color:#bbb;transition:color .2s}
-.sp-close:hover{color:var(--ink)}
-.sp-close .ic{width:14px;height:14px}
-
-/* =================== MICRO-ARGUMENTOS (abaixo do CTA) =================== */
-.micro-args{
-  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
-  margin-top:16px;position:relative;z-index:1;
-}
-.micro-args span{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.18);
-  border-radius:30px;padding:7px 15px;
-  font-size:12px;font-weight:600;color:rgba(255,255,255,.68);
-}
-.micro-args .ic{width:13px;height:13px;color:var(--gold2);flex-shrink:0}
-
-/* =================== DEPOIMENTOS POR OBJEÇÃO =================== */
-.tcap{
-  font-family:var(--sf);font-style:italic;font-size:15px;line-height:1.5;
-  color:var(--gold3);margin-bottom:10px;
-}
-.tesi-card{break-inside:avoid;margin-bottom:26px}
-.tesi-card .tesi-img{margin-bottom:0}
-
-/* =================== FECHAMENTO DA RUMINAÇÃO =================== */
-.rumin{
-  margin-top:26px;background:var(--w);border-left:4px solid var(--gold);
-  border-radius:12px;padding:26px 30px;
-  font-size:15.5px;line-height:1.8;color:var(--ink);
-}
-.rumin strong{color:var(--ink);font-weight:700}
-.rumin em{color:var(--muted);font-style:italic}
-
-/* =================== MECANISMO (o erro) =================== */
-#mech{background:var(--cream2)}
-.mech-lead{font-size:16px;color:var(--muted);line-height:1.85;max-width:660px;margin:26px auto 0;text-align:center}
-.mech-lead strong{color:var(--ink);font-weight:700}
-.mech-wrong{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
-  margin:30px auto 0;max-width:720px;
-}
-.mech-wrong span{
-  display:flex;align-items:center;gap:9px;justify-content:center;
-  background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.18);
-  border-radius:10px;padding:12px 14px;
-  font-size:13.5px;font-weight:600;color:#a33;
-}
-.mech-wrong .ic{width:13px;height:13px;color:#c44;flex-shrink:0}
-.mech-turn{
-  max-width:680px;margin:34px auto 0;text-align:center;
-  font-size:17px;line-height:1.8;color:var(--ink);font-weight:500;
-}
-.mech-turn em{color:var(--gold);font-style:italic;font-family:var(--sf);font-weight:700}
-.mech-name{
-  display:inline-block;margin:34px auto 0;
-  background:linear-gradient(135deg,var(--n1),var(--n3));
-  border:1px solid var(--gl);border-radius:16px;padding:22px 34px;text-align:center;
-}
-.mech-name .mn-l{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.mech-name .mn-t{font-family:var(--sf);font-size:clamp(24px,3.4vw,34px);font-weight:700;color:var(--w);line-height:1.2}
-.mech-name .mn-t em{color:var(--gold2);font-style:italic}
-.mech-name .mn-s{font-size:13px;color:rgba(255,255,255,.45);margin-top:8px}
-
-/* =================== PASSO A PASSO (4D) =================== */
-#steps{background:linear-gradient(180deg,var(--n0) 0%,var(--n1) 100%)}
-.stp-grid{display:flex;flex-direction:column;gap:14px;margin-top:52px}
-.stp{
-  display:flex;align-items:flex-start;gap:24px;
-  background:var(--cream);border-radius:16px;padding:28px 32px;
-  border-left:5px solid var(--gold);
-  box-shadow:0 18px 40px -22px rgba(0,0,0,.7);
-  transition:transform .25s;
-}
-.stp:hover{transform:translateX(6px)}
-.stp-d{
-  flex-shrink:0;width:64px;height:64px;border-radius:16px;
-  background:linear-gradient(135deg,var(--n1),var(--n3));
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--sf);font-weight:900;font-size:30px;color:var(--gold2);
-}
-.stp-c{flex:1;min-width:0}
-.stp-tag{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
-.stp-t{font-family:var(--sf);font-size:21px;font-weight:700;color:var(--ink);margin-top:4px}
-.stp-p{font-size:14.5px;color:var(--muted);line-height:1.75;margin-top:7px}
-@media(max-width:560px){.stp{flex-direction:column;gap:14px;padding:24px 22px}}
-
-/* =================== BENEFÍCIOS =================== */
-#benef{background:var(--w)}
-.bnf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(218px,1fr));gap:14px;margin-top:48px}
-.bnf{
-  background:var(--cream);border:1px solid #ece4d4;border-radius:16px;
-  padding:26px 24px;transition:transform .25s,box-shadow .25s;
-}
-.bnf:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(17,24,39,.08)}
-.bnf-ico{
-  width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,.13);
-  display:flex;align-items:center;justify-content:center;margin-bottom:15px;
-}
-.bnf-ico .ic{width:21px;height:21px;color:var(--gold)}
-.bnf h3{font-size:17px;color:var(--ink);line-height:1.3}
-.bnf p{font-size:13.5px;color:var(--muted);line-height:1.72;margin-top:7px}
-
-/* =================== PARA QUEM SERVE =================== */
-#quem{background:linear-gradient(180deg,var(--n1),var(--n0))}
-.qlist{
-  background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.14);
-  border-radius:18px;padding:34px 38px;margin-top:46px;
-  display:flex;flex-direction:column;gap:2px;
-}
-.qi{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.qi:last-child{border-bottom:none}
-.qi .ic{width:17px;height:17px;color:var(--gold2);margin-top:3px;flex-shrink:0}
-.qi span{font-size:15px;color:rgba(255,255,255,.78);line-height:1.6}
-.qi strong{color:var(--w);font-weight:600}
-.qend{text-align:center;margin-top:40px}
-.qend .qe1{font-family:var(--sf);font-style:italic;font-size:20px;color:rgba(255,255,255,.4)}
-.qend .qe2{font-size:clamp(20px,3vw,28px);font-family:var(--sf);font-weight:700;color:var(--w);line-height:1.35;margin-top:10px;max-width:640px;margin-left:auto;margin-right:auto}
-.qend .qe2 em{color:var(--gold);font-style:italic}
-@media(max-width:560px){.qlist{padding:26px 22px}}
-
-/* =================== RECAPITULANDO =================== */
-#recap{background:var(--cream)}
-.rcp{
-  background:var(--w);border-radius:20px;padding:34px 38px;margin-top:44px;
-  box-shadow:0 8px 42px rgba(0,0,0,.08);
-}
-.rcp-i{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid #f2ede0}
-.rcp-i:last-of-type{border-bottom:none}
-.rcp-i .ic{width:17px;height:17px;color:var(--gold);margin-top:3px;flex-shrink:0}
-.rcp-t{font-weight:600;font-size:15px;color:var(--ink)}
-.rcp-d{font-size:13px;color:var(--muted);margin-top:2px}
-.rcp-end{
-  margin-top:24px;border-top:2px dashed rgba(201,168,76,.3);padding-top:24px;text-align:center;
-}
-.rcp-end .re1{font-size:15px;color:var(--muted);line-height:1.7}
-.rcp-end .re2{font-family:var(--sf);font-size:clamp(22px,3.2vw,30px);font-weight:700;color:var(--ink);margin-top:10px;line-height:1.35}
-.rcp-end .re2 em{color:var(--gold);font-style:italic}
-@media(max-width:560px){.rcp{padding:26px 22px}}
-
-/* =================== COMO ACESSAR =================== */
-#acesso{background:var(--cream2)}
-.acc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:46px}
-.acc{
-  background:var(--w);border-radius:16px;padding:30px 26px;text-align:center;
-  box-shadow:0 3px 16px rgba(17,24,39,.06);position:relative;
-}
-.acc-n{
-  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-  width:28px;height:28px;border-radius:50%;
-  background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);
-  font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;
-}
-.acc-ico{width:48px;height:48px;border-radius:14px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;margin:8px auto 16px}
-.acc-ico .ic{width:23px;height:23px;color:var(--gold)}
-.acc h3{font-family:var(--ss);font-size:13px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink)}
-.acc p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-top:9px}
-
-/* =================== AUTORIDADE =================== */
-#autor{background:var(--cream)}
-.aut{
-  display:flex;align-items:center;gap:38px;flex-wrap:wrap;justify-content:center;
-  background:var(--w);border-radius:22px;padding:40px 44px;
-  box-shadow:0 8px 42px rgba(0,0,0,.08);
-}
-.aut-seal{
-  width:120px;height:120px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--n1),var(--n3));
-  border:2px solid var(--gold);
-  display:flex;align-items:center;justify-content:center;
-}
-.aut-seal .ic{width:44px;height:44px;color:var(--gold2)}
-.aut-c{flex:1;min-width:250px}
-.aut-c .a-n{font-family:var(--sf);font-size:24px;font-weight:700;color:var(--ink)}
-.aut-c .a-r{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:4px}
-.aut-c p{font-size:14.5px;color:var(--muted);line-height:1.8;margin-top:14px}
-@media(max-width:600px){.aut{padding:32px 24px;text-align:center}.aut-c{min-width:0}}
-
-/* =================== DUAS OPÇÕES =================== */
-#opcoes{background:var(--w)}
-.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:46px}
-@media(max-width:640px){.opt-grid{grid-template-columns:1fr}}
-.opt{border-radius:18px;padding:32px 30px}
-.opt-a{background:rgba(220,60,60,.05);border:1px solid rgba(220,60,60,.18)}
-.opt-b{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.28)}
-.opt-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:15px}
-.opt-a .opt-ico{background:rgba(220,60,60,.1)}
-.opt-a .opt-ico .ic{width:20px;height:20px;color:#c44}
-.opt-b .opt-ico{background:rgba(74,222,128,.15)}
-.opt-b .opt-ico .ic{width:20px;height:20px;color:#2f9e62}
-.opt h3{font-family:var(--sf);font-size:19px;color:var(--ink)}
-.opt p{font-size:14.5px;color:var(--muted);line-height:1.78;margin-top:9px}
-.opt-end{text-align:center;margin-top:40px}
-.opt-end .oe1{font-size:17px;font-weight:600;color:var(--ink);line-height:1.6}
-.opt-end .oe2{font-size:15px;color:var(--muted);margin-top:10px;line-height:1.7}
-
-/* =================== BLOCO DE VALOR REUTILIZÁVEL =================== */
-#valor{background:linear-gradient(180deg,var(--n0),var(--n1))}
-#valor .in{max-width:680px;margin:0 auto;text-align:center}
-#valor h2{font-size:clamp(26px,4vw,42px);color:var(--w);line-height:1.2}
-#valor h2 em{color:var(--gold);font-style:italic}
-#valor .obox{margin-top:40px;text-align:left}
-#final .fin-lead{
-  font-size:16px;color:var(--muted);line-height:1.85;max-width:560px;
-  margin:22px auto 0;
-}
-#final .fin-lead strong{color:var(--ink);font-weight:700}
+@media(max-width:420px){.sbn{font-size:13px}.sbp{font-size:11.5px}}
 </style>
 </head>
 <body>
 
 <div id="prog"></div>
 
-<!-- ========== TOPBAR ========== -->
-<div id="topbar">
-  <div id="topbar-in">
-    <svg class="ic" style="width:14px;height:14px;color:var(--ember2)"><use href="#i-clock"/></svg>
-    <span>Oferta expira em</span>
-    <span id="timer">15:00</span>
-    <span class="top-sep">·</span>
-    <span id="vagas-box"><span id="vagas-n">23</span> vagas neste preço</span>
-  </div>
-</div>
-
 <!-- ============================================================
-     BLOCO 1 — VENDER SOZINHO (promessa + CTA)
+     HERO
      ============================================================ -->
 <section id="hero">
-  <canvas id="ptc"></canvas>
-  <div id="hero-img">
-    <img src="hero-banner.png" alt="Protocolo do Sono Perfeito — Transforme as noites do seu bebê" fetchpriority="high"/>
-  </div>
-  <div id="hero-cta">
-    <h1 class="rv on">Faça Seu Bebê Dormir<br><em>a Noite Inteira</em></h1>
-    <p class="sub rv on d1">
-      Descubra o protocolo passo a passo para <strong>organizar a rotina de sono do seu bebê</strong>, reduzir os despertares que destroem suas noites e finalmente <em>voltar a dormir por horas seguidas</em> — mesmo que você já tenha tentado de tudo.
-    </p>
-    <div class="cta-btn-wrap rv on d2">
-      <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
-        <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-moon"/></svg>
-        Quero Aplicar o Protocolo Hoje
-        <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
-      </a>
-      <div class="micro-args">
-        <span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span>
-        <span><svg class="ic"><use href="#i-list"/></svg> Aplicação prática hoje mesmo</span>
-        <span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span>
+  <div class="in">
+    <div>
+      <div class="brand"><svg class="ic"><use href="#i-moon"/></svg> Protocolo do Sono Perfeito</div>
+      <h1>Seu bebê acorda várias vezes por noite… <em>e você já não sabe mais o que tentar?</em></h1>
+      <p class="sub">Descubra a <strong>Sequência 4D</strong>: um passo a passo para organizar a rotina de sono do seu bebê, entender o que pode estar atrapalhando as noites e saber o que fazer quando ele acorda — <strong>sem deixá-lo chorando sozinho.</strong></p>
+      <p class="aud">Para mães, pais e cuidadores de crianças de 0 a 3 anos, com orientações adaptadas à fase de desenvolvimento.</p>
+      <ul class="hchecks">
+        <li><svg class="ic"><use href="#i-check"/></svg> Sem precisar comprar equipamentos caros</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Sem rotinas rígidas impossíveis de seguir</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Sem métodos que exigem ignorar o choro</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Com um guia prático para consultar até de madrugada</li>
+      </ul>
+      <div class="cta-wrap">
+        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">Quero conhecer a Sequência 4D <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <p class="cta-note">Acesso imediato • Produto digital • Garantia de 7 dias</p>
       </div>
-      <div class="buyers-badge" style="justify-content:center">
-        <span class="dot"></span>
-        <span id="buyers-hero"><span class="cnt-b">143</span> mães garantiram nas últimas 24h</span>
-      </div>
-      <p class="auth-line" style="justify-content:center">
-        <svg class="ic"><use href="#i-shield"/></svg>
-        Baseado em protocolos de consultoras de sono certificadas
-      </p>
     </div>
-    <div id="stats" class="rv on d3">
-      <div class="st">
-        <div class="st-num">+<span class="cnt" data-to="2500">0</span></div>
-        <div class="st-lbl">famílias transformadas</div>
+    <div class="phones" aria-label="Telas reais do app do Protocolo">
+      <div class="ph b"><img src="app-cl.jpg" alt="Tela real do app: Checklist Noturno" width="500" height="900"/></div>
+      <div class="ph c"><img src="app-tab.jpg" alt="Tela real do app: Tabela de Horários por Idade" width="500" height="900"/></div>
+      <div class="ph a"><img src="app-em.jpg" alt="Tela real do app: Guia de Emergência da Madrugada" width="500" height="900" fetchpriority="high"/></div>
+      <div class="ph-tag">Telas reais do app</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     A MADRUGADA
+     ============================================================ -->
+<section id="dor" class="sec">
+  <div class="sec-in">
+    <h2 class="ttl center rv">Você ama seu bebê. <em>Mas também sente falta de dormir.</em></h2>
+    <div class="prose scene rv" style="margin-top:34px">
+      <p class="t">São 2h47 da madrugada.</p>
+      <p>Você acabou de colocar seu bebê no berço.</p>
+      <p>Sai do quarto devagar, tentando não fazer barulho.</p>
+      <p>Finalmente encosta a cabeça no travesseiro…</p>
+      <p><strong>E então escuta aquele chorinho de novo.</strong></p>
+      <p>Você levanta.</p>
+      <p>Tenta colo. Tenta embalar. Confere a fralda. Oferece a mamada, quando necessário.</p>
+      <p>Às vezes funciona.</p>
+      <p>Às vezes, quando você pensa que conseguiu, tudo começa outra vez.</p>
+      <p>E, enquanto o resto da casa dorme, você se pergunta:</p>
+    </div>
+    <p class="quote rv">“Será que estou fazendo alguma coisa errada?”</p>
+    <div class="prose rv">
+      <p>Talvez você já tenha pesquisado horários, comprado ruído branco, testado banho antes de dormir e recebido uma opinião diferente de cada pessoa.</p>
+      <p>Mas, no fim, continua sem saber o que ajustar primeiro.</p>
+      <p>Se você se identificou, existe algo importante que precisa entender.</p>
+    </div>
+    <div class="callout rv"><strong>Você não precisa de mais uma dica solta.</strong> Precisa de uma sequência que ajude a entender a rotina do seu bebê e tomar decisões com mais segurança.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     O PROBLEMA DAS DICAS SOLTAS
+     ============================================================ -->
+<section id="problema" class="sec" style="background:var(--cream2)">
+  <div class="sec-in">
+    <span class="lbl center rv">O verdadeiro problema</span>
+    <h2 class="ttl center rv">O problema de tentar resolver cada noite com <em>uma dica diferente</em></h2>
+    <div class="prose rv" style="margin-top:28px">
+      <p>Imagine tentar montar um quebra-cabeça sem saber como é a imagem completa.</p>
+      <p>Uma pessoa recomenda antecipar o banho. Outra diz para atrasar a última soneca. Outra sugere mudar a iluminação.</p>
+      <p>Você testa tudo.</p>
+      <p>Mas não consegue identificar o que realmente ajudou, o que não fez diferença e o que simplesmente faz parte da fase do seu bebê.</p>
+      <p>Isso acontece porque o sono infantil é influenciado por diferentes fatores:</p>
+    </div>
+    <ul class="flist rv">
+      <li><svg class="ic"><use href="#i-check"/></svg> A idade e o desenvolvimento da criança.</li>
+      <li><svg class="ic"><use href="#i-check"/></svg> A distribuição das sonecas durante o dia.</li>
+      <li><svg class="ic"><use href="#i-check"/></svg> A rotina que antecede o sono.</li>
+      <li><svg class="ic"><use href="#i-check"/></svg> O ambiente em que ela dorme.</li>
+      <li><svg class="ic"><use href="#i-check"/></svg> As necessidades de alimentação, conforto e acolhimento.</li>
+    </ul>
+    <div class="prose rv">
+      <p>E nem todo despertar é um problema. Muitos são esperados e necessários, especialmente nos primeiros meses.</p>
+    </div>
+    <div class="callout rv"><strong>O que falta, muitas vezes, não é esforço.</strong> É uma maneira organizada de observar esses fatores e fazer ajustes adequados.</div>
+    <div class="prose rv"><p>Foi para tornar esse processo mais simples que organizamos o Protocolo do Sono Perfeito.</p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEQUÊNCIA 4D
+     ============================================================ -->
+<section id="metodo" class="sec dk">
+  <div class="sec-in">
+    <span class="lbl center rv">O método</span>
+    <h2 class="ttl center rv">Apresentamos a <em>Sequência 4D do Sono</em></h2>
+    <div class="prose center rv">
+      <p class="big" style="margin-top:20px">Quatro decisões, na ordem certa, para sair do improviso e construir uma rotina de sono mais organizada.</p>
+      <p>A Sequência 4D reúne orientações práticas de rotina, ambiente e resposta aos despertares em quatro etapas fáceis de acompanhar.</p>
+    </div>
+
+    <div class="d-grid">
+      <div class="d rv">
+        <div class="d-n">D1</div>
+        <div>
+          <div class="d-tag">Decodificar</div>
+          <h3>Antes de mudar a rotina, entenda o que está acontecendo.</h3>
+          <p>Você começa observando os horários de sono, os despertares, as sonecas e os sinais de cansaço do seu bebê.</p>
+          <p>O objetivo é reconhecer padrões e diferenciar o que pode ser ajustado daquilo que é esperado para a idade.</p>
+          <p>Em vez de pensar “meu bebê simplesmente não dorme”, você passa a ter perguntas concretas para orientar suas decisões.</p>
+        </div>
       </div>
-      <div class="st">
-        <div class="st-num"><span class="cnt" data-to="49" data-dec>0</span>★</div>
-        <div class="st-lbl">avaliação média</div>
+      <div class="d rv">
+        <div class="d-n">D2</div>
+        <div>
+          <div class="d-tag">Desacelerar</div>
+          <h3>Prepare a noite antes de chegar a hora de dormir.</h3>
+          <p>Aprenda a montar uma sequência simples de preparação para o sono.</p>
+          <p>Iluminação, estímulos, ambiente e pequenos rituais previsíveis ajudam a criar uma transição mais tranquila entre as atividades do dia e a hora de descansar.</p>
+          <p>Sem exigir uma casa em silêncio absoluto ou uma rotina perfeita.</p>
+        </div>
       </div>
-      <div class="st">
-        <div class="st-num">7 dias</div>
-        <div class="st-lbl">para os primeiros resultados</div>
+      <div class="d rv">
+        <div class="d-n">D3</div>
+        <div>
+          <div class="d-tag">Direcionar</div>
+          <h3>Saiba como agir quando a noite não sai como planejado.</h3>
+          <ul class="qs">
+            <li>Seu bebê acordou pouco depois de dormir?</li>
+            <li>Está chorando e parece desconfortável?</li>
+            <li>A última soneca terminou mais tarde?</li>
+          </ul>
+          <p>Em vez de procurar uma resposta aleatória na internet, você consulta orientações para avaliar a situação, acolher seu bebê e escolher o próximo passo de acordo com suas necessidades.</p>
+          <p><strong>O objetivo não é impedir todo despertar. É reduzir a insegurança sobre o que fazer diante dele.</strong></p>
+        </div>
+      </div>
+      <div class="d rv">
+        <div class="d-n">D4</div>
+        <div>
+          <div class="d-tag">Dar continuidade</div>
+          <h3>Construa uma rotina que consiga acompanhar a vida real.</h3>
+          <p>Uma noite diferente não significa que tudo deu errado.</p>
+          <p>Viagens, dentição, mudanças de fase e dias mais agitados podem afetar o sono.</p>
+          <p>Nesta etapa, você aprende a retomar a organização da rotina sem começar do zero toda vez que algo muda.</p>
+          <p>Porque consistência não é fazer tudo perfeitamente. <strong>É saber como continuar.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center rv" style="margin-top:60px">
+      <h2 class="ttl" style="font-size:clamp(24px,3.4vw,34px)">O verdadeiro diferencial não é uma técnica milagrosa. <em>É ter um caminho para seguir.</em></h2>
+      <div class="prose"><p>Você deixa de depender de dezenas de dicas desconectadas e passa a contar com uma sequência de observação, preparação, resposta e continuidade.</p></div>
+      <div class="chain">
+        <span>Decodificar</span><i>→</i><span>Desacelerar</span><i>→</i><span>Direcionar</span><i>→</i><span>Dar Continuidade</span>
+      </div>
+      <div class="prose"><p>Uma forma mais simples de organizar o que fazer antes, durante e depois da hora de dormir.</p></div>
+      <div class="cta-wrap">
+        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">Quero ter a Sequência 4D no meu celular <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <p class="cta-note">Acesso imediato • Garantia de 7 dias</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== TRUST BAR ========== -->
-<div id="trust">
-  <div id="trust-in">
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-lock"/></svg> Pagamento 100% seguro</div>
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-bolt"/></svg> Acesso imediato após a compra</div>
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-shield"/></svg> Garantia incondicional de 7 dias</div>
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-monitor"/></svg> Acesso em qualquer dispositivo</div>
-  </div>
-</div>
-
 <!-- ============================================================
-     BLOCO 2 — DEPOIMENTOS (prova organizada por objeção)
+     POR IDADE
      ============================================================ -->
-<section id="testi" class="sec">
+<section id="idade" class="sec">
   <div class="sec-in w">
-    <div class="testi-intro rv">
-      <span class="lbl">Antes e depois</span>
-      <h2 class="ttl lt">Elas Também Passavam a Noite em Claro<br><em>— e Hoje Dormem</em></h2>
-      <div class="testi-note">
-        <svg class="ic"><use href="#i-check"/></svg>
-        Prints reais enviados por clientes — sem edição
+    <div class="sec-in">
+      <h2 class="ttl center rv">E se o seu bebê for <em>diferente dos outros?</em></h2>
+      <div class="prose center rv">
+        <p>Essa é uma das dúvidas mais importantes. Porque um recém-nascido de 30 dias não tem a mesma rotina de uma criança de 2 anos.</p>
+        <p>Por isso, o protocolo inclui uma tabela de referência por idade, para ajudar você a adaptar as orientações à fase do seu filho.</p>
       </div>
     </div>
-    <div class="testi-masonry rv d1">
-      <div class="tesi-card">
-        <p class="tcap">Ela também achava que “o bebê dela era diferente”.</p>
-        <div class="tesi-img"><img src="testi-3.png" alt="Depoimento real de cliente — Alice"/></div>
-      </div>
-      <div class="tesi-card">
-        <p class="tcap">Ela também já tinha tentado banho, colo, música e ruído branco.</p>
-        <div class="tesi-img"><img src="testi-4.png" alt="Depoimento real de cliente"/></div>
-      </div>
-      <div class="tesi-card">
-        <p class="tcap">Ela também achava que seria complicado demais para a rotina dela.</p>
-        <div class="tesi-img"><img src="testi-1.png" alt="Depoimento real de cliente"/></div>
-      </div>
-      <div class="tesi-card">
-        <p class="tcap">Ela também acordava mais cansada do que quando foi dormir.</p>
-        <div class="tesi-img"><img src="testi-2.png" alt="Depoimento real de cliente — Comunidade"/></div>
-      </div>
-      <div class="tesi-card">
-        <p class="tcap">Ela também estava a ponto de desistir de ter uma noite inteira de sono.</p>
-        <div class="tesi-img"><img src="testi-5.png" alt="Depoimento real de cliente — Joice"/></div>
-      </div>
+    <div class="age-grid">
+      <div class="age rv"><b>0 a 3 meses</b><p>Foco em segurança, necessidades de alimentação, acolhimento e reconhecimento dos sinais de sono. Despertares frequentes são esperados.</p></div>
+      <div class="age rv"><b>4 a 6 meses</b><p>Organização gradual de hábitos e rotinas flexíveis, respeitando o desenvolvimento e as necessidades individuais.</p></div>
+      <div class="age rv"><b>7 a 12 meses</b><p>Orientações para lidar com mudanças nas sonecas, rotina noturna e períodos de maior necessidade de acolhimento.</p></div>
+      <div class="age rv"><b>1 a 3 anos</b><p>Previsibilidade, transições de rotina, limites adequados à idade e preparação para a hora de dormir.</p></div>
     </div>
-    <div style="text-align:center;margin-top:44px" class="rv">
-      <p style="font-size:16px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.7;max-width:500px;margin-left:auto;margin-right:auto">Elas tinham exatamente o mesmo problema que você.<br>A única diferença é que decidiram resolver.</p>
-      <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
-        Quero Aplicar o Protocolo Hoje
-        <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
-      </a>
-      <div class="buyers-badge" style="justify-content:center;margin-top:12px">
-        <span class="dot"></span>
-        <span style="color:rgba(255,255,255,.38)">Restam <strong id="vagas-testi" style="color:#ff8a8a">23</strong> vagas neste preço</span>
-      </div>
+    <div class="sec-in prose center rv">
+      <p>Não existe um horário mágico que funcione para todas as crianças.</p>
+      <p><strong>Existe a possibilidade de construir uma rotina mais adequada para a sua realidade.</strong></p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 3 — RUMINAÇÃO (a dor, amplificada)
+     O QUE VOCÊ RECEBE
      ============================================================ -->
-<section id="pain" class="sec">
-  <div class="sec-in" style="max-width:760px">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">O diagnóstico</span>
-      <h2 class="ttl">Você se reconhece<br><em>nestas situações?</em></h2>
-      <p style="margin-top:18px;color:var(--muted);max-width:460px;margin-left:auto;margin-right:auto;font-size:15px;line-height:1.72">Clique em tudo que você vivencia agora mesmo.</p>
-      <div class="gline"></div>
-    </div>
-    <div class="pain-list" id="pgrid">
-      <div class="pr rv d1" onclick="tp(this)"><div class="pbox"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="pt">Seu bebê finalmente dorme… e pouco tempo depois acorda chorando de novo</div><div class="pd">E toda vez você precisa levantar e acalmar do zero</div></div></div>
-      <div class="pr rv d2" onclick="tp(this)"><div class="pbox"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="pt">Você passa mais tempo tentando fazê-lo dormir do que realmente dormindo</div><div class="pd">Colo, embalo, mamada — a noite virou plantão</div></div></div>
-      <div class="pr rv d3" onclick="tp(this)"><div class="pbox"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="pt">Qualquer mudança na rotina parece destruir completamente a noite</div><div class="pd">Uma viagem, uma visita, um dia fora do horário — e tudo desanda</div></div></div>
-      <div class="pr rv" onclick="tp(this)"><div class="pbox"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="pt">Você já tentou banho, colo, música, ruído branco, horários diferentes — e nada parece durar</div><div class="pd">Funciona por duas noites e no terceiro dia volta tudo ao que era</div></div></div>
-      <div class="pr rv d1" onclick="tp(this)"><div class="pbox"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="pt">Você acorda pela manhã mais cansada do que quando foi dormir</div><div class="pd">E o dia inteiro — trabalho, casa, relacionamento — paga a conta</div></div></div>
-      <div class="pr rv d2" onclick="tp(this)"><div class="pbox"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="pt">As sonecas são curtas demais e não descansam ninguém</div><div class="pd">O bebê acorda irritado e você já não tem mais energia de reserva</div></div></div>
-    </div>
-    <div class="rumin rv">
-      Se você marcou mentalmente <strong>duas ou mais</strong> dessas situações, talvez o problema não seja “seu bebê não gostar de dormir”.<br>
-      <strong>O problema pode estar na sequência que antecede e mantém o sono.</strong>
-    </div>
-    <div id="pmsg">
-      <h3>Você reconheceu <span id="pc">0</span> sinais de sono desregulado.</h3>
-      <p>Cada noite que passa sem organizar essa sequência, o sono do seu bebê — e o seu — fica mais difícil de reconquistar. O Protocolo existe exatamente para reorganizar isso, <em>passo a passo.</em></p>
-      <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn md">Quero aplicar o protocolo hoje <svg class="ic" style="width:16px;height:16px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
-      <div class="buyers-badge" style="justify-content:center;margin-top:14px">
-        <span class="dot"></span>
-        <span style="color:rgba(255,255,255,.45)">Restam apenas <strong id="vagas-pain" style="color:#ff8a8a">23</strong> vagas neste preço</span>
+<section id="entregaveis" class="sec" style="background:var(--cream2)">
+  <div class="sec-in">
+    <span class="lbl center rv">O que você recebe</span>
+    <h2 class="ttl center rv">Não é apenas um guia para ler. <em>É um material para consultar e aplicar.</em></h2>
+    <div class="prose center rv"><p>Ao garantir o Protocolo do Sono Perfeito, você recebe o conteúdo principal e três recursos interativos para facilitar a aplicação no dia a dia.</p></div>
+
+    <div class="deliv">
+      <div class="dv rv">
+        <div class="dv-tag">1 · Material principal</div>
+        <h3>Protocolo do Sono Perfeito</h3>
+        <p>Seis etapas práticas que apresentam os fundamentos da rotina de sono, o ambiente, a organização das sonecas, a preparação noturna e a adaptação às mudanças de fase.</p>
+        <p>Tudo explicado de maneira acessível, para você entender o que observar e como começar.</p>
+      </div>
+      <div class="dv feat rv">
+        <div class="dv-tag">2 · No app</div>
+        <h3>Guia de Emergência da Madrugada</h3>
+        <p class="hook">Porque às 3h da manhã ninguém quer ler 80 páginas para descobrir o que fazer.</p>
+        <p>Um recurso de consulta rápida com sete situações comuns da rotina noturna. Você abre no celular, identifica a situação e encontra orientações para avaliar as necessidades do bebê e responder com acolhimento.</p>
+        <p>Sem precisar improvisar uma solução diferente a cada noite.</p>
+      </div>
+      <div class="dv rv">
+        <div class="dv-tag">3 · No app</div>
+        <h3>Checklist Interativo da Rotina Noturna</h3>
+        <p>Sabe quando você chega ao fim do dia tão cansada que nem lembra o que já preparou?</p>
+        <p>O checklist reúne 19 itens interativos para ajudar a organizar a sequência da noite. Você acompanha o que já fez, o que falta e quais etapas fazem sentido para sua rotina.</p>
+      </div>
+      <div class="dv rv">
+        <div class="dv-tag">4 · No app</div>
+        <h3>Tabela de Horários por Idade</h3>
+        <p>Um recurso de consulta com referências de sonecas, períodos de vigília e rotinas para diferentes faixas etárias, de 0 a 3 anos.</p>
+        <p>Para você não precisar comparar a rotina do seu filho com a de um bebê de idade completamente diferente.</p>
       </div>
     </div>
+
+    <div class="shots rv">
+      <div class="shot"><div class="ph-s"><img src="app-em.jpg" alt="Tela real: Guia de Emergência" loading="lazy" width="500" height="900"/></div><span>Guia SOS</span></div>
+      <div class="shot"><div class="ph-s"><img src="app-cl.jpg" alt="Tela real: Checklist Noturno" loading="lazy" width="500" height="900"/></div><span>Checklist</span></div>
+      <div class="shot"><div class="ph-s"><img src="app-tab.jpg" alt="Tela real: Tabela por Idade" loading="lazy" width="500" height="900"/></div><span>Tabela por idade</span></div>
+    </div>
+    <p class="shots-note rv">Telas reais do app. Tudo reunido em um único lugar, para acessar pelo celular quando precisar.</p>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 3B — A DESCOBERTA / MECANISMO
+     TRANSFORMAÇÃO
      ============================================================ -->
-<section id="mech" class="sec">
-  <div class="sec-in" style="max-width:820px">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">A descoberta</span>
-      <h2 class="ttl">O Erro Que Pode Estar Fazendo Seu Bebê<br><em>Acordar Noite Após Noite</em></h2>
-      <div class="gline"></div>
+<section id="transformacao" class="sec">
+  <div class="sec-in">
+    <h2 class="ttl center rv">Imagine a diferença de terminar o dia <em>sabendo o que fazer.</em></h2>
+    <div class="prose center rv">
+      <p>Não porque alguém prometeu que seu bebê nunca mais vai acordar.</p>
+      <p><strong>Mas porque você tem um plano.</strong></p>
+      <p>Você sabe quais sinais observar. Consegue preparar o ambiente com antecedência. Entende melhor quais despertares podem fazer parte do desenvolvimento.</p>
+      <p>E, quando uma noite difícil acontece, não precisa sentir que perdeu todo o progresso.</p>
     </div>
-    <p class="mech-lead rv d1">
-      A maioria dos pais tenta resolver <strong>cada despertar separadamente</strong>: colo, mamada, embalo, troca de posição, música…
-    </p>
-    <div class="mech-wrong rv d2">
-      <span><svg class="ic"><use href="#i-x"/></svg> Colo</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Mamada</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Embalo</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Troca de posição</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Música</span>
-    </div>
-    <p class="mech-turn rv d3">
-      Só que, quando <em>a rotina que antecede o sono</em> continua desorganizada, você pode acabar repetindo a mesma batalha todas as noites.
-    </p>
-    <div style="text-align:center">
-      <div class="mech-name rv d3">
-        <div class="mn-l">O mecanismo do protocolo</div>
-        <div class="mn-t">A Sequência <em>4D do Sono</em></div>
-        <div class="mn-s">Diagnosticar · Desacelerar · Destravar · Durar</div>
-      </div>
-    </div>
-    <p class="mech-lead rv d3" style="margin-top:28px">
-      O Protocolo do Sono Perfeito foi organizado para atacar o problema numa sequência simples: <strong>entender o padrão atual, preparar a rotina, aplicar os ajustes e manter consistência</strong> suficiente para observar o que funciona no seu caso.
-    </p>
+    <div class="callout rv center"><strong>Mais clareza para você. Mais previsibilidade para a rotina. Mais respeito às necessidades do seu bebê.</strong><br>É isso que o Protocolo do Sono Perfeito foi criado para oferecer.</div>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 4 — PASSO A PASSO (as 4 fases)
+     DEPOIMENTOS
      ============================================================ -->
-<section id="steps" class="sec">
+<section id="depoimentos" class="sec dk">
   <div class="sec-in w">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">O passo a passo</span>
-      <h2 class="ttl lt">Estas São as 4 Fases Para<br><em>Reorganizar as Noites da Sua Casa</em></h2>
-      <div class="gline"></div>
-      <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.32);max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7">Nenhuma fase depende de método de choro. Cada uma se apoia na anterior — é a sequência que faz a diferença, não o truque isolado.</p>
-    </div>
-    <div class="stp-grid">
-      <div class="stp rv d1">
-        <div class="stp-d">D</div>
-        <div class="stp-c">
-          <div class="stp-tag">Fase 1 · Diagnosticar</div>
-          <div class="stp-t">Entenda o padrão atual antes de mudar qualquer coisa</div>
-          <p class="stp-p">Você mapeia o relógio biológico do seu bebê, as janelas de vigília da idade dele e o que exatamente está disparando os despertares. Sem esse diagnóstico, qualquer mudança vira tentativa e erro.</p>
-        </div>
+    <span class="lbl center rv">Relatos de clientes</span>
+    <h2 class="ttl center rv">Veja como o protocolo funciona <em>na vida real</em></h2>
+    <div class="t-grid rv">
+      <div class="t-card">
+        <h3>A mãe que não sabia por onde começar</h3>
+        <div class="t-img"><img src="testi-1.png" alt="Print real de mensagem de cliente" loading="lazy"/></div>
       </div>
-      <div class="stp rv d2">
-        <div class="stp-d">D</div>
-        <div class="stp-c">
-          <div class="stp-tag">Fase 2 · Desacelerar</div>
-          <div class="stp-t">Prepare o bebê para dormir — antes da hora de dormir</div>
-          <p class="stp-p">Uma sequência noturna simples e repetível que sinaliza ao corpo dele que chegou a hora de desacelerar: luz, temperatura, ruído, ordem dos passos. É aqui que a noite é ganha ou perdida.</p>
-        </div>
+      <div class="t-card">
+        <h3>A mãe que já tinha tentado várias dicas</h3>
+        <div class="t-img"><img src="testi-3.png" alt="Print real de mensagem de cliente" loading="lazy"/></div>
       </div>
-      <div class="stp rv d3">
-        <div class="stp-d">D</div>
-        <div class="stp-c">
-          <div class="stp-tag">Fase 3 · Destravar</div>
-          <div class="stp-t">Elimine os hábitos invisíveis que sabotam o sono</div>
-          <p class="stp-p">Os ajustes que quebram as associações de sono que forçam você a recomeçar do zero a cada despertar — de forma gentil, respeitando o ritmo do seu bebê e sem deixá-lo chorando sozinho.</p>
-        </div>
-      </div>
-      <div class="stp rv d4">
-        <div class="stp-d">D</div>
-        <div class="stp-c">
-          <div class="stp-tag">Fase 4 · Durar</div>
-          <div class="stp-t">Mantenha a consistência (e atravesse as regressões)</div>
-          <p class="stp-p">O plano de aplicação dia a dia para sustentar o resultado quando aparecerem os dentes, as viagens, os picos de crescimento e as regressões — que é onde a maioria das famílias perde tudo o que conquistou.</p>
-        </div>
+      <div class="t-card">
+        <h3>A mãe que achou que seria “mais um ebook”</h3>
+        <div class="t-img"><img src="testi-2.png" alt="Print real de mensagem na comunidade de clientes" loading="lazy"/></div>
       </div>
     </div>
+    <div class="t-more rv">
+      <div class="t-img"><img src="testi-4.png" alt="Print real de mensagem de cliente" loading="lazy"/></div>
+      <div class="t-img"><img src="testi-5.png" alt="Print real de mensagem de cliente" loading="lazy"/></div>
+    </div>
+    <p class="t-note rv">Prints reais enviados por clientes. Cada bebê tem necessidades próprias. Os relatos representam experiências individuais, não garantias de resultados.</p>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO EXTRA — BENEFÍCIOS
+     VIDA REAL
      ============================================================ -->
-<section id="benef" class="sec">
-  <div class="sec-in w">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">O que muda na prática</span>
-      <h2 class="ttl">Com Esse Passo a Passo<br><em>Você Vai:</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="bnf-grid">
-      <div class="bnf rv d1">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-moon"/></svg></div>
-        <h3>Ter noites previsíveis de novo</h3>
-        <p>Saber, antes de deitar, como a noite vai transcorrer — em vez de torcer para dar certo.</p>
-      </div>
-      <div class="bnf rv d2">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-calendar"/></svg></div>
-        <h3>Parar de improvisar a cada despertar</h3>
-        <p>Você passa a ter uma resposta pronta para cada cenário, inclusive às 3h da madrugada.</p>
-      </div>
-      <div class="bnf rv d3">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-sun"/></svg></div>
-        <h3>Recuperar suas manhãs</h3>
-        <p>Acordar descansada muda o seu humor, o seu trabalho, a sua paciência e a sua saúde.</p>
-      </div>
-      <div class="bnf rv d4">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-layers"/></svg></div>
-        <h3>Atravessar as fases sem perder o progresso</h3>
-        <p>Dentes, viagens, regressões e mudanças de rotina deixam de zerar tudo o que você construiu.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 5 — ENTREGÁVEIS (módulos virados em resultados)
-     ============================================================ -->
-<section id="offer" class="sec">
+<section id="vida-real" class="sec">
   <div class="sec-in">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">E tem mais!</span>
-      <h2 class="ttl">Veja Tudo o Que Você Recebe<br><em>no Protocolo do Sono Perfeito</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="pshell rv">
-      <div class="phead">
-        <div><span class="pill">Produto Principal</span><h3>Protocolo do Sono Perfeito</h3><p>6 etapas de aplicação + plano prático noite inteira</p></div>
-      </div>
-      <div class="pbody">
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 1 — Descubra o que está sabotando as noites</div><div class="md">Entenda os padrões que podem estar contribuindo para os despertares e saiba o que observar antes de mudar a rotina.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 2 — Use os ciclos de sono a seu favor</div><div class="md">Descubra por que ele acorda sempre no mesmo horário e como encaixar as trocas de ciclo sem despertar completo.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 3 — Prepare o bebê para dormir</div><div class="md">Monte uma sequência noturna simples que sinaliza que chegou a hora de desacelerar — e que funciona mesmo nos dias atípicos.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 4 — Transforme o quarto num ambiente de sono profundo</div><div class="md">Temperatura, iluminação, ruído branco e segurança do berço ajustados ponto a ponto, sem gastar com nada supérfluo.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 5 — Atravesse regressões sem perder o que conquistou</div><div class="md">O que fazer quando aparecerem dentes, picos de crescimento, viagens e mudanças de fase — antes que a noite desande.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 6 — Aplique o plano noite inteira, dia a dia</div><div class="md">O protocolo completo em formato de cronograma: o que fazer em cada dia até seu bebê emendar horas seguidas de sono.</div></div></div>
-      </div>
-    </div>
-    <!-- App exclusivo — print real do app de bônus -->
-    <div class="app-showcase rv">
-      <div class="app-phone">
-        <div class="app-phone-inner">
-          <img src="app-mock-guia.jpg" alt="Tela real do Guia de Emergência, um dos bônus, aberto no app exclusivo"/>
-        </div>
-        <span class="app-phone-tag">Print real do app</span>
-      </div>
-      <div class="app-showcase-copy">
-        <span class="lbl">Novidade</span>
-        <h3>Os bônus chegam como<br><em>App Exclusivo</em></h3>
-        <p>Não é PDF. É um app interativo no seu celular — para abrir com uma mão só, no escuro, às 3h da madrugada.</p>
-      </div>
+    <h2 class="ttl rv">Você não precisa transformar a sua casa em <em>um laboratório de sono.</em></h2>
+    <ul class="nope rv">
+      <li><svg class="ic"><use href="#i-x"/></svg> Nem seguir horários rígidos ao minuto.</li>
+      <li><svg class="ic"><use href="#i-x"/></svg> Nem ignorar o choro do seu filho.</li>
+      <li><svg class="ic"><use href="#i-x"/></svg> Nem investir centenas de reais antes de conhecer orientações básicas de organização da rotina.</li>
+    </ul>
+    <div class="prose rv">
+      <p>O Protocolo do Sono Perfeito foi pensado para quem precisa de algo que caiba na vida real.</p>
+      <p><strong>Inclusive naqueles dias em que tudo sai do planejado.</strong></p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 6 — BÔNUS
-     ============================================================ -->
-<section id="bonus" class="sec" style="background:var(--cream2)">
-  <div class="sec-in">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Ainda não acabou</span>
-      <h2 class="ttl">Você Também Vai Receber<br><em>3 Bônus no App</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="bstack" style="margin-top:44px">
-      <div class="bfeat rv">
-        <span class="bfeat-init" aria-hidden="true">G</span>
-        <div class="bfeat-content">
-          <div class="btag">Bônus 01 · App</div>
-          <div class="btit">Guia de Emergência</div>
-          <div class="bdsc">Protocolo SOS de madrugada + 7 cenários detalhados. Abra no celular às 3h e saiba exatamente o que fazer — sem improvisar no escuro.</div>
-        </div>
-        <div class="bfeat-price"><div class="bfree">INCLUSO</div></div>
-      </div>
-      <div class="bgrid">
-        <div class="bc2 rv d1">
-          <span class="bc2-init" aria-hidden="true">C</span>
-          <div class="btag">Bônus 02 · App</div>
-          <div class="btit">Checklist da Rotina Noturna</div>
-          <div class="bdsc">19 itens interativos para marcar toda noite. Progresso salvo e barra de conclusão — a Fase 2 do protocolo na palma da mão.</div>
-          <div class="bc2-price"><span class="bfree">INCLUSO</span></div>
-        </div>
-        <div class="bc2 rv d2">
-          <span class="bc2-init" aria-hidden="true">T</span>
-          <div class="btag">Bônus 03 · App</div>
-          <div class="btit">Tabela de Horários por Idade</div>
-          <div class="bdsc">Rotinas do 0 aos 3 anos com horários, sonecas e janelas de vigília. Toque para expandir a fase exata do seu bebê.</div>
-          <div class="bc2-price"><span class="bfree">INCLUSO</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 7 — PARA QUEM SERVE
-     ============================================================ -->
-<section id="quem" class="sec">
-  <div class="sec-in">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Para quem serve</span>
-      <h2 class="ttl lt">O Protocolo do Sono Perfeito<br><em>é para você que:</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="qlist rv d1">
-      <div class="qi"><svg class="ic"><use href="#i-check"/></svg><span>Quer <strong>voltar a dormir horas seguidas</strong> sem virar a noite em plantão de colo e mamada;</span></div>
-      <div class="qi"><svg class="ic"><use href="#i-check"/></svg><span>Está exausta de levantar <strong>três, quatro, cinco vezes por noite</strong> e recomeçar tudo do zero;</span></div>
-      <div class="qi"><svg class="ic"><use href="#i-check"/></svg><span>Já tentou banho, colo, música e ruído branco — e <strong>nada se sustentou por mais de duas noites</strong>;</span></div>
-      <div class="qi"><svg class="ic"><use href="#i-check"/></svg><span>Não quer gastar centenas de reais em consultoria de sono <strong>antes de tentar um caminho organizado</strong>;</span></div>
-      <div class="qi"><svg class="ic"><use href="#i-check"/></svg><span>Quer um passo a passo <strong>sem método de choro</strong>, que respeite o ritmo do seu bebê;</span></div>
-      <div class="qi"><svg class="ic"><use href="#i-check"/></svg><span>É mãe, pai ou cuidador de bebê <strong>de 0 a 3 anos</strong> e precisa de algo aplicável já nesta noite.</span></div>
-    </div>
-    <div class="qend rv d2">
-      <div class="qe1">Enfim…</div>
-      <div class="qe2">Se você quer <em>parar de improvisar a cada madrugada</em> e ter um plano na mão, o Protocolo do Sono Perfeito é para você.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 8 — RECAPITULANDO
-     ============================================================ -->
-<section id="recap" class="sec">
-  <div class="sec-in">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Recapitulando…</span>
-      <h2 class="ttl">Veja Tudo o Que Você<br><em>Recebe Hoje</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="rcp rv d1">
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Protocolo completo do Sono Perfeito</div><div class="rcp-d">As 6 etapas de aplicação, da Fase 1 à Fase 4 da Sequência 4D</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Plano de aplicação passo a passo</div><div class="rcp-d">O cronograma dia a dia até seu bebê emendar horas seguidas de sono</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">19 itens interativos para marcar toda noite, direto no celular</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">Protocolo SOS de madrugada com 7 cenários resolvidos</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">Rotinas, sonecas e janelas de vigília do 0 aos 3 anos</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Acesso imediato e vitalício, em qualquer dispositivo</div><div class="rcp-d">Mais atualizações futuras do protocolo, sem custo adicional</div></div></div>
-      <div class="rcp-end">
-        <div class="re1">Uma consultoria de sono particular custa centenas de reais e pode levar semanas para começar.</div>
-        <div class="re2"><em>R$37</em> para ter o protocolo inteiro na mão e começar hoje.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 9 — VALOR
+     OFERTA (id="valor" alimenta o evento ViewPrice)
      ============================================================ -->
 <section id="valor" class="sec">
-  <div class="in">
-    <h2 class="rv">Acesso Completo Hoje<br><em>por R$37</em></h2>
+  <div class="sec-in" style="max-width:600px">
+    <h2 class="rv">Hoje você pode receber o Protocolo do Sono Perfeito completo <em>por R$37.</em></h2>
     <div class="obox rv">
-      <div class="otop">
-        <div class="olbl">acesso completo hoje por</div>
-        <div class="oprice"><span class="ocur">R$</span><span class="oval">37</span><span class="ocur">,00</span></div>
-        <div class="oinst">ou 2x de R$ 19,90 sem juros</div>
+      <div class="o-shots">
+        <div><img src="app-cl.jpg" alt="" loading="lazy"/></div>
+        <div><img src="app-em.jpg" alt="" loading="lazy"/></div>
+        <div><img src="app-tab.jpg" alt="" loading="lazy"/></div>
       </div>
       <div class="obody">
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Protocolo completo do Sono Perfeito — 6 etapas</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Plano de aplicação passo a passo</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="ototl"><span class="ototl-l">Você paga hoje</span><span class="ototl-r">R$ 37,00</span></div>
-        <div class="scar-strip" style="margin-top:0;margin-bottom:18px">
-          <svg class="ic"><use href="#i-alert"/></svg>
-          Apenas <strong id="vagas-vbox" style="margin:0 3px">23</strong> vagas neste preço
+        <div class="o-h">Seu acesso inclui</div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Protocolo completo com seis etapas práticas.</span></div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Sequência 4D para orientar a aplicação.</span></div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Plano de organização da rotina de sono.</span></div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Guia de Emergência da Madrugada, com sete cenários.</span></div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Checklist interativo com 19 itens.</span></div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Tabela de horários e sonecas por idade.</span></div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Acesso digital imediato após confirmação do pagamento.</span></div>
+        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span>Garantia de 7 dias.</span></div>
+        <div class="oprice">
+          <div class="l">Tudo isso por apenas</div>
+          <div class="v"><small>R$</small>37,00</div>
+          <div class="u">Pagamento único. Sem mensalidade.</div>
         </div>
-        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg" style="width:100%;display:flex">
-          Quero Aplicar o Protocolo Hoje
-          <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
-        </a>
-        <div class="omicro">
-          <span><svg class="ic"><use href="#i-lock"/></svg> Pagamento seguro</span>
-          <span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span>
-          <span><svg class="ic"><use href="#i-shield"/></svg> Garantia 7 dias</span>
-        </div>
-        <div class="buyers-badge" style="justify-content:center;margin-top:10px">
-          <span class="dot"></span>
-          <span style="color:var(--muted)"><span class="cnt-b">143</span> mães compraram nas últimas 24h</span>
+        <div class="cta-wrap">
+          <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">Sim, quero meu acesso completo por R$37</a>
+          <p class="cta-note">Pagamento seguro • Acesso por e-mail • Garantia de 7 dias</p>
         </div>
       </div>
     </div>
@@ -1209,369 +639,154 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 </section>
 
 <!-- ============================================================
-     BLOCO 10 — COMO ACESSAR
+     COMO COMEÇAR
      ============================================================ -->
-<section id="acesso" class="sec">
+<section id="acesso" class="sec" style="background:var(--cream2)">
   <div class="sec-in w">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Como acessar</span>
-      <h2 class="ttl">Compre Agora e Receba Seu Acesso<br><em>no E-mail Imediatamente</em></h2>
-      <div class="gline"></div>
-    </div>
+    <h2 class="ttl center rv">Começar é mais simples <em>do que você imagina.</em></h2>
     <div class="acc-grid">
-      <div class="acc rv d1">
-        <span class="acc-n">1</span>
-        <div class="acc-ico"><svg class="ic"><use href="#i-lock"/></svg></div>
-        <h3>Faça sua compra</h3>
-        <p>Assim que finalizar o pagamento, você recebe o acesso no seu e-mail — leva menos de um minuto.</p>
+      <div class="acc rv"><div class="acc-n">1</div><h3>Garanta seu acesso.</h3><p>Finalize a compra pelo ambiente de pagamento seguro.</p></div>
+      <div class="acc rv"><div class="acc-n">2</div><h3>Abra o material no celular.</h3><p>Após a confirmação do pagamento, você recebe as instruções de acesso por e-mail.</p></div>
+      <div class="acc rv"><div class="acc-n">3</div><h3>Comece pela primeira decisão.</h3><p>Observe a rotina atual do seu bebê e identifique quais orientações são apropriadas para a idade dele.</p></div>
+    </div>
+    <div class="prose center rv" style="margin-top:30px">
+      <p>Você não precisa mudar tudo em uma única noite.</p>
+      <p><strong>Comece entendendo. Depois ajuste gradualmente.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GARANTIA
+     ============================================================ -->
+<section id="guar" class="sec dk">
+  <div class="in">
+    <div class="gseal rv"><svg class="ic"><use href="#i-shield"/></svg><b>7</b><span>dias</span></div>
+    <div class="rv">
+      <h2>Você tem <em>7 dias</em> para conhecer o material.</h2>
+      <div class="prose">
+        <p>Queremos que você possa avaliar o Protocolo do Sono Perfeito com tranquilidade. Por isso, sua compra conta com <strong>garantia de 7 dias</strong>.</p>
+        <p>Se, nesse período, você decidir que o produto não é para você, poderá solicitar o reembolso conforme as condições informadas no checkout.</p>
+        <p>Assim, você pode conhecer o conteúdo e decidir se ele atende às suas expectativas.</p>
       </div>
-      <div class="acc rv d2">
-        <span class="acc-n">2</span>
-        <div class="acc-ico"><svg class="ic"><use href="#i-monitor"/></svg></div>
-        <h3>Abra o protocolo e os bônus</h3>
-        <p>Tudo no app exclusivo, no celular, tablet ou computador. Sem instalar nada, sem senha complicada.</p>
-      </div>
-      <div class="acc rv d3">
-        <span class="acc-n">3</span>
-        <div class="acc-ico"><svg class="ic"><use href="#i-moon"/></svg></div>
-        <h3>Aplique já nesta noite</h3>
-        <p>Comece pela Fase 1 hoje mesmo e siga a sequência até seu bebê dormir por horas seguidas.</p>
+      <div class="cta-wrap" style="text-align:left">
+        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">Quero acessar o protocolo agora <svg class="ic"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 11 — AUTORIDADE
+     QUEM ESTÁ POR TRÁS
      ============================================================ -->
 <section id="autor" class="sec">
   <div class="sec-in">
+    <h2 class="ttl center rv">Quem está por trás do <em>Protocolo do Sono Perfeito?</em></h2>
     <div class="aut rv">
-      <div class="aut-seal"><svg class="ic"><use href="#i-shield"/></svg></div>
-      <div class="aut-c">
-        <div class="a-n">Quem está por trás do Protocolo</div>
-        <div class="a-r">Criadores do Protocolo do Sono Perfeito</div>
-        <p>O Protocolo do Sono Perfeito nasceu da rotina de consultoria de sono infantil: o mesmo passo a passo que consultoras certificadas aplicam com famílias, organizado num formato que qualquer mãe consegue seguir em casa, sozinha, sem acompanhamento pago. Mais de 2.500 famílias já aplicaram a sequência — e é isso que o material entrega: método organizado, linguagem simples e aplicação imediata.</p>
+      <div class="aut-seal"><svg class="ic"><use href="#i-moon"/></svg></div>
+      <div>
+        <p>O Protocolo do Sono Perfeito foi desenvolvido para reunir orientações de organização da rotina infantil em um formato simples e acessível.</p>
+        <p>Nosso compromisso é oferecer informação clara, prática e responsável, respeitando as diferenças de desenvolvimento e as necessidades de cada criança.</p>
+        <p>O material é educativo e não substitui a avaliação de um pediatra ou profissional de saúde.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 12 — CONVERSA SÉRIA
-     ============================================================ -->
-<section id="opcoes" class="sec">
-  <div class="sec-in">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Uma conversa séria</span>
-      <h2 class="ttl">Agora Você Tem<br><em>Duas Opções:</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="opt-grid">
-      <div class="opt opt-a rv d1">
-        <div class="opt-ico"><svg class="ic"><use href="#i-x"/></svg></div>
-        <h3>Opção 1</h3>
-        <p>Fechar esta página e, amanhã de madrugada, continuar tentando descobrir sozinha o que mudar — testando colo, mamada, embalo e horários diferentes, noite após noite, sem saber o que realmente funciona no caso do seu bebê.</p>
-      </div>
-      <div class="opt opt-b rv d2">
-        <div class="opt-ico"><svg class="ic"><use href="#i-check"/></svg></div>
-        <h3>Opção 2</h3>
-        <p>Investir R$37 agora, receber o protocolo organizado em menos de um minuto, abrir o primeiro passo ainda hoje e começar a aplicar uma sequência pronta — com 7 dias para testar e pedir seu dinheiro de volta se não fizer sentido.</p>
-      </div>
-    </div>
-    <div class="opt-end rv d3">
-      <div class="oe1">Eu sei (e você também sabe): a opção 2 é a mais inteligente.</div>
-      <div class="oe2">O inimigo aqui não é você. É continuar no mesmo ciclo.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== GARANTIA ========== -->
-<section id="guar" class="sec">
-  <div class="in rv">
-    <div class="gseal">
-      <div class="gs-ico"><svg class="ic"><use href="#i-shield"/></svg></div>
-      <div class="gs-tag">Garantia</div>
-      <div class="gs-num">7</div>
-      <div class="gs-unit">dias</div>
-    </div>
-    <div>
-      <h2>Garantia Total de <em>7 Dias</em></h2>
-      <p>Se em 7 dias você aplicar o protocolo e não perceber melhora real no sono do seu bebê, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é completamente nosso.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 13 — VALOR / FECHAMENTO
-     ============================================================ -->
-<section id="final">
-  <div class="in">
-    <h2 class="rv">Quantas Noites Iguais a Essa<br><em>Você Ainda Quer Enfrentar?</em></h2>
-    <p class="fin-lead rv d1">
-      Você pode fechar esta página e amanhã continuar tentando descobrir sozinha o que mudar…<br><br>
-      ou pode <strong>receber agora um protocolo organizado</strong>, abrir o primeiro passo e começar a aplicar ainda hoje.
-    </p>
-    <div class="obox rv">
-      <div class="otop">
-        <div class="olbl">Protocolo do Sono Perfeito — acesso completo por</div>
-        <div class="oprice"><span class="ocur">R$</span><span class="oval">37</span><span class="ocur">,00</span></div>
-        <div class="oinst">ou 2x de R$ 19,90 sem juros</div>
-      </div>
-      <div class="obody">
-        <div class="urg-box">
-          <strong>Atenção:</strong> restam <strong id="vagas-final">23</strong> vagas neste preço.<br>Quando o timer zerar, a oferta encerra.
-        </div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Protocolo completo do Sono Perfeito — 6 etapas</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Plano de aplicação passo a passo</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="ototl"><span class="ototl-l">Você paga hoje</span><span class="ototl-r">R$ 37,00</span></div>
-        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg" style="width:100%;display:flex">
-          Quero Começar Hoje
-          <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
-        </a>
-        <div class="omicro">
-          <span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span>
-          <span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span>
-        </div>
-        <div class="buyers-badge" style="justify-content:center;margin-top:10px">
-          <span class="dot"></span>
-          <span style="color:var(--muted)"><span class="cnt-b">143</span> mães compraram nas últimas 24h</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 14 — FAQ (máquina de matar objeção)
+     FAQ
      ============================================================ -->
 <section id="faq" class="sec">
-  <div class="sec-in" style="max-width:720px">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Dúvidas frequentes</span>
-      <h2 class="ttl">Perguntas Que <em>Todo Mundo Faz</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="flist">
-      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>E se meu bebê acorda muitas vezes por noite?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>É exatamente esse o cenário para o qual o protocolo foi organizado. A Fase 1 serve para você identificar o que está provocando cada despertar antes de mudar qualquer coisa — e as fases seguintes atacam a causa em vez de apagar incêndio despertar por despertar.</p></div></div>
-      <div class="fi rv d1"><button class="fq" onclick="tf(this)"><span>E se eu já tentei criar uma rotina e não funcionou?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>A maioria das rotinas falha porque é montada sem o diagnóstico da Fase 1 e sem a consistência da Fase 4 — funciona duas noites e desanda na terceira. Aqui a rotina vem com a sequência inteira em volta dela, incluindo o que fazer quando algo sai do lugar.</p></div></div>
-      <div class="fi rv d2"><button class="fq" onclick="tf(this)"><span>Quanto tempo por dia eu preciso dedicar?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>A leitura de cada etapa leva poucos minutos e a aplicação acontece dentro da rotina que você já tem — no banho, na mamada, na hora de apagar a luz. Não existe tarefa extra no seu dia: o que muda é a ordem e a consistência do que você já faz.</p></div></div>
-      <div class="fi rv d3"><button class="fq" onclick="tf(this)"><span>Preciso deixar meu bebê chorando?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Não. O protocolo não usa método de choro controlado. A abordagem é gentil e se apoia em rotina, ambiente e ritmo biológico — o objetivo é criar as condições para que o bebê aprenda a dormir naturalmente, no ritmo dele.</p></div></div>
-      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>Serve para qual faixa etária?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>De 0 a 3 anos. A tabela de horários por idade traz rotinas, sonecas e janelas de vigília separadas por fase, então você aplica exatamente o que corresponde à idade do seu bebê — do recém-nascido ao toddler.</p></div></div>
-      <div class="fi rv d1"><button class="fq" onclick="tf(this)"><span>Quando recebo o acesso?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Imediatamente após a confirmação do pagamento, por e-mail. O conteúdo é 100% digital e abre no celular, tablet ou computador — dá para começar a aplicar já nesta noite.</p></div></div>
-      <div class="fi rv d2"><button class="fq" onclick="tf(this)"><span>E se eu comprar e perceber que não é para mim?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Você tem 7 dias de garantia total. Se aplicar e não perceber melhora real, devolvemos 100% do valor — sem perguntas e sem burocracia. Na prática, o risco de testar é zero.</p></div></div>
-      <div class="fi rv d3"><button class="fq" onclick="tf(this)"><span>E se eu tiver gêmeos ou mais de um filho?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Os princípios se aplicam individualmente e o material traz orientações de sincronização de rotinas, justamente para quem precisa fazer dois horários conversarem sem dobrar o trabalho.</p></div></div>
+  <div class="sec-in">
+    <h2 class="ttl center rv">Perguntas <em>frequentes</em></h2>
+    <div class="faq">
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>Meu bebê ainda é recém-nascido. Posso usar?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Sim, você pode consultar as orientações adequadas à faixa etária, especialmente sobre ambiente seguro, observação de sinais e organização flexível da rotina.</p><p>Nos primeiros meses, despertares para alimentação e acolhimento são normais e necessários. O protocolo não deve ser usado para eliminar essas necessidades.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>Preciso deixar meu bebê chorando sozinho?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Não. A proposta não exige ignorar o choro ou deixar a criança sem acolhimento.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>E se eu já tentei várias rotinas?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>O diferencial da Sequência 4D é organizar a observação e os ajustes em etapas, para você não depender apenas de tentativas isoladas.</p><p>Isso não garante que todos os problemas de sono serão resolvidos, mas oferece uma estrutura mais clara para começar.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>O protocolo funciona para todas as idades?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>O material possui referências de 0 a 3 anos, com orientações diferentes conforme a fase de desenvolvimento.</p><p>As recomendações precisam ser adaptadas às necessidades individuais de cada criança.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>Em quanto tempo verei resultados?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Não existe prazo garantido. Algumas famílias podem perceber mudanças na organização da rotina rapidamente, enquanto outras precisam de mais tempo ou de orientação profissional.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>E se meu bebê continuar acordando?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Despertares podem ser normais. O protocolo ajuda a compreender e organizar a rotina, mas não elimina necessidades fisiológicas nem substitui a investigação de problemas de saúde.</p><p>Se houver ronco intenso, pausas respiratórias, dificuldades de alimentação, ganho de peso insuficiente ou alterações persistentes que preocupem você, procure o pediatra.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>Preciso instalar algum aplicativo?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Não é necessário instalar um aplicativo pela loja. Os recursos digitais podem ser acessados conforme as instruções enviadas após a compra.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>O pagamento é único?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Sim. O acesso anunciado custa R$37, sem assinatura mensal.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>E se eu não gostar?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Você tem 7 dias para solicitar reembolso, conforme as condições da garantia.</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 15 — RODAPÉ
+     FECHAMENTO
      ============================================================ -->
+<section id="final" class="sec" style="background:var(--cream2)">
+  <div class="sec-in center">
+    <h2 class="ttl rv">A próxima noite não precisa começar com <em>mais uma busca desesperada por respostas.</em></h2>
+    <div class="lines rv" style="margin-top:26px">
+      <p>Você já tem coisas demais para pensar.</p>
+      <p>Não precisa guardar na cabeça cada dica que encontra na internet.</p>
+      <p>O Protocolo do Sono Perfeito coloca uma sequência organizada e recursos práticos ao seu alcance.</p>
+      <p>Para consultar quando tiver dúvidas. Para adaptar quando a rotina mudar.</p>
+      <p>E para construir hábitos de sono mais previsíveis, respeitando o ritmo do seu bebê.</p>
+    </div>
+    <p class="close rv">Você não precisa de uma rotina perfeita. <em>Precisa de um caminho possível.</em></p>
+    <div class="fbox rv">
+      <h3>Protocolo do Sono Perfeito</h3>
+      <p class="pr">Acesso completo: <strong>R$37,00</strong></p>
+      <ul>
+        <li><svg class="ic"><use href="#i-check"/></svg> Sequência 4D</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Material completo</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Três recursos interativos</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Acesso imediato</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Garantia de 7 dias</li>
+      </ul>
+      <div class="cta-wrap" style="margin-top:26px">
+        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">Quero começar com a Sequência 4D <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="fbrand">Protocolo do Sono Perfeito</div>
-  <p class="fdisc">© 2026 Protocolo do Sono Perfeito — Todos os direitos reservados. Este produto é de conteúdo educacional e não substitui orientação médica ou pediátrica profissional. Os resultados podem variar de acordo com cada bebê e a consistência na aplicação do método.</p>
-  <p class="fdisc" style="margin-top:14px">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. A compra deste material não garante nenhum tipo de resultado. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais de clientes.</p>
+  <p class="fdisc">Conteúdo educativo. Não substitui aconselhamento médico. Os resultados variam conforme a idade, o desenvolvimento e as necessidades de cada criança.</p>
+  <p class="fdisc">Para um sono seguro, siga as recomendações do pediatra e das autoridades de saúde. Bebês menores de 1 ano devem dormir de barriga para cima, em superfície firme, plana e livre de objetos soltos.</p>
+  <p class="fdisc">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. © 2026 Protocolo do Sono Perfeito — Todos os direitos reservados.</p>
 </footer>
 
 <!-- ========== STICKY BAR ========== -->
 <div id="sticky">
   <div id="sticky-in">
-    <div><div class="sbn">Protocolo do Sono Perfeito</div><div class="sbp">Acesso completo por <strong>R$37</strong> · <span style="color:#ff8a8a;font-weight:600"><span id="vagas-sticky">23</span> vagas restantes</span> · Garantia 7 dias</div></div>
-    <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn sm">Quero Começar Hoje <svg class="ic" style="width:14px;height:14px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
-  </div>
-</div>
-
-<!-- ========== SOCIAL PROOF POPUP ========== -->
-<div id="sp-popup">
-  <button class="sp-close" onclick="document.getElementById('sp-popup').classList.remove('show')"><svg class="ic"><use href="#i-x"/></svg></button>
-  <div class="sp-av"><svg class="ic"><use href="#i-user"/></svg></div>
-  <div>
-    <div class="sp-name" id="sp-name">Mariana S.</div>
-    <div class="sp-action" id="sp-action">de São Paulo acabou de garantir</div>
+    <div><div class="sbn">Protocolo do Sono Perfeito</div><div class="sbp">Acesso completo por <strong>R$37</strong> · Garantia de 7 dias</div></div>
+    <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn sm">Quero começar <svg class="ic" style="width:14px;height:14px"><use href="#i-arrow"/></svg></a>
   </div>
 </div>
 
 <script>
-/* ======= COUNTDOWN ======= */
-(function(){
-  const KS='psp_s',KT='psp_t',INIT=15*60;
-  let s=parseInt(localStorage.getItem(KS)),t=parseInt(localStorage.getItem(KT));
-  let secs=(s&&t)?Math.max(0,s-Math.floor((Date.now()-t)/1e3)):INIT;
-  const el=document.getElementById('timer');
-  function tick(){
-    if(secs<=0){el.textContent='00:00';return;}
-    el.textContent=String(Math.floor(secs/60)).padStart(2,'0')+':'+String(secs%60).padStart(2,'0');
-    localStorage.setItem(KS,secs);localStorage.setItem(KT,Date.now());
-    secs--;setTimeout(tick,1e3);
-  }
-  tick();
-})();
-
-/* ======= PARTICLES ======= */
-(function(){
-  const cvs=document.getElementById('ptc');
-  if(!cvs)return;
-  const ctx=cvs.getContext('2d');
-  const wrap=document.getElementById('hero-cta');
-  function resize(){cvs.width=wrap.offsetWidth;cvs.height=wrap.offsetHeight;}
-  resize();window.addEventListener('resize',resize,{passive:true});
-  const N=60;
-  const pts=Array.from({length:N},()=>({
-    x:Math.random()*cvs.width,y:Math.random()*cvs.height,
-    r:Math.random()*1.4+.3,
-    vx:(Math.random()-.5)*.15,vy:-(Math.random()*.25+.1),
-    op:Math.random()*.45+.08
-  }));
-  function draw(){
-    cvs.width=wrap.offsetWidth;cvs.height=wrap.offsetHeight;
-    pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.y<-4){p.y=cvs.height+4;p.x=Math.random()*cvs.width;}
-      if(p.x<0)p.x=cvs.width;if(p.x>cvs.width)p.x=0;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(201,168,76,${p.op})`;ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
 /* ======= REVEAL ======= */
-/* rootMargin 120px bottom = triggers reveal 120px BEFORE element enters viewport */
-const ro=new IntersectionObserver(
-  es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}})},
-  {threshold:0,rootMargin:'0px 0px 120px 0px'}
-);
-document.querySelectorAll('.rv:not(.on)').forEach(el=>ro.observe(el));
-
-/* ======= COUNTERS ======= */
-/* Show final value as placeholder so no blank/wrong number ever shows */
-document.querySelectorAll('.cnt').forEach(el=>{
-  const to=parseInt(el.dataset.to),dec=el.hasAttribute('data-dec');
-  el.textContent=dec?(to/10).toFixed(1):to.toLocaleString('pt-BR');
-});
-const co=new IntersectionObserver(es=>{
-  es.forEach(e=>{
-    if(!e.isIntersecting)return;
-    const el=e.target,to=parseInt(el.dataset.to),dec=el.hasAttribute('data-dec');
-    const dur=1800,s=performance.now();
-    (function f(now){
-      const p=Math.min((now-s)/dur,1),v=Math.floor((1-Math.pow(1-p,3))*to);
-      el.textContent=dec?(v/10).toFixed(1):v.toLocaleString('pt-BR');
-      if(p<1)requestAnimationFrame(f);
-    })(s);
-    co.unobserve(el);
-  });
-},{threshold:0.1,rootMargin:'0px 0px 80px 0px'});
-document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
-
-/* ======= VAGAS (synced with popup purchases) ======= */
-const VAGA_IDS=['vagas-n','vagas-pain','vagas-vbox','vagas-testi','vagas-final','vagas-sticky'];
-const KV='psp_v',KVT='psp_vt',VINIT=23;
-let vagasV=parseInt(localStorage.getItem(KV));
-let vagasVT=parseInt(localStorage.getItem(KVT));
-if(!vagasV||isNaN(vagasV)||vagasV>VINIT)vagasV=VINIT;
-/* apply drops from minutes elapsed since last visit */
-if(vagasVT){
-  const minsPassed=Math.floor((Date.now()-vagasVT)/60000);
-  vagasV=Math.max(3,vagasV-Math.floor(minsPassed/5));
-}
-localStorage.setItem(KV,vagasV);localStorage.setItem(KVT,Date.now());
-
-function syncVagas(){
-  VAGA_IDS.forEach(id=>{
-    const el=document.getElementById(id);
-    if(!el)return;
-    el.textContent=vagasV;
-    /* brief scale-up flash so user notices the change */
-    el.style.transition='transform .15s ease,color .15s ease';
-    el.style.transform='scale(1.35)';
-    el.style.color='#ff6b6b';
-    setTimeout(()=>{el.style.transform='';el.style.color='';},300);
-  });
-}
-syncVagas();
-
-function dropVaga(){
-  if(vagasV<=3)return;
-  vagasV--;
-  localStorage.setItem(KV,vagasV);
-  syncVagas();
-}
-
-/* ======= BUYERS badge — fluctuates realistically ======= */
 (function(){
-  const base=143;
-  document.querySelectorAll('.cnt-b').forEach(el=>{
-    const v=base+Math.floor(Math.random()*12)-4;
-    el.textContent=v;
-  });
+  var els=document.querySelectorAll('.rv:not(.on)');
+  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('on')});return}
+  var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:0,rootMargin:'0px 0px 120px 0px'});
+  els.forEach(function(el){ro.observe(el)});
 })();
-
-/* ======= PAIN ======= */
-let pc=0;
-function tp(el){
-  const on=el.classList.toggle('ticked');
-  pc+=on?1:-1;
-  document.getElementById('pc').textContent=pc;
-  document.getElementById('pmsg').style.display=pc>0?'block':'none';
-}
 
 /* ======= FAQ ======= */
 function tf(btn){
-  const fi=btn.closest('.fi'),fb=fi.querySelector('.fbody'),ic=fi.querySelector('.ficon use');
-  const open=fi.classList.contains('open');
-  document.querySelectorAll('.fi').forEach(i=>{
-    i.classList.remove('open');
-    i.querySelector('.fbody').classList.remove('on');
+  var fi=btn.closest('.fi'),open=fi.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(function(i){
+    i.classList.remove('open');i.querySelector('.fbody').classList.remove('on');
     i.querySelector('.ficon use').setAttribute('href','#i-plus');
   });
-  if(!open){fi.classList.add('open');fb.classList.add('on');ic.setAttribute('href','#i-x');}
+  if(!open){fi.classList.add('open');fi.querySelector('.fbody').classList.add('on');fi.querySelector('.ficon use').setAttribute('href','#i-x')}
 }
 
-/* ======= SCROLL ======= */
-const pb=document.getElementById('prog'),sb=document.getElementById('sticky');
-window.addEventListener('scroll',()=>{
-  const sy=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;
-  pb.style.width=(sy/dh*100)+'%';
-  sb.classList.toggle('on',sy>800);
-},{passive:true});
-
-/* ======= SOCIAL PROOF POPUP ======= */
-const spData=[
-  {n:'Juliana M.',c:'São Paulo'},
-  {n:'Carla T.',c:'Belo Horizonte'},
-  {n:'Renata S.',c:'Curitiba'},
-  {n:'Camila F.',c:'Rio de Janeiro'},
-  {n:'Bruna L.',c:'Fortaleza'},
-  {n:'Fernanda R.',c:'Brasília'},
-  {n:'Ana P.',c:'Salvador'},
-  {n:'Mariana C.',c:'Porto Alegre'},
-  {n:'Patrícia O.',c:'Recife'},
-  {n:'Larissa M.',c:'Manaus'},
-];
-const times=['agora mesmo','há 2 min','há 4 min','há 6 min','há 8 min'];
-let ni=0;
-function showPopup(){
-  const pop=document.getElementById('sp-popup');
-  const d=spData[ni%spData.length];
-  const t=times[Math.floor(Math.random()*times.length)];
-  document.getElementById('sp-name').textContent=d.n;
-  document.getElementById('sp-action').textContent=`de ${d.c} garantiu — ${t}`;
-  ni++;
-  pop.classList.add('show');
-  setTimeout(()=>pop.classList.remove('show'),5500);
-  /* cada compra simulada = 1 vaga a menos */
-  dropVaga();
-}
-setTimeout(showPopup,4000);
-setInterval(()=>{
-  if(!document.getElementById('sp-popup').classList.contains('show'))showPopup();
-},20000);
+/* ======= PROGRESSO + STICKY ======= */
+(function(){
+  var pb=document.getElementById('prog'),sb=document.getElementById('sticky'),hero=document.getElementById('hero');
+  addEventListener('scroll',function(){
+    var sy=scrollY,dh=document.documentElement.scrollHeight-innerHeight;
+    pb.style.width=(sy/dh*100)+'%';
+    sb.classList.toggle('on',sy>hero.offsetHeight);
+  },{passive:true});
+})();
 </script>
 
 <!-- Fallback: garante repasse de UTM pro checkout mesmo se o script da Utmify falhar -->
@@ -1600,8 +815,8 @@ setInterval(()=>{
   <div id="lf-box">
     <button id="lf-x" type="button" aria-label="Fechar">×</button>
     <div id="lf-step">Antes de você sair</div>
-    <h3 id="lf-title">Quer receber o link com o valor de hoje?</h3>
-    <p class="lf-sub" id="lf-sub">Deixa seu e-mail e WhatsApp que a gente te manda o link do Protocolo por R$37, pra você finalizar quando puder, com calma.</p>
+    <h3 id="lf-title">Quer receber o link pra finalizar depois?</h3>
+    <p class="lf-sub" id="lf-sub">Deixa seu e-mail e WhatsApp que a gente te manda o link do Protocolo, pra você finalizar quando puder, com calma.</p>
     <form id="lf-form" novalidate>
       <label for="lf-name">Seu nome</label>
       <input id="lf-name" name="name" autocomplete="name" placeholder="Como podemos te chamar?" required/>
