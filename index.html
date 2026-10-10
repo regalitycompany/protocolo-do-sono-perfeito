@@ -766,10 +766,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 <!-- ========== TOPBAR ========== -->
 <div id="topbar">
   <div id="topbar-in">
-    <svg class="ic" style="width:14px;height:14px;color:var(--ember2)"><use href="#i-clock"/></svg>
-    <span>Oferta expira em</span>
-    <span id="timer">15:00</span>
-    <span class="top-sep">·</span>
     <span id="vagas-box"><span id="vagas-n">23</span> vagas neste preço</span>
   </div>
 </div>
@@ -804,7 +800,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       </div>
       <p class="auth-line" style="justify-content:center">
         <svg class="ic"><use href="#i-shield"/></svg>
-        Baseado em protocolos de consultoras de sono certificadas
+        Baseado em estudos de pesquisadores do sono infantil de Harvard
       </p>
     </div>
     <div id="stats" class="rv on d3">
@@ -1251,7 +1247,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <div class="aut-c">
         <div class="a-n">Quem está por trás do Protocolo</div>
         <div class="a-r">Criadores do Protocolo do Sono Perfeito</div>
-        <p>O Protocolo do Sono Perfeito nasceu da rotina de consultoria de sono infantil: o mesmo passo a passo que consultoras certificadas aplicam com famílias, organizado num formato que qualquer mãe consegue seguir em casa, sozinha, sem acompanhamento pago. Mais de 2.500 famílias já aplicaram a sequência — e é isso que o material entrega: método organizado, linguagem simples e aplicação imediata.</p>
+        <p>O Protocolo do Sono Perfeito nasceu dos estudos de pesquisadores do sono infantil de Harvard: o que a ciência do sono do bebê já mostrou, organizado num passo a passo que qualquer mãe consegue seguir em casa, sozinha, sem acompanhamento pago. Mais de 2.500 famílias já aplicaram a sequência — e é isso que o material entrega: método organizado, linguagem simples e aplicação imediata.</p>
       </div>
     </div>
   </div>
@@ -1320,7 +1316,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       </div>
       <div class="obody">
         <div class="urg-box">
-          <strong>Atenção:</strong> restam <strong id="vagas-final">23</strong> vagas neste preço.<br>Quando o timer zerar, a oferta encerra.
+          <strong>Atenção:</strong> restam <strong id="vagas-final">23</strong> vagas neste preço.
         </div>
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Protocolo completo do Sono Perfeito — 6 etapas</span></div>
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Plano de aplicação passo a passo</span></div>
@@ -1396,21 +1392,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 </div>
 
 <script>
-/* ======= COUNTDOWN ======= */
-(function(){
-  const KS='psp_s',KT='psp_t',INIT=15*60;
-  let s=parseInt(localStorage.getItem(KS)),t=parseInt(localStorage.getItem(KT));
-  let secs=(s&&t)?Math.max(0,s-Math.floor((Date.now()-t)/1e3)):INIT;
-  const el=document.getElementById('timer');
-  function tick(){
-    if(secs<=0){el.textContent='00:00';return;}
-    el.textContent=String(Math.floor(secs/60)).padStart(2,'0')+':'+String(secs%60).padStart(2,'0');
-    localStorage.setItem(KS,secs);localStorage.setItem(KT,Date.now());
-    secs--;setTimeout(tick,1e3);
-  }
-  tick();
-})();
-
 /* ======= PARTICLES ======= */
 (function(){
   const cvs=document.getElementById('ptc');
