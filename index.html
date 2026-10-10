@@ -796,6 +796,23 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 #ins-lb img{max-width:min(100%,760px);max-height:calc(100dvh - 32px);border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 #ins-lb button{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:22px}
 @media(max-width:640px){.inside-head{padding:0 22px}.ins-track{padding:22px 22px 8px}}
+
+/* =================== HERO: autoridade, mecanismo e preço =================== */
+.h-auth{
+  position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;
+  margin-bottom:22px;padding:8px 16px;border-radius:30px;
+  background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.4);
+  font-size:12.5px;font-weight:700;color:var(--gold3);letter-spacing:.02em;line-height:1.35;
+}
+.h-auth .ic{width:14px;height:14px;color:var(--gold2)}
+.h-mech{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin-top:22px}
+.h-mech span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.22);border-radius:30px;padding:6px 12px;font-size:12.5px;font-weight:700;color:rgba(255,255,255,.85)}
+.h-mech b{width:18px;height:18px;border-radius:50%;background:var(--gold);color:var(--n0);font-size:10.5px;display:inline-flex;align-items:center;justify-content:center}
+.h-mech i{font-style:normal;color:rgba(255,255,255,.3);font-size:12px}
+.h-price{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:14px}
+.h-price strong{font-size:24px;font-weight:900;color:var(--gold2);margin:0 2px}
+.h-price span{color:rgba(255,255,255,.45);font-size:13px}
+@media(max-width:520px){.h-mech i{display:none}.h-auth{font-size:11.5px;padding:7px 13px}}
 </style>
 </head>
 <body>
@@ -812,11 +829,16 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     <img src="hero-banner.png" alt="Protocolo do Sono Perfeito — Transforme as noites do seu bebê" fetchpriority="high"/>
   </div>
   <div id="hero-cta">
+    <div class="h-auth rv on"><svg class="ic"><use href="#i-star"/></svg> Baseado em estudos de especialistas em sono do bebê de Harvard</div>
     <h1 class="rv on">Faça Seu Bebê Dormir<br><em>a Noite Inteira</em></h1>
     <p class="sub rv on d1">
-      Descubra o protocolo passo a passo para <strong>organizar a rotina de sono do seu bebê</strong>, reduzir os despertares que destroem suas noites e finalmente <em>voltar a dormir por horas seguidas</em> — mesmo que você já tenha tentado de tudo.
+      Descubra a <em>Sequência 4D do Sono</em>: o protocolo passo a passo para <strong>organizar a rotina de sono do seu bebê</strong>, reduzir os despertares que destroem suas noites e finalmente <em>voltar a dormir por horas seguidas</em> — mesmo que você já tenha tentado de tudo.
     </p>
+    <div class="h-mech rv on d1">
+      <span><b>1</b> Diagnosticar</span><i>→</i><span><b>2</b> Desacelerar</span><i>→</i><span><b>3</b> Destravar</span><i>→</i><span><b>4</b> Durar</span>
+    </div>
     <div class="cta-btn-wrap rv on d2">
+      <p class="h-price">Acesso completo por apenas <strong>R$37</strong> <span>· pagamento único</span></p>
       <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
         <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-moon"/></svg>
         Quero Aplicar o Protocolo Hoje
@@ -831,10 +853,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <span class="dot"></span>
         <span id="buyers-hero"><span class="cnt-b">143</span> mães garantiram nas últimas 24h</span>
       </div>
-      <p class="auth-line" style="justify-content:center">
-        <svg class="ic"><use href="#i-shield"/></svg>
-        Baseado em estudos de pesquisadores do sono infantil de Harvard
-      </p>
     </div>
     <div id="stats" class="rv on d3">
       <div class="st">
@@ -1290,7 +1308,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <div class="aut-c">
         <div class="a-n">Quem está por trás do Protocolo</div>
         <div class="a-r">Criadores do Protocolo do Sono Perfeito</div>
-        <p>O Protocolo do Sono Perfeito nasceu dos estudos de pesquisadores do sono infantil de Harvard: o que a ciência do sono do bebê já mostrou, organizado num passo a passo que qualquer mãe consegue seguir em casa, sozinha, sem acompanhamento pago. Mais de 2.500 famílias já aplicaram a sequência — e é isso que o material entrega: método organizado, linguagem simples e aplicação imediata.</p>
+        <p>O Protocolo do Sono Perfeito nasceu dos estudos de especialistas em sono do bebê de Harvard: o que a ciência do sono do bebê já mostrou, organizado num passo a passo que qualquer mãe consegue seguir em casa, sozinha, sem acompanhamento pago. Mais de 2.500 famílias já aplicaram a sequência — e é isso que o material entrega: método organizado, linguagem simples e aplicação imediata.</p>
       </div>
     </div>
   </div>
