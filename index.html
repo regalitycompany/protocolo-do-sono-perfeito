@@ -758,44 +758,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 }
 #final .fin-lead strong{color:var(--ink);font-weight:700}
 
-/* =================== POR DENTRO DO MATERIAL (páginas reais do PDF) =================== */
-.inside{
-  position:relative;overflow:hidden;margin-top:12px;
-  background:linear-gradient(150deg,var(--n1) 0%,var(--n0) 100%);
-  border-radius:20px;padding:30px 0 26px;
-}
-.inside-head{padding:0 30px;text-align:center}
-.inside-head h3{font-size:clamp(20px,2.8vw,26px);font-weight:700;color:var(--w);line-height:1.25}
-.inside-head h3 em{color:var(--gold);font-style:italic}
-.inside-head p{font-size:13.5px;color:rgba(255,255,255,.5);margin-top:8px}
-.ins-track{
-  display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
-  padding:24px 30px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
-}
-.ins-track::-webkit-scrollbar{display:none}
-.ins-slide{flex:0 0 auto;width:min(62%,250px);scroll-snap-align:center;cursor:zoom-in}
-.ins-page{
-  aspect-ratio:800/1132;border-radius:6px;overflow:hidden;background:var(--cream);
-  box-shadow:0 18px 36px -14px rgba(0,0,0,.7),0 0 0 1px rgba(201,168,76,.18);
-  transition:transform .25s;
-}
-.ins-slide:hover .ins-page{transform:translateY(-4px)}
-.ins-page img{width:100%;height:100%;object-fit:cover;object-position:top}
-.ins-cap{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72);margin-top:12px;text-align:center;line-height:1.4}
-.ins-cap b{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:3px}
-.ins-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
-.ins-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,168,76,.35);color:var(--gold2);display:flex;align-items:center;justify-content:center;transition:background .2s}
-.ins-btn:hover{background:rgba(201,168,76,.12)}
-.ins-btn .ic{width:16px;height:16px}
-.ins-btn.prev .ic{transform:rotate(180deg)}
-.ins-dots{display:flex;gap:6px}
-.ins-dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .2s,width .2s}
-.ins-dots span.on{background:var(--gold);width:18px;border-radius:4px}
-#ins-lb{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(3,7,15,.92)}
-#ins-lb.on{display:flex}
-#ins-lb img{max-width:min(100%,760px);max-height:calc(100dvh - 32px);border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-#ins-lb button{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:22px}
-@media(max-width:640px){.inside-head{padding:0 22px}.ins-track{padding:22px 22px 8px}}
 
 /* =================== HERO: autoridade, mecanismo e preço =================== */
 .h-auth{
@@ -805,14 +767,59 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
   font-size:12.5px;font-weight:700;color:var(--gold3);letter-spacing:.02em;line-height:1.35;
 }
 .h-auth .ic{width:14px;height:14px;color:var(--gold2)}
-.h-mech{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin-top:22px}
-.h-mech span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.22);border-radius:30px;padding:6px 12px;font-size:12.5px;font-weight:700;color:rgba(255,255,255,.85)}
-.h-mech b{width:18px;height:18px;border-radius:50%;background:var(--gold);color:var(--n0);font-size:10.5px;display:inline-flex;align-items:center;justify-content:center}
-.h-mech i{font-style:normal;color:rgba(255,255,255,.3);font-size:12px}
-.h-price{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:14px}
-.h-price strong{font-size:24px;font-weight:900;color:var(--gold2);margin:0 2px}
-.h-price span{color:rgba(255,255,255,.45);font-size:13px}
-@media(max-width:520px){.h-mech i{display:none}.h-auth{font-size:11.5px;padding:7px 13px}}
+.h-offer{
+  position:relative;z-index:1;max-width:440px;margin:0 auto 18px;
+  background:linear-gradient(150deg,var(--n2),var(--n0));
+  border:1.5px solid rgba(201,168,76,.55);border-radius:18px;padding:18px 22px 20px;
+  box-shadow:0 0 0 6px rgba(201,168,76,.06),0 20px 50px -20px rgba(0,0,0,.8);
+}
+.h-off-top{display:flex;align-items:center;gap:14px;text-align:left}
+.h-off-top img{width:46px;height:83px;object-fit:cover;object-position:top;border-radius:9px;border:3px solid #1c2744;flex-shrink:0;box-shadow:0 8px 18px rgba(0,0,0,.5)}
+.h-off-t{font-family:var(--sf);font-size:18px;font-weight:700;color:var(--w);line-height:1.2}
+.h-off-b{font-size:13px;font-weight:700;color:var(--gold3);margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.h-new{background:var(--ember);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.h-off-p{font-family:var(--ss);font-size:64px;font-weight:900;color:var(--gold2);line-height:1;margin-top:14px;letter-spacing:-.02em}
+.h-off-p small{font-size:24px;font-weight:800;vertical-align:top;position:relative;top:8px;margin:0 2px}
+.h-off-u{font-size:13px;color:rgba(255,255,255,.55);margin-top:6px}
+@media(max-width:520px){.h-auth{font-size:11.5px;padding:7px 13px;margin-bottom:16px}.h-off-p{font-size:56px}#hero-cta{padding-top:30px}#hero-cta .cta-btn-wrap{margin-top:26px}}
+
+/* =================== APP SONO PERFEITO EM DESTAQUE =================== */
+.appx{
+  position:relative;overflow:hidden;margin-top:48px;text-align:center;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,#16295a 0%,var(--n1) 55%,var(--n0) 100%);
+  border:1.5px solid rgba(201,168,76,.45);border-radius:24px;padding:40px 28px 34px;
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.6);
+}
+.appx-new{display:inline-block;background:var(--ember);color:#fff;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:20px;box-shadow:0 6px 18px rgba(232,73,31,.35)}
+.appx h3{font-size:clamp(26px,4vw,40px);color:var(--w);line-height:1.15;margin-top:18px}
+.appx h3 em{color:var(--gold2);font-style:italic}
+.appx p{font-size:15.5px;color:rgba(255,255,255,.66);line-height:1.7;max-width:520px;margin:14px auto 0}
+.appx-phones{display:flex;justify-content:center;align-items:flex-end;gap:18px;margin-top:34px}
+.appx-phones figure{width:30%;max-width:200px}
+.appx-phones figure.mid{transform:translateY(-14px)}
+.appx-ph{aspect-ratio:500/900;border-radius:22px;overflow:hidden;border:5px solid #1c2744;background:var(--n2);box-shadow:0 26px 50px -16px rgba(0,0,0,.8),0 0 0 1px rgba(201,168,76,.25)}
+.appx-ph img{width:100%;height:100%;object-fit:cover;object-position:top}
+.appx-phones figcaption{font-size:13px;font-weight:700;color:var(--gold3);margin-top:12px;line-height:1.35}
+.appx-tag{display:inline-block;margin-top:26px;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 18px;border-radius:20px}
+@media(max-width:560px){
+  .appx{padding:32px 16px 28px}
+  .appx-phones{gap:9px}
+  .appx-ph{border-width:3px;border-radius:13px}
+  .appx-phones figcaption{font-size:11px}
+}
+
+/* =================== PRÉVIA DO MATERIAL =================== */
+.prev2{margin-top:14px;background:linear-gradient(150deg,var(--n1) 0%,var(--n0) 100%);border-radius:20px;padding:30px 26px 26px;text-align:center}
+.prev2 h3{font-size:clamp(20px,2.8vw,26px);color:var(--w);line-height:1.25}
+.prev2 h3 em{color:var(--gold);font-style:italic}
+.prev2-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.prev2-pg{border-radius:8px;overflow:hidden;background:var(--cream);box-shadow:0 18px 36px -14px rgba(0,0,0,.7),0 0 0 1px rgba(201,168,76,.2)}
+.prev2-pg img{width:100%;height:auto}
+.prev2 figcaption{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72);margin-top:12px;line-height:1.4}
+.prev2 figcaption b{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:3px}
+.prev2-note{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:rgba(255,255,255,.5);margin-top:18px}
+.prev2-note .ic{width:13px;height:13px;color:var(--gold2)}
+@media(max-width:560px){.prev2{padding:26px 14px 22px}.prev2-grid{gap:10px}.prev2 figcaption{font-size:11.5px}}
 </style>
 </head>
 <body>
@@ -832,13 +839,20 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     <div class="h-auth rv on"><svg class="ic"><use href="#i-star"/></svg> Baseado em estudos de especialistas em sono do bebê de Harvard</div>
     <h1 class="rv on">Faça Seu Bebê Dormir<br><em>a Noite Inteira</em></h1>
     <p class="sub rv on d1">
-      Descubra a <em>Sequência 4D do Sono</em>: o protocolo passo a passo para <strong>organizar a rotina de sono do seu bebê</strong>, reduzir os despertares que destroem suas noites e finalmente <em>voltar a dormir por horas seguidas</em> — mesmo que você já tenha tentado de tudo.
+      Com o <em>Método Janela de Ouro</em>, você descobre o momento certo, pela idade do seu bebê, de colocá-lo no berço — antes do cansaço virar choro. Ele adormece sem briga, <strong>emenda os ciclos de sono</strong> e você finalmente <em>volta a dormir por horas seguidas</em>. Sem deixá-lo chorando sozinho.
     </p>
-    <div class="h-mech rv on d1">
-      <span><b>1</b> Diagnosticar</span><i>→</i><span><b>2</b> Desacelerar</span><i>→</i><span><b>3</b> Destravar</span><i>→</i><span><b>4</b> Durar</span>
-    </div>
     <div class="cta-btn-wrap rv on d2">
-      <p class="h-price">Acesso completo por apenas <strong>R$37</strong> <span>· pagamento único</span></p>
+      <div class="h-offer">
+        <div class="h-off-top">
+          <img src="app-em.jpg" alt="Tela real do App Sono Perfeito" width="500" height="900"/>
+          <div>
+            <div class="h-off-t">Protocolo do Sono Perfeito</div>
+            <div class="h-off-b"><span class="h-new">Novo</span> + App Sono Perfeito de bônus</div>
+          </div>
+        </div>
+        <div class="h-off-p"><small>R$</small>37<small>,00</small></div>
+        <div class="h-off-u">Pagamento único · acesso imediato</div>
+      </div>
       <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
         <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-moon"/></svg>
         Quero Aplicar o Protocolo Hoje
@@ -978,17 +992,17 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <span><svg class="ic"><use href="#i-x"/></svg> Música</span>
     </div>
     <p class="mech-turn rv d3">
-      Só que, quando <em>a rotina que antecede o sono</em> continua desorganizada, você pode acabar repetindo a mesma batalha todas as noites.
+      Só que, muitas vezes, o problema começa antes: o bebê vai para o berço <em>depois da janela de sono dele</em>. Cansado demais, o corpo libera cortisol — e ele briga com o sono, adormece agitado e acorda a cada ciclo de 45 a 60 minutos.
     </p>
     <div style="text-align:center">
       <div class="mech-name rv d3">
-        <div class="mn-l">O mecanismo do protocolo</div>
-        <div class="mn-t">A Sequência <em>4D do Sono</em></div>
-        <div class="mn-s">Diagnosticar · Desacelerar · Destravar · Durar</div>
+        <div class="mn-l">O mecanismo do Protocolo do Sono Perfeito</div>
+        <div class="mn-t">O Método <em>Janela de Ouro</em></div>
+        <div class="mn-s">O momento certo, pela idade, para seu bebê adormecer sem briga e emendar o sono</div>
       </div>
     </div>
     <p class="mech-lead rv d3" style="margin-top:28px">
-      O Protocolo do Sono Perfeito foi organizado para atacar o problema numa sequência simples: <strong>entender o padrão atual, preparar a rotina, aplicar os ajustes e manter consistência</strong> suficiente para observar o que funciona no seu caso.
+      O Protocolo mostra <strong>a janela de sono de cada idade</strong>, como preparar o bebê antes dela abrir e como colocá-lo no berço <strong>sonolento, não dormindo</strong> — para ele aprender a voltar a dormir sozinho entre um ciclo e outro.
     </p>
   </div>
 </section>
@@ -1000,41 +1014,41 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
   <div class="sec-in w">
     <div style="text-align:center" class="rv">
       <span class="lbl">O passo a passo</span>
-      <h2 class="ttl lt">Estas São as 4 Fases Para<br><em>Reorganizar as Noites da Sua Casa</em></h2>
+      <h2 class="ttl lt">Os 4 Passos do<br><em>Método Janela de Ouro</em></h2>
       <div class="gline"></div>
-      <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.32);max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7">Nenhuma fase depende de método de choro. Cada uma se apoia na anterior — é a sequência que faz a diferença, não o truque isolado.</p>
+      <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.32);max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7">Nenhum passo depende de método de choro. Cada um se apoia no anterior — é a sequência que faz a diferença, não o truque isolado.</p>
     </div>
     <div class="stp-grid">
       <div class="stp rv d1">
-        <div class="stp-d">D</div>
+        <div class="stp-d">1</div>
         <div class="stp-c">
-          <div class="stp-tag">Fase 1 · Diagnosticar</div>
-          <div class="stp-t">Entenda o padrão atual antes de mudar qualquer coisa</div>
-          <p class="stp-p">Você mapeia o relógio biológico do seu bebê, as janelas de vigília da idade dele e o que exatamente está disparando os despertares. Sem esse diagnóstico, qualquer mudança vira tentativa e erro.</p>
+          <div class="stp-tag">Passo 1</div>
+          <div class="stp-t">Encontre a Janela de Ouro do seu bebê</div>
+          <p class="stp-p">Pela tabela por idade e pelos sinais de sono, você descobre quanto tempo seu bebê aguenta acordado antes de passar do ponto. Sem isso, qualquer rotina vira tentativa e erro.</p>
         </div>
       </div>
       <div class="stp rv d2">
-        <div class="stp-d">D</div>
+        <div class="stp-d">2</div>
         <div class="stp-c">
-          <div class="stp-tag">Fase 2 · Desacelerar</div>
-          <div class="stp-t">Prepare o bebê para dormir — antes da hora de dormir</div>
-          <p class="stp-p">Uma sequência noturna simples e repetível que sinaliza ao corpo dele que chegou a hora de desacelerar: luz, temperatura, ruído, ordem dos passos. É aqui que a noite é ganha ou perdida.</p>
+          <div class="stp-tag">Passo 2</div>
+          <div class="stp-t">Prepare o sono antes da janela abrir</div>
+          <p class="stp-p">Uma rotina noturna de 30 a 45 minutos — banho, quarto escuro, ruído branco, ordem dos passos — que deixa o bebê pronto exatamente quando a janela abre. É aqui que a noite é ganha ou perdida.</p>
         </div>
       </div>
       <div class="stp rv d3">
-        <div class="stp-d">D</div>
+        <div class="stp-d">3</div>
         <div class="stp-c">
-          <div class="stp-tag">Fase 3 · Destravar</div>
-          <div class="stp-t">Elimine os hábitos invisíveis que sabotam o sono</div>
-          <p class="stp-p">Os ajustes que quebram as associações de sono que forçam você a recomeçar do zero a cada despertar — de forma gentil, respeitando o ritmo do seu bebê e sem deixá-lo chorando sozinho.</p>
+          <div class="stp-tag">Passo 3</div>
+          <div class="stp-t">Coloque no berço dentro da janela</div>
+          <p class="stp-p">Sonolento, não dormindo. Com um dos 3 métodos gentis do protocolo, ele aprende a adormecer no berço e a emendar os ciclos — sem colo a cada despertar e sem você deixá-lo chorando sozinho.</p>
         </div>
       </div>
       <div class="stp rv d4">
-        <div class="stp-d">D</div>
+        <div class="stp-d">4</div>
         <div class="stp-c">
-          <div class="stp-tag">Fase 4 · Durar</div>
-          <div class="stp-t">Mantenha a consistência (e atravesse as regressões)</div>
-          <p class="stp-p">O plano de aplicação dia a dia para sustentar o resultado quando aparecerem os dentes, as viagens, os picos de crescimento e as regressões — que é onde a maioria das famílias perde tudo o que conquistou.</p>
+          <div class="stp-tag">Passo 4</div>
+          <div class="stp-t">Mantenha a janela nas fases difíceis</div>
+          <p class="stp-p">Dentes, regressões, viagens e mudanças de soneca mexem na janela. O plano dia a dia mostra como ajustar sem perder tudo o que vocês conquistaram.</p>
         </div>
       </div>
     </div>
@@ -1086,6 +1100,18 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <h2 class="ttl">Veja Tudo o Que Você Recebe<br><em>no Protocolo do Sono Perfeito</em></h2>
       <div class="gline"></div>
     </div>
+    <!-- App Sono Perfeito — bônus em destaque -->
+    <div class="appx rv">
+      <span class="appx-new">Novidade · Bônus exclusivo</span>
+      <h3>Você também recebe o <em>App Sono Perfeito</em></h3>
+      <p>Não é mais um PDF. É um app no seu celular para abrir com uma mão só, no escuro, às 3h da madrugada — e saber exatamente o que fazer.</p>
+      <div class="appx-phones">
+        <figure><div class="appx-ph"><img src="app-em.jpg" alt="Tela real do app: Guia de Emergência" loading="lazy" width="500" height="900"/></div><figcaption>Guia SOS da madrugada</figcaption></figure>
+        <figure class="mid"><div class="appx-ph"><img src="app-cl.jpg" alt="Tela real do app: Checklist Noturno" loading="lazy" width="500" height="900"/></div><figcaption>Checklist da rotina noturna</figcaption></figure>
+        <figure><div class="appx-ph"><img src="app-tab.jpg" alt="Tela real do app: Tabela de Horários por Idade" loading="lazy" width="500" height="900"/></div><figcaption>Janelas de sono por idade</figcaption></figure>
+      </div>
+      <div class="appx-tag">Telas reais do app · incluso no R$37</div>
+    </div>
     <div class="pshell rv">
       <div class="phead">
         <div><span class="pill">Produto Principal</span><h3>Protocolo do Sono Perfeito</h3><p>6 etapas de aplicação + plano prático noite inteira</p></div>
@@ -1099,41 +1125,17 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 6 — Aplique o plano noite inteira, dia a dia</div><div class="md">O protocolo completo em formato de cronograma: o que fazer em cada dia até seu bebê emendar horas seguidas de sono.</div></div></div>
       </div>
     </div>
-    <!-- Por dentro do material — páginas reais do PDF -->
-    <div class="inside rv">
-      <div class="inside-head">
+    <!-- Prévia do material — só o começo de 2 páginas, o resto desfocado na própria imagem -->
+    <div class="prev2 rv">
+      <div class="prev2-head">
         <span class="lbl">Por dentro do material</span>
-        <h3>Veja algumas páginas <em>do Protocolo</em></h3>
-        <p>Páginas reais do guia. Toque para ampliar.</p>
+        <h3>Uma prévia do <em>Protocolo</em></h3>
       </div>
-      <div class="ins-track" id="ins-track">
-        <div class="ins-slide" data-full="material/pag-01.jpg"><div class="ins-page"><img src="material/pag-01.jpg" alt="Página real do Protocolo do Sono Perfeito: Guia completo, passo a passo" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capa</b>Guia completo, passo a passo</div></div>
-        <div class="ins-slide" data-full="material/pag-02.jpg"><div class="ins-page"><img src="material/pag-02.jpg" alt="Página real do Protocolo do Sono Perfeito: A ciência do sono e as janelas de sono por idade" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Antes de começar</b>A ciência do sono e as janelas de sono por idade</div></div>
-        <div class="ins-slide" data-full="material/pag-03.jpg"><div class="ins-page"><img src="material/pag-03.jpg" alt="Página real do Protocolo do Sono Perfeito: Os 3 pilares do protocolo" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 2</b>Os 3 pilares do protocolo</div></div>
-        <div class="ins-slide" data-full="material/pag-05.jpg"><div class="ins-page"><img src="material/pag-05.jpg" alt="Página real do Protocolo do Sono Perfeito: Método gentil: escolha um e seja consistente" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 3</b>Método gentil: escolha um e seja consistente</div></div>
-        <div class="ins-slide" data-full="material/pag-08.jpg"><div class="ins-page"><img src="material/pag-08.jpg" alt="Página real do Protocolo do Sono Perfeito: Protocolo rápido por idade" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 5</b>Protocolo rápido por idade</div></div>
-        <div class="ins-slide" data-full="material/pag-09.jpg"><div class="ins-page"><img src="material/pag-09.jpg" alt="Página real do Protocolo do Sono Perfeito: Plano de ação: comece hoje" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Capítulo 6</b>Plano de ação: comece hoje</div></div>
-        <div class="ins-slide" data-full="material/pag-12.jpg"><div class="ins-page"><img src="material/pag-12.jpg" alt="Página real do Protocolo do Sono Perfeito: Tabela de referência rápida" loading="lazy" width="800" height="1132"/></div><div class="ins-cap"><b>Bônus</b>Tabela de referência rápida</div></div>
+      <div class="prev2-grid">
+        <figure><div class="prev2-pg"><img src="material/previa-05.jpg" alt="Prévia real do capítulo Método Gentil" loading="lazy" width="600" height="509"/></div><figcaption><b>Capítulo 3</b>Método gentil, sem deixar chorando sozinho</figcaption></figure>
+        <figure><div class="prev2-pg"><img src="material/previa-08.jpg" alt="Prévia real do capítulo Protocolo Rápido por Idade" loading="lazy" width="600" height="509"/></div><figcaption><b>Capítulo 5</b>Protocolo rápido por idade</figcaption></figure>
       </div>
-      <div class="ins-nav">
-        <button class="ins-btn prev" type="button" aria-label="Página anterior"><svg class="ic"><use href="#i-arrow"/></svg></button>
-        <div class="ins-dots" id="ins-dots"></div>
-        <button class="ins-btn next" type="button" aria-label="Próxima página"><svg class="ic"><use href="#i-arrow"/></svg></button>
-      </div>
-    </div>
-    <!-- App exclusivo — print real do app de bônus -->
-    <div class="app-showcase rv">
-      <div class="app-phone">
-        <div class="app-phone-inner">
-          <img src="app-mock-guia.jpg" alt="Tela real do Guia de Emergência, um dos bônus, aberto no app exclusivo"/>
-        </div>
-        <span class="app-phone-tag">Print real do app</span>
-      </div>
-      <div class="app-showcase-copy">
-        <span class="lbl">Novidade</span>
-        <h3>Os bônus chegam como<br><em>App Exclusivo</em></h3>
-        <p>Não é PDF. É um app interativo no seu celular — para abrir com uma mão só, no escuro, às 3h da madrugada.</p>
-      </div>
+      <p class="prev2-note"><svg class="ic"><use href="#i-lock"/></svg> O conteúdo completo você recebe no acesso.</p>
     </div>
   </div>
 </section>
@@ -1163,7 +1165,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
           <span class="bc2-init" aria-hidden="true">C</span>
           <div class="btag">Bônus 02 · App</div>
           <div class="btit">Checklist da Rotina Noturna</div>
-          <div class="bdsc">19 itens interativos para marcar toda noite. Progresso salvo e barra de conclusão — a Fase 2 do protocolo na palma da mão.</div>
+          <div class="bdsc">19 itens interativos para marcar toda noite. Progresso salvo e barra de conclusão — o Passo 2 do Método Janela de Ouro na palma da mão.</div>
           <div class="bc2-price"><span class="bfree">INCLUSO</span></div>
         </div>
         <div class="bc2 rv d2">
@@ -1214,7 +1216,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <div class="gline"></div>
     </div>
     <div class="rcp rv d1">
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Protocolo completo do Sono Perfeito</div><div class="rcp-d">As 6 etapas de aplicação, da Fase 1 à Fase 4 da Sequência 4D</div></div></div>
+      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Protocolo completo do Sono Perfeito</div><div class="rcp-d">As 6 etapas de aplicação + os 4 passos do Método Janela de Ouro</div></div></div>
       <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Plano de aplicação passo a passo</div><div class="rcp-d">O cronograma dia a dia até seu bebê emendar horas seguidas de sono</div></div></div>
       <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">19 itens interativos para marcar toda noite, direto no celular</div></div></div>
       <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">Protocolo SOS de madrugada com 7 cenários resolvidos</div></div></div>
@@ -1292,7 +1294,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <span class="acc-n">3</span>
         <div class="acc-ico"><svg class="ic"><use href="#i-moon"/></svg></div>
         <h3>Aplique já nesta noite</h3>
-        <p>Comece pela Fase 1 hoje mesmo e siga a sequência até seu bebê dormir por horas seguidas.</p>
+        <p>Descubra hoje a Janela de Ouro do seu bebê e siga os passos até ele dormir por horas seguidas.</p>
       </div>
     </div>
   </div>
@@ -1410,8 +1412,8 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <div class="gline"></div>
     </div>
     <div class="flist">
-      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>E se meu bebê acorda muitas vezes por noite?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>É exatamente esse o cenário para o qual o protocolo foi organizado. A Fase 1 serve para você identificar o que está provocando cada despertar antes de mudar qualquer coisa — e as fases seguintes atacam a causa em vez de apagar incêndio despertar por despertar.</p></div></div>
-      <div class="fi rv d1"><button class="fq" onclick="tf(this)"><span>E se eu já tentei criar uma rotina e não funcionou?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>A maioria das rotinas falha porque é montada sem o diagnóstico da Fase 1 e sem a consistência da Fase 4 — funciona duas noites e desanda na terceira. Aqui a rotina vem com a sequência inteira em volta dela, incluindo o que fazer quando algo sai do lugar.</p></div></div>
+      <div class="fi rv"><button class="fq" onclick="tf(this)"><span>E se meu bebê acorda muitas vezes por noite?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>É exatamente esse o cenário para o qual o protocolo foi organizado. O primeiro passo é encontrar a Janela de Ouro do seu bebê e entender o que está provocando cada despertar — e os passos seguintes atacam a causa em vez de apagar incêndio despertar por despertar.</p></div></div>
+      <div class="fi rv d1"><button class="fq" onclick="tf(this)"><span>E se eu já tentei criar uma rotina e não funcionou?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>A maioria das rotinas falha porque é montada fora da janela de sono do bebê e sem um plano para as fases difíceis — funciona duas noites e desanda na terceira. Aqui a rotina vem com a sequência inteira em volta dela, incluindo o que fazer quando algo sai do lugar.</p></div></div>
       <div class="fi rv d2"><button class="fq" onclick="tf(this)"><span>Quanto tempo por dia eu preciso dedicar?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>A leitura de cada etapa leva poucos minutos e a aplicação acontece dentro da rotina que você já tem — no banho, na mamada, na hora de apagar a luz. Não existe tarefa extra no seu dia: o que muda é a ordem e a consistência do que você já faz.</p></div></div>
       <div class="fi rv d3"><button class="fq" onclick="tf(this)"><span>Preciso deixar meu bebê chorando?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>Não. O protocolo não usa método de choro controlado. A abordagem é gentil e se apoia em rotina, ambiente e ritmo biológico — o objetivo é criar as condições para que o bebê aprenda a dormir naturalmente, no ritmo dele.</p></div></div>
       <div class="fi rv"><button class="fq" onclick="tf(this)"><span>Serve para qual faixa etária?</span><span class="ficon"><svg class="ic"><use href="#i-plus"/></svg></span></button><div class="fbody"><p>De 0 a 12 meses. A tabela de horários por idade traz rotinas, sonecas e janelas de vigília separadas por fase, então você aplica exatamente o que corresponde à idade do seu bebê — do recém-nascido ao primeiro aniversário.</p></div></div>
@@ -1576,29 +1578,6 @@ setTimeout(showPopup,4000);
 setInterval(()=>{
   if(!document.getElementById('sp-popup').classList.contains('show'))showPopup();
 },20000);
-</script>
-
-<div id="ins-lb" role="dialog" aria-modal="true" aria-label="Página do material"><button type="button" aria-label="Fechar">×</button><img alt=""/></div>
-<script>
-/* ======= POR DENTRO DO MATERIAL ======= */
-(function(){
-  var tr=document.getElementById('ins-track');if(!tr)return;
-  var sl=[].slice.call(tr.querySelectorAll('.ins-slide')),dots=document.getElementById('ins-dots');
-  sl.forEach(function(){dots.appendChild(document.createElement('span'))});
-  var ds=dots.children;
-  function cur(){var c=tr.scrollLeft+tr.clientWidth/2,b=0,bd=1e9;sl.forEach(function(s,i){var d=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(d<bd){bd=d;b=i}});return b}
-  function mark(){var i=cur();for(var k=0;k<ds.length;k++)ds[k].classList.toggle('on',k===i)}
-  function go(i){i=Math.max(0,Math.min(sl.length-1,i));tr.scrollLeft=sl[i].offsetLeft-(tr.clientWidth-sl[i].offsetWidth)/2}
-  tr.addEventListener('scroll',function(){clearTimeout(mark.t);mark.t=setTimeout(mark,60)},{passive:true});
-  document.querySelector('.ins-btn.prev').addEventListener('click',function(){go(cur()-1)});
-  document.querySelector('.ins-btn.next').addEventListener('click',function(){go(cur()+1)});
-  [].forEach.call(ds,function(d,i){d.addEventListener('click',function(){go(i)})});
-  mark();
-  var lb=document.getElementById('ins-lb'),li=lb.querySelector('img');
-  sl.forEach(function(s){s.addEventListener('click',function(){li.src=s.dataset.full;lb.classList.add('on');try{fbq('trackCustom','ViewMaterialPage',{page:s.dataset.full})}catch(e){}})});
-  lb.addEventListener('click',function(){lb.classList.remove('on')});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
-})();
 </script>
 
 <!-- Fallback: garante repasse de UTM pro checkout mesmo se o script da Utmify falhar -->
