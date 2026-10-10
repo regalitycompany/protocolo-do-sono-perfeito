@@ -773,12 +773,8 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
   border:1.5px solid rgba(201,168,76,.55);border-radius:18px;padding:18px 22px 20px;
   box-shadow:0 0 0 6px rgba(201,168,76,.06),0 20px 50px -20px rgba(0,0,0,.8);
 }
-.h-off-top{display:flex;align-items:center;gap:14px;text-align:left}
-.h-off-top img{width:46px;height:83px;object-fit:cover;object-position:top;border-radius:9px;border:3px solid #1c2744;flex-shrink:0;box-shadow:0 8px 18px rgba(0,0,0,.5)}
 .h-off-t{font-family:var(--sf);font-size:18px;font-weight:700;color:var(--w);line-height:1.2}
-.h-off-b{font-size:13px;font-weight:700;color:var(--gold3);margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.h-new{background:var(--ember);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
-.h-off-p{font-family:var(--ss);font-size:64px;font-weight:900;color:var(--gold2);line-height:1;margin-top:14px;letter-spacing:-.02em}
+.h-off-p{font-family:var(--ss);font-size:64px;font-weight:900;color:var(--gold2);line-height:1;margin-top:10px;letter-spacing:-.02em}
 .h-off-p small{font-size:24px;font-weight:800;vertical-align:top;position:relative;top:8px;margin:0 2px}
 .h-off-u{font-size:13px;color:rgba(255,255,255,.55);margin-top:6px}
 @media(max-width:520px){.h-auth{font-size:11.5px;padding:7px 13px;margin-bottom:16px}.h-off-p{font-size:56px}#hero-cta{padding-top:30px}#hero-cta .cta-btn-wrap{margin-top:26px}}
@@ -820,6 +816,32 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 .prev2-note{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:rgba(255,255,255,.5);margin-top:18px}
 .prev2-note .ic{width:13px;height:13px;color:var(--gold2)}
 @media(max-width:560px){.prev2{padding:26px 14px 22px}.prev2-grid{gap:10px}.prev2 figcaption{font-size:11.5px}}
+
+/* =================== MINI VSL (PlayTurb) =================== */
+.vsl{position:relative;z-index:1;max-width:640px;margin:26px auto 0}
+.vsl-frame{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1.5px solid rgba(201,168,76,.45);box-shadow:0 0 0 6px rgba(201,168,76,.06),0 24px 60px -20px rgba(0,0,0,.85)}
+.vsl-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vsl-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:rgba(255,255,255,.55);font-size:13px;background:radial-gradient(ellipse at center,#13244a,#03070f)}
+.vsl-ph b{width:64px;height:64px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(201,168,76,.15)}
+.vsl-ph b::after{content:'';border-left:20px solid var(--n0);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+
+/* =================== HERO: arte do banner como fundo =================== */
+#hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url(hero-bg.jpg) center top/cover no-repeat;opacity:.17;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 85%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 85%);
+}
+#hero-cta{background:transparent}
+.h-brand{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sf);font-style:italic;font-size:15px;color:var(--gold2);margin-bottom:16px;letter-spacing:.02em}
+.h-brand .ic{width:16px;height:16px}
+@media(min-width:861px){
+  #hero::before{
+    background-position:right top;background-size:auto 100%;opacity:.2;
+    -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 14%,transparent 40%);
+            mask-image:linear-gradient(270deg,#000 0%,#000 14%,transparent 40%);
+  }
+}
 </style>
 </head>
 <body>
@@ -832,24 +854,17 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
      ============================================================ -->
 <section id="hero">
   <canvas id="ptc"></canvas>
-  <div id="hero-img">
-    <img src="hero-banner.png" alt="Protocolo do Sono Perfeito — Transforme as noites do seu bebê" fetchpriority="high"/>
-  </div>
   <div id="hero-cta">
+    <div class="h-brand rv on"><svg class="ic"><use href="#i-moon"/></svg> Protocolo do Sono Perfeito</div>
     <div class="h-auth rv on"><svg class="ic"><use href="#i-star"/></svg> Baseado em estudos de especialistas em sono do bebê de Harvard</div>
     <h1 class="rv on">Faça Seu Bebê Dormir<br><em>a Noite Inteira</em></h1>
-    <p class="sub rv on d1">
-      Com o <em>Método Janela de Ouro</em>, você descobre o momento certo, pela idade do seu bebê, de colocá-lo no berço — antes do cansaço virar choro. Ele adormece sem briga, <strong>emenda os ciclos de sono</strong> e você finalmente <em>volta a dormir por horas seguidas</em>. Sem deixá-lo chorando sozinho.
-    </p>
+    <!-- Mini VSL (PlayTurb). Fica escondida enquanto PSP_VSL estiver vazio; pra ver o espaço: ?vsl=preview -->
+    <div id="vsl" class="vsl rv on d1" hidden>
+      <div class="vsl-frame" id="vsl-frame"></div>
+    </div>
     <div class="cta-btn-wrap rv on d2">
       <div class="h-offer">
-        <div class="h-off-top">
-          <img src="app-em.jpg" alt="Tela real do App Sono Perfeito" width="500" height="900"/>
-          <div>
-            <div class="h-off-t">Protocolo do Sono Perfeito</div>
-            <div class="h-off-b"><span class="h-new">Novo</span> + App Sono Perfeito de bônus</div>
-          </div>
-        </div>
+        <div class="h-off-t">Protocolo do Sono Perfeito</div>
         <div class="h-off-p"><small>R$</small>37<small>,00</small></div>
         <div class="h-off-u">Pagamento único · acesso imediato</div>
       </div>
@@ -1578,6 +1593,26 @@ setTimeout(showPopup,4000);
 setInterval(()=>{
   if(!document.getElementById('sp-popup').classList.contains('show'))showPopup();
 },20000);
+</script>
+
+<script>
+/* ======= MINI VSL (PlayTurb) =======
+   Quando o vídeo estiver pronto: cole aqui o ID do vídeo no PlayTurb (ex.: 'v_abc123')
+   ou a URL completa do player (https://playturb.vercel.app/player.html?id=...). */
+var PSP_VSL='';
+(function(){
+  var box=document.getElementById('vsl'),fr=document.getElementById('vsl-frame');if(!box)return;
+  var preview=/[?&]vsl=preview\b/.test(location.search);
+  if(PSP_VSL){
+    var src=/^https?:/.test(PSP_VSL)?PSP_VSL:'https://playturb.vercel.app/player.html?id='+encodeURIComponent(PSP_VSL);
+    var i=document.createElement('iframe');
+    i.src=src;i.title='Vídeo do Protocolo do Sono Perfeito';
+    i.setAttribute('allow','autoplay; fullscreen; picture-in-picture');i.allowFullscreen=true;
+    fr.appendChild(i);box.hidden=false;
+  }else if(preview){
+    fr.innerHTML='<div class="vsl-ph"><b></b>Espaço da mini VSL (PlayTurb)</div>';box.hidden=false;
+  }
+})();
 </script>
 
 <!-- Fallback: garante repasse de UTM pro checkout mesmo se o script da Utmify falhar -->
