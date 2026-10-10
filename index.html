@@ -1999,31 +1999,37 @@ var PSP_VSL='';
   fb('trackCustom','QuizResultView',{perfil:perfil});
   ev('quiz_result_view',{perfil:perfil,idade:idade||null,tentou:tentou});
 
-  /* ---------- trava até 60% da mini VSL ---------- */
+  /* ---------- trava até 60% do tempo de reprodução da mini VSL ----------
+     Conta só o tempo realmente assistido com som (o player só manda progresso depois que a pessoa
+     ativa o som). Pular pra frente na barra não conta. Sem vídeo configurado, a página fica travada. */
   var done=!html.classList.contains('gated');
   function reveal(why){
     if(done)return;done=true;
     html.classList.remove('gated');html.classList.add('revealed');
-    if(why!=='sem_video'){try{localStorage.setItem('psp_vsl60','1')}catch(e){}}
+    try{localStorage.setItem('psp_vsl60','1')}catch(e){}
     fb('trackCustom','VSL60',{perfil:perfil,motivo:why});
-    ev('vsl_unlock',{perfil:perfil,motivo:why},true);
+    ev('vsl_unlock',{perfil:perfil,motivo:why,assistido:Math.round(watched)},true);
   }
   if(done)return;
-  if(!window.PSP_VSL){reveal('sem_video');return} // sem vídeo configurado não dá pra travar
 
-  var played=false;
+  var played=false,watched=0,last=null;
   function frame(){return document.querySelector('#vsl-frame iframe')}
   addEventListener('message',function(e){
     var f=frame(),d=e.data;
     if(!f||e.source!==f.contentWindow||!d||typeof d!=='object')return;
     if(d.type==='playturb-play'&&!played){played=true;fb('trackCustom','VSLPlay',{perfil:perfil});ev('vsl_play',{perfil:perfil})}
-    if(d.type==='playturb-ended')return reveal('vsl_fim');
-    if((d.type==='playturb-progress'||d.type==='playturb-pause')&&d.duration&&d.currentTime/d.duration>=0.6)reveal('vsl_60');
+    if(typeof d.currentTime!=='number')return;
+    if(last!==null){
+      var dt=d.currentTime-last;
+      if(dt>0&&dt<=8)watched+=dt; // avanço normal (eventos a cada ~5 s); salto na barra ou volta não somam
+    }
+    last=d.currentTime;
+    if(d.duration&&watched>=d.duration*0.6)reveal('vsl_60');
   });
   // Plano B: a pessoa tocou no vídeo mas o player nunca respondeu (player quebrado) → não deixa a página travada
   addEventListener('blur',function(){
     setTimeout(function(){
-      if(document.activeElement!==frame()||played)return;
+      if(!frame()||document.activeElement!==frame()||played)return;
       setTimeout(function(){if(!played)reveal('player_sem_resposta')},8000);
     },0);
   });
