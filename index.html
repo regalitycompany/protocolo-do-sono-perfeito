@@ -889,6 +889,30 @@ html.gated .qz-wait{display:flex;align-items:center;justify-content:center;gap:1
 @keyframes qzPulse{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
 html.gated .cta-btn-wrap,html.gated .h-stats{display:none}
 html.gated #hero~*:not(#lf):not(script):not(style){display:none!important}
+html.quiz-mode #hero::before,html.quiz-mode .h-brand{display:none}
+html.quiz-mode .qz-h{margin-top:0}
+.qz-sky{display:none}
+html.quiz-mode .qz-sky{display:block;position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.qz-sky i{position:absolute;width:110px;height:1.5px;border-radius:2px;opacity:0;
+  background:linear-gradient(90deg,rgba(232,208,128,0),rgba(232,208,128,.85));
+  transform:rotate(-18deg);animation:qzShoot 9s linear infinite}
+.qz-sky i:nth-child(1){top:6%;left:-20%;animation-delay:1s}
+.qz-sky i:nth-child(2){top:22%;left:-30%;animation-delay:4.5s;animation-duration:11s}
+.qz-sky i:nth-child(3){top:40%;left:-25%;animation-delay:7.5s;animation-duration:10s}
+.qz-sky i:nth-child(4){top:62%;left:-35%;animation-delay:2.8s;animation-duration:12s}
+.qz-sky b{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:qzTw 3.6s ease-in-out infinite}
+@keyframes qzShoot{0%{opacity:0;transform:translate(0,0) rotate(-18deg)}3%{opacity:1}14%{opacity:0;transform:translate(150vw,-48vw) rotate(-18deg)}100%{opacity:0;transform:translate(150vw,-48vw) rotate(-18deg)}}
+@keyframes qzTw{0%,100%{opacity:.12}50%{opacity:.8}}
+@media (prefers-reduced-motion:reduce){.qz-sky i,.qz-sky b{animation:none;opacity:0}}
+.qz-play{display:none}
+html.quiz-mode .qz-play{display:flex;justify-content:center;position:relative;z-index:1;margin:22px auto -10px}
+.qz-play span{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border-radius:99px;
+  background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);
+  font:800 13px/1 var(--ss);letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:0 8px 26px -8px rgba(201,168,76,.7);animation:qzCall 2s ease-in-out infinite}
+.qz-play i{width:0;height:0;border-left:9px solid var(--n0);border-top:6px solid transparent;border-bottom:6px solid transparent}
+@keyframes qzCall{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.55),0 8px 26px -8px rgba(201,168,76,.7)}50%{box-shadow:0 0 0 10px rgba(201,168,76,0),0 8px 26px -8px rgba(201,168,76,.7)}}
+html.quiz-mode #vsl{margin-top:20px}
 html.revealed .cta-btn-wrap{animation:qzIn .7s cubic-bezier(.2,.8,.2,1) both}
 @keyframes qzIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 </style>
@@ -1957,12 +1981,12 @@ var PSP_VSL='';
       sub:'Ele até dorme, mas ainda não aprendeu a emendar um ciclo de sono no outro.',
       diag:'Todo bebê desperta rapidinho entre um ciclo de sono e outro. Isso é normal. O problema é quando ele adormece no colo ou mamando e, ao despertar, se vê num lugar diferente de onde dormiu. Aí ele precisa da mesma ajuda para voltar a dormir, e a noite vira plantão: colo, mamada, embalo, de novo e de novo.',
       why:'O que você tentou ajuda o bebê a <em>pegar</em> no sono. O desafio dele é <em>voltar</em> a dormir sozinho entre um ciclo e outro. São duas coisas diferentes.',
-      ponte:'O vídeo abaixo mostra como colocar o bebê no berço <b>sonolento, não dormindo</b>, para ele aprender a emendar o sono sem você deixar ele chorando sozinho.'},
+      ponte:'Assista ao vídeo abaixo. Ele mostra como colocar o bebê no berço <b>sonolento, não dormindo</b>, para ele aprender a emendar o sono sem você deixar ele chorando sozinho.'},
     C:{nome:'Cansaço Acumulado',
       sub:'As sonecas curtas do dia estão cobrando a conta à noite.',
       diag:'Soneca curta, irritação no fim da tarde e despertar cedo demais costumam ter a mesma origem: o bebê passa da janela de sono ao longo do dia. O cansaço vai se acumulando, ele fica cada vez mais agitado e chega na hora de dormir sem conseguir relaxar.',
       why:'Deixar o bebê cansar mais para ele dormir melhor parece lógico, mas faz o contrário: quanto mais cansado, <em>pior</em> ele dorme.',
-      ponte:'O vídeo abaixo mostra como ajustar as <b>janelas de sono do dia</b>, pela idade do seu bebê, para a noite render.',
+      ponte:'Assista ao vídeo abaixo. Ele mostra como ajustar as <b>janelas de sono do dia</b>, pela idade do seu bebê, para a noite render.',
       nota:'Se o seu bebê ronca, faz pausas na respiração ou acorda engasgado, converse com o pediatra antes. Pode ser algo que precisa de avaliação.'}
   };
   var p=PERFIS[perfil];
@@ -1972,17 +1996,26 @@ var PSP_VSL='';
   if(p.nota)notas.push(p.nota);
   if(idade==='12+')notas.push('O Protocolo foi feito para bebês de 0 a 12 meses. Para crianças maiores, parte das orientações pode precisar de ajuste.');
 
+  // céu do resultado: estrelas cadentes + algumas estrelas piscando (só CSS)
+  var sky=document.createElement('div');sky.className='qz-sky';sky.setAttribute('aria-hidden','true');
+  var stars='';
+  for(var k=0;k<18;k++)stars+='<b style="top:'+(Math.random()*95).toFixed(1)+'%;left:'+(Math.random()*98).toFixed(1)+'%;animation-delay:'+(Math.random()*3.6).toFixed(2)+'s"></b>';
+  sky.innerHTML='<i></i><i></i><i></i><i></i>'+stars;
+  document.getElementById('hero').insertBefore(sky,document.getElementById('hero').firstChild);
+
   // topo: perfil + frase-chave + ponte, logo acima do vídeo (vídeo já na 1ª tela do celular)
   var box=document.createElement('div');
   box.className='qz';
   box.innerHTML=
-    '<div class="qz-tags"><span class="qz-chip"><svg class="ic"><use href="#i-moon"/></svg> Diagnóstico do seu bebê</span>'+
-      (IDADES[idade]?'<span class="qz-chip soft">'+(idade==='12+'?'Bebê com ':'Bebê de ')+IDADES[idade]+'</span>':'')+'</div>'+
     '<h1 class="qz-h">O perfil de sono do seu bebê é: <em>'+p.nome+'</em></h1>'+
     '<p class="qz-sub">'+p.sub+'</p>'+
     '<p class="qz-bridge">'+p.ponte+' ↓</p>';
   var vsl=document.getElementById('vsl');
   vsl.parentNode.insertBefore(box,vsl);
+  var call=document.createElement('div');
+  call.className='qz-play';
+  call.innerHTML='<span><i></i>Assista agora · ative o som</span>';
+  vsl.parentNode.insertBefore(call,vsl);
   var wait=document.createElement('p');
   wait.className='qz-wait';
   wait.innerHTML='<i></i><span>Assista ao vídeo com som: o seu plano aparece logo abaixo.</span>';
