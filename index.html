@@ -763,12 +763,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 
 <div id="prog"></div>
 
-<!-- ========== TOPBAR ========== -->
-<div id="topbar">
-  <div id="topbar-in">
-    <span id="vagas-box"><span id="vagas-n">23</span> vagas neste preço</span>
-  </div>
-</div>
 
 <!-- ============================================================
      BLOCO 1 — VENDER SOZINHO (promessa + CTA)
@@ -871,10 +865,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         Quero Aplicar o Protocolo Hoje
         <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
       </a>
-      <div class="buyers-badge" style="justify-content:center;margin-top:12px">
-        <span class="dot"></span>
-        <span style="color:rgba(255,255,255,.38)">Restam <strong id="vagas-testi" style="color:#ff8a8a">23</strong> vagas neste preço</span>
-      </div>
     </div>
   </div>
 </section>
@@ -906,10 +896,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <h3>Você reconheceu <span id="pc">0</span> sinais de sono desregulado.</h3>
       <p>Cada noite que passa sem organizar essa sequência, o sono do seu bebê — e o seu — fica mais difícil de reconquistar. O Protocolo existe exatamente para reorganizar isso, <em>passo a passo.</em></p>
       <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn md">Quero aplicar o protocolo hoje <svg class="ic" style="width:16px;height:16px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
-      <div class="buyers-badge" style="justify-content:center;margin-top:14px">
-        <span class="dot"></span>
-        <span style="color:rgba(255,255,255,.45)">Restam apenas <strong id="vagas-pain" style="color:#ff8a8a">23</strong> vagas neste preço</span>
-      </div>
     </div>
   </div>
 </section>
@@ -1182,10 +1168,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
         <div class="ototl"><span class="ototl-l">Você paga hoje</span><span class="ototl-r">R$ 37,00</span></div>
-        <div class="scar-strip" style="margin-top:0;margin-bottom:18px">
-          <svg class="ic"><use href="#i-alert"/></svg>
-          Apenas <strong id="vagas-vbox" style="margin:0 3px">23</strong> vagas neste preço
-        </div>
         <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg" style="width:100%;display:flex">
           Quero Aplicar o Protocolo Hoje
           <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
@@ -1315,9 +1297,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <div class="oinst">ou 2x de R$ 19,90 sem juros</div>
       </div>
       <div class="obody">
-        <div class="urg-box">
-          <strong>Atenção:</strong> restam <strong id="vagas-final">23</strong> vagas neste preço.
-        </div>
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Protocolo completo do Sono Perfeito — 6 etapas</span></div>
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Plano de aplicação passo a passo</span></div>
         <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
@@ -1376,7 +1355,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 <!-- ========== STICKY BAR ========== -->
 <div id="sticky">
   <div id="sticky-in">
-    <div><div class="sbn">Protocolo do Sono Perfeito</div><div class="sbp">Acesso completo por <strong>R$37</strong> · <span style="color:#ff8a8a;font-weight:600"><span id="vagas-sticky">23</span> vagas restantes</span> · Garantia 7 dias</div></div>
+    <div><div class="sbn">Protocolo do Sono Perfeito</div><div class="sbp">Acesso completo por <strong>R$37</strong> · Garantia 7 dias</div></div>
     <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn sm">Quero Começar Hoje <svg class="ic" style="width:14px;height:14px;stroke:var(--n0)"><use href="#i-arrow"/></svg></a>
   </div>
 </div>
@@ -1450,39 +1429,6 @@ const co=new IntersectionObserver(es=>{
 },{threshold:0.1,rootMargin:'0px 0px 80px 0px'});
 document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
 
-/* ======= VAGAS (synced with popup purchases) ======= */
-const VAGA_IDS=['vagas-n','vagas-pain','vagas-vbox','vagas-testi','vagas-final','vagas-sticky'];
-const KV='psp_v',KVT='psp_vt',VINIT=23;
-let vagasV=parseInt(localStorage.getItem(KV));
-let vagasVT=parseInt(localStorage.getItem(KVT));
-if(!vagasV||isNaN(vagasV)||vagasV>VINIT)vagasV=VINIT;
-/* apply drops from minutes elapsed since last visit */
-if(vagasVT){
-  const minsPassed=Math.floor((Date.now()-vagasVT)/60000);
-  vagasV=Math.max(3,vagasV-Math.floor(minsPassed/5));
-}
-localStorage.setItem(KV,vagasV);localStorage.setItem(KVT,Date.now());
-
-function syncVagas(){
-  VAGA_IDS.forEach(id=>{
-    const el=document.getElementById(id);
-    if(!el)return;
-    el.textContent=vagasV;
-    /* brief scale-up flash so user notices the change */
-    el.style.transition='transform .15s ease,color .15s ease';
-    el.style.transform='scale(1.35)';
-    el.style.color='#ff6b6b';
-    setTimeout(()=>{el.style.transform='';el.style.color='';},300);
-  });
-}
-syncVagas();
-
-function dropVaga(){
-  if(vagasV<=3)return;
-  vagasV--;
-  localStorage.setItem(KV,vagasV);
-  syncVagas();
-}
 
 /* ======= BUYERS badge — fluctuates realistically ======= */
 (function(){
@@ -1546,8 +1492,6 @@ function showPopup(){
   ni++;
   pop.classList.add('show');
   setTimeout(()=>pop.classList.remove('show'),5500);
-  /* cada compra simulada = 1 vaga a menos */
-  dropVaga();
 }
 setTimeout(showPopup,4000);
 setInterval(()=>{
