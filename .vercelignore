@@ -3,3 +3,4 @@
 prompt-*.txt
 db/
 .DS_Store
+tools
