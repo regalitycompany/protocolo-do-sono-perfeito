@@ -419,12 +419,12 @@ canvas#ptc{position:absolute;inset:0;pointer-events:none;z-index:0}
 .tr-rail{display:flex;gap:16px;overflow-x:auto;padding:14px 0 30px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .tr-rail::-webkit-scrollbar{display:none}
-.tr-rail .tesi-card{flex:0 0 240px;margin:0;display:flex;flex-direction:column;cursor:zoom-in;transition:transform .3s}
+.tr-rail .tesi-card{flex:0 0 240px;margin:0;display:flex;flex-direction:column;cursor:grab;user-select:none;-webkit-user-select:none;transition:transform .3s}
 .tr-rail .tesi-card:hover{transform:scale(1.04)}
 .tr-rail .tcap{min-height:72px;font-size:16px}
 .tesi-img{flex:none;height:380px;border-radius:16px;overflow:hidden;background:#efe9df;
   box-shadow:0 14px 34px rgba(0,0,0,.5);border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center}
-.tesi-img img{width:100%;height:100%;object-fit:contain;display:block}
+.tesi-img img{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none}
 .tr-nav{position:absolute;top:50%;z-index:2;width:52px;height:52px;border-radius:50%;background:rgba(8,15,36,.85);border:1px solid var(--gl);display:flex;align-items:center;justify-content:center;transform:translateY(-50%);transition:background .2s}
 .tr-nav:hover{background:var(--gold)}
 .tr-nav .ic{width:22px;height:22px;stroke:var(--gold3)}.tr-nav:hover .ic{stroke:var(--n0)}
@@ -2011,15 +2011,25 @@ setInterval(()=>{
     requestAnimationFrame(step);
   }
   if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(step);
-  r.addEventListener('mouseenter',function(){paused=true;clearTimeout(t)});
-  r.addEventListener('mouseleave',function(){hold(600)});
-  ['touchstart','pointerdown','wheel'].forEach(function(e){r.addEventListener(e,function(){hold(3000)},{passive:true})});
+  // pausa só quando a pessoa arrasta pro lado (folheando); rolar a página não pausa
+  var sx=0,sy=0,drag=false;
+  r.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;drag=false},{passive:true});
+  r.addEventListener('touchmove',function(e){
+    if(drag)return; var dx=Math.abs(e.touches[0].clientX-sx),dy=Math.abs(e.touches[0].clientY-sy);
+    if(dx>8&&dx>dy){drag=true;paused=true;clearTimeout(t)}
+  },{passive:true});
+  r.addEventListener('touchend',function(){if(drag){drag=false;hold(1800)}},{passive:true});
+  r.addEventListener('wheel',function(e){if(Math.abs(e.deltaX)>Math.abs(e.deltaY))hold(1800)},{passive:true});
+  var md=false,mx0=0,sl0=0;
+  r.addEventListener('mousedown',function(e){md=true;mx0=e.clientX;sl0=r.scrollLeft;paused=true;clearTimeout(t);e.preventDefault()});
+  window.addEventListener('mousemove',function(e){if(md)r.scrollLeft=sl0-(e.clientX-mx0)});
+  window.addEventListener('mouseup',function(e){if(!md)return;md=false;r._moved=Math.abs(e.clientX-mx0)>6;hold(1800)});
   r.addEventListener('scroll',function(){if(paused)pos=r.scrollLeft},{passive:true});
   document.querySelectorAll('.tr-nav').forEach(function(b){b.addEventListener('click',function(){
     hold(3000); r.scrollBy({left:(b.classList.contains('next')?1:-1)*(r.clientWidth*.8),behavior:'smooth'});
   })});
   var lb=document.getElementById('tlb');
-  r.addEventListener('click',function(e){var c=e.target.closest('.tesi-card');if(!c)return;lb.querySelector('img').src=c.querySelector('img').src;lb.classList.add('on');hold(6000)});
+  r.addEventListener('click',function(e){if(r._moved){r._moved=false;return}var c=e.target.closest('.tesi-card');if(!c)return;lb.querySelector('img').src=c.querySelector('img').src;lb.classList.add('on');hold(6000)});
   lb.addEventListener('click',function(){lb.classList.remove('on')});
 })();
 </script>
