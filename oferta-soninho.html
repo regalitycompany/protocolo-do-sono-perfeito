@@ -4,28 +4,105 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta name="robots" content="noindex,nofollow"/>
-<title>Espere: falta montar a rotina do seu bebê — Protocolo do Sono Perfeito</title>
+<title>Atenção: sua compra ainda não terminou — Protocolo do Sono Perfeito</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800;900&family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet"/>
 <script src="https://wiapy.com/sell/1.0.0/sell.min.js"></script>
 <style>
-:root{--n1:#080f24;--n2:#0b1630;--n3:#0f1e3a;--gold:#c9a84c;--gold2:#d8bc68;--gold3:#e8d080;--cream:#faf8f3;--green:#1f9d55}
+:root{--n1:#080f24;--n3:#0f1e3a;--gold:#c9a84c;--gold2:#d8bc68;--gold3:#e8d080;--paper:#f6f1e4;--ink:#16130e;--red:#c8102e;--red2:#a50d25}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:radial-gradient(ellipse at top,var(--n3),var(--n1) 70%);background-attachment:fixed;color:#fff;font:16px/1.6 Inter,system-ui,sans-serif}
-.wrap{max-width:620px;margin:0 auto;padding:22px 18px 60px}
+
+/* barra fixa do cronômetro */
+.tbar{position:sticky;top:0;z-index:50;background:var(--red);color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.tbar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 14px;font-weight:800;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;text-align:center}
+.tbar .dot{width:9px;height:9px;border-radius:50%;background:#fff;animation:blink 1s steps(2) infinite;flex-shrink:0}
+.tbar .clk{font-family:ui-monospace,Menlo,monospace;font-size:17px;background:#fff;color:var(--red);border-radius:6px;padding:2px 8px;font-variant-numeric:tabular-nums}
+@keyframes blink{50%{opacity:0}}
+
+.wrap{max-width:640px;margin:0 auto;padding:20px 16px 70px}
 .steps{display:flex;gap:6px;margin-bottom:8px}
 .steps i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.12)}
 .steps i.on{background:var(--gold)}
-.stepl{font-size:12.5px;color:rgba(255,255,255,.6);margin-bottom:26px}
-.stepl b{color:#7be0a6;font-weight:600}
-.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
-h1{font-family:'Playfair Display',serif;font-size:clamp(28px,6.4vw,40px);line-height:1.15;margin:0 0 14px}
-h1 em{font-style:normal;color:var(--gold3)}
-.lead{color:rgba(255,255,255,.78);font-size:17px;margin:0 0 26px}
-h2{font-family:'Playfair Display',serif;font-size:24px;line-height:1.2;margin:34px 0 14px}
-p{margin:0 0 14px;color:rgba(255,255,255,.82)}
-.phone{width:min(330px,100%);margin:6px auto 30px;background:#0d1733;border:1px solid rgba(201,168,76,.35);border-radius:28px;padding:18px 16px 14px;box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 6px rgba(255,255,255,.03)}
+.stepl{font-size:12.5px;color:rgba(255,255,255,.6);margin-bottom:18px}
+.stepl b{color:#7be0a6}
+
+/* ===== página de jornal ===== */
+.paper{background:var(--paper);color:var(--ink);border-radius:4px;padding:18px 18px 22px;box-shadow:0 24px 60px rgba(0,0,0,.45);position:relative}
+.paper::before{content:"";position:absolute;inset:0;border-radius:4px;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.018) 0 1px,transparent 1px 3px)}
+.mast{text-align:center;border-bottom:3px double var(--ink);padding-bottom:8px}
+.mast .top{display:flex;justify-content:space-between;font-family:'Old Standard TT',Georgia,serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:5px;margin-bottom:8px}
+.mast h2{font-family:'Old Standard TT',Georgia,serif;font-weight:700;font-size:clamp(24px,6.6vw,36px);line-height:1;margin:0;letter-spacing:.01em;text-transform:uppercase}
+.mast .sub{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-size:13px;margin-top:6px}
+.kicker{display:inline-block;margin:14px 0 6px;background:var(--red);color:#fff;font-weight:900;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px}
+.paper h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(28px,7vw,42px);line-height:1.05;margin:4px 0 10px;letter-spacing:-.01em}
+.deck{font-family:'Old Standard TT',Georgia,serif;font-size:17px;line-height:1.45;margin:0 0 12px;border-bottom:1px solid var(--ink);padding-bottom:12px}
+.cols{columns:2;column-gap:18px;column-rule:1px solid rgba(22,19,14,.35);font-family:'Old Standard TT',Georgia,serif;font-size:15.5px;line-height:1.5;text-align:justify;hyphens:auto}
+.cols p{margin:0 0 10px}
+.cols p:first-child::first-letter{font-family:'Playfair Display',serif;font-weight:900;float:left;font-size:52px;line-height:.85;padding:4px 6px 0 0}
+@media(max-width:520px){.cols{columns:1}}
+
+/* alertas */
+.alert{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;border:2px solid var(--red);background:#fff4f2;color:var(--ink);padding:12px 14px;margin:14px 0;border-radius:2px}
+.alert .ic{width:44px;height:44px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:26px;border-radius:2px}
+.alert b{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--red2);margin-bottom:2px}
+.alert span{font-size:15px;line-height:1.45}
+.alert.dark{background:#1a1712;border-color:#1a1712;color:#f6f1e4}
+.alert.dark .ic{background:var(--gold);color:#1a1712}
+.alert.dark b{color:var(--gold3)}
+
+/* placar de preço */
+.versus{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:0;margin:18px 0 6px;border:2px solid var(--ink)}
+.versus>div{padding:14px 12px;text-align:center}
+.versus .vs{display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);font-family:'Playfair Display',serif;font-weight:900;font-size:18px;padding:0 10px}
+.versus .l{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.versus .v{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(30px,8vw,44px);line-height:1.05;margin:6px 0 2px}
+.versus .a .v{color:#6b6253;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
+.versus .b{background:#fff7d6}
+.versus .b .v{color:#0d7a3b}
+.versus small{display:block;font-size:12.5px;color:#4a4337;line-height:1.35}
+.foot{font-size:11.5px;color:#5b5446;font-style:italic;margin:6px 0 0}
+
+/* cronômetro grande */
+.clock{margin:18px 0 0;background:var(--ink);color:var(--paper);text-align:center;padding:14px 12px 16px;border-top:4px solid var(--red)}
+.clock .l{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ff8a8a}
+.clock .d{display:flex;justify-content:center;align-items:flex-end;gap:8px;margin-top:6px}
+.clock .d div{background:#2a251d;border-radius:6px;padding:6px 12px;min-width:76px}
+.clock .d b{display:block;font-family:ui-monospace,Menlo,monospace;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.clock .d small{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#b8ad98}
+.clock .d .sep{font-family:ui-monospace,Menlo,monospace;font-size:36px;padding-bottom:18px;min-width:0;background:none}
+.clock p{margin:10px 0 0;font-size:13.5px;color:#d8cfbd}
+
+/* CTA no estilo da LP */
+.buy-btn{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;width:100%;padding:18px 20px;border-radius:16px;border:0;cursor:pointer;font:inherit;
+  background:linear-gradient(180deg,#2bd46a,#16a34a);color:#fff;text-align:left;text-decoration:none;
+  box-shadow:0 6px 0 #0f7a36,0 18px 40px -10px rgba(22,163,74,.7);transition:transform .15s,box-shadow .15s;animation:bb-pulse 2.2s ease-in-out infinite}
+.buy-btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 #0f7a36,0 24px 50px -10px rgba(22,163,74,.8)}
+.buy-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #0f7a36,0 10px 24px -10px rgba(22,163,74,.7)}
+.buy-btn::after{content:'';position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);animation:shine 3s linear infinite}
+.buy-btn[aria-busy="true"]{opacity:.75;cursor:progress}
+.bb-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.bb-ic svg{width:24px;height:24px}
+.bb-tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.bb-tx b{font-size:clamp(16px,4.3vw,20px);font-weight:900;text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
+.bb-tx small{font-size:13.5px;font-weight:500;opacity:.92;margin-top:3px}
+.bb-ar{flex-shrink:0;width:26px;height:26px;animation:bb-nudge 1.2s ease-in-out infinite}
+@keyframes bb-pulse{0%,100%{box-shadow:0 6px 0 #0f7a36,0 18px 40px -10px rgba(22,163,74,.7),0 0 0 0 rgba(34,197,94,.45)}50%{box-shadow:0 6px 0 #0f7a36,0 18px 40px -10px rgba(22,163,74,.7),0 0 0 12px rgba(34,197,94,0)}}
+@keyframes bb-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes shine{0%{left:-80%}35%{left:120%}100%{left:120%}}
+.cta{margin:22px 0 0}
+.cta .sub{text-align:center;font-size:12.5px;color:rgba(255,255,255,.55);margin-top:12px}
+.paper .cta .sub{color:#5b5446}
+.no{display:block;text-align:center;margin-top:14px;font-size:14px;color:rgba(255,255,255,.55);text-decoration:underline;cursor:pointer;background:none;border:0;width:100%;font-family:inherit}
+.paper .no,.offer .no{color:#6b6253}
+
+/* blocos escuros */
+h2.sec{font-family:'Playfair Display',serif;font-size:26px;line-height:1.2;margin:40px 0 14px}
+h2.sec em{font-style:normal;color:var(--gold3)}
+p.t{margin:0 0 14px;color:rgba(255,255,255,.82)}
+.phone{width:min(330px,100%);margin:6px auto 10px;background:#0d1733;border:1px solid rgba(201,168,76,.35);border-radius:28px;padding:18px 16px 14px;box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 6px rgba(255,255,255,.03)}
 .phone .ph{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);font-weight:700}
 .phone .pt{font-family:'Playfair Display',serif;font-size:21px;margin:4px 0 10px}
 .row{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.12);font-size:13.5px}
@@ -33,34 +110,41 @@ p{margin:0 0 14px;color:rgba(255,255,255,.82)}
 .row .t{font-family:ui-monospace,Menlo,monospace;color:var(--gold3);font-size:12.5px}
 .row.bed{color:var(--gold3);font-weight:600}
 .row.now{background:rgba(201,168,76,.12);border-radius:8px;padding-inline:8px;margin-inline:-8px;border-bottom-color:transparent}
-.cap{text-align:center;font-size:12.5px;color:rgba(255,255,255,.5);margin-top:-18px;margin-bottom:26px}
-.list{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:12px}
+.cap{text-align:center;font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:6px}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
 .list li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px}
 .list li::before{content:"";width:24px;height:24px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:1px}
-.list b{display:block;color:#fff}
+.list b{display:block}
 .list span{color:rgba(255,255,255,.72);font-size:15px}
-.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 10px}
-.vs div{border-radius:14px;padding:14px;font-size:14.5px}
-.vs .a{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
-.vs .b{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.4)}
-.vs h3{margin:0 0 6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
-.vs .a h3{color:rgba(255,255,255,.55)} .vs .b h3{color:var(--gold3)}
 .faq{border-top:1px solid rgba(255,255,255,.1)}
 .faq details{border-bottom:1px solid rgba(255,255,255,.1);padding:14px 0}
 .faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
 .faq summary::after{content:"+";color:var(--gold2);font-size:20px;line-height:1}
 .faq details[open] summary::after{content:"–"}
-.faq p{margin:10px 0 0;font-size:15px}
-.offer{margin:34px 0 0;background:var(--cream);color:#111827;border-radius:20px;padding:24px 20px 20px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
-.offer .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a6a1c}
-.offer .nm{font-family:'Playfair Display',serif;font-size:24px;margin:6px 0 2px}
-.offer .pr{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;line-height:1;margin:10px 0 4px;color:#0b1630}
-.offer .pr small{font-size:22px;vertical-align:18px;margin-right:2px}
-.offer .sub{font-size:14px;color:#4b5563;margin-bottom:18px}
-#wiapy_upsell{max-width:420px}
-#wiapy_upsell a{color:#6b7280!important;text-decoration:underline}
-.trust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#4b5563;margin-top:14px}
-.note{font-size:12.5px;color:rgba(255,255,255,.45);text-align:center;margin-top:22px}
+.faq p{margin:10px 0 0;font-size:15px;color:rgba(255,255,255,.8)}
+
+/* caixa final */
+.offer{margin:40px 0 0;background:var(--paper);color:var(--ink);border-radius:4px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.offer .hd{background:var(--red);color:#fff;text-align:center;font-weight:900;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:9px 10px}
+.offer .bd{padding:22px 18px 20px;text-align:center}
+.offer .nm{font-family:'Playfair Display',serif;font-weight:900;font-size:24px;margin:0}
+.offer .pr{font-family:'Playfair Display',serif;font-size:64px;font-weight:900;line-height:1;margin:10px 0 2px;color:#0b1630}
+.offer .pr small{font-size:24px;vertical-align:26px;margin-right:2px}
+.offer .ps{font-size:14px;color:#4a4337;margin-bottom:6px}
+.offer .ex{font-size:13px;color:var(--red2);font-weight:700;margin-bottom:16px}
+.offer .ex b{font-family:ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.trust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#4a4337;margin-top:14px}
+.note{font-size:12px;color:rgba(255,255,255,.45);text-align:center;margin-top:22px}
+
+/* oferta encerrada */
+.ended{position:fixed;inset:0;z-index:100;background:rgba(8,15,36,.92);display:flex;align-items:center;justify-content:center;padding:20px}
+.ended[hidden]{display:none}
+.ended .bx{background:var(--paper);color:var(--ink);max-width:420px;width:100%;text-align:center;border-top:6px solid var(--red);padding:26px 20px}
+.ended h3{font-family:'Playfair Display',serif;font-weight:900;font-size:28px;margin:0 0 8px}
+.ended p{margin:0;font-size:15px}
+#wiapy_upsell{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media(max-width:520px){.buy-btn{padding:16px 14px;gap:10px}.bb-ic{width:40px;height:40px}.clock .d div{min-width:66px}.clock .d b{font-size:38px}}
+@media(prefers-reduced-motion:reduce){.buy-btn,.bb-ar,.buy-btn::after,.tbar .dot{animation:none}}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -68,14 +152,57 @@ fbq('init','1078460701310585');fbq('track','PageView');fbq('trackCustom','ViewUp
 </script>
 </head>
 <body>
+
+<div class="tbar" role="status"><div class="in"><span class="dot"></span><span>Oferta única desta página · encerra em</span><span class="clk" data-clock>10:00</span></div></div>
+
 <div class="wrap">
   <div class="steps" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></div>
-  <div class="stepl"><b>✓ Pagamento aprovado.</b> Passo 2 de 3: deixe a rotina pronta</div>
+  <div class="stepl"><b>✓ Pagamento aprovado.</b> Não feche esta página: falta 1 passo.</div>
 
-  <span class="tag">Seu Protocolo já está liberado</span>
-  <h1>Quer receber a rotina do seu bebê <em>já montada?</em></h1>
-  <p class="lead">Você responde 7 perguntas sobre o dia dele e recebe os horários de soneca e de berço organizados a partir da hora em que <strong>ele</strong> acorda, junto com o plano das primeiras 7 noites.</p>
+  <article class="paper">
+    <header class="mast">
+      <div class="top"><span data-today>Hoje</span><span>Aviso ao comprador</span><span>Edição única</span></div>
+      <h2>Comunicado Importante</h2>
+      <div class="sub">Leia antes de sair desta página</div>
+    </header>
 
+    <span class="kicker">Urgente · só nesta página</span>
+    <h1>Uma consultoria de sono cobra R$300 ou mais para montar a rotina do bebê. Aqui, você tem a sua por R$47.</h1>
+    <p class="deck">Seu Protocolo já está liberado. Mas, antes de começar, falta a parte que mais trava as mães: transformar a tabela em horários de verdade para o <em>seu</em> bebê.</p>
+
+    <div class="cols">
+      <p>Amanhã cedo, com sono, você vai abrir a tabela e precisar decidir: a que horas é a primeira soneca? E a segunda? A que horas ele vai para o berço? A tabela mostra a média da idade. Seu bebê não acorda na hora da média.</p>
+      <p>Uma consultora de sono particular cobra a partir de R$300 para montar essa rotina. O Meu Soninho faz a conta por você: com 7 respostas sobre o dia do seu bebê, ele monta os horários de soneca e de berço e o plano das primeiras 7 noites.</p>
+      <p>Este preço existe só nesta tela, logo depois da compra. Se você sair, a oferta não volta a aparecer.</p>
+    </div>
+
+    <div class="versus">
+      <div class="a"><div class="l">Consultoria de sono</div><div class="v">R$300+</div><small>Rotina montada por uma consultora particular</small></div>
+      <div class="vs">×</div>
+      <div class="b"><div class="l">Meu Soninho</div><div class="v">R$47</div><small>Rotina do seu bebê montada na hora, no celular</small></div>
+    </div>
+    <p class="foot">Valor de referência de consultorias particulares de sono infantil. O Meu Soninho é uma ferramenta de organização da rotina e não substitui a orientação do pediatra.</p>
+
+    <div class="alert"><div class="ic">!</div><div><b>Atenção</b><span>Este preço de <strong>R$47</strong> aparece somente nesta página. Ele não está no site e não será enviado por e-mail.</span></div></div>
+    <div class="alert"><div class="ic">⏱</div><div><b>Tempo limitado</b><span>Esta oferta fica disponível por <strong>10 minutos</strong>. Quando o cronômetro zerar, ela é encerrada.</span></div></div>
+
+    <div class="clock" aria-live="off">
+      <div class="l">A oferta encerra em</div>
+      <div class="d"><div><b data-mm>10</b><small>minutos</small></div><div class="sep">:</div><div><b data-ss>00</b><small>segundos</small></div></div>
+      <p>Depois disso, você segue só com o Protocolo.</p>
+    </div>
+
+    <div class="cta">
+      <button type="button" class="buy-btn" data-buy>
+        <span class="bb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></span>
+        <span class="bb-tx"><b>Sim, quero a rotina montada</b><small>Adicionar por R$47 com 1 clique</small></span>
+        <svg class="bb-ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <div class="sub">No cartão, sem digitar os dados de novo · Garantia de 7 dias</div>
+    </div>
+  </article>
+
+  <h2 class="sec">Veja como fica o <em>plano pronto</em></h2>
   <div class="phone" aria-label="Exemplo de plano gerado">
     <div class="ph">Meu Soninho · Helena · 5 meses</div>
     <div class="pt">O dia da Helena</div>
@@ -87,13 +214,9 @@ fbq('init','1078460701310585');fbq('track','PageView');fbq('trackCustom','ViewUp
     <div class="row"><span class="t">19h05</span><span>Começar a rotina da noite</span></div>
     <div class="row bed"><span class="t">19h30–19h50</span><span>Berço</span></div>
   </div>
-  <div class="cap">Exemplo real de plano gerado para um bebê de 5 meses que acorda às 6h40.</div>
+  <div class="cap">Exemplo real de plano para um bebê de 5 meses que acorda às 6h40.</div>
 
-  <p>A tabela do Protocolo mostra a média de cada idade. Só que seu bebê não acorda na hora da média, e amanhã de manhã você vai ter que fazer essa conta com sono.</p>
-  <p>O Meu Soninho faz a conta por você. Ele usa a hora em que seu bebê acorda, quantas sonecas ele faz e quanto elas duram, e monta o dia inteiro em faixas de horário, do primeiro cochilo até a hora do berço.</p>
-  <p><strong>Você já tem o método. Agora pode ter o caminho organizado pra começar amanhã.</strong></p>
-
-  <h2>O que você recebe</h2>
+  <h2 class="sec">O que você recebe</h2>
   <ul class="list">
     <li><div><b>O dia do seu bebê, montado</b><span>Sonecas e berço calculados a partir da hora em que ele acorda.</span></div></li>
     <li><div><b>Plano das 7 primeiras noites</b><span>O que fazer em cada uma, sem pular etapas.</span></div></li>
@@ -102,13 +225,15 @@ fbq('init','1078460701310585');fbq('track','PageView');fbq('trackCustom','ViewUp
     <li><div><b>No seu celular</b><span>Abre pelo link do e-mail, com tela escura para a madrugada.</span></div></li>
   </ul>
 
-  <h2>Tabela ou plano?</h2>
-  <div class="vs">
-    <div class="a"><h3>Só a tabela</h3>Mostra a média da idade. Você faz as contas e decide sozinha cada horário.</div>
-    <div class="b"><h3>Com o Meu Soninho</h3>Os horários do seu bebê, calculados e organizados, prontos pra seguir amanhã.</div>
+  <div class="cta">
+    <button type="button" class="buy-btn" data-buy>
+      <span class="bb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+      <span class="bb-tx"><b>Quero os horários do meu bebê</b><small>R$47 · oferta encerra em <span data-clock>10:00</span></small></span>
+      <svg class="bb-ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
   </div>
 
-  <h2>Dúvidas</h2>
+  <h2 class="sec">Dúvidas</h2>
   <div class="faq">
     <details><summary>Mas eu já tenho a tabela.</summary><p>A tabela é a referência. O Meu Soninho transforma a referência no dia do seu bebê, com os horários dele.</p></details>
     <details><summary>E se ele não seguir os horários?</summary><p>Ele não precisa. Os horários vêm em faixas e o plano mostra como ajustar pelos sinais dele. O relógio é só um guia.</p></details>
@@ -118,25 +243,73 @@ fbq('init','1078460701310585');fbq('track','PageView');fbq('trackCustom','ViewUp
   </div>
 
   <div class="offer" id="oferta">
-    <div class="k">Só nesta página</div>
-    <div class="nm">Meu Soninho Personalizado</div>
-    <div class="pr"><small>R$</small>47</div>
-    <div class="sub">Pagamento único, adicionado à sua compra.<br>No cartão, sem digitar os dados de novo.</div>
-    <div id="wiapy_upsell"></div>
-    <div class="trust"><span>🔒 Pagamento seguro</span><span>✓ Garantia de 7 dias</span></div>
+    <div class="hd">⚠ Última chamada · só nesta página</div>
+    <div class="bd">
+      <div class="nm">Meu Soninho Personalizado</div>
+      <div class="pr"><small>R$</small>47</div>
+      <div class="ps">Pagamento único, adicionado à sua compra.</div>
+      <div class="ex">Encerra em <b data-clock>10:00</b></div>
+      <button type="button" class="buy-btn" data-buy>
+        <span class="bb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
+        <span class="bb-tx"><b>Sim, adicionar ao meu pedido</b><small>Acesso no seu e-mail em seguida</small></span>
+        <svg class="bb-ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <div class="trust"><span>🔒 Pagamento seguro</span><span>✓ Garantia de 7 dias</span></div>
+      <button type="button" class="no" data-no>Não, obrigado. Vou montar a rotina sozinha com a tabela.</button>
+    </div>
   </div>
 
   <p class="note">O Meu Soninho organiza a rotina e não substitui a orientação do pediatra.</p>
 </div>
+
+<div id="wiapy_upsell"></div>
+<div class="ended" id="ended" hidden><div class="bx"><h3>Oferta encerrada</h3><p>O tempo desta oferta acabou. Estamos levando você para a próxima etapa…</p></div></div>
+
 <script>
 initWiapyUpsell({
   linkUrl: "https://pay.wiapy.com/checkout/6ad14211c8bdfc29496fca36",
   linkText: "SIM, QUERO A ROTINA DO MEU BEBÊ MONTADA",
-  styles: { backgroundColor: "#1f9d55", hoverBackgroundColor: "#188246", color: "#fff", fontSize: "16px", fontWeight: "800", padding: "18px 20px", borderRadius: "12px", fontFamily: "Inter, system-ui, sans-serif" },
   refusalLinkUrl: "/oferta-soninho-plano",
-  refusalLinkText: "Não, obrigado. Vou montar a rotina por conta própria com a tabela.",
-  refusalLinkColor: "#6b7280"
+  refusalLinkText: "Recusar"
 });
+
+// Os botões da página acionam o botão de 1 clique da Wiapy (que fica escondido).
+const box = document.getElementById('wiapy_upsell');
+const wBtn = () => box.querySelector('button');
+const wNo = () => box.querySelector('a');
+document.querySelectorAll('[data-buy]').forEach(b => b.addEventListener('click', () => {
+  b.setAttribute('aria-busy', 'true');
+  fbq('trackCustom', 'UpsellAccept', { offer: 'meu-soninho', value: 47 });
+  const tryClick = (n) => { const w = wBtn(); if (w && !w.disabled) return w.click(); if (n < 40) setTimeout(() => tryClick(n + 1), 150); };
+  tryClick(0);
+}));
+const refuse = () => { const a = wNo(); location.href = a ? a.href : '/oferta-soninho-plano' + location.search; };
+document.querySelectorAll('[data-no]').forEach(b => b.addEventListener('click', refuse));
+
+// Data de hoje no cabeçalho
+document.querySelectorAll('[data-today]').forEach(el => el.textContent = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }));
+
+// Cronômetro de 10 min. O fim fica salvo na sessão: recarregar não reinicia.
+// Ao zerar, a oferta é encerrada de verdade e a pessoa segue para o downsell.
+const KEY = 'psp-soninho-fim-' + (new URLSearchParams(location.search).get('wiapy_sell') || 'x');
+let end;
+try { end = +sessionStorage.getItem(KEY); } catch (e) {}
+if (!end) { end = Date.now() + 10 * 60 * 1000; try { sessionStorage.setItem(KEY, end); } catch (e) {} }
+const pad = n => String(n).padStart(2, '0');
+function tick() {
+  const left = Math.max(0, Math.round((end - Date.now()) / 1000));
+  const m = pad(Math.floor(left / 60)), s = pad(left % 60);
+  document.querySelectorAll('[data-clock]').forEach(el => el.textContent = `${m}:${s}`);
+  document.querySelectorAll('[data-mm]').forEach(el => el.textContent = m);
+  document.querySelectorAll('[data-ss]').forEach(el => el.textContent = s);
+  if (left === 0) {
+    clearInterval(timer);
+    document.querySelectorAll('[data-buy]').forEach(b => { b.disabled = true; b.style.animation = 'none'; b.style.opacity = '.5'; });
+    document.getElementById('ended').hidden = false;
+    setTimeout(refuse, 2500);
+  }
+}
+const timer = setInterval(tick, 1000); tick();
 </script>
 </body>
 </html>
