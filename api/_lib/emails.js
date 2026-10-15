@@ -25,7 +25,7 @@ function layout({ preheader, body, cta, ctaUrl, footerNote, unsubUrl, openUrl })
 <tr><td style="padding:28px 28px 8px;font-size:16px;line-height:1.6">${body}</td></tr>
 <tr><td align="center" style="padding:12px 28px 28px">
   <a href="${ctaUrl}" style="display:inline-block;background:#e8491f;color:#ffffff;text-decoration:none;font-weight:bold;font-size:16px;padding:16px 30px;border-radius:10px">${cta}</a>
-  <div style="font-size:13px;color:#6b7280;margin-top:12px">🔒 Pagamento seguro pela Kiwify · Garantia de 7 dias</div>
+  <div style="font-size:13px;color:#6b7280;margin-top:12px">🔒 Pagamento seguro · Garantia de 7 dias</div>
 </td></tr>
 ${footerNote ? `<tr><td style="padding:0 28px 24px;font-size:14px;line-height:1.5;color:#6b7280">${footerNote}</td></tr>` : ''}
 </table>

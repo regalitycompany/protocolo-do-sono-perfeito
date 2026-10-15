@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 export const sql = neon(process.env.DATABASE_URL);
 
 export const PIXEL_ID = process.env.META_PIXEL_ID || '1078460701310585';
-export const CHECKOUT_URL = 'https://pay.kiwify.com.br/P7ziSS2';
+export const CHECKOUT_URL = 'https://pay.wiapy.com/6VwHuKLXRCly';
 export const SITE_URL = process.env.SITE_URL || 'https://protocolodosonoperfeito.vercel.app';
 export const PRICE = 37;
 

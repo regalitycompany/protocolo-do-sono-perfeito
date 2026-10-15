@@ -39,8 +39,8 @@ ol li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;heigh
   <div class="card">
     <h2>Como acessar agora</h2>
     <ol>
-      <li><strong>Abra seu e-mail.</strong> A Kiwify enviou o link de acesso para o e-mail que você usou na compra.</li>
-      <li><strong>Não achou?</strong> Procure nas abas Promoções e Spam por uma mensagem da Kiwify.</li>
+      <li><strong>Abra seu e-mail.</strong> Enviamos o link de acesso para o e-mail que você usou na compra.</li>
+      <li><strong>Não achou?</strong> Procure nas abas Promoções e Spam pela mensagem com o seu acesso.</li>
       <li><strong>Comece pela Etapa 1</strong> ainda hoje: é ela que mostra o que pode estar sabotando as noites.</li>
     </ol>
   </div>
@@ -50,7 +50,7 @@ ol li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;heigh
 </main>
 
 <script>
-// Registra a chegada na página de obrigado no painel (o Purchase do Meta já é enviado pela Kiwify).
+// Registra a chegada na página de obrigado no painel (o Purchase do Meta é enviado pela plataforma de checkout).
 (function(){
   var sid;try{sid=localStorage.getItem('psp_sid')}catch(e){}
   if(!sid){sid='ty_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
