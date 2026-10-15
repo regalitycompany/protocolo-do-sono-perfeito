@@ -65,16 +65,18 @@ const STEPS = {
 <p style="margin:0 0 14px">E você tem <strong>7 dias de garantia</strong>: se não fizer sentido pra você, devolvemos 100% do valor. O risco é todo nosso.</p>`,
   }),
   3: (n) => ({
-    subject: n ? `${n}, liberei o Protocolo por R$19,98 pra você` : 'Liberei o Protocolo por R$19,98 pra você',
-    preheader: 'Condição especial, válida por 48 horas.',
-    cta: 'Garantir por R$19,98',
+    subject: n ? `${n}, liberei o Protocolo por R$19,90 pra você` : 'Liberei o Protocolo por R$19,90 pra você',
+    preheader: 'Use o cupom SONO1990 no checkout.',
+    cta: 'Garantir por R$19,90',
     body: `<p style="margin:0 0 14px">Oi${n ? ` ${n}` : ''},</p>
 <p style="margin:0 0 14px">Este é meu último e-mail sobre o assunto.</p>
 <p style="margin:0 0 14px">Sei que às vezes o momento não é o ideal, e não quero que o valor seja o motivo de você continuar passando as noites em claro. Então liberei uma condição que não aparece na página:</p>
 <p style="margin:0 0 14px;font-size:18px;text-align:center;background:#f2ede0;border-radius:10px;padding:16px">
-<span style="text-decoration:line-through;color:#6b7280">R$37</span> &nbsp;→&nbsp; <strong style="color:#e8491f;font-size:24px">R$19,98</strong></p>
+<span style="text-decoration:line-through;color:#6b7280">R$37</span> &nbsp;→&nbsp; <strong style="color:#e8491f;font-size:24px">R$19,90</strong></p>
 <p style="margin:0 0 14px">É o protocolo completo, com as 6 etapas e os bônus no app, e a mesma garantia de 7 dias.</p>
-<p style="margin:0 0 14px"><strong>Esse valor vale por 48 horas</strong> a partir deste e-mail. Depois disso o link volta pro preço normal.</p>`,
+<p style="margin:0 0 14px">No checkout, digite o cupom abaixo no campo <strong>"Cupom de desconto"</strong>:</p>
+<p style="margin:0 0 14px;text-align:center"><span style="display:inline-block;font:700 22px/1 monospace;letter-spacing:.12em;border:2px dashed #c9a84c;border-radius:10px;padding:12px 20px">SONO1990</span></p>
+<p style="margin:0 0 14px">O valor cai para R$19,90 na hora.</p>`,
   }),
 };
 

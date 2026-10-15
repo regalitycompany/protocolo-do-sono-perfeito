@@ -1,7 +1,6 @@
 import { sql, clean, signSid, CHECKOUT_URL, SITE_URL } from './_lib/core.js';
 
 const GIF = Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64');
-const DISCOUNT_HOURS = 48;
 
 // Rastreia os e-mails de recuperação: ?a=click | open | unsub
 export async function GET(req) {
@@ -38,9 +37,7 @@ export async function GET(req) {
   for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
     if (lead?.[k]) url.searchParams.set(k, lead[k]);
   }
-  const coupon = process.env.RECOVERY_COUPON;
-  const inWindow = lead?.email3_at && Date.now() - new Date(lead.email3_at).getTime() < DISCOUNT_HOURS * 3600e3;
-  if (step === 3 && coupon && inWindow) url.searchParams.set('coupon', coupon);
+  // A Wiapy não aplica cupom pela URL: o e-mail 3 mostra o código SONO1990 pra digitar no checkout.
 
   return Response.redirect(url.toString(), 302);
 }
