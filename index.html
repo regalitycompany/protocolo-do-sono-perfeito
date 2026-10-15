@@ -340,6 +340,10 @@ canvas#ptc{position:absolute;inset:0;pointer-events:none;z-index:0}
   color:rgba(201,168,76,.12);pointer-events:none;user-select:none;
 }
 .bfeat-content{position:relative;flex:1;min-width:220px}
+.bfeat-mk{position:relative;width:150px;height:auto;flex-shrink:0;margin:-24px 0 -50px;transform:rotate(-4deg);order:-1}
+.bc2-mk{position:absolute;right:-6px;top:10px;width:96px;height:auto;transform:rotate(5deg);pointer-events:none}
+.bc2 .btag,.bc2 .btit,.bc2 .bdsc{padding-right:92px}
+.phead-kit{width:230px;height:auto;margin:-14px -10px -22px 0}
 .bfeat .btag{color:var(--gold3);font-size:11px}
 .bfeat .btit{color:var(--w);font-size:22px;font-family:var(--sf);font-weight:700;margin-top:6px}
 .bfeat .bdsc{color:rgba(255,255,255,.55);font-size:14px;margin-top:8px;max-width:400px;line-height:1.65}
@@ -380,7 +384,10 @@ canvas#ptc{position:absolute;inset:0;pointer-events:none;z-index:0}
   .app-showcase{flex-direction:column;text-align:center;padding:30px 24px 36px}
   .app-showcase-copy p{margin-left:auto;margin-right:auto}
   .bfeat{flex-direction:column;align-items:flex-start;padding:28px 24px;gap:16px}
-  .bfeat-init{font-size:120px;right:-10px;top:10px;transform:none}
+  .bfeat-mk{position:absolute;right:-12px;top:14px;width:118px;margin:0;order:0}
+  .bfeat-content{padding-right:96px;min-width:0;width:100%}
+  .phead{flex-direction:column;align-items:flex-start}
+  .phead-kit{width:100%;max-width:330px;margin:4px auto -20px}
   .bfeat-price{text-align:left}
   .bgrid{grid-template-columns:1fr}
 }
@@ -773,8 +780,9 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
   border:1.5px solid rgba(201,168,76,.55);border-radius:18px;padding:18px 22px 20px;
   box-shadow:0 0 0 6px rgba(201,168,76,.06),0 20px 50px -20px rgba(0,0,0,.8);
 }
-.h-off-top{display:flex;align-items:center;gap:14px;text-align:left}
-.h-off-top img{width:46px;height:83px;object-fit:cover;object-position:top;border-radius:9px;border:3px solid #1c2744;flex-shrink:0;box-shadow:0 8px 18px rgba(0,0,0,.5)}
+.h-off-top{text-align:center}
+.h-off-kit{display:block;width:100%;max-width:340px;height:auto;margin:-4px auto 6px}
+.h-off-top .h-off-b{justify-content:center}
 .h-off-t{font-family:var(--sf);font-size:18px;font-weight:700;color:var(--w);line-height:1.2}
 .h-off-b{font-size:13px;font-weight:700;color:var(--gold3);margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .h-new{background:var(--ember);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
@@ -797,6 +805,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 .appx-phones{display:flex;justify-content:center;align-items:flex-end;gap:18px;margin-top:34px}
 .appx-phones figure{width:30%;max-width:200px}
 .appx-phones figure.mid{transform:translateY(-14px)}
+.appx-mk{display:block;width:100%;height:auto;margin-bottom:-8%}
 .appx-ph{aspect-ratio:500/900;border-radius:22px;overflow:hidden;border:5px solid #1c2744;background:var(--n2);box-shadow:0 26px 50px -16px rgba(0,0,0,.8),0 0 0 1px rgba(201,168,76,.25)}
 .appx-ph img{width:100%;height:100%;object-fit:cover;object-position:top}
 .appx-phones figcaption{font-size:13px;font-weight:700;color:var(--gold3);margin-top:12px;line-height:1.35}
@@ -844,11 +853,9 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     <div class="cta-btn-wrap rv on d2">
       <div class="h-offer">
         <div class="h-off-top">
-          <img src="app-em.jpg" alt="Tela real do App Sono Perfeito" width="500" height="900"/>
-          <div>
-            <div class="h-off-t">Protocolo do Sono Perfeito</div>
-            <div class="h-off-b"><span class="h-new">Novo</span> + App Sono Perfeito de bônus</div>
-          </div>
+          <img class="h-off-kit" src="mockups/kit.webp" alt="Ebook Protocolo do Sono Perfeito e o App Sono Perfeito no celular" width="1000" height="789" fetchpriority="high"/>
+          <div class="h-off-t">Protocolo do Sono Perfeito</div>
+          <div class="h-off-b">Ebook completo + <span class="h-new">Novo</span> App Sono Perfeito de bônus</div>
         </div>
         <div class="h-off-p"><small>R$</small>37<small>,00</small></div>
         <div class="h-off-u">Pagamento único · acesso imediato</div>
@@ -1106,15 +1113,16 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <h3>Você também recebe o <em>App Sono Perfeito</em></h3>
       <p>Não é mais um PDF. É um app no seu celular para abrir com uma mão só, no escuro, às 3h da madrugada — e saber exatamente o que fazer.</p>
       <div class="appx-phones">
-        <figure><div class="appx-ph"><img src="app-em.jpg" alt="Tela real do app: Guia de Emergência" loading="lazy" width="500" height="900"/></div><figcaption>Guia SOS da madrugada</figcaption></figure>
-        <figure class="mid"><div class="appx-ph"><img src="app-cl.jpg" alt="Tela real do app: Checklist Noturno" loading="lazy" width="500" height="900"/></div><figcaption>Checklist da rotina noturna</figcaption></figure>
-        <figure><div class="appx-ph"><img src="app-tab.jpg" alt="Tela real do app: Tabela de Horários por Idade" loading="lazy" width="500" height="900"/></div><figcaption>Janelas de sono por idade</figcaption></figure>
+        <figure><img class="appx-mk" src="mockups/app-em.webp" alt="Tela real do app: Guia de Emergência" loading="lazy" width="440" height="889"/><figcaption>Guia SOS da madrugada</figcaption></figure>
+        <figure class="mid"><img class="appx-mk" src="mockups/app-cl.webp" alt="Tela real do app: Checklist Noturno" loading="lazy" width="440" height="889"/><figcaption>Checklist da rotina noturna</figcaption></figure>
+        <figure><img class="appx-mk" src="mockups/app-tab.webp" alt="Tela real do app: Tabela de Horários por Idade" loading="lazy" width="440" height="889"/><figcaption>Janelas de sono por idade</figcaption></figure>
       </div>
       <div class="appx-tag">Telas reais do app · incluso no R$37</div>
     </div>
     <div class="pshell rv">
       <div class="phead">
         <div><span class="pill">Produto Principal</span><h3>Protocolo do Sono Perfeito</h3><p>6 etapas de aplicação + plano prático noite inteira</p></div>
+        <img class="phead-kit" src="mockups/kit.webp" alt="Ebook Protocolo do Sono Perfeito + App Sono Perfeito" loading="lazy" width="1000" height="789"/>
       </div>
       <div class="pbody">
         <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 1 — Descubra o que está sabotando as noites</div><div class="md">Entenda os padrões que podem estar contribuindo para os despertares e saiba o que observar antes de mudar a rotina.</div></div></div>
@@ -1152,7 +1160,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     </div>
     <div class="bstack" style="margin-top:44px">
       <div class="bfeat rv">
-        <span class="bfeat-init" aria-hidden="true">G</span>
+        <img class="bfeat-mk" src="mockups/app-em.webp" alt="Tela do Guia de Emergência no app" loading="lazy" width="440" height="889"/>
         <div class="bfeat-content">
           <div class="btag">Bônus 01 · App</div>
           <div class="btit">Guia de Emergência</div>
@@ -1162,14 +1170,14 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       </div>
       <div class="bgrid">
         <div class="bc2 rv d1">
-          <span class="bc2-init" aria-hidden="true">C</span>
+          <img class="bc2-mk" src="mockups/app-cl.webp" alt="Tela do Checklist Noturno no app" loading="lazy" width="440" height="889"/>
           <div class="btag">Bônus 02 · App</div>
           <div class="btit">Checklist da Rotina Noturna</div>
           <div class="bdsc">19 itens interativos para marcar toda noite. Progresso salvo e barra de conclusão — o Passo 2 do Método Janela de Ouro na palma da mão.</div>
           <div class="bc2-price"><span class="bfree">INCLUSO</span></div>
         </div>
         <div class="bc2 rv d2">
-          <span class="bc2-init" aria-hidden="true">T</span>
+          <img class="bc2-mk" src="mockups/app-tab.webp" alt="Tela da Tabela de Horários no app" loading="lazy" width="440" height="889"/>
           <div class="btag">Bônus 03 · App</div>
           <div class="btit">Tabela de Horários por Idade</div>
           <div class="bdsc">Rotinas do 0 aos 12 meses com horários, sonecas e janelas de vigília. Toque para expandir a fase exata do seu bebê.</div>
