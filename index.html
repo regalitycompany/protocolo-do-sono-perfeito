@@ -413,21 +413,25 @@ canvas#ptc{position:absolute;inset:0;pointer-events:none;z-index:0}
 }
 .testi-note .ic{width:14px;height:14px;color:var(--gold)}
 /* Masonry via CSS columns */
-.testi-masonry{
-  columns:3;column-gap:18px;
-}
-@media(max-width:860px){.testi-masonry{columns:2}}
-@media(max-width:500px){.testi-masonry{columns:1}}
-.tesi-img{
-  break-inside:avoid;margin-bottom:18px;
-  border-radius:16px;overflow:hidden;
-  box-shadow:0 8px 32px rgba(0,0,0,.4);
-  border:1px solid rgba(255,255,255,.08);
-  transition:transform .3s,box-shadow .3s;
-  cursor:default;
-}
-.tesi-img:hover{transform:scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,.5)}
-.tesi-img img{width:100%;height:auto;display:block}
+#testi{padding-left:0;padding-right:0}
+#testi .sec-in{padding-left:20px;padding-right:20px}
+.tr-wrap{position:relative;margin-top:4px}
+.tr-rail{display:flex;gap:16px;overflow-x:auto;padding:14px 0 30px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.tr-rail::-webkit-scrollbar{display:none}
+.tr-rail .tesi-card{flex:0 0 272px;margin:0;display:flex;flex-direction:column;cursor:zoom-in;transition:transform .3s}
+.tr-rail .tesi-card:hover{transform:scale(1.04)}
+.tr-rail .tcap{min-height:72px;font-size:16px}
+.tesi-img{flex:1;height:440px;border-radius:16px;overflow:hidden;background:#efe9df;
+  box-shadow:0 14px 34px rgba(0,0,0,.5);border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center}
+.tesi-img img{width:100%;height:100%;object-fit:contain;display:block}
+.tr-nav{position:absolute;top:50%;z-index:2;width:52px;height:52px;border-radius:50%;background:rgba(8,15,36,.85);border:1px solid var(--gl);display:flex;align-items:center;justify-content:center;transform:translateY(-50%);transition:background .2s}
+.tr-nav:hover{background:var(--gold)}
+.tr-nav .ic{width:22px;height:22px;stroke:var(--gold3)}.tr-nav:hover .ic{stroke:var(--n0)}
+.tr-nav.prev{left:18px}.tr-nav.prev .ic{transform:rotate(180deg)}.tr-nav.next{right:18px}
+@media(max-width:760px){.tr-nav{display:none}.tr-rail .tesi-card{flex-basis:76vw}.tesi-img{height:430px}}
+#tlb{position:fixed;inset:0;z-index:900;background:rgba(3,7,15,.92);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+#tlb.on{display:flex}#tlb img{max-width:100%;max-height:92vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 
 /* =================== FAQ =================== */
 #faq{background:var(--cream2)}
@@ -574,8 +578,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
   font-family:var(--sf);font-style:italic;font-size:15px;line-height:1.5;
   color:var(--gold3);margin-bottom:10px;
 }
-.tesi-card{break-inside:avoid;margin-bottom:26px}
-.tesi-card .tesi-img{margin-bottom:0}
+
 
 /* =================== FECHAMENTO DA RUMINAÇÃO =================== */
 .rumin{
@@ -969,7 +972,10 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         Prints reais enviados por clientes — sem edição
       </div>
     </div>
-    <div class="testi-masonry rv d1">
+  </div>
+  <div class="tr-wrap rv d1">
+    <button type="button" class="tr-nav prev" aria-label="Anterior"><svg class="ic"><use href="#i-arrow"/></svg></button>
+    <div class="tr-rail" id="trRail">
       <div class="tesi-card">
         <p class="tcap">Ela também achava que “o bebê dela era diferente”.</p>
         <div class="tesi-img"><img src="testi-3.png" alt="Depoimento real de cliente — Alice"/></div>
@@ -990,7 +996,10 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         <p class="tcap">Ela também estava a ponto de desistir de ter uma noite inteira de sono.</p>
         <div class="tesi-img"><img src="testi-5.png" alt="Depoimento real de cliente — Joice"/></div>
       </div>
-    </div>
+        </div>
+    <button type="button" class="tr-nav next" aria-label="Próximo"><svg class="ic"><use href="#i-arrow"/></svg></button>
+  </div>
+  <div class="sec-in w">
     <div style="text-align:center;margin-top:44px" class="rv">
       <p style="font-size:16px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.7;max-width:500px;margin-left:auto;margin-right:auto">Elas tinham exatamente o mesmo problema que você.<br>A única diferença é que decidiram resolver.</p>
       <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg">
@@ -1932,6 +1941,35 @@ setInterval(()=>{
     else e.target.classList.add('on');
   })},{threshold:.35});
   [jw,mx].forEach(function(el){io.observe(el)}); io.observe(bg);
+})();
+</script>
+<div id="tlb"><img alt="Depoimento ampliado"/></div>
+<script>
+(function(){
+  var r=document.getElementById('trRail'); if(!r)return;
+  var orig=[].slice.call(r.children); orig.forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');r.appendChild(k)});
+  var paused=false,t,last=0,speed=.045,pos=0; // px por ms
+  var n=orig.length;function half(){return r.children[n].offsetLeft-r.children[0].offsetLeft}
+  function hold(ms){paused=true;clearTimeout(t);t=setTimeout(function(){paused=false;pos=r.scrollLeft},ms||2500)}
+  function step(ts){
+    var dt=last?Math.min(ts-last,50):0; last=ts;
+    if(!paused&&!document.hidden){pos+=speed*dt; if(pos>=half())pos-=half(); r.scrollLeft=pos}
+    else pos=r.scrollLeft;
+    if(r.scrollLeft>=half()){r.scrollLeft-=half();pos=r.scrollLeft}
+    if(r.scrollLeft<=0&&paused){r.scrollLeft+=half();pos=r.scrollLeft}
+    requestAnimationFrame(step);
+  }
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(step);
+  r.addEventListener('mouseenter',function(){paused=true;clearTimeout(t)});
+  r.addEventListener('mouseleave',function(){hold(600)});
+  ['touchstart','pointerdown','wheel'].forEach(function(e){r.addEventListener(e,function(){hold(3000)},{passive:true})});
+  r.addEventListener('scroll',function(){if(paused)pos=r.scrollLeft},{passive:true});
+  document.querySelectorAll('.tr-nav').forEach(function(b){b.addEventListener('click',function(){
+    hold(3000); r.scrollBy({left:(b.classList.contains('next')?1:-1)*(r.clientWidth*.8),behavior:'smooth'});
+  })});
+  var lb=document.getElementById('tlb');
+  r.addEventListener('click',function(e){var c=e.target.closest('.tesi-card');if(!c)return;lb.querySelector('img').src=c.querySelector('img').src;lb.classList.add('on');hold(6000)});
+  lb.addEventListener('click',function(){lb.classList.remove('on')});
 })();
 </script>
 </body>
