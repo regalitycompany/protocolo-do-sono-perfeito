@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="theme-color" content="#0C1121"/>
+<title>Meu Soninho — Protocolo do Sono Perfeito</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* App de uma coluna, pensado pro celular às 3h: fundo noite, dourado da Janela de Ouro, botões grandes. */
+:root{--bg:#F4F5FA;--card:#FFFFFF;--ink:#141A2E;--muted:#5D6479;--line:#DADEEA;--night:#1C2547;--gold:#A86A12;--goldbg:#FBF0DC;
+  --ok:#1E7A4C;--okbg:#E3F3EA;--warn:#8F5600;--warnbg:#FDF0D8;--risk:#B03A2E;--riskbg:#FBE6E3;--btn:#1C2547;--btnfg:#FFFFFF;
+  --display:"Young Serif",Georgia,serif;--body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1121;--card:#151B33;--ink:#E8EAF4;--muted:#A2A8BF;--line:#29314F;--night:#D5DBF6;--gold:#F0B54A;--goldbg:#2C2410;
+  --ok:#5CCB92;--okbg:#122A1E;--warn:#F1B55A;--warnbg:#2B2110;--risk:#F08A7E;--riskbg:#321714;--btn:#F0B54A;--btnfg:#1A1405;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C1121;--card:#151B33;--ink:#E8EAF4;--muted:#A2A8BF;--line:#29314F;--night:#D5DBF6;--gold:#F0B54A;--goldbg:#2C2410;
+  --ok:#5CCB92;--okbg:#122A1E;--warn:#F1B55A;--warnbg:#2B2110;--risk:#F08A7E;--riskbg:#321714;--btn:#F0B54A;--btnfg:#1A1405;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.app{max-width:520px;margin:0 auto;padding-block:20px 60px}
+.brand{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:18px}
+.brand b{font-family:var(--display);font-weight:400;font-size:20px;color:var(--night)}
+.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.progress i{display:block;height:100%;background:var(--gold);transition:width .3s}
+.pcount{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:22px}
+h1{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.2;margin:0 0 8px;color:var(--night);text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.25;margin:0 0 10px;color:var(--night);text-wrap:balance}
+.hint{color:var(--muted);font-size:15px;margin:0 0 20px}
+label.f{display:block;font-weight:700;font-size:15px;margin:18px 0 6px}
+input[type=text],input[type=date],input[type=number],select{width:100%;font:inherit;padding:14px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.opts{display:grid;gap:10px}
+.opts.g2{grid-template-columns:1fr 1fr}
+.opt{display:flex;gap:12px;align-items:center;padding:14px 16px;min-height:54px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;font-size:16px}
+.opt input{width:20px;height:20px;accent-color:var(--gold);flex:none}
+.opt:has(input:checked){border-color:var(--gold);background:var(--goldbg)}
+.opt small{display:block;color:var(--muted);font-size:13.5px}
+.nav{display:flex;gap:10px;margin-top:26px}
+button{font:inherit;cursor:pointer;border-radius:12px;min-height:54px;padding:0 18px;border:0}
+.primary{flex:1;background:var(--btn);color:var(--btnfg);font-weight:700}
+.ghost{background:transparent;color:var(--muted);border:1.5px solid var(--line)}
+.err{color:var(--risk);font-size:14.5px;margin-top:10px;min-height:1em}
+.step[hidden]{display:none!important}
+/* resultado */
+.hero{background:var(--night);color:var(--bg);border-radius:16px;padding:20px;margin-bottom:16px}
+:root .hero{color:#F4F5FA}
+.hero .k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#E9C27A}
+.hero h1{color:#FFFFFF;margin:6px 0 4px}
+.hero p{margin:0;color:#C9CFE6;font-size:15px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{background:#1E2750}}
+:root[data-theme="dark"] .hero{background:#1E2750}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.tl li:last-child{border-bottom:0}
+.tl .t{font-family:var(--mono);font-size:14px;color:var(--gold);font-variant-numeric:tabular-nums;padding-top:2px}
+.tl .e b{display:block}
+.tl .e span{color:var(--muted);font-size:14.5px}
+.tl li.now{background:var(--goldbg);margin:0 -10px;padding-inline:10px;border-radius:8px;border-bottom-color:transparent}
+.tl li.bed .e b{color:var(--night)}
+.alert{border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:15px}
+.alert.risk{background:var(--riskbg)} .alert.risk b{color:var(--risk)}
+.alert.warn{background:var(--warnbg)} .alert.warn b{color:var(--warn)}
+.alert.ok{background:var(--okbg)} .alert.ok b{color:var(--ok)}
+.nights{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.nights li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;align-items:start}
+.nights .n{font-family:var(--display);font-size:20px;color:var(--gold);text-align:center;background:var(--goldbg);border-radius:10px;padding:4px 0}
+.card ul{margin:0;padding-left:20px} .card li{margin:4px 0}
+.foot{font-size:13.5px;color:var(--muted);margin-top:18px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.actions button{flex:1;min-width:140px}
+.demo{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+.demo button{min-height:auto;padding:4px 8px;background:none;color:var(--gold);text-decoration:underline}
+@media (prefers-reduced-motion:reduce){.progress i{transition:none}}
+.lock{text-align:center;padding:40px 0}
+.lock h1{margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brand"><b>Meu Soninho</b><span>Protocolo do Sono Perfeito</span></div>
+
+  <form id="f" novalidate hidden>
+    <div id="bar"><div class="progress"><i id="pbar" style="width:14%"></i></div><div class="pcount" id="pcount">1 de 7</div></div>
+
+    <section class="step" data-s="1">
+      <h1>Vamos montar o dia do seu bebê</h1>
+      <p class="hint">São 7 perguntas rápidas. Responda pensando nos últimos 3 ou 4 dias, não no melhor nem no pior dia.</p>
+      <label class="f" for="nome">Como seu bebê se chama? <span style="font-weight:400;color:var(--muted)">(opcional)</span></label>
+      <input type="text" id="nome" autocomplete="off" placeholder="Ex.: Helena">
+    </section>
+
+    <section class="step" data-s="2" hidden>
+      <h2>Quando ele nasceu?</h2>
+      <label class="f" for="nasc">Data de nascimento</label>
+      <input type="date" id="nasc">
+      <label class="f">Nasceu antes de 37 semanas de gestação?</label>
+      <div class="opts g2">
+        <label class="opt"><input type="radio" name="prem" value="nao" checked> Não</label>
+        <label class="opt"><input type="radio" name="prem" value="sim"> Sim</label>
+      </div>
+      <div id="igWrap" hidden><label class="f" for="ig">Com quantas semanas?</label>
+        <select id="ig"></select></div>
+      <div class="err" id="e2"></div>
+    </section>
+
+    <section class="step" data-s="3" hidden>
+      <h2>A que horas ele costuma acordar para começar o dia?</h2>
+      <p class="hint">Não conta os despertares da madrugada. É a hora em que o dia começa de verdade.</p>
+      <select id="acorda" aria-label="Hora de acordar"></select>
+    </section>
+
+    <section class="step" data-s="4" hidden>
+      <h2>Quantas sonecas ele faz por dia?</h2>
+      <div class="opts g2" id="nNaps"></div>
+      <label class="f">E elas costumam durar…</label>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="dur" value="curta" checked><span>Pouco<small>até uns 40 minutos</small></span></label>
+        <label class="opt"><input type="radio" name="dur" value="media"><span>Médio<small>por volta de 1 hora</small></span></label>
+        <label class="opt"><input type="radio" name="dur" value="longa"><span>Bastante<small>1h30 ou mais</small></span></label>
+      </div>
+    </section>
+
+    <section class="step" data-s="5" hidden>
+      <h2>A que horas ele costuma dormir à noite hoje?</h2>
+      <p class="hint">A hora em que ele pega no sono, mesmo que seja no colo.</p>
+      <select id="dorme" aria-label="Hora de dormir"></select>
+    </section>
+
+    <section class="step" data-s="6" hidden>
+      <h2>O que mais está pesando agora?</h2>
+      <p class="hint">Escolha só uma. O plano vai focar nela primeiro.</p>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="dif" value="desperta" checked> Acorda muitas vezes à noite</label>
+        <label class="opt"><input type="radio" name="dif" value="demora"> Demora muito pra pegar no sono</label>
+        <label class="opt"><input type="radio" name="dif" value="sonecas"> As sonecas são curtas</label>
+        <label class="opt"><input type="radio" name="dif" value="cedo"> Acorda muito cedo</label>
+        <label class="opt"><input type="radio" name="dif" value="colo"> Só dorme no colo ou mamando</label>
+      </div>
+    </section>
+
+    <section class="step" data-s="7" hidden>
+      <h2>Onde ele dorme à noite?</h2>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="onde" value="berco_pais" checked> No berço, no quarto dos pais</label>
+        <label class="opt"><input type="radio" name="onde" value="berco_proprio"> No berço, no quarto dele</label>
+        <label class="opt"><input type="radio" name="onde" value="cama"> Na cama com um adulto</label>
+        <label class="opt"><input type="radio" name="onde" value="outro"> Carrinho, moisés ou outro lugar</label>
+      </div>
+      <label class="f">Alguma destas situações acontece?</label>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="al" value="resp"> Ronco forte ou pausas na respiração dormindo</label>
+        <label class="opt"><input type="checkbox" name="al" value="refluxo"> Refluxo em tratamento</label>
+        <label class="opt"><input type="checkbox" name="al" value="doente"> Está doente agora</label>
+        <label class="opt"><input type="checkbox" name="al" value="peso"> Ganho de peso em acompanhamento</label>
+      </div>
+    </section>
+
+    <div class="err" id="err"></div>
+    <div class="nav" id="nav">
+      <button type="button" class="ghost" id="back" hidden>Voltar</button>
+      <button type="submit" class="primary" id="next">Começar</button>
+    </div>
+  </form>
+
+  <div id="out" hidden></div>
+  <div id="lock" class="lock" hidden><h1>Acesse pelo link do e-mail</h1><p class="hint">O Meu Soninho abre pelo link enviado para o e-mail da sua compra. Procure por “Meu Soninho” na caixa de entrada, em Promoções ou no Spam.</p><p class="hint">Não encontrou? Responda o e-mail da compra ou escreva para regalitycompany@gmail.com.</p></div>
+  <div id="wait" class="lock"><p class="hint">Carregando…</p></div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const pad=n=>String(n).padStart(2,'0');
+const fmt=m=>{m=((Math.round(m)%1440)+1440)%1440;const h=Math.floor(m/60),mi=m%60;return mi?`${h}h${pad(mi)}`:`${h}h`};
+const r10=m=>Math.round(m/10)*10;
+const range=m=>`${fmt(r10(m)-10)}–${fmt(r10(m)+10)}`;
+
+// Faixas por idade corrigida, em semanas. Valores da Tabela de Horários do Protocolo, 3–6 m subdividido. VALIDAR com profissional.
+const BANDS=[
+  {to:4,  label:'0 a 4 semanas', ww:[45,60],  clock:false, naps:[4,6]},
+  {to:8,  label:'4 a 8 semanas', ww:[60,75],  clock:false, naps:[4,6]},
+  {to:13, label:'2 a 3 meses',   ww:[75,90],  clock:false, naps:[4,6]},
+  {to:17, label:'3 a 4 meses',   ww:[75,120], clock:true, naps:[4,4], bed:[18*60+30,20*60], napMax:90},
+  {to:26, label:'4 a 6 meses',   ww:[105,150],clock:true, naps:[3,4], bed:[18*60+30,20*60], napMax:90},
+  {to:39, label:'6 a 9 meses',   ww:[120,180],clock:true, naps:[2,3], bed:[18*60,20*60], napMax:90},
+  {to:53, label:'9 a 12 meses',  ww:[150,240],clock:true, naps:[2,2], bed:[18*60,20*60], napMax:90},
+];
+const DUR={curta:40,media:60,longa:90};
+
+// selects
+(function(){
+  const ig=$('#ig');for(let w=24;w<=36;w++)ig.add(new Option(`${w} semanas`,w));ig.value=34;
+  const a=$('#acorda');for(let m=5*60;m<=9*60;m+=10)a.add(new Option(fmt(m),m));a.value=7*60;
+  const d=$('#dorme');for(let m=17*60+30;m<=23*60+30;m+=10)d.add(new Option(fmt(m),m));d.value=20*60+30;
+  const nn=$('#nNaps');[1,2,3,4,5,'6+'].forEach((n,i)=>{nn.insertAdjacentHTML('beforeend',`<label class="opt"><input type="radio" name="naps" value="${i+1}" ${i+1===3?'checked':''}> ${n}</label>`)});
+  const t=new Date();t.setMonth(t.getMonth()-5);$('#nasc').value=t.toISOString().slice(0,10);
+  $$('input[name=prem]').forEach(r=>r.addEventListener('change',()=>{$('#igWrap').hidden=$('input[name=prem]:checked').value!=='sim'}));
+})();
+
+const val=n=>($(`input[name=${n}]:checked`)||{}).value;
+function readForm(){
+  return {nome:$('#nome').value.trim(),nasc:$('#nasc').value,prem:val('prem')==='sim',ig:+$('#ig').value,
+    acorda:+$('#acorda').value,naps:+val('naps'),dur:val('dur'),dorme:+$('#dorme').value,dif:val('dif'),onde:val('onde'),
+    al:$$('input[name=al]:checked').map(x=>x.value)};
+}
+
+// ===== motor de regras =====
+function schedule(wake,n,napLen,band,cap){
+  const [mn,mx]=band.ww, items=[]; let t=wake;
+  for(let i=0;i<=n;i++){
+    const ww=mn+(mx-mn)*(n?i/n:1); t+=ww;
+    if(i<n){const len=(cap&&i===n-1)?25:Math.min(napLen,band.napMax);items.push({type:cap&&i===n-1?'cap':'nap',start:t,len,i:i+1});t+=len}
+    else items.push({type:'bed',start:t});
+  }
+  return items;
+}
+function buildPlan(d){
+  const out={d,alerts:[],notes:[]};
+  if(!d.nasc){out.error='Informe a data de nascimento.';return out}
+  const birth=new Date(d.nasc+'T12:00:00'),now=new Date();
+  let wk=(now-birth)/(7*864e5);
+  if(wk<0){out.error='A data de nascimento está no futuro.';return out}
+  if(d.prem){wk-= (40-d.ig);out.corr=true}
+  out.weeks=wk;
+  if(wk>=53){out.out=true;return out}
+  const band=BANDS.find(b=>wk<b.to)||BANDS[0]; out.band=band;
+  if(d.al.includes('resp'))out.alerts.push(['risk','Antes de mudar qualquer coisa, fale com o pediatra.','Ronco forte ou pausas na respiração durante o sono precisam ser avaliados por um médico. Use este plano só depois dessa conversa.']);
+  const amarelos={refluxo:'refluxo em tratamento',doente:'ele está doente agora',peso:'o ganho de peso está em acompanhamento'};
+  const am=d.al.filter(a=>amarelos[a]).map(a=>amarelos[a]);
+  if(am.length)out.alerts.push(['warn','Combine com o pediatra.',`Como ${am.join(' e ')}, alinhe com o pediatra antes de mexer nos horários e nas mamadas.${d.al.includes('doente')?' Se ele está doente, espere melhorar para começar.':''}`]);
+  if(d.onde==='cama'||d.onde==='outro')out.alerts.push(['warn','Sobre o lugar de dormir.','O lugar mais seguro para o bebê dormir é o berço (ou moisés) firme e vazio, de barriga para cima, de preferência no quarto dos pais nos primeiros meses. Nunca durma com ele no sofá ou na poltrona.']);
+  if(!band.clock){out.noClock=true;return out}
+  const napLen=DUR[d.dur]||40;
+  let n=Math.min(Math.max(d.naps,band.naps[0]),band.naps[1]);
+  if(d.naps!==n)out.notes.push(`Ele faz ${d.naps>=6?'6 ou mais':d.naps} soneca${d.naps>1?'s':''}; para a idade dele, o plano usa ${n}.`);
+  let items=schedule(d.acorda,n,napLen,band,false),bed=items.at(-1).start;
+  if(bed<band.bed[0]&&n<5){items=schedule(d.acorda,n+1,napLen,band,true);bed=items.at(-1).start;out.notes.push('Incluímos uma soneca curta no fim da tarde para a noite não começar cedo demais.')}
+  if(bed<band.bed[0])out.notes.push(`Mesmo assim o berço ficou antes de ${fmt(band.bed[0])}. Se ele acordar muito cedo no dia seguinte, tente adiar o berço 15 minutos.`);
+  if(bed>band.bed[1]+30)out.notes.push(`O berço ficou depois de ${fmt(band.bed[1])}. Se quiser antecipar, adiante a hora de acordar 15 minutos a cada 2 dias.`);
+  out.items=items;out.bed=bed;
+  out.diff=d.dorme-r10(bed);
+  return out;
+}
+
+// ===== textos (VALIDAR com profissional) =====
+const FOCO={
+  desperta:['Despertares à noite','Acordar à noite faz parte do sono do bebê, principalmente quando ele é pequeno. Nesta semana o foco é o berço dentro da janela e a mesma sequência toda noite. Quando ele acordar, escute por um instante, vá com luz apagada e voz baixa, confira fralda e temperatura, alimente se for fome e coloque de volta no berço com a mão no peito.'],
+  demora:['Demora pra pegar no sono','Quando o bebê demora para dormir, muitas vezes o berço chegou depois da janela e ele já está cansado demais. Comece a rotina da noite no horário do plano, mesmo que ele ainda pareça animado, e observe os primeiros sinais de sono.'],
+  sonecas:['Sonecas curtas','Escureça o quarto também durante o dia e use a mesma sequência curta antes de cada soneca. Quando ele acordar antes de 40 minutos, espere um pouco e tente ajudar a voltar a dormir antes de tirar do berço. Às vezes funciona, às vezes não, e tudo bem.'],
+  cedo:['Acorda muito cedo','Confira se a luz da manhã está entrando no quarto e se o berço não está tarde demais, porque bebê muito cansado pode acordar mais cedo. Antes da hora de acordar do plano, trate como madrugada: luz apagada e voz baixa.'],
+  colo:['Só dorme no colo ou mamando','Não precisa tirar o colo de uma vez. Nesta semana, tente na primeira soneca do dia colocar no berço sonolento, mas ainda acordado, com a mão no peito e a voz baixa. Se ele chorar de verdade, pegue, acalme e tente de novo. Uma vez no berço já é um bom começo.'],
+};
+function nights(p){
+  const bed=p.bed?fmt(r10(p.bed)):'';
+  return [
+    ['1','Só observar. Anote a que horas ele acordou, cada soneca e os sinais de sono que você viu.'],
+    ['2','Observe de novo e prepare o quarto: escuro na hora de dormir, berço vazio e firme, roupa sem exagero.'],
+    ['3',p.bed?`Primeira noite com a rotina completa. Comece a sequência às ${fmt(r10(p.bed)-25)} e berço por volta de ${bed}.`:'Primeira noite com a sequência completa, curta e calma, sempre na mesma ordem.'],
+    ['4','Repita a mesma sequência. Na primeira soneca do dia, tente colocar no berço sonolento e ainda acordado.'],
+    ['5','Despedida curta: a mesma frase toda noite. Fique por perto o tempo que precisar.'],
+    ['6','Combine com quem divide a casa quem levanta de madrugada e o que fazem primeiro.'],
+    ['7','Olhe a semana. O que melhorou? Escolha só uma coisa para ajustar na próxima semana.'],
+  ];
+}
+
+function render(p){
+  const d=p.d,nome=d.nome||'seu bebê',Nome=d.nome||'Seu bebê';
+  const meses=Math.max(0,Math.floor(p.weeks/4.345));
+  const idade=p.weeks<13?`${Math.max(0,Math.floor(p.weeks))} semanas`:`${meses} ${meses===1?'mês':'meses'}`;
+  let h=`<div class="hero"><div class="k">Plano de ${Nome==='Seu bebê'?'rotina':Nome} · ${idade}${p.corr?' (idade corrigida)':''}</div>
+    <h1>${p.out?'Este plano é para bebês de até 12 meses':(p.noClock?`O ritmo de ${nome}`:`O dia de ${nome}`)}</h1>
+    <p>${p.out?'':p.noClock?'Nesta idade o sono ainda não segue relógio. O plano mostra quando olhar os sinais.':'Horários em faixas. Siga os sinais dele: o relógio é só um guia.'}</p></div>`;
+  p.alerts.forEach(a=>h+=`<div class="alert ${a[0]}"><b>${a[1]}</b> ${a[2]}</div>`);
+  if(p.out){h+=`<div class="card"><p style="margin:0">O Meu Soninho foi feito para bebês de 0 a 12 meses, e ${nome} já passou dessa idade. Se você comprou sem saber disso, responda o e-mail de acesso e devolvemos o valor.</p></div>`;return h+actions()}
+  if(p.noClock){
+    const [a,b]=p.band.ww;
+    h+=`<div class="card"><h2>Depois que ele acorda</h2><ul class="tl">
+      <li><span class="t">0 min</span><span class="e"><b>Acordou</b><span>Mamada em livre demanda, troca, colo.</span></span></li>
+      <li class="now"><span class="t">${a}–${b} min</span><span class="e"><b>Comece a olhar os sinais de sono</b><span>Olhar parado, bocejo, esfregar os olhos.</span></span></li>
+      <li><span class="t">no 1º sinal</span><span class="e"><b>Prepare o sono</b><span>Luz baixa, voz baixa, embalo curto se ajudar.</span></span></li></ul></div>
+      <div class="alert ok"><b>Nesta idade é normal</b> acordar várias vezes à noite para mamar. A rotina com horários vem a partir dos 3 meses. Volte aqui e toque em “Recalcular” quando ele fizer 3 meses.</div>`;
+  } else {
+    const nowM=new Date().getHours()*60+new Date().getMinutes();
+    h+=`<div class="card"><h2>Horários</h2><ul class="tl">`;
+    h+=`<li><span class="t">${fmt(d.acorda)}</span><span class="e"><b>Acordar</b><span>Luz natural, mamada e início do dia.</span></span></li>`;
+    let prev=d.acorda;
+    p.items.forEach((it,k)=>{
+      const s=r10(it.start),isNow=nowM>=prev&&nowM<it.start;
+      if(it.type==='bed'){
+        h+=`<li${nowM>=s-60&&nowM<s-25?' class="now"':''}><span class="t">${fmt(s-25)}</span><span class="e"><b>Começar a rotina da noite</b><span>A mesma sequência, na mesma ordem.</span></span></li>`;
+        h+=`<li class="bed${isNow&&nowM>=s-25?' now':''}"><span class="t">${range(it.start)}</span><span class="e"><b>Berço</b><span>Sonolento, ainda acordado. Você pode ficar por perto.</span></span></li>`;
+      } else {
+        const lbl=it.type==='cap'?'Soneca curta':`Soneca ${it.i}`;
+        const sub=it.type==='cap'?`20–30 min. Acordar até ${fmt(r10(it.start)+40)}.`:`Comece a olhar os sinais às ${fmt(s-15)}. Costuma durar ${it.len>=90?'1h30':it.len>=60?'cerca de 1h':'uns 40 min'}.`;
+        h+=`<li${isNow?' class="now"':''}><span class="t">${range(it.start)}</span><span class="e"><b>${lbl}</b><span>${sub}</span></span></li>`;
+        prev=it.start+it.len;
+      }
+    });
+    h+=`</ul></div>`;
+    if(Math.abs(p.diff)>=20){
+      const mais=p.diff>0;
+      h+=`<div class="alert warn"><b>O que muda em relação a hoje:</b> hoje ${nome} dorme por volta de ${fmt(d.dorme)}. O plano coloca o berço ${Math.abs(p.diff)} min ${mais?'mais cedo':'mais tarde'}. Não precisa mudar de uma vez: ${mais?'antecipe':'adie'} 15 minutos a cada 2 dias.</div>`;
+    }
+    if(p.notes.length)h+=`<div class="card"><h2>Ajustes que o plano fez</h2><ul>${p.notes.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+  }
+  const f=FOCO[d.dif];
+  h+=`<div class="card"><h2>Foco da semana: ${f[0].toLowerCase()}</h2><p style="margin:0">${f[1]}</p></div>`;
+  h+=`<div class="card"><h2>As 7 primeiras noites</h2><ol class="nights">${nights(p).map(n=>`<li><span class="n">${n[0]}</span><span>${n[1]}</span></li>`).join('')}</ol></div>`;
+  h+=`<div class="card"><h2>Na madrugada</h2><ul>
+    <li>Escute por um instante. Muitos bebês resmungam entre um sono e outro e voltam a dormir.</li>
+    <li>Se o choro aumentar, vá até ele. Luz apagada, voz baixa.</li>
+    <li>Confira fralda, temperatura e sinais de dor ou febre. Se for fome, alimente.</li>
+    <li>Coloque de volta no berço com a mão no peito. Se nada acalmar, abra o Guia de Emergência no app.</li></ul></div>`;
+  h+=`<div class="card"><h2>Quando falar com o pediatra</h2><ul>
+    <li>Ronco forte ou pausas na respiração durante o sono</li>
+    <li>Febre (em bebê com menos de 3 meses, procure atendimento na hora)</li>
+    <li>Choro diferente do normal, que nada acalma</li>
+    <li>Duas semanas de rotina sem nenhuma mudança, ou se você estiver esgotada</li></ul></div>`;
+  h+=`<div class="alert ok"><b>Sono seguro:</b> barriga para cima, no berço com colchão firme, sem travesseiro, protetor, pelúcia ou cobertor solto.</div>`;
+  return h+actions();
+}
+function actions(){return `${PLANO==='unico'?'<p class="foot">Plano único: este plano foi gerado com as suas respostas e fica salvo neste aparelho.</p>':'<div class="actions"><button type="button" class="primary" id="recalc">Recalcular</button><button type="button" class="ghost" id="edit">Mudar respostas</button></div>'}
+  <p class="foot">Este plano é uma referência para organizar a rotina e não substitui a orientação do pediatra. Cada bebê tem seu ritmo: siga os sinais dele e ajuste quando precisar. Para deixar na tela inicial do celular, use “Adicionar à tela de início” no menu do navegador.</p>`}
+
+// ===== navegação =====
+let step=1;const TOTAL=7;
+function show(s){step=s;$$('.step').forEach(el=>el.hidden=+el.dataset.s!==s);
+  $('#pbar').style.width=(s/TOTAL*100)+'%';$('#pcount').textContent=`${s} de ${TOTAL}`;
+  $('#back').hidden=s===1;$('#next').textContent=s===1?'Começar':s===TOTAL?'Ver o plano':'Continuar';$('#err').textContent='';window.scrollTo(0,0)}
+$('#back').onclick=()=>show(step-1);
+$('#f').addEventListener('submit',e=>{e.preventDefault();
+  if(step===2){const v=$('#nasc').value;if(!v){$('#err').textContent='Informe a data de nascimento para continuar.';return}
+    if(new Date(v)>new Date()){$('#err').textContent='Essa data está no futuro. Confira o ano.';return}}
+  if(step<TOTAL)return show(step+1);
+  finish(readForm());
+});
+function finish(d){$('#f').hidden=false;const p=buildPlan(d);if(p.error){$('#err').textContent=p.error;return}
+  try{localStorage.setItem('meu-soninho',JSON.stringify(d))}catch(e){}
+  $('#f').hidden=true;const o=$('#out');o.innerHTML=render(p);o.hidden=false;window.scrollTo(0,0);
+  if(PLANO!=='unico'){$('#recalc').onclick=()=>finish(d);$('#edit').onclick=()=>{o.hidden=true;$('#f').hidden=false;show(1)}}
+}
+// ===== acesso =====
+let PLANO='completo';
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+(async()=>{
+  const k=new URLSearchParams(location.search).get('k')||ls.get('meu-soninho-k')||'';
+  let r={ok:false};
+  try{r=await (await fetch('/api/soninho?k='+encodeURIComponent(k))).json()}catch(e){}
+  $('#wait').hidden=true;
+  if(!r.ok){$('#f').hidden=true;$('#lock').hidden=false;return}
+  PLANO=r.plano;ls.set('meu-soninho-k',k);$('#f').hidden=false;
+  if(location.search)history.replaceState(null,'',location.pathname);
+  show(1);
+  try{const s=JSON.parse(ls.get('meu-soninho')||'null');if(s&&s.nasc)finish(s)}catch(e){}
+})();
+</script>
+</body>
+</html>
