@@ -702,31 +702,28 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 
 /* =================== BENEFÍCIOS =================== */
 #benef{background:var(--w)}
-.bf-tog{position:relative;display:flex;width:max-content;margin:30px auto 0;background:var(--cream2);border-radius:999px;padding:5px}
-.bf-tog button{position:relative;z-index:1;font-size:16px;font-weight:800;color:var(--muted);padding:12px 24px;border-radius:999px;transition:color .3s}
+.bf-tog{position:relative;display:grid;grid-template-columns:1fr 1fr;width:max-content;margin:30px auto 0;background:var(--cream2);border-radius:999px;padding:5px}
+.bf-tog button{position:relative;z-index:1;font-size:16px;font-weight:800;color:var(--muted);padding:12px 24px;white-space:nowrap;border-radius:999px;transition:color .3s}
 .bf-tog i{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:#9ca3af;transition:transform .45s cubic-bezier(.6,.2,.2,1),background .45s}
 #benef[data-st="hoje"] .bf-tog button[data-v="hoje"],#benef[data-st="com"] .bf-tog button[data-v="com"]{color:#fff}
 #benef[data-st="com"] .bf-tog i{transform:translateX(100%);background:var(--n1)}
 #benef[data-st="com"] .bf-tog button[data-v="com"]{color:var(--gold3)}
-.bf-tog button[data-v="hoje"]{min-width:110px}.bf-tog button[data-v="com"]{min-width:170px}
 .bnf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
 .bnf{display:flex;align-items:center;gap:22px;background:var(--cream);border:2px solid #ece4d4;border-radius:22px;padding:26px 26px;transition:background .45s,border-color .45s,transform .25s}
 .bnf:hover{transform:translateY(-4px)}
 .bnf-art{flex-shrink:0;width:104px;height:104px;fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;transition:stroke .45s,transform .45s}
-.bnf-art .ok{stroke:#16a34a}
 .bnf-h{font-family:var(--sf);font-weight:700;font-size:clamp(23px,3vw,27px);line-height:1.2;color:var(--ink);position:relative}
 .bnf-h span{display:none;color:#6b7280;text-decoration:line-through;text-decoration-color:var(--ember);text-decoration-thickness:3px}
 .bnf p{font-size:17px;color:var(--muted);line-height:1.55;margin-top:8px;transition:opacity .3s}
 #benef[data-st="hoje"] .bnf{background:#f4f4f5;border-color:#e4e4e7}
 #benef[data-st="hoje"] .bnf-art{stroke:#a1a1aa;transform:rotate(-4deg) scale(.94)}
-#benef[data-st="hoje"] .bnf-art .ok{stroke:#a1a1aa}
 #benef[data-st="hoje"] .bnf-h{font-size:0}
 #benef[data-st="hoje"] .bnf-h span{display:block;font-size:clamp(23px,3vw,27px)}
 #benef[data-st="hoje"] .bnf p{display:none}
 .bnf{min-height:150px}
 #benef[data-st="com"] .bnf{border-color:rgba(201,168,76,.45)}
 @media(max-width:720px){.bnf-grid{grid-template-columns:1fr}}
-@media(max-width:480px){.bnf{gap:16px;padding:20px 18px}.bnf-art{width:78px;height:78px}.bf-tog button{padding:11px 16px;font-size:15px}.bf-tog button[data-v="com"]{min-width:150px}.bf-tog button[data-v="hoje"]{min-width:90px}}
+@media(max-width:480px){.bnf{gap:16px;padding:20px 18px}.bnf-art{width:78px;height:78px}.bf-tog button{padding:11px 16px;font-size:15px}}
 
 /* =================== ENTREGÁVEIS (kit) =================== */
 #entrega{background:radial-gradient(ellipse at 50% 0,#13234a 0,var(--n1) 55%,var(--n0) 100%);overflow:hidden}
@@ -1213,7 +1210,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
         </div>
       </div>
       <div class="bnf rv d2">
-        <svg class="bnf-art" viewBox="0 0 120 120"><g filter="url(#rough)"><circle cx="60" cy="62" r="40"/><path d="M60 62V36M60 62l20 0M60 16v6M60 102v6M14 62h6M100 62h6"/><path d="M84 92l8 8 16-18" class="ok"/></g></svg>
+        <svg class="bnf-art" viewBox="0 0 120 120"><g filter="url(#rough)"><circle cx="60" cy="62" r="40"/><path d="M60 62V36M60 62l20 0M60 16v6M60 102v6M14 62h6M100 62h6"/></g></svg>
         <div class="bnf-tx">
           <div class="bnf-h"><span>Improvisar às 3h da manhã</span>Uma resposta pronta pra cada despertar</div>
           <p>Nada de tentativa e erro no escuro.</p>
