@@ -7,7 +7,7 @@
 <meta name="description" content="O protocolo passo a passo para organizar a rotina de sono do seu bebê, reduzir os despertares e voltar a dormir horas seguidas — mesmo que você já tenha tentado de tudo. Acesso imediato por R$37, garantia de 7 dias."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet"/>
 
 <!-- Sessão + Meta Pixel (BM Regality Company, pixel "Protocolo do Sono Perfeito") -->
 <script>
@@ -203,11 +203,6 @@ canvas#ptc{position:absolute;inset:0;pointer-events:none;z-index:0}
 .st-lbl{font-size:11.5px;color:rgba(255,255,255,.4);margin-top:5px;letter-spacing:.02em}
 @media(max-width:520px){.st{border-right:none;padding:10px 20px}}
 
-/* =================== TRUST BAR =================== */
-#trust{background:var(--n2);border-top:1px solid var(--gl);border-bottom:1px solid var(--gl);padding:15px 20px}
-#trust-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
-.tr{display:flex;align-items:center;justify-content:center;gap:9px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.68)}
-.tr .ic{width:16px;height:16px;color:var(--gold2);flex-shrink:0}
 
 /* =================== SECTION =================== */
 .sec{padding:96px 20px}
@@ -592,34 +587,52 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 .rumin em{color:var(--muted);font-style:italic}
 
 /* =================== MECANISMO (o erro) =================== */
-#mech{background:var(--cream2)}
-.mech-lead{font-size:16px;color:var(--muted);line-height:1.85;max-width:660px;margin:26px auto 0;text-align:center}
-.mech-lead strong{color:var(--ink);font-weight:700}
-.mech-wrong{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
-  margin:30px auto 0;max-width:720px;
+#mech{background:var(--cream2);overflow:hidden}
+.sk-note{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(30px,5vw,40px);color:var(--muted);text-align:center;margin-top:44px;line-height:1.1}
+.sk-note u{text-decoration-color:var(--ember);text-decoration-thickness:3px;text-underline-offset:6px}
+.mx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:640px;margin:22px auto 0}
+.mx{position:relative;background:var(--w);border-radius:18px;padding:16px 8px 14px;text-align:center;box-shadow:0 10px 26px -18px rgba(17,24,39,.35)}
+.mx-d{width:64px;height:64px;display:block;margin:0 auto;fill:none;stroke:#9ca3af;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.mx span{display:block;font-size:16px;font-weight:700;color:var(--muted);margin-top:6px}
+.mx-x{position:absolute;inset:8px 14px 30px;width:calc(100% - 28px);height:calc(100% - 38px);fill:none;stroke:#e8491f;stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s ease}
+.mx-grid.on .mx-x{stroke-dashoffset:0}
+.mx-grid.on .mx:nth-child(2) .mx-x{transition-delay:.25s}
+.mx-grid.on .mx:nth-child(3) .mx-x{transition-delay:.5s}
+.mx-grid.on .mx:nth-child(4) .mx-x{transition-delay:.75s}
+.mech-big{font-family:var(--sf);font-weight:700;font-size:clamp(28px,5.4vw,44px);line-height:1.15;color:var(--ink);text-align:center;max-width:680px;margin:10px auto 0}
+.mech-big em{color:var(--ember);font-style:italic}
+.jw{background:var(--w);border-radius:24px;padding:26px 24px 18px;margin-top:34px;box-shadow:0 24px 50px -30px rgba(17,24,39,.45);border:1px solid #ece4d4}
+.jw-ages{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
+.jw-q{width:100%;text-align:center;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.jw-ages button{font-size:16px;font-weight:700;color:var(--ink);background:var(--cream);border:2px solid #ece4d4;border-radius:999px;padding:10px 18px;transition:all .2s}
+.jw-ages button:hover{border-color:var(--gold)}
+.jw-ages button.on{background:var(--n1);border-color:var(--n1);color:var(--gold3)}
+.jw-read{text-align:center;margin-top:20px}
+.jw-rl{display:block;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.jw-rv{display:block;font-family:var(--sf);font-size:clamp(34px,6vw,50px);font-weight:700;color:var(--ink);line-height:1.15;margin-top:4px}
+.jw-rv b{color:var(--gold);font-weight:900;display:inline-block;transition:transform .3s}
+.jw-rv b.pop{transform:scale(1.15)}
+.jw-rs{display:block;font-size:15px;color:var(--muted);margin-top:2px}
+.jw-chart{display:block;width:100%;height:auto;margin-top:14px}
+.jw-curve{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s ease .2s}
+.jw.on .jw-curve{stroke-dashoffset:0}
+.jw-t{font-family:'Caveat',cursive;font-weight:700;font-size:30px}
+.jw-s{font-family:'Caveat',cursive;font-weight:700;font-size:22px;fill:var(--muted)}
+.jw-t.gold{fill:#a8852c}.jw-t.red,.jw-s.red{fill:var(--ember)}
+.jw-ax{font-family:var(--ss);font-weight:800;font-size:18px;fill:var(--ink)}
+.jw-ax.sm{font-weight:600;font-size:15px;fill:var(--muted)}
+.jw-pin circle{stroke-width:3}.jw-pin path{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.jw-pin.ok circle{fill:#c9a84c;stroke:#fff}.jw-pin.ok path{stroke:#fff}
+.jw-pin.no circle{fill:#fff;stroke:var(--ember)}.jw-pin.no path{stroke:var(--ember)}
+.jw-pin{opacity:0;transition:opacity .4s 1.4s}.jw.on .jw-pin{opacity:1}
+.mech-cta{text-align:center;margin-top:34px}
+.mech-cta p{font-size:clamp(19px,3.4vw,23px);line-height:1.5;color:var(--ink);max-width:600px;margin:0 auto}
+.mech-cta strong{background:linear-gradient(transparent 60%,rgba(201,168,76,.35) 60%)}
+@media(max-width:560px){
+  .mx-grid{grid-template-columns:repeat(2,1fr);max-width:340px}
+  .jw{padding:22px 10px 12px;border-radius:20px}
+  .jw-ages button{padding:9px 14px;font-size:15px}
 }
-.mech-wrong span{
-  display:flex;align-items:center;gap:9px;justify-content:center;
-  background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.18);
-  border-radius:10px;padding:12px 14px;
-  font-size:13.5px;font-weight:600;color:#a33;
-}
-.mech-wrong .ic{width:13px;height:13px;color:#c44;flex-shrink:0}
-.mech-turn{
-  max-width:680px;margin:34px auto 0;text-align:center;
-  font-size:17px;line-height:1.8;color:var(--ink);font-weight:500;
-}
-.mech-turn em{color:var(--gold);font-style:italic;font-family:var(--sf);font-weight:700}
-.mech-name{
-  display:inline-block;margin:34px auto 0;
-  background:linear-gradient(135deg,var(--n1),var(--n3));
-  border:1px solid var(--gl);border-radius:16px;padding:22px 34px;text-align:center;
-}
-.mech-name .mn-l{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.mech-name .mn-t{font-family:var(--sf);font-size:clamp(24px,3.4vw,34px);font-weight:700;color:var(--w);line-height:1.2}
-.mech-name .mn-t em{color:var(--gold2);font-style:italic}
-.mech-name .mn-s{font-size:13px;color:rgba(255,255,255,.45);margin-top:8px}
 
 /* =================== PASSO A PASSO (4D) =================== */
 #steps{background:linear-gradient(180deg,var(--n0) 0%,var(--n1) 100%)}
@@ -646,19 +659,66 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 
 /* =================== BENEFÍCIOS =================== */
 #benef{background:var(--w)}
-.bnf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(218px,1fr));gap:14px;margin-top:48px}
-.bnf{
-  background:var(--cream);border:1px solid #ece4d4;border-radius:16px;
-  padding:26px 24px;transition:transform .25s,box-shadow .25s;
+.bf-tog{position:relative;display:flex;width:max-content;margin:30px auto 0;background:var(--cream2);border-radius:999px;padding:5px}
+.bf-tog button{position:relative;z-index:1;font-size:16px;font-weight:800;color:var(--muted);padding:12px 24px;border-radius:999px;transition:color .3s}
+.bf-tog i{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:#9ca3af;transition:transform .45s cubic-bezier(.6,.2,.2,1),background .45s}
+#benef[data-st="hoje"] .bf-tog button[data-v="hoje"],#benef[data-st="com"] .bf-tog button[data-v="com"]{color:#fff}
+#benef[data-st="com"] .bf-tog i{transform:translateX(100%);background:var(--n1)}
+#benef[data-st="com"] .bf-tog button[data-v="com"]{color:var(--gold3)}
+.bf-tog button[data-v="hoje"]{min-width:110px}.bf-tog button[data-v="com"]{min-width:170px}
+.bnf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
+.bnf{display:flex;align-items:center;gap:22px;background:var(--cream);border:2px solid #ece4d4;border-radius:22px;padding:26px 26px;transition:background .45s,border-color .45s,transform .25s}
+.bnf:hover{transform:translateY(-4px)}
+.bnf-art{flex-shrink:0;width:104px;height:104px;fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;transition:stroke .45s,transform .45s}
+.bnf-art .ok{stroke:#16a34a}
+.bnf-h{font-family:var(--sf);font-weight:700;font-size:clamp(23px,3vw,27px);line-height:1.2;color:var(--ink);position:relative}
+.bnf-h span{display:none;color:#6b7280;text-decoration:line-through;text-decoration-color:var(--ember);text-decoration-thickness:3px}
+.bnf p{font-size:17px;color:var(--muted);line-height:1.55;margin-top:8px;transition:opacity .3s}
+#benef[data-st="hoje"] .bnf{background:#f4f4f5;border-color:#e4e4e7}
+#benef[data-st="hoje"] .bnf-art{stroke:#a1a1aa;transform:rotate(-4deg) scale(.94)}
+#benef[data-st="hoje"] .bnf-art .ok{stroke:#a1a1aa}
+#benef[data-st="hoje"] .bnf-h{font-size:0}
+#benef[data-st="hoje"] .bnf-h span{display:block;font-size:clamp(23px,3vw,27px)}
+#benef[data-st="hoje"] .bnf p{display:none}
+.bnf{min-height:150px}
+#benef[data-st="com"] .bnf{border-color:rgba(201,168,76,.45)}
+@media(max-width:720px){.bnf-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.bnf{gap:16px;padding:20px 18px}.bnf-art{width:78px;height:78px}.bf-tog button{padding:11px 16px;font-size:15px}.bf-tog button[data-v="com"]{min-width:150px}.bf-tog button[data-v="hoje"]{min-width:90px}}
+
+/* =================== ENTREGÁVEIS (kit) =================== */
+#entrega{background:radial-gradient(ellipse at 50% 0,#13234a 0,var(--n1) 55%,var(--n0) 100%);overflow:hidden}
+.et-list{display:flex;flex-direction:column;gap:14px;margin-top:44px;counter-reset:e}
+.et{position:relative;display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1.5px solid rgba(201,168,76,.32);border-radius:20px;padding:16px 20px 16px 16px;transition:transform .25s,border-color .25s}
+.et:hover{transform:translateX(4px);border-color:var(--gold2)}
+.et-main{background:linear-gradient(135deg,rgba(201,168,76,.22),rgba(201,168,76,.06));border:2px solid var(--gold);box-shadow:0 0 0 6px rgba(201,168,76,.08),0 24px 50px -24px rgba(201,168,76,.5)}
+.et-n{position:absolute;top:-12px;left:-8px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px -4px rgba(0,0,0,.6)}
+.et-th{flex-shrink:0;width:84px;height:96px;display:flex;align-items:center;justify-content:center}
+.et-th .bk{width:84px;height:84px;object-fit:cover;border-radius:4px 8px 8px 4px;box-shadow:-4px 0 0 #0a1124,0 12px 22px -8px rgba(0,0,0,.8);transform:rotate(-4deg)}
+.et-th .ph{height:104px;width:auto;margin-top:-4px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.5))}
+.et-ico{width:64px;height:64px;border-radius:18px;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center}
+.et-ico .ic{width:30px;height:30px;color:var(--gold2)}
+.et-tx{flex:1;min-width:0}
+.et-tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold3);margin-bottom:4px}
+.et-main .et-tag{background:var(--gold);color:var(--n0);padding:3px 10px;border-radius:999px;letter-spacing:.08em}
+.et-t{font-family:var(--sf);font-weight:700;font-size:clamp(21px,3.2vw,26px);color:var(--w);line-height:1.2}
+.et-main .et-t{font-size:clamp(23px,3.6vw,30px)}
+.et-d{font-size:16px;color:rgba(255,255,255,.66);line-height:1.5;margin-top:4px}
+.et-ok{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(22,163,74,.18)}
+.et-ok .ic{width:20px;height:20px;color:#fff;stroke:#fff}
+.et-kit{margin:40px -60px 0;text-align:center}
+.et-kit img{width:100%;max-width:900px;height:auto;display:inline-block}
+.et-end{text-align:center;margin-top:10px}
+.et-e1{font-family:'Caveat',cursive;font-weight:700;font-size:30px;color:var(--gold3)}
+.et-e2{font-family:var(--sf);font-weight:700;font-size:clamp(34px,6vw,52px);color:var(--w);line-height:1.1;margin:4px 0 26px}
+.et-e2 em{color:var(--gold2);font-style:italic}
+@media(max-width:560px){
+  .et{gap:14px;padding:14px 14px 14px 12px}
+  .et-th{width:64px;height:84px}.et-th .bk{width:64px;height:64px}.et-th .ph{height:92px}
+  .et-ico{width:56px;height:56px}
+  .et-ok{width:32px;height:32px}.et-ok .ic{width:16px;height:16px}
+  .et-d{font-size:15px}
+  .et-kit{margin:30px -24px 0}
 }
-.bnf:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(17,24,39,.08)}
-.bnf-ico{
-  width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,.13);
-  display:flex;align-items:center;justify-content:center;margin-bottom:15px;
-}
-.bnf-ico .ic{width:21px;height:21px;color:var(--gold)}
-.bnf h3{font-size:17px;color:var(--ink);line-height:1.3}
-.bnf p{font-size:13.5px;color:var(--muted);line-height:1.72;margin-top:7px}
 
 /* =================== PARA QUEM SERVE =================== */
 #quem{background:linear-gradient(180deg,var(--n1),var(--n0))}
@@ -843,6 +903,7 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter></svg>
 <div id="prog"></div>
 
 
@@ -883,10 +944,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     </div>
     <div id="stats" class="rv on d3">
       <div class="st">
-        <div class="st-num">+2.500</div>
-        <div class="st-lbl">famílias transformadas</div>
-      </div>
-      <div class="st">
         <div class="st-num">4,9★</div>
         <div class="st-lbl">avaliação média</div>
       </div>
@@ -898,15 +955,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
   </div>
 </section>
 
-<!-- ========== TRUST BAR ========== -->
-<div id="trust">
-  <div id="trust-in">
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-lock"/></svg> Pagamento 100% seguro</div>
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-bolt"/></svg> Acesso imediato após a compra</div>
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-shield"/></svg> Garantia incondicional de 7 dias</div>
-    <div class="tr"><svg class="ic" style="width:16px;height:16px;color:var(--gold2)"><use href="#i-monitor"/></svg> Acesso em qualquer dispositivo</div>
-  </div>
-</div>
 
 <!-- ============================================================
      BLOCO 2 — DEPOIMENTOS (prova organizada por objeção)
@@ -988,35 +1036,60 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
      BLOCO 3B — A DESCOBERTA / MECANISMO
      ============================================================ -->
 <section id="mech" class="sec">
-  <div class="sec-in" style="max-width:820px">
+  <div class="sec-in" style="max-width:860px">
     <div style="text-align:center" class="rv">
       <span class="lbl">A descoberta</span>
-      <h2 class="ttl">O Erro Que Pode Estar Fazendo Seu Bebê<br><em>Acordar Noite Após Noite</em></h2>
-      <div class="gline"></div>
+      <h2 class="ttl">O erro que faz seu bebê<br><em>acordar noite após noite</em></h2>
     </div>
-    <p class="mech-lead rv d1">
-      A maioria dos pais tenta resolver <strong>cada despertar separadamente</strong>: colo, mamada, embalo, troca de posição, música…
-    </p>
-    <div class="mech-wrong rv d2">
-      <span><svg class="ic"><use href="#i-x"/></svg> Colo</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Mamada</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Embalo</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Troca de posição</span>
-      <span><svg class="ic"><use href="#i-x"/></svg> Música</span>
+
+    <p class="sk-note rv d1">Você tenta de tudo…</p>
+    <div class="mx-grid rv d1">
+      <div class="mx"><svg viewBox="0 0 80 80" class="mx-d"><g filter="url(#rough)"><path d="M40 62C22 50 14 40 14 30a12 12 0 0126-4 12 12 0 0126 4c0 10-8 20-26 32z"/></g></svg><span>Colo</span><svg class="mx-x" viewBox="0 0 80 80"><path pathLength="1" d="M14 14L66 66M66 14L14 66"/></svg></div>
+      <div class="mx"><svg viewBox="0 0 80 80" class="mx-d"><g filter="url(#rough)"><rect x="28" y="26" width="24" height="42" rx="8"/><path d="M32 26v-6h16v6M36 20c0-6 8-6 8 0M30 40h8M30 50h8"/></g></svg><span>Mamada</span><svg class="mx-x" viewBox="0 0 80 80"><path pathLength="1" d="M14 14L66 66M66 14L14 66"/></svg></div>
+      <div class="mx"><svg viewBox="0 0 80 80" class="mx-d"><g filter="url(#rough)"><path d="M16 46c8 14 40 14 48 0M20 30c4-8 12-12 20-12s16 4 20 12M56 22l4 8-8 2M24 22l-4 8 8 2"/></g></svg><span>Embalo</span><svg class="mx-x" viewBox="0 0 80 80"><path pathLength="1" d="M14 14L66 66M66 14L14 66"/></svg></div>
+      <div class="mx"><svg viewBox="0 0 80 80" class="mx-d"><g filter="url(#rough)"><path d="M32 58V20l26-6v38"/><ellipse cx="25" cy="58" rx="8" ry="6"/><ellipse cx="51" cy="52" rx="8" ry="6"/></g></svg><span>Música</span><svg class="mx-x" viewBox="0 0 80 80"><path pathLength="1" d="M14 14L66 66M66 14L14 66"/></svg></div>
     </div>
-    <p class="mech-turn rv d3">
-      Só que, muitas vezes, o problema começa antes: o bebê vai para o berço <em>depois da janela de sono dele</em>. Cansado demais, o corpo libera cortisol — e ele briga com o sono, adormece agitado e acorda a cada ciclo de 45 a 60 minutos.
-    </p>
-    <div style="text-align:center">
-      <div class="mech-name rv d3">
-        <div class="mn-l">O mecanismo do Protocolo do Sono Perfeito</div>
-        <div class="mn-t">O Método <em>Janela de Ouro</em></div>
-        <div class="mn-s">O momento certo, pela idade, para seu bebê adormecer sem briga e emendar o sono</div>
+
+    <p class="sk-note rv">…mas o problema começa <u>antes</u>:</p>
+    <p class="mech-big rv">Ele vai pro berço <em>depois</em> da janela de sono.</p>
+
+    <div class="jw rv">
+      <div class="jw-ages" role="tablist" aria-label="Idade do bebê">
+        <span class="jw-q">Idade do seu bebê:</span>
+        <button type="button" data-a="45 min" data-b="1h30" data-c="0 a 3 meses">0–3 m</button>
+        <button type="button" class="on" data-a="1h30" data-b="2h30" data-c="3 a 6 meses">3–6 m</button>
+        <button type="button" data-a="2h" data-b="3h" data-c="6 a 9 meses">6–9 m</button>
+        <button type="button" data-a="2h30" data-b="4h" data-c="9 a 12 meses">9–12 m</button>
       </div>
+      <div class="jw-read"><span class="jw-rl">Janela de Ouro</span><span class="jw-rv"><b id="jwA">1h30</b> a <b id="jwB">2h30</b></span><span class="jw-rs">acordado, entre uma soneca e outra</span></div>
+      <svg class="jw-chart" viewBox="0 0 640 300" aria-label="Gráfico: cansaço do bebê sobe com o tempo acordado; a Janela de Ouro é o momento de colocar no berço; depois dela o cortisol sobe e ele briga com o sono">
+        <defs><linearGradient id="jwg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c9a84c" stop-opacity=".38"/><stop offset="1" stop-color="#c9a84c" stop-opacity=".08"/></linearGradient></defs>
+        <rect x="300" y="24" width="120" height="228" rx="10" fill="url(#jwg)"/>
+        <rect x="420" y="24" width="190" height="228" rx="10" fill="#e8491f" fill-opacity=".09"/>
+        <g filter="url(#rough)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M40 252H612M40 252V24" stroke="#111827" stroke-width="2.4"/>
+          <path class="jw-curve" pathLength="1" d="M44 240C150 236 240 214 300 186S390 136 420 112S520 40 604 30" stroke="#111827" stroke-width="3.6"/>
+          <path d="M300 30v216M420 30v216" stroke="#c9a84c" stroke-width="2.4" stroke-dasharray="7 8"/>
+        </g>
+        <text x="360" y="60" class="jw-t gold" text-anchor="middle">Janela</text>
+        <text x="360" y="88" class="jw-t gold" text-anchor="middle">de Ouro</text>
+        <text x="515" y="112" class="jw-t red" text-anchor="middle">Passou</text>
+        <text x="515" y="140" class="jw-t red" text-anchor="middle">do ponto</text>
+        <text x="515" y="166" class="jw-s red" text-anchor="middle">cortisol ↑</text>
+        <text x="300" y="278" class="jw-ax" text-anchor="middle" id="jwXA">1h30</text>
+        <text x="420" y="278" class="jw-ax" text-anchor="middle" id="jwXB">2h30</text>
+        <text x="54" y="278" class="jw-ax sm">acordou</text>
+        <text x="30" y="40" class="jw-ax sm" transform="rotate(-90 30 40)" text-anchor="end">cansaço</text>
+        <g class="jw-pin ok" transform="translate(360 196)"><circle r="22"/><path d="M-9 0l6 6 12-12"/></g>
+        <g class="jw-pin no" transform="translate(515 202)"><circle r="22"/><path d="M-8-8l16 16M8-8l-16 16"/></g>
+        <text x="360" y="240" class="jw-s" text-anchor="middle">berço aqui</text>
+        <text x="515" y="242" class="jw-s" text-anchor="middle">acorda toda hora</text>
+      </svg>
     </div>
-    <p class="mech-lead rv d3" style="margin-top:28px">
-      O Protocolo mostra <strong>a janela de sono de cada idade</strong>, como preparar o bebê antes dela abrir e como colocá-lo no berço <strong>sonolento, não dormindo</strong> — para ele aprender a voltar a dormir sozinho entre um ciclo e outro.
-    </p>
+
+    <div class="mech-cta rv">
+      <p>O Protocolo mostra a <strong>Janela de Ouro de cada idade</strong> e o que fazer antes e dentro dela.</p>
+    </div>
   </div>
 </section>
 
@@ -1071,101 +1144,113 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 <!-- ============================================================
      BLOCO EXTRA — BENEFÍCIOS
      ============================================================ -->
-<section id="benef" class="sec">
+<section id="benef" class="sec" data-st="hoje">
   <div class="sec-in w">
     <div style="text-align:center" class="rv">
       <span class="lbl">O que muda na prática</span>
-      <h2 class="ttl">Com Esse Passo a Passo<br><em>Você Vai:</em></h2>
-      <div class="gline"></div>
+      <h2 class="ttl">Com esse passo a passo,<br><em>você vai:</em></h2>
+    </div>
+    <div class="bf-tog rv" role="group" aria-label="Comparar">
+      <button type="button" data-v="hoje">Hoje</button>
+      <button type="button" data-v="com">Com o Protocolo</button>
+      <i></i>
     </div>
     <div class="bnf-grid">
       <div class="bnf rv d1">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-moon"/></svg></div>
-        <h3>Ter noites previsíveis de novo</h3>
-        <p>Saber, antes de deitar, como a noite vai transcorrer — em vez de torcer para dar certo.</p>
+        <svg class="bnf-art" viewBox="0 0 120 120"><g filter="url(#rough)"><path d="M78 26a30 30 0 1 0 22 46 26 26 0 0 1-22-46z"/><path d="M30 28l3 7 7 3-7 3-3 7-3-7-7-3 7-3zM92 88l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M14 104h92"/></g></svg>
+        <div class="bnf-tx">
+          <div class="bnf-h"><span>Torcer pra noite dar certo</span>Noites previsíveis de novo</div>
+          <p>Você sabe como a noite vai ser antes de deitar.</p>
+        </div>
       </div>
       <div class="bnf rv d2">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-calendar"/></svg></div>
-        <h3>Parar de improvisar a cada despertar</h3>
-        <p>Você passa a ter uma resposta pronta para cada cenário, inclusive às 3h da madrugada.</p>
+        <svg class="bnf-art" viewBox="0 0 120 120"><g filter="url(#rough)"><circle cx="60" cy="62" r="40"/><path d="M60 62V36M60 62l20 0M60 16v6M60 102v6M14 62h6M100 62h6"/><path d="M84 92l8 8 16-18" class="ok"/></g></svg>
+        <div class="bnf-tx">
+          <div class="bnf-h"><span>Improvisar às 3h da manhã</span>Uma resposta pronta pra cada despertar</div>
+          <p>Nada de tentativa e erro no escuro.</p>
+        </div>
       </div>
       <div class="bnf rv d3">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-sun"/></svg></div>
-        <h3>Recuperar suas manhãs</h3>
-        <p>Acordar descansada muda o seu humor, o seu trabalho, a sua paciência e a sua saúde.</p>
+        <svg class="bnf-art" viewBox="0 0 120 120"><g filter="url(#rough)"><path d="M24 86a36 36 0 0 1 72 0"/><path d="M60 22v12M26 40l9 8M94 40l-9 8M12 86h96"/><path d="M38 100c6-4 10-4 16 0s10 4 16 0 10-4 16 0"/></g></svg>
+        <div class="bnf-tx">
+          <div class="bnf-h"><span>Acordar mais cansada do que deitou</span>Manhãs descansadas</div>
+          <p>Mais paciência, humor e energia pro seu dia.</p>
+        </div>
       </div>
       <div class="bnf rv d4">
-        <div class="bnf-ico"><svg class="ic"><use href="#i-layers"/></svg></div>
-        <h3>Atravessar as fases sem perder o progresso</h3>
-        <p>Dentes, viagens, regressões e mudanças de rotina deixam de zerar tudo o que você construiu.</p>
+        <svg class="bnf-art" viewBox="0 0 120 120"><g filter="url(#rough)"><path d="M10 100l26-34 18 18 22-36 34 52z"/><path d="M76 48V16l20 8-20 8"/></g></svg>
+        <div class="bnf-tx">
+          <div class="bnf-h"><span>Dente ou viagem zerarem tudo</span>Fases difíceis sem voltar à estaca zero</div>
+          <p>Você ajusta a janela e mantém o que conquistou.</p>
+        </div>
       </div>
+    </div>
+    <div style="text-align:center;margin-top:44px" class="rv">
+      <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg">
+        Quero Noites Assim
+        <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     BLOCO 5 — ENTREGÁVEIS (módulos virados em resultados)
+     BLOCO 5 — ENTREGÁVEIS + BÔNUS (kit completo)
      ============================================================ -->
-<section id="offer" class="sec">
-  <div class="sec-in">
+<section id="entrega" class="sec">
+  <div class="sec-in" style="max-width:820px">
     <div style="text-align:center" class="rv">
-      <span class="lbl">E tem mais!</span>
-      <h2 class="ttl">Veja Tudo o Que Você Recebe<br><em>no Protocolo do Sono Perfeito</em></h2>
-      <div class="gline"></div>
+      <span class="lbl">Tudo que você recebe hoje</span>
+      <h2 class="ttl lt">O kit completo pra<br><em>noites inteiras de sono</em></h2>
     </div>
-    <div class="pshell rv">
-      <div class="phead">
-        <div><span class="pill">Produto Principal</span><h3>Protocolo do Sono Perfeito</h3><p>6 etapas de aplicação + plano prático noite inteira</p></div>
-        <img class="phead-kit" src="mockups/kit.webp" alt="Ebook Protocolo do Sono Perfeito + App Sono Perfeito" loading="lazy" width="1000" height="789"/>
+    <div class="et-list">
+      <div class="et et-main rv">
+        <div class="et-n">1</div>
+        <div class="et-th"><img class="bk" src="mockups/capa-sm.webp" alt="Capa do ebook Protocolo do Sono Perfeito"/></div>
+        <div class="et-tx"><span class="et-tag">Produto principal</span><div class="et-t">Ebook Protocolo do Sono Perfeito</div><div class="et-d">O Método Janela de Ouro passo a passo, de 0 a 12 meses.</div></div>
+        <div class="et-ok"><svg class="ic"><use href="#i-check"/></svg></div>
       </div>
-      <div class="pbody">
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 1 — Descubra o que está sabotando as noites</div><div class="md">Entenda os padrões que podem estar contribuindo para os despertares e saiba o que observar antes de mudar a rotina.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 2 — Use os ciclos de sono a seu favor</div><div class="md">Descubra por que ele acorda sempre no mesmo horário e como encaixar as trocas de ciclo sem despertar completo.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 3 — Prepare o bebê para dormir</div><div class="md">Monte uma sequência noturna simples que sinaliza que chegou a hora de desacelerar — e que funciona mesmo nos dias atípicos.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 4 — Transforme o quarto num ambiente de sono profundo</div><div class="md">Temperatura, iluminação, ruído branco e segurança do berço ajustados ponto a ponto, sem gastar com nada supérfluo.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 5 — Atravesse regressões sem perder o que conquistou</div><div class="md">O que fazer quando aparecerem dentes, picos de crescimento, viagens e mudanças de fase — antes que a noite desande.</div></div></div>
-        <div class="mrow"><span class="mck"><svg class="ic"><use href="#i-check"/></svg></span><div><div class="mt">ETAPA 6 — Aplique o plano noite inteira, dia a dia</div><div class="md">O protocolo completo em formato de cronograma: o que fazer em cada dia até seu bebê emendar horas seguidas de sono.</div></div></div>
+      <div class="et rv">
+        <div class="et-n">2</div>
+        <div class="et-th"><span class="et-ico"><svg class="ic"><use href="#i-calendar"/></svg></span></div>
+        <div class="et-tx"><span class="et-tag">Incluso</span><div class="et-t">Plano de aplicação dia a dia</div><div class="et-d">O que fazer em cada noite até ele emendar o sono.</div></div>
+        <div class="et-ok"><svg class="ic"><use href="#i-check"/></svg></div>
+      </div>
+      <div class="et rv">
+        <div class="et-n">3</div>
+        <div class="et-th"><img class="ph" src="mockups/app-em.webp" alt="Tela do Guia de Emergência no app" loading="lazy"/></div>
+        <div class="et-tx"><span class="et-tag">Bônus 1 · App</span><div class="et-t">Guia de Emergência</div><div class="et-d">Abra às 3h e saiba o que fazer em 7 situações.</div></div>
+        <div class="et-ok"><svg class="ic"><use href="#i-check"/></svg></div>
+      </div>
+      <div class="et rv">
+        <div class="et-n">4</div>
+        <div class="et-th"><img class="ph" src="mockups/app-cl.webp" alt="Tela do Checklist Noturno no app" loading="lazy"/></div>
+        <div class="et-tx"><span class="et-tag">Bônus 2 · App</span><div class="et-t">Checklist da Rotina Noturna</div><div class="et-d">19 itens pra marcar toda noite, direto no celular.</div></div>
+        <div class="et-ok"><svg class="ic"><use href="#i-check"/></svg></div>
+      </div>
+      <div class="et rv">
+        <div class="et-n">5</div>
+        <div class="et-th"><img class="ph" src="mockups/app-tab.webp" alt="Tela da Tabela de Horários no app" loading="lazy"/></div>
+        <div class="et-tx"><span class="et-tag">Bônus 3 · App</span><div class="et-t">Tabela de Horários por Idade</div><div class="et-d">Sonecas e janelas de sono da idade do seu bebê.</div></div>
+        <div class="et-ok"><svg class="ic"><use href="#i-check"/></svg></div>
+      </div>
+      <div class="et rv">
+        <div class="et-n">6</div>
+        <div class="et-th"><span class="et-ico"><svg class="ic"><use href="#i-bolt"/></svg></span></div>
+        <div class="et-tx"><span class="et-tag">Incluso</span><div class="et-t">Acesso imediato e vitalício</div><div class="et-d">No celular ou no computador, com atualizações.</div></div>
+        <div class="et-ok"><svg class="ic"><use href="#i-check"/></svg></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 6 — BÔNUS
-     ============================================================ -->
-<section id="bonus" class="sec" style="background:var(--cream2)">
-  <div class="sec-in">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Ainda não acabou</span>
-      <h2 class="ttl">Você Também Vai Receber<br><em>3 Bônus no App</em></h2>
-      <div class="gline"></div>
+    <div class="et-kit rv">
+      <img src="mockups/bundle.webp" alt="Ebook Protocolo do Sono Perfeito e os 3 bônus do App Sono Perfeito no celular" loading="lazy" width="1100" height="777"/>
     </div>
-    <div class="bstack" style="margin-top:44px">
-      <div class="bfeat rv">
-        <img class="bfeat-mk" src="mockups/app-em.webp" alt="Tela do Guia de Emergência no app" loading="lazy" width="440" height="889"/>
-        <div class="bfeat-content">
-          <div class="btag">Bônus 01 · App</div>
-          <div class="btit">Guia de Emergência</div>
-          <div class="bdsc">Protocolo SOS de madrugada + 7 cenários detalhados. Abra no celular às 3h e saiba exatamente o que fazer — sem improvisar no escuro.</div>
-        </div>
-        <div class="bfeat-price"><div class="bfree">INCLUSO</div></div>
-      </div>
-      <div class="bgrid">
-        <div class="bc2 rv d1">
-          <img class="bc2-mk" src="mockups/app-cl.webp" alt="Tela do Checklist Noturno no app" loading="lazy" width="440" height="889"/>
-          <div class="btag">Bônus 02 · App</div>
-          <div class="btit">Checklist da Rotina Noturna</div>
-          <div class="bdsc">19 itens interativos para marcar toda noite. Progresso salvo e barra de conclusão — o Passo 2 do Método Janela de Ouro na palma da mão.</div>
-          <div class="bc2-price"><span class="bfree">INCLUSO</span></div>
-        </div>
-        <div class="bc2 rv d2">
-          <img class="bc2-mk" src="mockups/app-tab.webp" alt="Tela da Tabela de Horários no app" loading="lazy" width="440" height="889"/>
-          <div class="btag">Bônus 03 · App</div>
-          <div class="btit">Tabela de Horários por Idade</div>
-          <div class="bdsc">Rotinas do 0 aos 12 meses com horários, sonecas e janelas de vigília. Toque para expandir a fase exata do seu bebê.</div>
-          <div class="bc2-price"><span class="bfree">INCLUSO</span></div>
-        </div>
-      </div>
+    <div class="et-end rv">
+      <div class="et-e1">6 entregáveis · 1 pagamento</div>
+      <div class="et-e2">Tudo isso por <em>R$37</em></div>
+      <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg">
+        Quero o Kit Completo
+        <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -1191,55 +1276,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
     <div class="qend rv d2">
       <div class="qe1">Enfim…</div>
       <div class="qe2">Se você quer <em>parar de improvisar a cada madrugada</em> e ter um plano na mão, o Protocolo do Sono Perfeito é para você.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BLOCO 8 — RECAPITULANDO
-     ============================================================ -->
-<section id="recap" class="sec">
-  <div class="sec-in">
-    <div style="text-align:center" class="rv">
-      <span class="lbl">Recapitulando…</span>
-      <h2 class="ttl">Veja Tudo o Que Você<br><em>Recebe Hoje</em></h2>
-      <div class="gline"></div>
-    </div>
-    <div class="rcp rv d1">
-      <div class="rcp-i">
-        <div class="rcp-th"><img class="kit" src="mockups/kit.webp" alt="Ebook Protocolo do Sono Perfeito" loading="lazy"/></div>
-        <div class="rcp-tx"><div class="rcp-t">Protocolo completo do Sono Perfeito</div><div class="rcp-d">As 6 etapas de aplicação e os 4 passos do Método Janela de Ouro, em linguagem simples.</div></div>
-        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
-      </div>
-      <div class="rcp-i">
-        <div class="rcp-th"><span class="rcp-ico"><svg class="ic"><use href="#i-calendar"/></svg></span></div>
-        <div class="rcp-tx"><div class="rcp-t">Plano de aplicação passo a passo</div><div class="rcp-d">O cronograma dia a dia até seu bebê emendar horas seguidas de sono.</div></div>
-        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
-      </div>
-      <div class="rcp-i">
-        <div class="rcp-th"><img class="ph" src="mockups/app-cl.webp" alt="Tela do Checklist Noturno no app" loading="lazy"/></div>
-        <div class="rcp-tx"><div class="rcp-t">Checklist da rotina noturna<span class="rcp-app">No app</span></div><div class="rcp-d">19 itens para marcar toda noite, direto no celular.</div></div>
-        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
-      </div>
-      <div class="rcp-i">
-        <div class="rcp-th"><img class="ph" src="mockups/app-em.webp" alt="Tela do Guia de Emergência no app" loading="lazy"/></div>
-        <div class="rcp-tx"><div class="rcp-t">Guia rápido para despertares<span class="rcp-app">No app</span></div><div class="rcp-d">O que fazer de madrugada em 7 situações comuns.</div></div>
-        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
-      </div>
-      <div class="rcp-i">
-        <div class="rcp-th"><img class="ph" src="mockups/app-tab.webp" alt="Tela da Tabela de Horários no app" loading="lazy"/></div>
-        <div class="rcp-tx"><div class="rcp-t">Tabela de horários por idade<span class="rcp-app">No app</span></div><div class="rcp-d">Sonecas e janelas de sono de 0 a 12 meses.</div></div>
-        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
-      </div>
-      <div class="rcp-i">
-        <div class="rcp-th"><span class="rcp-ico"><svg class="ic"><use href="#i-bolt"/></svg></span></div>
-        <div class="rcp-tx"><div class="rcp-t">Acesso imediato e vitalício</div><div class="rcp-d">No celular ou no computador, com as atualizações futuras sem custo.</div></div>
-        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
-      </div>
-      <div class="rcp-end">
-        <div class="re1">Uma consultoria de sono particular custa centenas de reais e pode levar semanas para começar.</div>
-        <div class="re2">Tudo isso por <em>R$37</em>, pagamento único.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1875,5 +1911,28 @@ setInterval(()=>{
 </script>
 <!-- ============ FIM CAPTURA / RASTREAMENTO ============ -->
 
+<script>
+(function(){
+  var jw=document.querySelector('#mech .jw'), mx=document.querySelector('#mech .mx-grid');
+  document.querySelectorAll('.jw-ages button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.jw-ages button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      [['jwA','a'],['jwB','b']].forEach(function(k){var el=document.getElementById(k[0]);el.textContent=b.dataset[k[1]];el.classList.add('pop');setTimeout(function(){el.classList.remove('pop')},300)});
+      document.getElementById('jwXA').textContent=b.dataset.a;document.getElementById('jwXB').textContent=b.dataset.b;
+      if(window.fbq)try{fbq('trackCustom','JanelaIdade',{idade:b.dataset.c})}catch(e){}
+    });
+  });
+  var bf=document.getElementById('benef'), bg=bf.querySelector('.bnf-grid'), auto=true, t;
+  bf.querySelectorAll('.bf-tog button').forEach(function(b){b.addEventListener('click',function(){auto=false;clearTimeout(t);bf.dataset.st=b.dataset.v})});
+  if(!('IntersectionObserver' in window)){jw.classList.add('on');mx.classList.add('on');bf.dataset.st='com';return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return; io.unobserve(e.target);
+    if(e.target===bg){t=setTimeout(function(){if(auto)bf.dataset.st='com'},1400)}
+    else e.target.classList.add('on');
+  })},{threshold:.35});
+  [jw,mx].forEach(function(el){io.observe(el)}); io.observe(bg);
+})();
+</script>
 </body>
 </html>
