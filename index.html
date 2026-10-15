@@ -30,18 +30,6 @@ fbq('track','ViewContent',{content_name:'Protocolo do Sono Perfeito',content_cat
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1078460701310585&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 
-<!-- Resultado do quiz (/quiz manda pra cá com ?perfil=A|B|C): liga o modo diagnóstico
-     e trava o resto da página até 60% da mini VSL. Roda antes de pintar a tela pra não piscar. -->
-<script>
-(function(){
-  var p=(new URLSearchParams(location.search).get('perfil')||'').toUpperCase();
-  if(!/^[ABC]$/.test(p))return;
-  var c=document.documentElement.classList,ok;c.add('quiz-mode');
-  try{ok=localStorage.getItem('psp_vsl60')}catch(e){}
-  if(!ok)c.add('gated');
-})();
-</script>
-
 <!-- Utmify: captura UTMs da URL -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck async defer></script>
 <!-- End Utmify -->
@@ -780,25 +768,20 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 }
 .h-auth .ic{width:14px;height:14px;color:var(--gold2)}
 .h-offer{
-  position:relative;z-index:1;max-width:460px;margin:0 auto 16px;
-  background:linear-gradient(160deg,rgba(15,30,58,.92),rgba(3,7,15,.95));
-  border:1.5px solid rgba(201,168,76,.55);border-radius:20px;padding:22px 20px 18px;
-  box-shadow:0 0 0 6px rgba(201,168,76,.06),0 24px 60px -24px rgba(0,0,0,.9);
+  position:relative;z-index:1;max-width:440px;margin:0 auto 18px;
+  background:linear-gradient(150deg,var(--n2),var(--n0));
+  border:1.5px solid rgba(201,168,76,.55);border-radius:18px;padding:18px 22px 20px;
+  box-shadow:0 0 0 6px rgba(201,168,76,.06),0 20px 50px -20px rgba(0,0,0,.8);
 }
-.h-off-l{font-size:13px;font-weight:600;color:rgba(255,255,255,.62);letter-spacing:.02em}
-.h-offer .cta-btn{width:100%;margin-top:18px;padding:18px 16px;font-size:14.5px}
-.h-off-ok{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:14px}
-.h-off-ok span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.7)}
-.h-off-ok .ic{width:14px;height:14px;color:var(--gold2)}
-.h-stats{position:relative;z-index:1;display:flex;justify-content:center;max-width:460px;margin:30px auto 0;border-top:1px solid rgba(201,168,76,.18);padding-top:20px}
-.h-stats div{flex:1;text-align:center}
-.h-stats div+div{border-left:1px solid rgba(201,168,76,.18)}
-.h-stats b{display:block;font-size:22px;font-weight:900;color:var(--gold2);line-height:1}
-.h-stats span{display:block;font-size:11.5px;color:rgba(255,255,255,.45);margin-top:6px}
-.h-off-p{font-family:var(--ss);font-size:64px;font-weight:900;color:var(--gold2);line-height:1;margin-top:6px;letter-spacing:-.02em}
+.h-off-top{display:flex;align-items:center;gap:14px;text-align:left}
+.h-off-top img{width:46px;height:83px;object-fit:cover;object-position:top;border-radius:9px;border:3px solid #1c2744;flex-shrink:0;box-shadow:0 8px 18px rgba(0,0,0,.5)}
+.h-off-t{font-family:var(--sf);font-size:18px;font-weight:700;color:var(--w);line-height:1.2}
+.h-off-b{font-size:13px;font-weight:700;color:var(--gold3);margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.h-new{background:var(--ember);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.h-off-p{font-family:var(--ss);font-size:64px;font-weight:900;color:var(--gold2);line-height:1;margin-top:14px;letter-spacing:-.02em}
 .h-off-p small{font-size:24px;font-weight:800;vertical-align:top;position:relative;top:8px;margin:0 2px}
-.h-off-u{font-size:12.5px;color:rgba(255,255,255,.5);margin-top:6px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
-@media(max-width:520px){.h-auth{font-size:11.5px;padding:7px 13px;margin-bottom:16px}.h-off-p{font-size:56px}#hero-cta{padding-top:30px}#hero-cta .cta-btn-wrap{margin-top:22px}#hero-cta{padding-bottom:48px}}
+.h-off-u{font-size:13px;color:rgba(255,255,255,.55);margin-top:6px}
+@media(max-width:520px){.h-auth{font-size:11.5px;padding:7px 13px;margin-bottom:16px}.h-off-p{font-size:56px}#hero-cta{padding-top:30px}#hero-cta .cta-btn-wrap{margin-top:26px}}
 
 /* =================== APP SONO PERFEITO EM DESTAQUE =================== */
 .appx{
@@ -837,84 +820,6 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 .prev2-note{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:rgba(255,255,255,.5);margin-top:18px}
 .prev2-note .ic{width:13px;height:13px;color:var(--gold2)}
 @media(max-width:560px){.prev2{padding:26px 14px 22px}.prev2-grid{gap:10px}.prev2 figcaption{font-size:11.5px}}
-
-/* =================== MINI VSL (PlayTurb) =================== */
-.vsl{position:relative;z-index:1;max-width:640px;margin:24px auto 0}
-.vsl-frame{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1.5px solid rgba(201,168,76,.45);box-shadow:0 0 0 6px rgba(201,168,76,.06),0 24px 60px -20px rgba(0,0,0,.85)}
-.vsl-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vsl-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(3,7,15,.25),rgba(3,7,15,.55)),url(vsl-poster.jpg) center/cover no-repeat}
-.vsl-ph b{width:70px;height:70px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(201,168,76,.15)}
-.vsl-ph b::after{content:'';border-left:20px solid var(--n0);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
-
-/* =================== HERO: arte do banner como fundo =================== */
-#hero::before{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:url(hero-bg.jpg) center top/cover no-repeat;opacity:.17;
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 85%);
-          mask-image:linear-gradient(180deg,#000 0%,#000 45%,transparent 85%);
-}
-#hero-cta{background:transparent}
-.h-brand{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sf);font-style:italic;font-size:15px;color:var(--gold2);margin-bottom:16px;letter-spacing:.02em}
-.h-brand .ic{width:16px;height:16px}
-@media(min-width:861px){
-  #hero::before{
-    background-position:right top;background-size:auto 100%;opacity:.1;
-    -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 14%,transparent 40%);
-            mask-image:linear-gradient(270deg,#000 0%,#000 14%,transparent 40%);
-  }
-}
-
-/* =================== RESULTADO DO QUIZ =================== */
-.qz,.qz-wait{display:none}
-html.quiz-mode #hero-cta>h1,html.quiz-mode .h-auth{display:none}
-html.quiz-mode .qz{display:block;position:relative;z-index:1;max-width:640px;margin:14px auto 0;text-align:left}
-.qz-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.qz-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:99px;border:1px solid var(--gl);background:rgba(201,168,76,.1);color:var(--gold3);font:700 11.5px/1 var(--ss);letter-spacing:.14em;text-transform:uppercase}
-.qz-chip .ic{width:14px;height:14px}
-.qz-chip.soft{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.72)}
-.qz-h{font-family:var(--sf);font-size:clamp(30px,7.4vw,50px);font-weight:900;color:var(--w);line-height:1.08;text-align:center;margin-top:18px}
-.qz-h em{color:var(--gold2);font-style:italic}
-.qz-sub{text-align:center;color:rgba(255,255,255,.78);font-size:clamp(17px,2.4vw,20px);line-height:1.5;margin:12px auto 0;max-width:560px}
-.qz-card{margin-top:22px;padding:22px 20px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
-.qz-lbl{font:800 10.5px/1.4 var(--ss);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.qz-card p{color:rgba(255,255,255,.84);font-size:17px;line-height:1.7}
-.qz-card p em{color:var(--gold3);font-style:italic}
-.qz-why{margin-top:20px;padding:2px 0 2px 16px;border-left:3px solid var(--gold)}
-.qz-why p{color:var(--w);font-weight:500}
-.qz-card .qz-note{margin-top:16px;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.6)}
-.qz-bridge{margin-top:20px;text-align:center;color:var(--w);font-weight:600;font-size:18px;line-height:1.5}
-.qz-bridge b{color:var(--gold2)}
-html.gated .qz-wait{display:flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:1;max-width:640px;margin:18px auto 0;color:rgba(255,255,255,.62);font-size:15px;line-height:1.45;text-align:left}
-.qz-wait i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--gold2);animation:qzPulse 1.6s ease-in-out infinite}
-@keyframes qzPulse{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
-html.gated .cta-btn-wrap,html.gated .h-stats{display:none}
-html.gated #hero~*:not(#lf):not(script):not(style){display:none!important}
-html.quiz-mode #hero::before,html.quiz-mode .h-brand{display:none}
-html.quiz-mode .qz-h{margin-top:0}
-.qz-sky{display:none}
-html.quiz-mode .qz-sky{display:block;position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.qz-sky i{position:absolute;width:110px;height:1.5px;border-radius:2px;opacity:0;
-  background:linear-gradient(90deg,rgba(232,208,128,0),rgba(232,208,128,.85));
-  transform:rotate(-18deg);animation:qzShoot 9s linear infinite}
-.qz-sky i:nth-child(1){top:6%;left:-20%;animation-delay:1s}
-.qz-sky i:nth-child(2){top:22%;left:-30%;animation-delay:4.5s;animation-duration:11s}
-.qz-sky i:nth-child(3){top:40%;left:-25%;animation-delay:7.5s;animation-duration:10s}
-.qz-sky i:nth-child(4){top:62%;left:-35%;animation-delay:2.8s;animation-duration:12s}
-.qz-sky b{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:qzTw 3.6s ease-in-out infinite}
-@keyframes qzShoot{0%{opacity:0;transform:translate(0,0) rotate(-18deg)}3%{opacity:1}14%{opacity:0;transform:translate(150vw,-48vw) rotate(-18deg)}100%{opacity:0;transform:translate(150vw,-48vw) rotate(-18deg)}}
-@keyframes qzTw{0%,100%{opacity:.12}50%{opacity:.8}}
-@media (prefers-reduced-motion:reduce){.qz-sky i,.qz-sky b{animation:none;opacity:0}}
-.qz-play{display:none}
-html.quiz-mode .qz-play{display:flex;justify-content:center;position:relative;z-index:1;margin:22px auto -10px}
-.qz-play span{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border-radius:99px;
-  background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--n0);
-  font:800 13px/1 var(--ss);letter-spacing:.12em;text-transform:uppercase;
-  box-shadow:0 8px 26px -8px rgba(201,168,76,.7);animation:qzCall 2s ease-in-out infinite}
-.qz-play i{width:0;height:0;border-left:9px solid var(--n0);border-top:6px solid transparent;border-bottom:6px solid transparent}
-@keyframes qzCall{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.55),0 8px 26px -8px rgba(201,168,76,.7)}50%{box-shadow:0 0 0 10px rgba(201,168,76,0),0 8px 26px -8px rgba(201,168,76,.7)}}
-html.quiz-mode #vsl{margin-top:20px}
-html.revealed .cta-btn-wrap{animation:qzIn .7s cubic-bezier(.2,.8,.2,1) both}
-@keyframes qzIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -927,39 +832,55 @@ html.revealed .cta-btn-wrap{animation:qzIn .7s cubic-bezier(.2,.8,.2,1) both}
      ============================================================ -->
 <section id="hero">
   <canvas id="ptc"></canvas>
+  <div id="hero-img">
+    <img src="hero-banner.png" alt="Protocolo do Sono Perfeito — Transforme as noites do seu bebê" fetchpriority="high"/>
+  </div>
   <div id="hero-cta">
-    <div class="h-brand rv on"><svg class="ic"><use href="#i-moon"/></svg> Protocolo do Sono Perfeito</div>
     <div class="h-auth rv on"><svg class="ic"><use href="#i-star"/></svg> Baseado em estudos de especialistas em sono do bebê de Harvard</div>
     <h1 class="rv on">Faça Seu Bebê Dormir<br><em>a Noite Inteira</em></h1>
-    <!-- Mini VSL (PlayTurb). Enquanto PSP_VSL estiver vazio, mostra a capa com o play. -->
-    <div id="vsl" class="vsl rv on d1">
-      <div class="vsl-frame" id="vsl-frame">
-        <div class="vsl-ph"><b></b></div>
-      </div>
-    </div>
+    <p class="sub rv on d1">
+      Com o <em>Método Janela de Ouro</em>, você descobre o momento certo, pela idade do seu bebê, de colocá-lo no berço — antes do cansaço virar choro. Ele adormece sem briga, <strong>emenda os ciclos de sono</strong> e você finalmente <em>volta a dormir por horas seguidas</em>. Sem deixá-lo chorando sozinho.
+    </p>
     <div class="cta-btn-wrap rv on d2">
       <div class="h-offer">
-        <div class="h-off-l">Acesso completo por apenas</div>
-        <div class="h-off-p"><small>R$</small>37<small>,00</small></div>
-        <div class="h-off-u">Pagamento único</div>
-        <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
-          Quero Aplicar o Protocolo Hoje
-          <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
-        </a>
-        <div class="h-off-ok">
-          <span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span>
-          <span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span>
+        <div class="h-off-top">
+          <img src="app-em.jpg" alt="Tela real do App Sono Perfeito" width="500" height="900"/>
+          <div>
+            <div class="h-off-t">Protocolo do Sono Perfeito</div>
+            <div class="h-off-b"><span class="h-new">Novo</span> + App Sono Perfeito de bônus</div>
+          </div>
         </div>
+        <div class="h-off-p"><small>R$</small>37<small>,00</small></div>
+        <div class="h-off-u">Pagamento único · acesso imediato</div>
+      </div>
+      <a href="https://pay.kiwify.com.br/P7ziSS2" class="cta-btn lg">
+        <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-moon"/></svg>
+        Quero Aplicar o Protocolo Hoje
+        <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
+      </a>
+      <div class="micro-args">
+        <span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span>
+        <span><svg class="ic"><use href="#i-list"/></svg> Aplicação prática hoje mesmo</span>
+        <span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span>
       </div>
       <div class="buyers-badge" style="justify-content:center">
         <span class="dot"></span>
         <span id="buyers-hero"><span class="cnt-b">143</span> mães garantiram nas últimas 24h</span>
       </div>
     </div>
-    <div class="h-stats rv on d3">
-      <div><b>+2.500</b><span>famílias</span></div>
-      <div><b>4,9★</b><span>avaliação</span></div>
-      <div><b>7 dias</b><span>de garantia</span></div>
+    <div id="stats" class="rv on d3">
+      <div class="st">
+        <div class="st-num">+<span class="cnt" data-to="2500">0</span></div>
+        <div class="st-lbl">famílias transformadas</div>
+      </div>
+      <div class="st">
+        <div class="st-num"><span class="cnt" data-to="49" data-dec>0</span>★</div>
+        <div class="st-lbl">avaliação média</div>
+      </div>
+      <div class="st">
+        <div class="st-num">7 dias</div>
+        <div class="st-lbl">para os primeiros resultados</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1659,21 +1580,6 @@ setInterval(()=>{
 },20000);
 </script>
 
-<script>
-/* ======= MINI VSL (PlayTurb) =======
-   Quando o vídeo estiver pronto: cole aqui o ID do vídeo no PlayTurb (ex.: 'v_abc123')
-   ou a URL completa do player (https://playturb.vercel.app/player.html?id=...). */
-var PSP_VSL='';
-(function(){
-  var fr=document.getElementById('vsl-frame');if(!fr||!PSP_VSL)return;
-  var src=/^https?:/.test(PSP_VSL)?PSP_VSL:'https://playturb.vercel.app/player.html?id='+encodeURIComponent(PSP_VSL);
-  var i=document.createElement('iframe');
-  i.src=src;i.title='Vídeo do Protocolo do Sono Perfeito';
-  i.setAttribute('allow','autoplay; fullscreen; picture-in-picture');i.allowFullscreen=true;
-  fr.innerHTML='';fr.appendChild(i);
-})();
-</script>
-
 <!-- Fallback: garante repasse de UTM pro checkout mesmo se o script da Utmify falhar -->
 <!-- ============ CAPTURA DE LEAD + RASTREAMENTO DO FUNIL ============ -->
 <style>
@@ -1761,7 +1667,6 @@ var PSP_VSL='';
   // os mesmos event_ids do fbq do <head>: o Meta deduplica navegador x servidor
   ev('page_view',{ref:document.referrer||null},P.pvId);
   ev('view_content',null,P.vcId,true);
-  P.ev=ev; // o bloco do resultado do quiz usa pra registrar quiz/VSL no painel
 
   /* ---------- scroll ---------- */
   var maxScroll=0,marks=[25,50,75,90,100],hit={};
@@ -1955,119 +1860,6 @@ var PSP_VSL='';
 })();
 </script>
 <!-- ============ FIM CAPTURA / RASTREAMENTO ============ -->
-
-<script>
-/* ======= RESULTADO DO QUIZ =======
-   /quiz manda pra cá com ?perfil=A|B|C&idade=..&tentou=..
-   Mostra o diagnóstico acima da mini VSL. O botão da 1ª dobra e o resto da página
-   só aparecem quando o vídeo passa de 60% (aviso do player do PlayTurb via postMessage). */
-(function(){
-  var html=document.documentElement;
-  if(!html.classList.contains('quiz-mode'))return;
-  var P=window.PSP||{},q=new URLSearchParams(location.search);
-  var perfil=q.get('perfil').toUpperCase(),idade=q.get('idade')||'',tentou=(q.get('tentou')||'').split(',').filter(Boolean);
-  function fb(){try{fbq.apply(null,arguments)}catch(e){}}
-  function ev(n,props,now){try{P.ev&&P.ev(n,props,null,now)}catch(e){}}
-
-  var IDADES={'0-3':'0 a 3 meses','4-6':'4 a 6 meses','7-9':'7 a 9 meses','10-12':'10 a 12 meses','12+':'mais de 1 ano'};
-  var GENERICO='Dicas soltas não resolvem quando o problema está no momento em que o bebê é colocado para dormir.';
-  var PERFIS={
-    A:{nome:'Briga com o Sono',
-      sub:'Ele não está fazendo manha. Ele está cansado demais para conseguir dormir.',
-      diag:'Parece contraditório, mas o bebê que chora e luta contra o sono quase sempre <em>passou da hora</em>. Quando ele vai para o berço depois da janela de sono dele, o corpo libera cortisol, o hormônio do alerta, e ele fica agitado justamente quando mais precisava desligar. Aí só o colo, o peito ou o balanço conseguem vencer essa agitação.',
-      why:'Você tentou acalmar o bebê depois que a agitação já tinha começado. O que muda o jogo vem antes: colocar ele para dormir dentro da janela, antes de passar do ponto.',
-      ponte:'Assista ao vídeo abaixo. Ele mostra como encontrar a <b>Janela de Ouro</b> do seu bebê para ele adormecer sem briga, começando hoje à noite.'},
-    B:{nome:'Sono Picado',
-      sub:'Ele até dorme, mas ainda não aprendeu a emendar um ciclo de sono no outro.',
-      diag:'Todo bebê desperta rapidinho entre um ciclo de sono e outro. Isso é normal. O problema é quando ele adormece no colo ou mamando e, ao despertar, se vê num lugar diferente de onde dormiu. Aí ele precisa da mesma ajuda para voltar a dormir, e a noite vira plantão: colo, mamada, embalo, de novo e de novo.',
-      why:'O que você tentou ajuda o bebê a <em>pegar</em> no sono. O desafio dele é <em>voltar</em> a dormir sozinho entre um ciclo e outro. São duas coisas diferentes.',
-      ponte:'Assista ao vídeo abaixo. Ele mostra como colocar o bebê no berço <b>sonolento, não dormindo</b>, para ele aprender a emendar o sono sem você deixar ele chorando sozinho.'},
-    C:{nome:'Cansaço Acumulado',
-      sub:'As sonecas curtas do dia estão cobrando a conta à noite.',
-      diag:'Soneca curta, irritação no fim da tarde e despertar cedo demais costumam ter a mesma origem: o bebê passa da janela de sono ao longo do dia. O cansaço vai se acumulando, ele fica cada vez mais agitado e chega na hora de dormir sem conseguir relaxar.',
-      why:'Deixar o bebê cansar mais para ele dormir melhor parece lógico, mas faz o contrário: quanto mais cansado, <em>pior</em> ele dorme.',
-      ponte:'Assista ao vídeo abaixo. Ele mostra como ajustar as <b>janelas de sono do dia</b>, pela idade do seu bebê, para a noite render.',
-      nota:'Se o seu bebê ronca, faz pausas na respiração ou acorda engasgado, converse com o pediatra antes. Pode ser algo que precisa de avaliação.'}
-  };
-  var p=PERFIS[perfil];
-  // "Nada ainda" sozinho → texto genérico (perfis A e B); C sempre usa o do perfil
-  var why=(perfil!=='C'&&tentou.length===1&&tentou[0]==='nada')?GENERICO:p.why;
-  var notas=[];
-  if(p.nota)notas.push(p.nota);
-  if(idade==='12+')notas.push('O Protocolo foi feito para bebês de 0 a 12 meses. Para crianças maiores, parte das orientações pode precisar de ajuste.');
-
-  // céu do resultado: estrelas cadentes + algumas estrelas piscando (só CSS)
-  var sky=document.createElement('div');sky.className='qz-sky';sky.setAttribute('aria-hidden','true');
-  var stars='';
-  for(var k=0;k<18;k++)stars+='<b style="top:'+(Math.random()*95).toFixed(1)+'%;left:'+(Math.random()*98).toFixed(1)+'%;animation-delay:'+(Math.random()*3.6).toFixed(2)+'s"></b>';
-  sky.innerHTML='<i></i><i></i><i></i><i></i>'+stars;
-  document.getElementById('hero').insertBefore(sky,document.getElementById('hero').firstChild);
-
-  // topo: perfil + frase-chave + ponte, logo acima do vídeo (vídeo já na 1ª tela do celular)
-  var box=document.createElement('div');
-  box.className='qz';
-  box.innerHTML=
-    '<h1 class="qz-h">O perfil de sono do seu bebê é: <em>'+p.nome+'</em></h1>'+
-    '<p class="qz-sub">'+p.sub+'</p>'+
-    '<p class="qz-bridge">'+p.ponte+' ↓</p>';
-  var vsl=document.getElementById('vsl');
-  vsl.parentNode.insertBefore(box,vsl);
-  var call=document.createElement('div');
-  call.className='qz-play';
-  call.innerHTML='<span><i></i>Assista agora · ative o som</span>';
-  vsl.parentNode.insertBefore(call,vsl);
-  var wait=document.createElement('p');
-  wait.className='qz-wait';
-  wait.innerHTML='<i></i><span>Assista ao vídeo com som: o seu plano aparece logo abaixo.</span>';
-  vsl.parentNode.insertBefore(wait,vsl.nextSibling);
-  // embaixo do vídeo: o diagnóstico completo, pra ler enquanto assiste (o botão vem depois dele)
-  var card=document.createElement('div');
-  card.className='qz qz-card';
-  card.innerHTML=
-    '<div class="qz-lbl">Entenda o diagnóstico</div><p>'+p.diag+'</p>'+
-    '<div class="qz-why"><div class="qz-lbl">Por que nada funcionou até agora</div><p>'+why+'</p></div>'+
-    notas.map(function(n){return '<p class="qz-note">'+n+'</p>'}).join('');
-  wait.parentNode.insertBefore(card,wait.nextSibling);
-
-  fb('trackCustom','QuizResultView',{perfil:perfil});
-  ev('quiz_result_view',{perfil:perfil,idade:idade||null,tentou:tentou});
-
-  /* ---------- trava até 60% do tempo de reprodução da mini VSL ----------
-     Conta só o tempo realmente assistido com som (o player só manda progresso depois que a pessoa
-     ativa o som). Pular pra frente na barra não conta. Sem vídeo configurado, a página fica travada. */
-  var done=!html.classList.contains('gated');
-  function reveal(why){
-    if(done)return;done=true;
-    html.classList.remove('gated');html.classList.add('revealed');
-    try{localStorage.setItem('psp_vsl60','1')}catch(e){}
-    fb('trackCustom','VSL60',{perfil:perfil,motivo:why});
-    ev('vsl_unlock',{perfil:perfil,motivo:why,assistido:Math.round(watched)},true);
-  }
-  if(done)return;
-
-  var played=false,watched=0,last=null;
-  function frame(){return document.querySelector('#vsl-frame iframe')}
-  addEventListener('message',function(e){
-    var f=frame(),d=e.data;
-    if(!f||e.source!==f.contentWindow||!d||typeof d!=='object')return;
-    if(d.type==='playturb-play'&&!played){played=true;fb('trackCustom','VSLPlay',{perfil:perfil});ev('vsl_play',{perfil:perfil})}
-    if(typeof d.currentTime!=='number')return;
-    if(last!==null){
-      var dt=d.currentTime-last;
-      if(dt>0&&dt<=8)watched+=dt; // avanço normal (eventos a cada ~5 s); salto na barra ou volta não somam
-    }
-    last=d.currentTime;
-    if(d.duration&&watched>=d.duration*0.6)reveal('vsl_60');
-  });
-  // Plano B: a pessoa tocou no vídeo mas o player nunca respondeu (player quebrado) → não deixa a página travada
-  addEventListener('blur',function(){
-    setTimeout(function(){
-      if(!frame()||document.activeElement!==frame()||played)return;
-      setTimeout(function(){if(!played)reveal('player_sem_resposta')},8000);
-    },0);
-  });
-})();
-</script>
 
 </body>
 </html>
