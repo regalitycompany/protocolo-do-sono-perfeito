@@ -681,21 +681,36 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 /* =================== RECAPITULANDO =================== */
 #recap{background:var(--cream)}
 .rcp{
-  background:var(--w);border-radius:20px;padding:34px 38px;margin-top:44px;
-  box-shadow:0 8px 42px rgba(0,0,0,.08);
+  max-width:860px;margin:44px auto 0;background:var(--w);border-radius:24px;padding:14px 36px 34px;
+  box-shadow:0 10px 50px rgba(0,0,0,.09);border:1px solid #efe7d2;
 }
-.rcp-i{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid #f2ede0}
-.rcp-i:last-of-type{border-bottom:none}
-.rcp-i .ic{width:17px;height:17px;color:var(--gold);margin-top:3px;flex-shrink:0}
-.rcp-t{font-weight:600;font-size:15px;color:var(--ink)}
-.rcp-d{font-size:13px;color:var(--muted);margin-top:2px}
-.rcp-end{
-  margin-top:24px;border-top:2px dashed rgba(201,168,76,.3);padding-top:24px;text-align:center;
+.rcp-i{display:flex;align-items:center;gap:20px;padding:22px 0;border-bottom:2px dotted #e3d8bb}
+.rcp-th{flex:0 0 130px;height:130px;display:flex;align-items:center;justify-content:center}
+.rcp-th img.kit{width:130px;height:auto;filter:drop-shadow(0 8px 12px rgba(0,0,0,.18))}
+.rcp-th img.ph{height:100%;width:auto;filter:drop-shadow(0 8px 12px rgba(0,0,0,.2))}
+.rcp-ico{width:92px;height:92px;border-radius:50%;background:linear-gradient(145deg,var(--n2),var(--n0));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(8,15,36,.25)}
+.rcp-ico .ic{width:40px;height:40px;color:var(--gold3)}
+.rcp-tx{flex:1;min-width:0}
+.rcp-t{font-family:var(--sf);font-weight:700;font-size:clamp(19px,2.2vw,24px);line-height:1.25;color:var(--ink)}
+.rcp-d{font-size:clamp(15px,1.7vw,17px);color:var(--muted);margin-top:6px;line-height:1.55}
+.rcp-app{display:inline-block;vertical-align:middle;font-family:var(--ss,inherit);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.12);border-radius:20px;padding:3px 10px;margin-left:8px}
+.rcp-ok{flex:0 0 auto;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:800;color:#2f8a4e;text-transform:uppercase;letter-spacing:.05em}
+.rcp-ok .ic{width:20px;height:20px;color:#2f8a4e}
+.rcp-end{margin-top:28px;text-align:center}
+.rcp-end .re1{font-size:clamp(16px,1.9vw,19px);color:var(--muted);line-height:1.6}
+.rcp-end .re2{font-family:var(--sf);font-size:clamp(28px,4.4vw,42px);font-weight:800;color:var(--ink);margin-top:12px;line-height:1.2}
+.rcp-end .re2 em{color:var(--gold);font-style:normal}
+#recap .ttl{font-size:clamp(32px,5vw,52px)}
+@media(max-width:560px){
+  .rcp{padding:6px 18px 26px;border-radius:18px}
+  .rcp-i{gap:14px;padding:18px 0}
+  .rcp-th{flex-basis:92px;height:104px}
+  .rcp-th img.kit{width:92px}
+  .rcp-ico{width:70px;height:70px}.rcp-ico .ic{width:30px;height:30px}
+  .rcp-t{font-size:19px}.rcp-d{font-size:15px}
+  .rcp-app{margin-left:0;margin-top:6px;display:table}
+  .rcp-ok{display:none}
 }
-.rcp-end .re1{font-size:15px;color:var(--muted);line-height:1.7}
-.rcp-end .re2{font-family:var(--sf);font-size:clamp(22px,3.2vw,30px);font-weight:700;color:var(--ink);margin-top:10px;line-height:1.35}
-.rcp-end .re2 em{color:var(--gold);font-style:italic}
-@media(max-width:560px){.rcp{padding:26px 22px}}
 
 /* =================== COMO ACESSAR =================== */
 #acesso{background:var(--cream2)}
@@ -1191,15 +1206,39 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       <div class="gline"></div>
     </div>
     <div class="rcp rv d1">
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Protocolo completo do Sono Perfeito</div><div class="rcp-d">As 6 etapas de aplicação + os 4 passos do Método Janela de Ouro</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Plano de aplicação passo a passo</div><div class="rcp-d">O cronograma dia a dia até seu bebê emendar horas seguidas de sono</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">19 itens interativos para marcar toda noite, direto no celular</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">Protocolo SOS de madrugada com 7 cenários resolvidos</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 6px;margin-left:4px">APP</span></div><div class="rcp-d">Rotinas, sonecas e janelas de vigília do 0 aos 12 meses</div></div></div>
-      <div class="rcp-i"><svg class="ic"><use href="#i-check"/></svg><div><div class="rcp-t">Acesso imediato e vitalício, em qualquer dispositivo</div><div class="rcp-d">Mais atualizações futuras do protocolo, sem custo adicional</div></div></div>
+      <div class="rcp-i">
+        <div class="rcp-th"><img class="kit" src="mockups/kit.webp" alt="Ebook Protocolo do Sono Perfeito" loading="lazy"/></div>
+        <div class="rcp-tx"><div class="rcp-t">Protocolo completo do Sono Perfeito</div><div class="rcp-d">As 6 etapas de aplicação e os 4 passos do Método Janela de Ouro, em linguagem simples.</div></div>
+        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
+      </div>
+      <div class="rcp-i">
+        <div class="rcp-th"><span class="rcp-ico"><svg class="ic"><use href="#i-calendar"/></svg></span></div>
+        <div class="rcp-tx"><div class="rcp-t">Plano de aplicação passo a passo</div><div class="rcp-d">O cronograma dia a dia até seu bebê emendar horas seguidas de sono.</div></div>
+        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
+      </div>
+      <div class="rcp-i">
+        <div class="rcp-th"><img class="ph" src="mockups/app-cl.webp" alt="Tela do Checklist Noturno no app" loading="lazy"/></div>
+        <div class="rcp-tx"><div class="rcp-t">Checklist da rotina noturna<span class="rcp-app">No app</span></div><div class="rcp-d">19 itens para marcar toda noite, direto no celular.</div></div>
+        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
+      </div>
+      <div class="rcp-i">
+        <div class="rcp-th"><img class="ph" src="mockups/app-em.webp" alt="Tela do Guia de Emergência no app" loading="lazy"/></div>
+        <div class="rcp-tx"><div class="rcp-t">Guia rápido para despertares<span class="rcp-app">No app</span></div><div class="rcp-d">O que fazer de madrugada em 7 situações comuns.</div></div>
+        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
+      </div>
+      <div class="rcp-i">
+        <div class="rcp-th"><img class="ph" src="mockups/app-tab.webp" alt="Tela da Tabela de Horários no app" loading="lazy"/></div>
+        <div class="rcp-tx"><div class="rcp-t">Tabela de horários por idade<span class="rcp-app">No app</span></div><div class="rcp-d">Sonecas e janelas de sono de 0 a 12 meses.</div></div>
+        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
+      </div>
+      <div class="rcp-i">
+        <div class="rcp-th"><span class="rcp-ico"><svg class="ic"><use href="#i-bolt"/></svg></span></div>
+        <div class="rcp-tx"><div class="rcp-t">Acesso imediato e vitalício</div><div class="rcp-d">No celular ou no computador, com as atualizações futuras sem custo.</div></div>
+        <div class="rcp-ok"><svg class="ic"><use href="#i-check"/></svg><span>Incluso</span></div>
+      </div>
       <div class="rcp-end">
         <div class="re1">Uma consultoria de sono particular custa centenas de reais e pode levar semanas para começar.</div>
-        <div class="re2"><em>R$37</em> para ter o protocolo inteiro na mão e começar hoje.</div>
+        <div class="re2">Tudo isso por <em>R$37</em>, pagamento único.</div>
       </div>
     </div>
   </div>
