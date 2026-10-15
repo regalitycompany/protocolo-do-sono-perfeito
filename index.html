@@ -489,6 +489,46 @@ canvas#ptc{position:absolute;inset:0;pointer-events:none;z-index:0}
 .omicro .ic{width:13px;height:13px;color:var(--gold)}
 @media(max-width:520px){.otop,.obody{padding:28px 22px}.oval{font-size:68px}}
 
+/* ---- caixa de oferta v2 ---- */
+.ob2{border:2px solid var(--gold);box-shadow:0 0 0 8px rgba(201,168,76,.12),0 30px 80px -20px rgba(8,15,36,.45);border-radius:26px}
+.ob2 .otop{position:relative;padding:34px 28px 30px;background:radial-gradient(ellipse at 50% 0,#1a2d5c,var(--n1) 70%)}
+.ob-rib{position:absolute;top:18px;left:50%;transform:translateX(-50%);background:var(--ember);color:#fff;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 16px;border-radius:999px;box-shadow:0 6px 18px -4px rgba(232,73,31,.6);white-space:nowrap}
+.ob-kit{display:block;width:100%;max-width:420px;height:auto;margin:22px auto 4px}
+.ob2 .olbl{font-size:17px;color:rgba(255,255,255,.8);font-weight:500}
+.ob2 .oval{font-size:104px}
+.ob2 .oinst{font-size:15px;color:rgba(255,255,255,.62)}
+.ob2 .oinst b{color:var(--gold3)}
+.ob2 .obody{padding:30px 32px 30px}
+.ob-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.ob-list li{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600;color:var(--ink);line-height:1.35}
+.ob-ck{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center}
+.ob-ck .ic{width:14px;height:14px;stroke:#fff;color:#fff}
+.ob-tag{display:table;margin:0 0 3px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8a6a1f;background:rgba(201,168,76,.18);border-radius:999px;padding:3px 9px;vertical-align:2px}
+.buy-btn{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;width:100%;padding:18px 20px;border-radius:16px;
+  background:linear-gradient(180deg,#2bd46a,#16a34a);color:#fff;text-align:left;
+  box-shadow:0 6px 0 #0f7a36,0 18px 40px -10px rgba(22,163,74,.7);transition:transform .15s,box-shadow .15s;animation:bb-pulse 2.2s ease-in-out infinite}
+.buy-btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 #0f7a36,0 24px 50px -10px rgba(22,163,74,.8)}
+.buy-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #0f7a36,0 10px 24px -10px rgba(22,163,74,.7)}
+.buy-btn::after{content:'';position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);animation:shine 3s linear infinite}
+.bb-ic{flex-shrink:0;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.bb-ic svg{width:24px;height:24px}
+.bb-tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.bb-tx b{font-size:clamp(17px,4.4vw,21px);font-weight:900;text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
+.bb-tx small{font-size:13.5px;font-weight:500;opacity:.92;margin-top:3px}
+.bb-ar{flex-shrink:0;width:26px;height:26px;animation:bb-nudge 1.2s ease-in-out infinite}
+@keyframes bb-pulse{0%,100%{box-shadow:0 6px 0 #0f7a36,0 18px 40px -10px rgba(22,163,74,.7),0 0 0 0 rgba(34,197,94,.45)}50%{box-shadow:0 6px 0 #0f7a36,0 18px 40px -10px rgba(22,163,74,.7),0 0 0 12px rgba(34,197,94,0)}}
+@keyframes bb-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.pay{margin-top:22px;text-align:center}
+.pay-l{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.pay-l::before{content:'';width:14px;height:14px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0110 0v4'/%3E%3C/svg%3E")}
+.pay-r{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px}
+.pm{width:52px;height:33px;border-radius:6px;box-shadow:0 0 0 1px #e5e7eb,0 2px 6px rgba(0,0,0,.06)}
+.pm.pix{width:60px}
+.ob-guar{display:flex;align-items:center;gap:12px;margin-top:22px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:14px 16px;font-size:14.5px;color:#14532d;line-height:1.45;text-align:left}
+.ob-guar .ic{width:30px;height:30px;color:#16a34a;flex-shrink:0}
+@media(max-width:520px){.ob2 .obody{padding:24px 18px}.ob2 .otop{padding:30px 16px 26px}.ob2 .oval{font-size:88px}.ob-list li{font-size:16px}.buy-btn{padding:16px 14px;gap:10px}.bb-ic{width:40px;height:40px}.pm{width:46px;height:29px}.pm.pix{width:54px}}
+@media(prefers-reduced-motion:reduce){.buy-btn,.bb-ar,.buy-btn::after{animation:none}}
+
 /* =================== FOOTER =================== */
 footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px solid var(--gl)}
 .fbrand{font-family:var(--sf);font-style:italic;color:var(--gold);font-size:22px;margin-bottom:14px}
@@ -1295,29 +1335,43 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
 <section id="valor" class="sec">
   <div class="in">
     <h2 class="rv">Acesso Completo Hoje<br><em>por R$37</em></h2>
-    <div class="obox rv">
+    <div class="obox ob2 rv">
       <div class="otop">
-        <div class="olbl">acesso completo hoje por</div>
+        <div class="ob-rib">Oferta de hoje</div>
+        <img class="ob-kit" src="mockups/bundle.webp" alt="Ebook e os 3 bônus do app" loading="lazy" width="1100" height="777"/>
+        <div class="olbl">Tudo isso por apenas</div>
         <div class="oprice"><span class="ocur">R$</span><span class="oval">37</span><span class="ocur">,00</span></div>
-        <div class="oinst">ou 2x de R$ 19,90 sem juros</div>
+        <div class="oinst">à vista no Pix ou no cartão · <b>pagamento único</b>, sem mensalidade</div>
       </div>
       <div class="obody">
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Protocolo completo do Sono Perfeito — 6 etapas</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Plano de aplicação passo a passo</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="ototl"><span class="ototl-l">Você paga hoje</span><span class="ototl-r">R$ 37,00</span></div>
-        <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg" style="width:100%;display:flex">
-          Quero Aplicar o Protocolo Hoje
-          <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
+        <ul class="ob-list">
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Principal</span>Ebook Protocolo do Sono Perfeito</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span>Plano de aplicação dia a dia</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Bônus app</span>Guia de Emergência</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Bônus app</span>Checklist da Rotina Noturna</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Bônus app</span>Tabela de Horários por Idade</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span>Acesso imediato e vitalício</span></li>
+        </ul>
+        <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="buy-btn">
+          <span class="bb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
+          <span class="bb-tx"><b>Quero meu bebê dormindo bem</b><small>Acesso liberado no seu e-mail em 1 minuto</small></span>
+          <svg class="bb-ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <div class="omicro">
-          <span><svg class="ic"><use href="#i-lock"/></svg> Pagamento seguro</span>
-          <span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span>
-          <span><svg class="ic"><use href="#i-shield"/></svg> Garantia 7 dias</span>
+        <div class="pay">
+          <div class="pay-l">Pague com segurança via</div>
+          <div class="pay-r">
+            <svg class="pm pix" viewBox="0 0 64 40" aria-label="Pix"><rect width="64" height="40" rx="6" fill="#fff"/><g transform="translate(9 20) rotate(45)" fill="#32BCAD"><rect x="-6" y="-6" width="5.2" height="5.2" rx="1.3"/><rect x=".8" y="-6" width="5.2" height="5.2" rx="1.3"/><rect x="-6" y=".8" width="5.2" height="5.2" rx="1.3"/><rect x=".8" y=".8" width="5.2" height="5.2" rx="1.3"/></g><text x="38" y="26" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="16" fill="#32BCAD">pix</text></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="Visa"><rect width="64" height="40" rx="6" fill="#fff"/><text x="32" y="27" text-anchor="middle" font-family="Arial Black,Arial,Helvetica,sans-serif" font-weight="900" font-style="italic" font-size="17" fill="#1A1F71" letter-spacing="-.5">VISA</text></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="Mastercard"><rect width="64" height="40" rx="6" fill="#fff"/><circle cx="26" cy="20" r="11" fill="#EB001B"/><circle cx="38" cy="20" r="11" fill="#F79E1B"/><path d="M32 10.8a11 11 0 0 1 0 18.4 11 11 0 0 1 0-18.4z" fill="#FF5F00"/></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="Elo"><rect width="64" height="40" rx="6" fill="#000"/><circle cx="16" cy="20" r="3.4" fill="#FFCB05"/><circle cx="16" cy="12" r="2.4" fill="#00A4E0"/><circle cx="16" cy="28" r="2.4" fill="#EF4123"/><text x="38" y="26" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="17" fill="#fff">elo</text></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="American Express"><rect width="64" height="40" rx="6" fill="#016FD0"/><text x="32" y="25" text-anchor="middle" font-family="Arial Black,Arial,Helvetica,sans-serif" font-weight="900" font-size="11.5" fill="#fff" letter-spacing=".3">AMEX</text></svg>
+          </div>
         </div>
-        <div class="buyers-badge" style="justify-content:center;margin-top:10px">
+        <div class="ob-guar">
+          <svg class="ic"><use href="#i-shield"/></svg>
+          <div><b>Garantia de 7 dias.</b> Se não gostar, devolvemos 100% do valor.</div>
+        </div>
+        <div class="buyers-badge" style="justify-content:center;margin-top:14px">
           <span class="dot"></span>
           <span style="color:var(--muted)"><span class="cnt-b">143</span> mães compraram nas últimas 24h</span>
         </div>
@@ -1430,28 +1484,43 @@ footer{background:var(--n0);padding:44px 20px;text-align:center;border-top:1px s
       Você pode fechar esta página e amanhã continuar tentando descobrir sozinha o que mudar…<br><br>
       ou pode <strong>receber agora um protocolo organizado</strong>, abrir o primeiro passo e começar a aplicar ainda hoje.
     </p>
-    <div class="obox rv">
+    <div class="obox ob2 rv">
       <div class="otop">
-        <div class="olbl">Protocolo do Sono Perfeito — acesso completo por</div>
+        <div class="ob-rib">Oferta de hoje</div>
+        <img class="ob-kit" src="mockups/bundle.webp" alt="Ebook e os 3 bônus do app" loading="lazy" width="1100" height="777"/>
+        <div class="olbl">Protocolo completo + 3 bônus por</div>
         <div class="oprice"><span class="ocur">R$</span><span class="oval">37</span><span class="ocur">,00</span></div>
-        <div class="oinst">ou 2x de R$ 19,90 sem juros</div>
+        <div class="oinst">à vista no Pix ou no cartão · <b>pagamento único</b>, sem mensalidade</div>
       </div>
       <div class="obody">
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Protocolo completo do Sono Perfeito — 6 etapas</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Plano de aplicação passo a passo</span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Checklist da rotina noturna <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Guia rápido para despertares <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="oline"><svg class="ic"><use href="#i-check"/></svg><span class="olintx">Tabela de horários por idade <span style="font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,168,76,.1);border-radius:4px;padding:1px 5px;margin-left:4px">APP</span></span></div>
-        <div class="ototl"><span class="ototl-l">Você paga hoje</span><span class="ototl-r">R$ 37,00</span></div>
-        <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="cta-btn lg" style="width:100%;display:flex">
-          Quero Começar Hoje
-          <svg class="ic" style="width:20px;height:20px;stroke:var(--n0)"><use href="#i-arrow"/></svg>
+        <ul class="ob-list">
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Principal</span>Ebook Protocolo do Sono Perfeito</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span>Plano de aplicação dia a dia</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Bônus app</span>Guia de Emergência</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Bônus app</span>Checklist da Rotina Noturna</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span><span class="ob-tag">Bônus app</span>Tabela de Horários por Idade</span></li>
+          <li><span class="ob-ck"><svg class="ic"><use href="#i-check"/></svg></span><span>Acesso imediato e vitalício</span></li>
+        </ul>
+        <a href="https://pay.wiapy.com/6VwHuKLXRCly" class="buy-btn">
+          <span class="bb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
+          <span class="bb-tx"><b>Quero começar hoje à noite</b><small>Acesso liberado no seu e-mail em 1 minuto</small></span>
+          <svg class="bb-ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <div class="omicro">
-          <span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span>
-          <span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span>
+        <div class="pay">
+          <div class="pay-l">Pague com segurança via</div>
+          <div class="pay-r">
+            <svg class="pm pix" viewBox="0 0 64 40" aria-label="Pix"><rect width="64" height="40" rx="6" fill="#fff"/><g transform="translate(9 20) rotate(45)" fill="#32BCAD"><rect x="-6" y="-6" width="5.2" height="5.2" rx="1.3"/><rect x=".8" y="-6" width="5.2" height="5.2" rx="1.3"/><rect x="-6" y=".8" width="5.2" height="5.2" rx="1.3"/><rect x=".8" y=".8" width="5.2" height="5.2" rx="1.3"/></g><text x="38" y="26" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="16" fill="#32BCAD">pix</text></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="Visa"><rect width="64" height="40" rx="6" fill="#fff"/><text x="32" y="27" text-anchor="middle" font-family="Arial Black,Arial,Helvetica,sans-serif" font-weight="900" font-style="italic" font-size="17" fill="#1A1F71" letter-spacing="-.5">VISA</text></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="Mastercard"><rect width="64" height="40" rx="6" fill="#fff"/><circle cx="26" cy="20" r="11" fill="#EB001B"/><circle cx="38" cy="20" r="11" fill="#F79E1B"/><path d="M32 10.8a11 11 0 0 1 0 18.4 11 11 0 0 1 0-18.4z" fill="#FF5F00"/></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="Elo"><rect width="64" height="40" rx="6" fill="#000"/><circle cx="16" cy="20" r="3.4" fill="#FFCB05"/><circle cx="16" cy="12" r="2.4" fill="#00A4E0"/><circle cx="16" cy="28" r="2.4" fill="#EF4123"/><text x="38" y="26" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="17" fill="#fff">elo</text></svg>
+            <svg class="pm" viewBox="0 0 64 40" aria-label="American Express"><rect width="64" height="40" rx="6" fill="#016FD0"/><text x="32" y="25" text-anchor="middle" font-family="Arial Black,Arial,Helvetica,sans-serif" font-weight="900" font-size="11.5" fill="#fff" letter-spacing=".3">AMEX</text></svg>
+          </div>
         </div>
-        <div class="buyers-badge" style="justify-content:center;margin-top:10px">
+        <div class="ob-guar">
+          <svg class="ic"><use href="#i-shield"/></svg>
+          <div><b>Garantia de 7 dias.</b> Se não gostar, devolvemos 100% do valor.</div>
+        </div>
+        <div class="buyers-badge" style="justify-content:center;margin-top:14px">
           <span class="dot"></span>
           <span style="color:var(--muted)"><span class="cnt-b">143</span> mães compraram nas últimas 24h</span>
         </div>
