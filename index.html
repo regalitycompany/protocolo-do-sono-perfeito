@@ -32,6 +32,8 @@ fbq('track','ViewContent',{content_name:'Protocolo do Sono Perfeito',content_cat
 <!-- Pixel da Utmify: dispara PageView e InitiateCheckout (navegador + API de Conversões) -->
 <script>window.pixelId="6ad237fa6d2da542163f9d11";(function(){var a=document.createElement("script");a.async=true;a.defer=true;a.src="https://cdn.utmify.com.br/scripts/pixel/pixel.js";document.head.appendChild(a);})();</script>
 <!-- End Pixel da Utmify -->
+<!-- PWFY: rastreio próprio do funil -->
+<script async src="https://pwfy-regality.vercel.app/sdk.js" data-site="8b241066-28c9-40f1-a4a8-f28410470b48" data-consent="granted"></script>
 
 <!-- Utmify: captura UTMs da URL -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck async defer></script>
@@ -1773,6 +1775,7 @@ setInterval(()=>{
     if(now||queue.length>=10)flush();else timer=setTimeout(flush,2000);
   }
   function fb(){try{fbq.apply(null,arguments)}catch(e){}}
+  function pw(n){try{window.pwfy&&pwfy.track(n)}catch(e){}}
   function post(path,data){
     return fetch(path,{method:'POST',body:JSON.stringify(data),keepalive:true}).catch(function(){});
   }
@@ -1811,7 +1814,7 @@ setInterval(()=>{
         if(seen[id])return;seen[id]=1;
         ev('section_'+id,{order:Object.keys(seen).length});
         fb('trackCustom','ViewSection',{section:id});
-        if(id==='valor')fb('trackCustom','ViewPrice',{value:37,currency:'BRL'});
+        if(id==='valor'){fb('trackCustom','ViewPrice',{value:37,currency:'BRL'});pw('view_content')}
       });
     },{threshold:0.35});
     document.querySelectorAll('section[id],footer').forEach(function(s){if(!s.id)s.id='footer';io.observe(s)});
@@ -1834,7 +1837,7 @@ setInterval(()=>{
       e.preventDefault();
       var cta=where(a);
       ev('cta_click',{cta:cta,text:(a.textContent||'').trim().slice(0,60)},null,true);
-      fb('trackCustom','ClickCTA',{cta:cta});
+      fb('trackCustom','ClickCTA',{cta:cta});pw('cta_click');
       startCheckout(cta,'cta');
       return;
     }
@@ -1899,6 +1902,7 @@ setInterval(()=>{
   // ela entra na régua de recuperação; senão, quem captura o contato é o carrinho abandonado do checkout.
   function startCheckout(from,via){
     var icId=P.eid('ic'),saved={};
+    pw('initiate_checkout');
     try{saved=JSON.parse(localStorage.getItem('psp_form')||'{}')}catch(e){}
     var phone=String(saved.phone||'').replace(/\D/g,'');
     if(validEmail(saved.email||'')||validPhone(phone)){
