@@ -2,10 +2,9 @@ import { sql, json, clientIp, clean, capi, PRICE } from './_lib/core.js';
 
 // Eventos do navegador que também vão pro Meta pela API de Conversões
 // (mesmo event_id do fbq, então o Meta deduplica).
+// PageView e InitiateCheckout saem pelo Pixel da Utmify, não daqui.
 const SERVER_SIDE = {
-  page_view: 'PageView',
   view_content: 'ViewContent',
-  initiate_checkout: 'InitiateCheckout',
 };
 
 export async function POST(req) {

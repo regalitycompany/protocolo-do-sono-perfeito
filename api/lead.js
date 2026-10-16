@@ -62,9 +62,7 @@ export async function POST(req) {
   if (stage === 'lead' && b.eventId) {
     await capi('Lead', { eventId: b.eventId, url: c.url, lead, ip, ua, custom });
   }
-  if (stage === 'checkout' && b.eventId) {
-    await capi('InitiateCheckout', { eventId: b.eventId, url: c.url, lead, ip, ua, custom });
-  }
+  // InitiateCheckout sai pelo Pixel da Utmify, não daqui (evita contagem dupla).
 
   return json({ ok: true, status: lead.status });
 }

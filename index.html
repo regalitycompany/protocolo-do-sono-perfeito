@@ -24,11 +24,14 @@ n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
 (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init',PSP.pixel,{external_id:PSP.sid});
-fbq('track','PageView',{},{eventID:PSP.pvId});
+// PageView e InitiateCheckout agora são disparados pelo Pixel da Utmify (evita contagem dupla)
 fbq('track','ViewContent',{content_name:'Protocolo do Sono Perfeito',content_category:'Baby Sleep',content_type:'product',currency:'BRL',value:37.00},{eventID:PSP.vcId});
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1078460701310585&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
+
+<!-- Pixel da Utmify: dispara PageView e InitiateCheckout (navegador + API de Conversões) -->
+<script>window.pixelId="6ad237fa6d2da542163f9d11";(function(){var a=document.createElement("script");a.async=true;a.defer=true;a.src="https://cdn.utmify.com.br/scripts/pixel/pixel.js";document.head.appendChild(a);})();</script>
+<!-- End Pixel da Utmify -->
 
 <!-- Utmify: captura UTMs da URL -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck async defer></script>
@@ -1775,7 +1778,7 @@ setInterval(()=>{
   }
 
   // os mesmos event_ids do fbq do <head>: o Meta deduplica navegador x servidor
-  ev('page_view',{ref:document.referrer||null},P.pvId);
+  ev('page_view',{ref:document.referrer||null});
   ev('view_content',null,P.vcId,true);
 
   /* ---------- scroll ---------- */
@@ -1896,7 +1899,6 @@ setInterval(()=>{
   // ela entra na régua de recuperação; senão, quem captura o contato é o carrinho abandonado do checkout.
   function startCheckout(from,via){
     var icId=P.eid('ic'),saved={};
-    fb('track','InitiateCheckout',{content_name:'Protocolo do Sono Perfeito',content_type:'product',currency:'BRL',value:37,num_items:1},{eventID:icId});
     try{saved=JSON.parse(localStorage.getItem('psp_form')||'{}')}catch(e){}
     var phone=String(saved.phone||'').replace(/\D/g,'');
     if(validEmail(saved.email||'')||validPhone(phone)){
